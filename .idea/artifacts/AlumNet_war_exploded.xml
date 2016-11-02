@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="AlumNet:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/AlumNet_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="AlumNet" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="commons-fileupload-1.3.2.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="commons-io-2.2.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="commons-lang3-3.2.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="commons-logging-1.1.3.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="freemarker-2.3.22.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="javassist-3.11.0.GA.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="ognl-3.0.19.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="struts2-core-2.3.31.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="xwork-core-2.3.31.jar" module-name="AlumNet" />
+          <element id="library" level="module" name="junit-4.10.jar" module-name="AlumNet" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="AlumNet/web/Web" />
+    </root>
+  </artifact>
+</component>

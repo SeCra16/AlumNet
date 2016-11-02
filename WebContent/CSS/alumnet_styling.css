@@ -1,0 +1,303 @@
+/*
+***********   COLORS   ***********
+GEORGIA SOUTHERN BLUE HEX: #041e42
+GSU background color hex: #e4e4e4
+WHITE HEX: #FFFFFF
+GSU hover color shade: rgba(4,30,66,.8)
+GSU NavBar hover color: #00679a
+
+*********** FONT **********
+font-family: Cabin,Helvetica,Arial,sans-serif;
+
+*/
+
+/*Main Body styling*/
+body{
+	background-color: #e4e4e4;
+	
+}
+/*End of body styles*/
+
+main{
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+    font-size: 17px;
+}
+
+/*Removes the underline from hyperlinks*/
+a{
+	text-decoration: none;
+}
+
+/*Start Header Styles*/
+header{
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+	color: #FFFFFF;
+	text-align: center;
+	border-style: box;
+	background-color: #041e42;
+	margin: -10px -8px 0px -8px;
+	height: 50px;
+	padding:5px 0 25px 0;
+}
+/*Start Header main link*/
+header a {
+	color: white;
+}
+header a:hover{
+}
+/*end Header main link*/
+/*End Header Styles*/
+
+/*Start NavBar styles*/
+.nav{
+	font-size: 1.2em;
+	padding: 10px 0px 20px 10px;
+	text-align: center;
+	margin: auto -8px auto -8px;
+	background-color: #041e42;
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+
+}
+
+.nav a{
+	color: white;
+	text-align: center;
+	display: inline-block;
+	padding: 10px 25px 15px 25px;
+	margin: auto 1px -25px 1px;
+	background-color:#041e42;
+	border: 1px;
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+	
+}
+
+.nav li{
+	display: inline;
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+}
+
+.nav a:hover{
+	margin: auto 1px -25px 1px;
+	padding: 10px 25px 15px 25px;
+	background-color: #00679a;
+}
+/*End NavBar styles*/
+
+/*Start Horizontal Rule stylings*/
+hr{
+	margin-right: 125px;
+	margin-left: 125px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+/*End HR styles*/
+
+/*Center aligns the Top of Page button*/
+.topper{
+	text-align:center;
+}
+/*End ToP alignment*/
+
+/* Footer styles*/
+footer{
+	font-size: .6em;
+}
+
+/* End footer styles*/
+
+/*Dropdown hover styles*/
+/* Dropdown Button */
+.dropbtn {
+    background-color: #041e42;
+    color: white;
+    font-size: 17px;
+    border: 0px;
+    cursor: pointer;
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+	text-align: center;
+	padding: 10px 25px 15px 25px;
+	margin: auto 1px -25px 0px;
+	outline: 0px;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+	color: white;
+	text-align: center;
+	display: inline-block;
+	padding: 10px 25px 15px 26px;
+	margin: auto 1px -25px 1px;
+	font-family: Cabin,Helvetica,Arial,sans-serif;	
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #041e42;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+	z-index: 1; /*this element forces the "colleges" dropdown to stay on top of the page*/
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 11px 16px 20px;
+	margin: 0 0 1px 0;
+    text-decoration: none;
+    display: block;
+	font-family: Cabin,Helvetica,Arial,sans-serif;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: #00679a;
+	padding: 15px 0 20px;
+	margin: 0 0 1px 0;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #00679a;
+}
+
+/* "Colleges" Dropdown Styling */
+button#college.dropbtn{
+	
+}
+
+
+/*   "My Account" dropdown styling   */
+button#account.dropbtn{
+	background-color: #00679a;
+}
+
+/*end dropdown styling*/
+
+/******************** ADD/Change code from this point on **********/
+
+/*start main page widget styling*/
+div.localist_widget_container{
+	text-align:center;
+	padding-left: 10px;
+}
+
+div#upcoming{
+	margin: 0 11.5% 0 14%;
+}
+/*end main page widget styling*/
+
+/*Upcoming events styles*/
+#u_e{
+	text-align:center;
+}
+
+#upcoming{
+	padding: 0 10px 0 10px;
+	margin: 0 auto 0 auto;
+}
+/*End of U_E styles*/
+
+/* Start login page styling*/
+#login{
+	text-align: center;
+}
+
+#login_page{
+  padding: 1em;
+  font:110%/1 Cabin,Helvetica,Arial,sans-serif;
+  margin: 5% 25% 10% 25%;
+}
+
+#login_page label#uname{
+  float:left;
+}
+
+#login_page label#pword{
+  float:left;
+  padding-top: 5px;
+}
+
+#login_page input#name{
+	float: right;
+	width: 50%;
+}
+
+#login_page input#pw{
+	float:right;
+	margin-bottom:10px;
+	width: 50%;
+}
+
+#login_page input#submit{
+	padding: 1px 10px 1px 10px;
+	margin-left: 45%;	
+}
+
+fieldset#login_page{
+	margin-bottom: 25px;
+}
+/* End of Login Page style */
+/*Start Registration styling*/
+#register{
+	text-align: center;
+}
+
+p#p{
+	text-align: center;
+}
+
+fieldset#register_page{
+	margin: 0 25% 30px 25%;
+}
+
+#register_page input#name,input#pw, input#fname, input#lname, input#yr, input#college, input#major{
+	text-align: center;
+	width: 45%;
+}
+
+#register_page input#submit{
+	margin-top:5px;
+	margin-left: auto;
+}
+
+#register_page{
+  padding: 1em;
+  font:110%/1 Cabin,Helvetica,Arial,sans-serif;
+  margin: 5% 15% 15% 15%;
+}
+
+#register_page label{
+  float:left;
+  width:25%;
+  margin: 0 10% 2px 3em;
+  text-align:right;
+}
+/* end registration page styling */
+
+/*start styles for about.html*/
+p#about{
+	text-align:center;
+}
+
+p#about_info{
+	
+}
+
+div#center{
+	text-align:center;
+}
+
+p#origin{
+	font-size: 11px;
+}
+
+/* End about.html styling */
