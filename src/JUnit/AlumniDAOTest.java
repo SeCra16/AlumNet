@@ -1,4 +1,4 @@
-package JUnit;
+/*package JUnit;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -74,3 +74,4 @@ public class AlumniDAOTest extends TestCase {
 		
 	}
 }
+*/
