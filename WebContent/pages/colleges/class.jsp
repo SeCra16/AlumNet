@@ -1,5 +1,4 @@
-<!-- Very basic looking and I mean basic -->
-
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,5 +55,8 @@
 		
 		
 	</main>
+	<footer>
+		AlumNet<sub>&copy;</sub> 2016
+	</footer>
 </body>
 </html>

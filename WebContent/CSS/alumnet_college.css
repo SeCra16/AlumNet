@@ -105,7 +105,9 @@ hr{
 
 /* Footer styles*/
 footer{
-	font-size: .6em;
+    font-size: .6em;
+    position:fixed;
+    bottom:0;
 }
 /* End footer styles*/
 

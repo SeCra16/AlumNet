@@ -19,7 +19,7 @@ body{
 /*End of body styles*/
 
 main{
-	font-family: Cabin,Helvetica,Arial,sans-serif;
+    font-family: Cabin,Helvetica,Arial,sans-serif;
     font-size: 17px;
 }
 
@@ -94,13 +94,15 @@ hr{
 
 /*Center aligns the Top of Page button*/
 .topper{
-	text-align:center;
+    text-align:center;
 }
 /*End ToP alignment*/
 
 /* Footer styles*/
 footer{
-	font-size: .6em;
+    font-size: .6em;
+    position:fixed;
+    bottom:0;
 }
 
 /* End footer styles*/
@@ -171,7 +173,7 @@ footer{
 
 /* "Colleges" Dropdown Styling */
 button#college.dropbtn{
-	
+
 }
 
 
@@ -280,6 +282,10 @@ fieldset#register_page{
   width:25%;
   margin: 0 10% 2px 3em;
   text-align:right;
+}
+
+#colleges select{
+    width: 289px;
 }
 /* end registration page styling */
 

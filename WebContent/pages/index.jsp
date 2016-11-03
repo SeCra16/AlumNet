@@ -1,3 +1,4 @@
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +14,16 @@
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	<header>
 		<h1>
-			<a href = "index.jsp">AlumNet</a>
+			<a href = "index.jsp">AlumNet</a>&nbsp;Hello <s:property value="name"/>!
 		</h1>
-	</header>
+           
+        </header>
 	
 	<!--Navigation Bar-->
 	<ul class = "nav">
 		<li><a href = "index.jsp">Home</a></li>&nbsp;
 			<div class="dropdown">
-				<button class="dropbtn">Colleges</button>
+				<button class="dropbtn" id="college">Colleges</button>
 					<div class="dropdown-content">
 						<a href="colleges/ceit.jsp" id="1">CoEIT</a>
 						<a href="colleges/coba.jsp" id="2">CoBA</a>
@@ -57,9 +59,10 @@
 		<br>
 		
 		<div id = "upcoming"><!--Got this from GSU website!-->
-		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&types=88966&days=60&num=25&match=all&show_types=0&target_blank=1&template=modern"></script><div id="lclst_widget_footer"><a rel="nofollow" style="margin-left:auto;margin-right:auto;display:block;width:81px;margin-top:10px;"></a></div>
-		
-		</script>
+		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&types=88966&days=60&num=25&match=all&show_types=0&target_blank=1&template=modern"></script>
+		<div id="lclst_widget_footer">
+		    <a rel="nofollow" style="margin-left:auto;margin-right:auto;display:block;width:81px;margin-top:10px;"></a>
+		</div>
 		
 		</div>
 		
