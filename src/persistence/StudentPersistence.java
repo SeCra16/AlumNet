@@ -1,9 +1,9 @@
-package Persistence;
+package persistence;
 
 import java.sql.SQLException;
 
-import DAO.StudentDAO;
-import DTO.StudentDTO;
+import dao.StudentDAO;
+import dto.StudentDTO;
 
 public class StudentPersistence extends AlumNetPersistence{
 	private StudentDAO dao;

@@ -1,6 +1,5 @@
-package DTO;
+package dto;
 
-import java.io.File;
 import java.sql.Clob;
 import java.util.Date;
 
