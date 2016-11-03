@@ -1,10 +1,10 @@
-package Persistence;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import Util.ANUtil;
+import util.ANUtil;
 
 public class AlumNetPersistence {
 	private Connection conn = null;

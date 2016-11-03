@@ -1,6 +1,4 @@
-package DTO;
-
-import java.io.File;
+package dto;
 
 public class SystemAdminDTO extends UserDTO {
 	

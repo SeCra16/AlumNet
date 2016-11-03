@@ -1,9 +1,9 @@
-package Persistence;
+package persistence;
 
 import java.sql.SQLException;
 
-import DAO.MessageDAO;
-import DTO.MessageDTO;;
+import dao.MessageDAO;
+import dto.MessageDTO;;
 
 public class MessagePersistence extends AlumNetPersistence{
 	private MessageDAO dao;

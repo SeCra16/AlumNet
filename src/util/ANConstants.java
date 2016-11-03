@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 public class ANConstants {
 	public static final String SUCCESS = "SUCCESS";

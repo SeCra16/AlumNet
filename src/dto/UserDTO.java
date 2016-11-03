@@ -1,5 +1,4 @@
-package DTO;
-import java.io.File;
+package dto;
 import java.sql.Clob;
 
 public class UserDTO {

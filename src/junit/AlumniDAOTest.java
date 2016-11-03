@@ -1,12 +1,12 @@
-/*package JUnit;
+package junit;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 import org.junit.*;
 
-import DAO.AlumniDAO;
-import DTO.AlumniDTO;
+import dao.AlumniDAO;
+import dto.AlumniDTO;
 import junit.framework.TestCase;
 
 public class AlumniDAOTest extends TestCase {
@@ -74,4 +74,3 @@ public class AlumniDAOTest extends TestCase {
 		
 	}
 }
-*/

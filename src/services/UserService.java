@@ -1,4 +1,4 @@
-package Services;
+package services;
 
 import java.sql.SQLException;
 import java.util.Map;
@@ -8,12 +8,12 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import DTO.AlumniDTO;
-import DTO.StudentDTO;
-import Persistence.AlumNetFactory;
-import Persistence.AlumniPersistence;
-import Persistence.StudentPersistence;
-import Util.ANConstants;
+import dto.AlumniDTO;
+import dto.StudentDTO;
+import persistence.AlumNetFactory;
+import persistence.AlumniPersistence;
+import persistence.StudentPersistence;
+import util.ANConstants;
 
 public class UserService extends ActionSupport implements SessionAware{
 	private static final long serialVersionUID = 1L;
