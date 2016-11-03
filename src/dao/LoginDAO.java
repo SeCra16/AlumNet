@@ -1,17 +1,17 @@
-package DAO;
+package dao;
 import java.sql.*;
 
-import DTO.AlumniDTO;
-import DTO.LoginDTO;
-import DTO.StudentDTO;
-import DTO.UserDTO;
+import dto.AlumniDTO;
+import dto.LoginDTO;
+import dto.StudentDTO;
+import dto.UserDTO;
 
 /*
  * Josh Archer 
- * This class will serve as the DAO (Database Access Object)
+ * This class will serve as the dao (Database Access Object)
  * for the LOGIN table in the database
  * 
- * NOTE: COULD HAVE NULL POINTER ERRORS DUE TO CHECKING FOR CERTAIN VALUES BEFORE CONFIRMING DTO OBJECT IS NOT NULL
+ * NOTE: COULD HAVE NULL POINTER ERRORS DUE TO CHECKING FOR CERTAIN VALUES BEFORE CONFIRMING dto OBJECT IS NOT NULL
  */
 public class LoginDAO {
 	private Connection conn = null;
@@ -22,9 +22,9 @@ public class LoginDAO {
 	}
 	
 	public UserDTO select(LoginDTO dto) throws Exception {
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto.getEmail().equals("") || dto.getEmail() == null || dto == null) {
-			throw new Exception("DTO passed cannot be null nor can the email be");
+			throw new Exception("dto passed cannot be null nor can the email be");
 		} else {
 			Statement stmt = conn.createStatement(); 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM LOGIN WHERE Email=" + dto.getEmail() + " and Password=" + dto.getPassword());
@@ -78,9 +78,9 @@ public class LoginDAO {
 	}
 
 	public void insert(LoginDTO dto) throws Exception {
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			
 			//Check if any field of the dto is empty *NOTE: Only picture can be null/empty*
@@ -100,9 +100,9 @@ public class LoginDAO {
 	}
 
 	public void delete(LoginDTO dto) throws Exception {
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			//Has to have  id so we can delete 
 			if (dto.getID() == Integer.MIN_VALUE || dto == null || dto.getEmail() == null) {
@@ -115,9 +115,9 @@ public class LoginDAO {
 	}
 
 	public void update(LoginDTO dto) throws Exception {
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			//Need to check if non-null values in dto are null
 			if (dto.getEmail() != null) {

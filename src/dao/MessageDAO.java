@@ -1,11 +1,11 @@
-package DAO;
+package dao;
 import java.sql.*;
 
-import DTO.MessageDTO;
+import dto.MessageDTO;
 
 /*
  * Josh Archer 
- * This class will serve as the DAO (Database Access Object)
+ * This class will serve as the dao (Database Access Object)
  * for the Message table in the database
  * 
  * NOTE: COULD HAVE NULL POINTER ERRORS DUE TO CHECKING FOR CERTAIN VALUES BEFORE CONFIRMING UserDTO OBJECT IS NOT NULL
@@ -24,7 +24,7 @@ public class MessageDAO {
 		MessageDTO rDTO = new MessageDTO();
 
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null nor can the Id be");
+			throw new Exception("dto passed cannot be null nor can the Id be");
 		} else {
 			if (dto.getReceiver() != Integer.MIN_VALUE || dto.getSender() != Integer.MIN_VALUE) {
 				Statement stmt = conn.createStatement(); 
@@ -48,7 +48,7 @@ public class MessageDAO {
 	public void insert(MessageDTO dto) throws Exception {
 		//Check if the UserDTO is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			
 			//Check if any field of the UserDTO is empty *NOTE: Only picture can be null/empty*
@@ -71,7 +71,7 @@ public class MessageDAO {
 	public void delete(MessageDTO dto) throws Exception {
 		//Check if the UserDTO is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			//Has to have alumni id so we can delete 
 			if (dto.getSender() == Integer.MIN_VALUE || dto.getReceiver() == Integer.MIN_VALUE || dto.getMessage() == null) {

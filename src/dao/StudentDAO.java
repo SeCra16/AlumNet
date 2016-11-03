@@ -1,19 +1,19 @@
-package DAO;
+package dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import DTO.StudentDTO;
-import DTO.UserDTO;
+import dto.StudentDTO;
+import dto.UserDTO;
 
 
 /*
  * Josh Archer 
- * This class will serve as the DAO (Database Access Object)
+ * This class will serve as the dao (Database Access Object)
  * for the STUDENT table in the database
  * 
- * NOTE: COULD HAVE NULL POINTER ERRORS DUE TO CHECKING FOR CERTAIN VALUES BEFORE CONFIRMING DTO OBJECT IS NOT NULL
+ * NOTE: COULD HAVE NULL POINTER ERRORS DUE TO CHECKING FOR CERTAIN VALUES BEFORE CONFIRMING dto OBJECT IS NOT NULL
  */
 public class StudentDAO {
 private Connection conn = null;
@@ -26,9 +26,9 @@ private Connection conn = null;
 	
 	public UserDTO select(UserDTO DTO) throws SQLException, Exception {
 		StudentDTO dto = (StudentDTO) DTO;
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto == null || dto.getStudentID() == Integer.MIN_VALUE) {
-			throw new Exception("DTO passed cannot be null nor can the Id be");
+			throw new Exception("dto passed cannot be null nor can the Id be");
 		} else {
 			Statement stmt = conn.createStatement(); 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM STUDENT WHERE Student_ID=" + dto.getStudentID());
@@ -56,9 +56,9 @@ private Connection conn = null;
 	
 	public void insert(UserDTO DTO) throws Exception {
 		StudentDTO dto = (StudentDTO) DTO;
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			
 			//Check if any field of the dto is empty *NOTE: Only picture can be null/empty*
@@ -89,9 +89,9 @@ private Connection conn = null;
 	
 	public void delete(UserDTO DTO) throws Exception {
 		StudentDTO dto = (StudentDTO) DTO;
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			//Has to have Student id so we can delete 
 			if (dto.getStudentID() == Integer.MIN_VALUE) {
@@ -106,9 +106,9 @@ private Connection conn = null;
 	
 	public UserDTO update(UserDTO DTO) throws SQLException, Exception {
 		StudentDTO dto = (StudentDTO) DTO;
-		//Check if the DTO is null
+		//Check if the dto is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			//Need to check if non-null values in dto are null
 			if (dto.getStudentID() == Integer.MIN_VALUE) {
@@ -135,7 +135,7 @@ private Connection conn = null;
 				+ ",Resume=" + dto.getResume() + ",Active=" + dto.getActive() + ",Picture=" + dto.getPicture()
 				+ " WHERE Student_ID=" + dto.getStudentID());
 			
-			//See if update worked then return the updated DTO
+			//See if update worked then return the updated dto
 			rs = stmt.executeQuery("SELECT * FROM Student WHERE Student_ID=" + dto.getStudentID());
 			
 			StudentDTO rDTO = new StudentDTO();

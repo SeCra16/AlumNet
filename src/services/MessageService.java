@@ -1,4 +1,4 @@
-package Services;
+package services;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import DTO.MessageDTO;
+import dto.MessageDTO;
 
 public class MessageService extends ActionSupport implements SessionAware{
 

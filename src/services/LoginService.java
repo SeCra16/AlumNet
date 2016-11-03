@@ -1,13 +1,13 @@
-package Services;
+package services;
 
 import java.sql.SQLException;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import DTO.LoginDTO;
-import Persistence.AlumNetFactory;
-import Persistence.LoginPersistence;
-import Util.ANConstants;
+import dto.LoginDTO;
+import persistence.AlumNetFactory;
+import persistence.LoginPersistence;
+import util.ANConstants;
 
 public class LoginService extends ActionSupport{
 

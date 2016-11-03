@@ -1,12 +1,12 @@
-package DAO;
+package dao;
 import java.sql.*;
 
-import DTO.AlumniDTO;
-import DTO.UserDTO;
+import dto.AlumniDTO;
+import dto.UserDTO;
 
 /*
  * Josh Archer 
- * This class will serve as the DAO (Database Access Object)
+ * This class will serve as the dao (Database Access Object)
  * for the Alumni table in the database
  * 
  * NOTE: COULD HAVE NULL POINTER ERRORS DUE TO CHECKING FOR CERTAIN VALUES BEFORE CONFIRMING UserDTO OBJECT IS NOT NULL
@@ -24,7 +24,7 @@ public class AlumniDAO {
 		//Check if the UserDTO is null
 		AlumniDTO dto = (AlumniDTO) DTO;
 		if(dto == null || dto.getAlumniID() == Integer.MIN_VALUE) {
-			throw new Exception("DTO passed cannot be null nor can the Id be");
+			throw new Exception("dto passed cannot be null nor can the Id be");
 		} else {
 			Statement stmt = conn.createStatement(); 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNI WHERE Alumni_ID=" + dto.getAlumniID());
@@ -55,7 +55,7 @@ public class AlumniDAO {
 		//Check if the UserDTO is null
 		AlumniDTO dto = (AlumniDTO) DTO;
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			
 			//Check if any field of the UserDTO is empty *NOTE: Only picture can be null/empty*
@@ -90,7 +90,7 @@ public class AlumniDAO {
 		//Check if the UserDTO is null
 		AlumniDTO dto = (AlumniDTO) DTO;
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			//Has to have alumni id so we can delete 
 			if (dto.getAlumniID() == Integer.MIN_VALUE) {
@@ -107,7 +107,7 @@ public class AlumniDAO {
 		AlumniDTO dto = (AlumniDTO) DTO;
 		//Check if the UserDTO is null
 		if(dto == null) {
-			throw new Exception("DTO passed cannot be null");
+			throw new Exception("dto passed cannot be null");
 		} else {
 			//Need to check if non-null values in UserDTO are null
 			if (dto.getAlumniID() == Integer.MIN_VALUE) {
@@ -138,7 +138,7 @@ public class AlumniDAO {
 				+ ",Job_Title=" + dto.getJobTitle() + ",Job_Field=" + dto.getJobField() + ",Active=" + dto.getActive() + ",Picture=" + dto.getPicture() 
 				+ " WHERE Alumni_ID=" + dto.getAlumniID());
 			
-			//See if update worked then return the updated DTO
+			//See if update worked then return the updated dto
 			rs = stmt.executeQuery("SELECT * FROM ALUMNI WHERE Alumni_ID=" + dto.getAlumniID());
 			
 			AlumniDTO rDTO = new AlumniDTO();

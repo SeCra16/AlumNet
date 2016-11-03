@@ -1,12 +1,12 @@
-package Persistence;
+package persistence;
 
 import java.sql.SQLException;
 
-import DAO.LoginDAO;
-import DTO.AlumniDTO;
-import DTO.LoginDTO;
-import DTO.StudentDTO;
-import DTO.UserDTO;
+import dao.LoginDAO;
+import dto.AlumniDTO;
+import dto.LoginDTO;
+import dto.StudentDTO;
+import dto.UserDTO;
 
 public class LoginPersistence extends AlumNetPersistence{
 	private LoginDAO dao;
