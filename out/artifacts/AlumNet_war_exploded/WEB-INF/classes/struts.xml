@@ -6,9 +6,21 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     <package name="default" namespace="/" extends="struts-default">
+
         <action name="hello"
                 class="com.javacodegeeks.HelloWorldExample">
                 <result name="success">hello.jsp</result>
         </action>
+
+        <action name="addStudent"
+            class="services.UserService" method="addStudent">
+            <result name="success"></result>
+        </action>
+
+        <action name="addAlumnus"
+            class="services.UserService" method="addAlumnus">
+            <result name="success"></result>
+        </action>
+
     </package>
 </struts>
