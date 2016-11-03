@@ -289,7 +289,7 @@ fieldset#register_page{
 }
 /* end registration page styling */
 
-/*start styles for about.html*/
+/*start styles for about.jsp*/
 p#about{
 	text-align:center;
 }
@@ -306,4 +306,4 @@ p#origin{
 	font-size: 11px;
 }
 
-/* End about.html styling */
+/* End about.jsp styling */
