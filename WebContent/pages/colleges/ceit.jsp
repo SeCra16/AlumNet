@@ -50,7 +50,7 @@
 		
 		<br>
 		<br>
-		<script type="text/javascript" src="http://8igf1nyldy.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="8igf1nyldyt4lk1prm0">get your own <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own">embeddable forum</a> with Talki</div>
+		<script type="text/javascript" src="http://8igf1nyldy.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="8igf1nyldyt4lk1prm0">Hosted by <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own">Talki</a></div>
 		
 	</main>
 	<footer>
