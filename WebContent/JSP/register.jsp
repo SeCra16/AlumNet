@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +61,7 @@
 			<input type="text" name="lname" id="lname" placeholder="Craige"><br>
 		    <label for="grad_yr">Grad Year: </label>
 			<input type = "number" name="grad_yr" id="yr" placeholder="2016" min="1970"><br>
-		    <label for="college">College: </label>
+		    <label for="college">College of: </label>
 			<div id="colleges">
 			<select name="colleges" id="college" placeholder="Engineering and IT">
 			    <option value="ceit"> Engineering and IT</option>
