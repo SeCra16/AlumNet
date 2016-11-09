@@ -54,7 +54,7 @@
 		<br>
 		<br>
 		
-		
+		<script type="text/javascript" src="http://bq911lsllt.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="bq911lslltt4lk1prm0">Hosted by <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own" target="_blank">Talki</a></div>
 		
 	</main>
 	<footer>

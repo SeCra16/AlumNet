@@ -14,7 +14,8 @@
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	<header>
 		<h1>
-			<a href = "index.jsp">AlumNet</a>&nbsp;Hello <s:property value="name"/>!
+			<a href = "index.jsp">AlumNet</a>
+			&nbsp;Hello <s:property value="name"/>!
 		</h1>
            
         </header>
@@ -71,6 +72,7 @@
 	<!-- **This is to enable the "Top of Page" button to be centered on page!** -->
 	<div class="topper">
 		<a href = "#top">Top of Page<br></a>
+		<a href ="https://securelb.imodules.com/s/1544/index.aspx?sid=1544&gid=1&pgid=463&cid=1157" target="_blank">Make a gift to GSU!</a>
 	</div>
 	</div>
 	<footer>

@@ -52,7 +52,7 @@
 		<br>
 		<br>
 		
-		
+		<script type="text/javascript" src="http://t58sanpu4r.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="t58sanpu4rt4lk1prm0">Hosted by <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own" target="_blank">Talki</a></div>
 		
 	</main>
 	<footer>

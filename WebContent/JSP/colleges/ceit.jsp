@@ -3,11 +3,10 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-		<title>
-			AlumNet
-		</title>
-				<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css">
-
+	    <title>
+		AlumNet
+	    </title>
+<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css">
 </head>
 <body>	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
@@ -50,7 +49,8 @@
 		
 		<br>
 		<br>
-		<script type="text/javascript" src="http://8igf1nyldy.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="8igf1nyldyt4lk1prm0">Hosted by <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own">Talki</a></div>
+		
+		<script type="text/javascript" src="http://8igf1nyldy.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="8igf1nyldyt4lk1prm0">Hosted by <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own" target="_blank">Talki</a></div>
 		
 	</main>
 	<footer>
