@@ -23,22 +23,22 @@
 			<div class="dropdown">
 				<button class="dropbtn">Colleges</button>
 					<div class="dropdown-content">
-						<a href="colleges/ceit.html" id="1">CoEIT</a>
-						<a href="colleges/coba.html" id="2">CoBA</a>
-						<a href="colleges/class.html" id="3">CLASS</a>
-						<a href="colleges/chhs.html" id="4">CHHS</a>
-						<a href="colleges/cosm.html" id="5">CoSM</a>
-						<a href="colleges/coe.html" id="6">CoE</a>
-						<a href="colleges/coph.html" id="7">CoPH</a>
+						<a href="colleges/ceit.jsp" id="1">CoEIT</a>
+						<a href="colleges/coba.jsp" id="2">CoBA</a>
+						<a href="colleges/class.jsp" id="3">CLASS</a>
+						<a href="colleges/chhs.jsp" id="4">CHHS</a>
+						<a href="colleges/cosm.jsp" id="5">CoSM</a>
+						<a href="colleges/coe.jsp" id="6">CoE</a>
+						<a href="colleges/coph.jsp" id="7">CoPH</a>
 					</div>
 				</div>&nbsp;
-			<li><a href = "about.html">About AlumNet</a></li>&nbsp;
+			<li><a href = "about.jsp">About AlumNet</a></li>&nbsp;
 			
 			<div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
-						<li><a href = "login.html">Login</a></li>
-						<li><a href = "register.html">Register</a></li>
+						<li><a href = "login.jsp">Login</a></li>
+						<li><a href = "register.jsp">Register</a></li>
 					</div>
 				</div>&nbsp;
 	</ul>
