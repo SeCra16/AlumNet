@@ -1,3 +1,4 @@
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!-- Very basic looking and I mean basic -->
 
 <!DOCTYPE html>
@@ -7,20 +8,20 @@
 		<title>
 			AlumNet
 		</title>
-				<LINK rel="stylesheet" href="alumnet_college.css" type="text/css">
+				<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css">
 
 </head>
 <body>	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	<header>
 		<h1>
-			<a href = "../index.html">AlumNet</a>
+			<a href = "../index.jsp">AlumNet</a>
 		</h1>
 	</header>
 	
 		<!--Navigation Bar-->
 	<ul class = "nav">
-		<li><a href = "../index.html">Home</a></li>&nbsp;
+		<li><a href = "../index.jsp">Home</a></li>&nbsp;
 			<div class="dropdown">
 				<button class="dropbtn">Colleges</button>
 					<div class="dropdown-content">
@@ -53,8 +54,11 @@
 		<br>
 		<br>
 		
-		
+		<script type="text/javascript" src="http://x0jkf782cm.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="x0jkf782cmt4lk1prm0">Hosted by <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own" target="_blank">Talki</a></div>
 		
 	</main>
+	<footer>
+		AlumNet<sub>&copy;</sub> 2016
+	</footer>
 </body>
 </html>
