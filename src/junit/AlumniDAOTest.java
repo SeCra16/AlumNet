@@ -18,7 +18,8 @@ public class AlumniDAOTest extends TestCase {
         super.setUp();
         conn = DriverManager.getConnection("");
     }
-	
+
+	@Test
 	public void testSelect() {
 		AlumniDAO dao = new AlumniDAO(conn);
 		
@@ -35,7 +36,8 @@ public class AlumniDAOTest extends TestCase {
 		
 		Assert.assertNotSame(dto.getFirstName(), "");
 	}
-	
+
+	@Test
 	public void testUpdate() {
 		//Variable to stroe the email
 		String originalEmail = null;
@@ -65,11 +67,13 @@ public class AlumniDAOTest extends TestCase {
 		
 		Assert.assertNotSame(dto.getEmail(), originalEmail);
 	}
-	
+
+	@Test
 	public void testDelete() {
 		
 	}
-	
+
+	@Test
 	public void testInsert() {
 		
 	}

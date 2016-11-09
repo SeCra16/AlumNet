@@ -1,6 +1,7 @@
 package junit;
 
 import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,18 +19,22 @@ public class LoginDAOTest extends TestCase{
         conn = DriverManager.getConnection("");
     }
 
+    @Test
     public void testSelect() {
 
     }
 
+    @Test
     public void testUpdate() {
 
     }
 
+    @Test
     public void testDelete() {
 
     }
 
+    @Test
     public void testInsert() {
 
     }
