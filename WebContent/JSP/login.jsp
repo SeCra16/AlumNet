@@ -64,6 +64,7 @@
 					<input type="submit" name="sbutton" id="submit" value="Submit">			
 			</fieldset>
 		</form>
+		<script> document.write(readCookie('USER_N'));</script>
 	</main>
 	
 	<!-- **This is to enable the "Top of Page" button to be centered on page!** -->
