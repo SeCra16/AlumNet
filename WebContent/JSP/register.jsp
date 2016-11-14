@@ -1,4 +1,7 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +19,9 @@
     	<h1>
 	    <a href = "index.jsp">AlumNet</a>
 	</h1>
+	           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
+
+	
     </header>
 	
     <!--Navigation Bar-->
@@ -45,18 +51,25 @@
     <br>
     <main>
     <!--Main content of page!-->
+    	<script>
+	    
+    makeCookie('USER_N' , '<s:property value="name"/>' , path="/");
+
+	</script>
+	
 	<br>
-	<form onsubmit ="submitReg()">
+	<s:form onsubmit= "makeCookie('USER_N' , '<s:property value=\"name\"/>' , path=\"/\");
+" action="hello">
 	    <fieldset id="register_page">
 		<legend id = "register">
 		    Please Register!
 		</legend>
 		    <label for="uname">Email: </label>
-			<input type="email" name="uname" id="name" placeholder="sc06358@georgiasouthern.edu"><br>
+			<input type="email" name="uname" id="uname" placeholder="sc06358@georgiasouthern.edu"><br>
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8"><br>
 		    <label for="name">First Name: </label>
-			<input type="text" name = "fname" id="fname" placeholder="Sebastian"><br>
+			<input type="text" name = "name" id="name" placeholder="Sebastian"><br>
 		    <label for="lname">Last Name: </label>
 			<input type="text" name="lname" id="lname" placeholder="Craige"><br>
 		    <label for="grad_yr">Grad Year: </label>
@@ -78,9 +91,16 @@
 		    <label for="submit"></label>
 			<input type="submit" name="sbutton" value="Submit" id="submit">
 	    </fieldset>
-	</form>
-    </main>
+	</s:form>
+	
 
+	
+	
+	<br>
+	
+    </main>
+    
+	
     <!-- **This is to enable the "Top of Page" button to be centered on page!** -->
     <div class="topper">
     </div>

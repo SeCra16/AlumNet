@@ -5,11 +5,11 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.devMode" value="true" />
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/JSP" extends="struts-default">
 
         <action name="hello"
-                class="com.javacodegeeks.HelloWorldExample">
-                <result name="success">hello.jsp</result>
+                class="com.alumnet.Name">
+                <result name="success">register.jsp</result>
         </action>
 
         <action name="addStudent"
