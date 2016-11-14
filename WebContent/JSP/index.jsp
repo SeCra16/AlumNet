@@ -7,6 +7,7 @@
 			AlumNet
 		</title>
 				<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css">
+				<script type="text/javascript" src="../JS/login.js"></script>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -15,9 +16,8 @@
 	<header>
 		<h1>
 			<a href = "index.jsp">AlumNet</a>
-			&nbsp;Hello <s:property value="name"/>!
 		</h1>
-           
+           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
         </header>
 	
 	<!--Navigation Bar-->

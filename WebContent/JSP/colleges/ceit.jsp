@@ -7,14 +7,18 @@
 		AlumNet
 	    </title>
 <LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css">
+<script type="text/javascript" src="../../JS/login.js"></script>
 </head>
-<body>	
+<body>
+	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
+	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	<header>
 		<h1>
-			<a href = "../index.jsp">AlumNet</a>
+			<a href = "index.jsp">AlumNet</a>
 		</h1>
-	</header>
+           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
+        </header>
 	
 <!--Navigation Bar-->
 	<ul class = "nav">
