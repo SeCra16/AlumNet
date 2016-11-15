@@ -11,6 +11,8 @@ font-family: Cabin,Helvetica,Arial,sans-serif;
 
 */
 
+/* ***************** DO NOT CHANGE ANY OF THE FOLLOWING CODE **********************/
+
 /*Main Body styling*/
 body{
 	background-color: #e4e4e4;
@@ -19,11 +21,11 @@ body{
 /*End of body styles*/
 
 main{
-    font-family: Cabin,Helvetica,Arial,sans-serif;
+	font-family: Cabin,Helvetica,Arial,sans-serif;
     font-size: 17px;
 }
 
-/*Removes the underline from hyperlinks*/
+/*Removes the persistent underline from hyperlinks*/
 a{
 	text-decoration: none;
 }
@@ -44,6 +46,7 @@ header a {
 	color: white;
 }
 header a:hover{
+	text-decoration: none;
 }
 /*end Header main link*/
 /*End Header Styles*/
@@ -80,8 +83,10 @@ header a:hover{
 	margin: auto 1px -25px 1px;
 	padding: 10px 25px 15px 25px;
 	background-color: #00679a;
+	text-decoration: none;
 }
 /*End NavBar styles*/
+
 
 /*Start Horizontal Rule stylings*/
 hr{
@@ -94,7 +99,7 @@ hr{
 
 /*Center aligns the Top of Page button*/
 .topper{
-    text-align:center;
+	text-align:center;
 }
 /*End ToP alignment*/
 
@@ -104,7 +109,6 @@ footer{
     position:fixed;
     bottom:0;
 }
-
 /* End footer styles*/
 
 /*Dropdown hover styles*/
@@ -171,12 +175,6 @@ footer{
     background-color: #00679a;
 }
 
-/* "Colleges" Dropdown Styling */
-button#college.dropbtn{
-
-}
-
-
 /*   "My Account" dropdown styling   */
 button#account.dropbtn{
 	background-color: #00679a;
@@ -184,126 +182,11 @@ button#account.dropbtn{
 
 /*end dropdown styling*/
 
-/******************** ADD/Change code from this point on **********/
+/* *************** YOU CAN ADD/CHANGE CODE FROM THIS POINT ON **********/
 
-/*start main page widget styling*/
-div.localist_widget_container{
-	text-align:center;
-	padding-left: 10px;
-}
-
-div#upcoming{
-	margin: 0 11.5% 0 14%;
-}
-/*end main page widget styling*/
-
-/*Upcoming events styles*/
-#u_e{
-	text-align:center;
-}
-
-#upcoming{
-	padding: 0 10px 0 10px;
-	margin: 0 auto 0 auto;
-}
-/*End of U_E styles*/
-
-/* Start login page styling*/
-#login{
+/* College Name Styles */
+#college_name{
 	text-align: center;
 }
 
-#login_page{
-  padding: 1em;
-  font:110%/1 Cabin,Helvetica,Arial,sans-serif;
-  margin: 5% 25% 10% 25%;
-}
-
-#login_page label#uname{
-  float:left;
-}
-
-#login_page label#pword{
-  float:left;
-  padding-top: 5px;
-}
-
-#login_page input#name{
-	float: right;
-	width: 50%;
-}
-
-#login_page input#pw{
-	float:right;
-	margin-bottom:10px;
-	width: 50%;
-}
-
-#login_page input#submit{
-	padding: 1px 10px 1px 10px;
-	margin-left: 45%;	
-}
-
-fieldset#login_page{
-	margin-bottom: 25px;
-}
-/* End of Login Page style */
-/*Start Registration styling*/
-#register{
-	text-align: center;
-}
-
-p#p{
-	text-align: center;
-}
-
-fieldset#register_page{
-	margin: 0 25% 30px 25%;
-}
-
-#register_page input#uname,input#pw, input#name, input#lname, input#yr, input#college, input#major{
-	text-align: center;
-	width: 45%;
-}
-
-#register_page input#submit{
-	margin-top:5px;
-	margin-left: auto;
-}
-
-#register_page{
-  padding: 1em;
-  font:110%/1 Cabin,Helvetica,Arial,sans-serif;
-  margin: 5% 15% 15% 15%;
-}
-
-#register_page label{
-  float:left;
-  width:25%;
-  margin: 0 10% 2px 0;
-  text-align:right;
-}
-
-#colleges select{
-    width: 289px;
-}
-/* end registration page styling */
-
-/*start styles for about.jsp*/
-p#about{
-	text-align:center;
-}
-
-p#about_info{
-	
-}
-
-div#center{
-	text-align:center;
-}
-
-p#origin{
-	font-size: 11px;
-}
-
-/* End about.jsp styling */
+/* End college name styles */
