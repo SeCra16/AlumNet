@@ -1,7 +1,9 @@
 package junit;
 
 import junit.framework.TestCase;
+import org.junit.After;
 import org.junit.Test;
+import util.ANUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +18,14 @@ public class StudentDAOTest extends TestCase {
     protected void setUp() throws Exception
     {
         super.setUp();
-        conn = DriverManager.getConnection("");
+        ANUtil util = new ANUtil();
+        conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
+    }
+
+    @After
+    public void tearDown() throws Exception{
+        super.tearDown();
+        conn.close();
     }
 
     @Test
@@ -38,4 +47,5 @@ public class StudentDAOTest extends TestCase {
     public void testInsert() {
 
     }
+
 }

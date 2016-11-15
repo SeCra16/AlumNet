@@ -1,24 +1,28 @@
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-		<title>
-			AlumNet
-		</title>
-				<LINK rel="stylesheet" href="alumnet_college.css" type="text/css">
-
+	    <title>
+		AlumNet
+	    </title>
+<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css">
+<script type="text/javascript" src="../../JS/login.js"></script>
 </head>
-<body>	
+<body>
+	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
+	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	<header>
 		<h1>
-			<a href = "../index.html">AlumNet</a>
+			<a href = "index.jsp">AlumNet</a>
 		</h1>
-	</header>
+           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
+        </header>
 	
 <!--Navigation Bar-->
 	<ul class = "nav">
-		<li><a href = "../index.html">Home</a></li>&nbsp;
+		<li><a href = "../index.jsp">Home</a></li>&nbsp;
 			<div class="dropdown">
 				<button class="dropbtn">Colleges</button>
 					<div class="dropdown-content">
@@ -50,7 +54,11 @@
 		<br>
 		<br>
 		
+		<script type="text/javascript" src="http://8igf1nyldy.embed.talkiforum.com/embed/1.js"></script><div style="font-size:80%; text-align:center;" id="8igf1nyldyt4lk1prm0">Hosted by <a href="http://talkiforum.com?utm_source=install&utm_medium=link&utm_campaign=get_your_own" target="_blank">Talki</a></div>
 		
 	</main>
+	<footer>
+		AlumNet<sub>&copy;</sub> 2016
+	</footer>
 </body>
 </html>

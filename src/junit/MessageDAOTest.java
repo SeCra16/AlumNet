@@ -4,7 +4,9 @@ import dao.MessageDAO;
 import dto.MessageDTO;
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import org.junit.After;
 import org.junit.Test;
+import util.ANUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,10 +23,17 @@ public class MessageDAOTest extends TestCase {
     protected void setUp() throws Exception
     {
         super.setUp();
-        conn = DriverManager.getConnection("");
+        ANUtil util = new ANUtil();
+        conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
 
         //set the dao up
         this.dao = new MessageDAO(conn);
+    }
+
+    @After
+    public void tearDown() throws Exception{
+        super.tearDown();
+        conn.close();
     }
 
     @Test

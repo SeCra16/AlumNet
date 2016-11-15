@@ -42,7 +42,7 @@ private Connection conn = null;
 				rDTO.setExpectedGraduation(rs.getDate("Expected_Graduation"));
 				rDTO.setEmail(rs.getString("Contact_Email"));
 				rDTO.setMajor(rs.getString("Major"));
-				rDTO.setResume(rs.getClob("Resume"));
+				rDTO.setResume(rs.getBlob("Resume"));
 				rDTO.setActive(rs.getBoolean("Active"));
 				rDTO.setPicture(rs.getClob("Picture"));
 			} catch (SQLException e) {
@@ -147,7 +147,7 @@ private Connection conn = null;
 				rDTO.setExpectedGraduation(rs.getDate("Expected_Graduation"));
 				rDTO.setEmail(rs.getString("Contact_Email"));
 				rDTO.setMajor(rs.getString("Major"));
-				rDTO.setResume(rs.getClob("Resume"));
+				rDTO.setResume(rs.getBlob("Resume"));
 				rDTO.setActive(rs.getBoolean("Active"));
 				rDTO.setPicture(rs.getClob("Picture"));
 			} catch (SQLException e) {
