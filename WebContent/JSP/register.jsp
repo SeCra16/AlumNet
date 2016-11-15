@@ -93,7 +93,7 @@
 	    </fieldset>
 	</s:form>
 	
-
+	<p>HI <s:property value="name"/></p>
 	
 	
 	<br>
