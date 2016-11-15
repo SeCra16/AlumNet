@@ -52,4 +52,38 @@ public class ANUtil {
 		
 		return url;
 	}
+
+	public String getUser() throws Exception {
+		String user = "";
+		try {
+			getFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		if (prop != null) {
+			user = prop.getProperty("user");
+		} else {
+			throw new Exception("Could not find the url in the config.properties file");
+		}
+
+		return user;
+	}
+
+	public String getPassword() throws Exception {
+		String pass = "";
+		try {
+			getFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		if (prop != null) {
+			pass = prop.getProperty("password");
+		} else {
+			throw new Exception("Could not find the url in the config.properties file");
+		}
+
+		return pass;
+	}
 }

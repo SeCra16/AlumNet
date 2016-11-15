@@ -1,3 +1,4 @@
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
 			AlumNet
 		</title>
 				<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css">
+				<script type="text/javascript" src="../JS/login.js"></script>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -15,13 +17,14 @@
 		<h1>
 			<a href = "index.jsp">AlumNet</a>
 		</h1>
-	</header>
+           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
+        </header>
 	
 	<!--Navigation Bar-->
 	<ul class = "nav">
 		<li><a href = "index.jsp">Home</a></li>&nbsp;
 			<div class="dropdown">
-				<button class="dropbtn">Colleges</button>
+				<button class="dropbtn" id="college">Colleges</button>
 					<div class="dropdown-content">
 						<a href="colleges/ceit.jsp" id="1">CoEIT</a>
 						<a href="colleges/coba.jsp" id="2">CoBA</a>
@@ -57,9 +60,10 @@
 		<br>
 		
 		<div id = "upcoming"><!--Got this from GSU website!-->
-		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&types=88966&days=60&num=25&match=all&show_types=0&target_blank=1&template=modern"></script><div id="lclst_widget_footer"><a rel="nofollow" style="margin-left:auto;margin-right:auto;display:block;width:81px;margin-top:10px;"></a></div>
-		
-		</script>
+		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&types=88966&days=60&num=25&match=all&show_types=0&target_blank=1&template=modern"></script>
+		<div id="lclst_widget_footer">
+		    <a rel="nofollow" style="margin-left:auto;margin-right:auto;display:block;width:81px;margin-top:10px;"></a>
+		</div>
 		
 		</div>
 		
@@ -68,6 +72,7 @@
 	<!-- **This is to enable the "Top of Page" button to be centered on page!** -->
 	<div class="topper">
 		<a href = "#top">Top of Page<br></a>
+		<a href ="https://securelb.imodules.com/s/1544/index.aspx?sid=1544&gid=1&pgid=463&cid=1157" target="_blank">Make a gift to GSU!</a>
 	</div>
 	</div>
 	<footer>

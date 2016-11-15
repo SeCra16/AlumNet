@@ -1,6 +1,6 @@
 package dto;
 
-import java.sql.Clob;
+import java.sql.Blob;
 import java.util.Date;
 
 public class StudentDTO extends UserDTO {
@@ -8,7 +8,7 @@ public class StudentDTO extends UserDTO {
 	int studentID = Integer.MIN_VALUE; //Class Specific Variables
 	Date expectedGraduation;
 	String major;
-	Clob resume;
+	Blob resume;
 	//End Class Specific Variables
 	
 
@@ -36,11 +36,11 @@ public class StudentDTO extends UserDTO {
 			major = s;
 		}
 		
-		public Clob getResume(){
+		public Blob getResume(){
 			return resume;
 		}
 		
-		public void setResume(Clob f){
+		public void setResume(Blob f){
 			resume = f;
 		}
 
