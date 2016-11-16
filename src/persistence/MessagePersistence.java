@@ -22,5 +22,7 @@ public class MessagePersistence extends AlumNetPersistence{
 		
 		//insert the dto into database
 		dao.insert(dto);
+
+		close();
 	}
 }

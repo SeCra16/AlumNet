@@ -21,8 +21,10 @@ public class LoginService extends ActionSupport{
 			lPer.login(loginDTO);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return ANConstants.ERROR;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return ANConstants.ERROR;
 		}
 		
 		return ANConstants.SUCCESS;
