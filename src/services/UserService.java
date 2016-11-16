@@ -3,6 +3,7 @@ package services;
 import java.sql.SQLException;
 import java.util.Map;
 
+import dto.LoginDTO;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -28,6 +29,9 @@ public class UserService extends ActionSupport implements SessionAware{
 				StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
 				
 				persistence.addStudent(student);
+
+                //** TO-DO: CREATE LOGIN CODE THAT WILL GIVE USER DTO AS WELL AS CREATE THE LOGIN **//
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return ANConstants.ERROR;

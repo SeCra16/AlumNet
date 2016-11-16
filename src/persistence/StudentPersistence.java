@@ -22,6 +22,7 @@ public class StudentPersistence extends AlumNetPersistence{
 		
 		//insert the dto into database
 		dao.insert(dto);
+		close();
 	}
 
 	public StudentDTO updateStudent(StudentDTO dto) throws SQLException, Exception {
@@ -32,7 +33,9 @@ public class StudentPersistence extends AlumNetPersistence{
 		dao = new StudentDAO(getConnection());
 		
 		//insert the dto into database
-		return (StudentDTO) dao.update(dto);		
+        StudentDTO sDto = (StudentDTO) dao.update(dto);
+        close();
+		return sDto;
 	}
 
 	public StudentDTO viewStudent(StudentDTO student) throws SQLException, Exception {
@@ -43,6 +46,9 @@ public class StudentPersistence extends AlumNetPersistence{
 		dao = new StudentDAO(getConnection());
 		
 		//insert the dto into database
-		return (StudentDTO) dao.select(student);
+        StudentDTO sDto = (StudentDTO) dao.select(student);
+        close();
+
+		return sDto;
 	}
 }

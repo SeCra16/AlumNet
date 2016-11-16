@@ -18,13 +18,18 @@ public class AlumniPersistence extends AlumNetPersistence{
 		dao = new AlumniDAO(getConnection());
 		
 		dao.insert(dto);
+
+		close();
 	}
 
 	public AlumniDTO viewAlumnus(AlumniDTO alumnus) throws SQLException, Exception {
 		connect();
 		dao = new AlumniDAO(getConnection());
-		
-		return (AlumniDTO) dao.select(alumnus);		
+
+        AlumniDTO dto = (AlumniDTO) dao.select(alumnus);
+
+        close();
+		return dto;
 	}
 	
 }

@@ -25,6 +25,8 @@ public class LoginPersistence extends AlumNetPersistence{
 		
 		//insert the dto into database
 		dao.insert(dto);
+
+		close();
 	}
 	
 	public UserDTO login(LoginDTO dto) throws SQLException, Exception {
@@ -37,10 +39,12 @@ public class LoginPersistence extends AlumNetPersistence{
 		StudentDTO sdto = (StudentDTO) dao.select(dto);
 		
 		if (sdto.getStudentID() == Integer.MIN_VALUE) {
-			AlumniDTO adto = (AlumniDTO) dao.select(dto);	
+			AlumniDTO adto = (AlumniDTO) dao.select(dto);
+            close();
 			return adto;
 		}
-		
+
+		close();
 		return sdto;
 	}
 }

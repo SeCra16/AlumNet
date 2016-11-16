@@ -8,7 +8,6 @@ import util.ANUtil;
 
 public class AlumNetPersistence {
 	private Connection conn = null;
-	private String url = "";
 	
 	//connect to database
 	public void connect() throws SQLException, Exception {
@@ -16,9 +15,9 @@ public class AlumNetPersistence {
 		if (conn != null) {
 			conn.close();
 			
-			conn = DriverManager.getConnection(util.getURL());
+			conn = DriverManager.getConnection(util.getURL(), util.getUser(), util.getPassword());
 		} else {
-			conn = DriverManager.getConnection(url);
+			throw new Exception("Bad login credentials... check config.properties");
 		}
 	}
 	
