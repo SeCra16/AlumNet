@@ -27,7 +27,7 @@ public class AlumniDAO {
 			throw new Exception("dto passed cannot be null nor can the Id be");
 		} else {
 			Statement stmt = conn.createStatement(); 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNI WHERE Alumni_ID=" + dto.getAlumniID());
+			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
 			
 			AlumniDTO rDTO = new AlumniDTO();
 			
@@ -79,7 +79,7 @@ public class AlumniDAO {
 			
 			//We know every field is initialized so we can insert
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNI VALUES (" + dto.getAlumniID() + ","+ dto.getFirstName() + ","+ dto.getLastName() 
+			ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Alumni VALUES (Alumni_ID, First_Name, Last_Name, Graduation_Date, Email, Company, Active) (" + dto.getAlumniID() + ","+ dto.getFirstName() + ","+ dto.getLastName()
 				+ "," + dto.getGraduationDate() + ","+ dto.getEmail() + ","+ dto.getCompany() + ","+ dto.getActive() 
 				+ dto.getPicture() + ")");
 		}
@@ -97,7 +97,7 @@ public class AlumniDAO {
 				throw new Exception("Alumni Id cannot be null");
 			} else {
 				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNI WHERE Alumni_ID=" + dto.getAlumniID());
+				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
 			}
 		}
 	}
@@ -139,7 +139,7 @@ public class AlumniDAO {
 				+ " WHERE Alumni_ID=" + dto.getAlumniID());
 			
 			//See if update worked then return the updated dto
-			rs = stmt.executeQuery("SELECT * FROM ALUMNI WHERE Alumni_ID=" + dto.getAlumniID());
+			rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
 			
 			AlumniDTO rDTO = new AlumniDTO();
 			
