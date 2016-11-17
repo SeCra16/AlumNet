@@ -44,7 +44,7 @@
 		<button class="dropbtn" id="account">My Account</button>
 		    <div class="dropdown-content">	
 			<li><a href = "login.jsp">Login</a></li>
-			<li><a href = "JSP/register.jsp">Register</a></li>
+			<li><a href = "register.jsp">Register</a></li>
 		    </div>
 	    </div>&nbsp;
     </ul>

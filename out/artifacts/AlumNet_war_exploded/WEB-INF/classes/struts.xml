@@ -22,5 +22,10 @@
             <result name="success"></result>
         </action>
 
+        <action name="login"
+            class="services.LoginService" method="validateUser">
+            <result name="success"></result>
+        </action>
+
     </package>
 </struts>
