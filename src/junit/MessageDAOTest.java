@@ -19,6 +19,7 @@ import java.util.Random;
 public class MessageDAOTest extends TestCase {
     Connection conn;
     MessageDAO dao = null;
+    int i = 0;
 
     @Override
     protected void setUp() throws Exception
@@ -29,6 +30,11 @@ public class MessageDAOTest extends TestCase {
 
         //set the dao up
         this.dao = new MessageDAO(conn);
+
+        if(i == 0) {
+            System.out.print(new Object(){}.getClass().getName() + " -- ");
+            i++;
+        }
     }
 
     @After
@@ -53,7 +59,8 @@ public class MessageDAOTest extends TestCase {
         }
 
         Assert.assertEquals("test", dto.getMessage());
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass");
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass "+
+                "\n--------------------------------------------------------------");
     }
 
     @Test
@@ -79,7 +86,8 @@ public class MessageDAOTest extends TestCase {
         Assert.assertEquals(dto.getMessage(), test.getMessage());
 
 
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass");
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
+                "\n--------------------------------------------------------------");
 
     }
 }
