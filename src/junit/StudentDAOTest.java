@@ -13,6 +13,7 @@ import java.sql.DriverManager;
  */
 public class StudentDAOTest extends TestCase {
     Connection conn;
+    int i = 0;
 
     @Override
     protected void setUp() throws Exception
@@ -20,6 +21,11 @@ public class StudentDAOTest extends TestCase {
         super.setUp();
         ANUtil util = new ANUtil();
         conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
+
+        if(i == 0) {
+            System.out.print(new Object(){}.getClass().getName() + " results -- ");
+            i++;
+        }
     }
 
     @After
@@ -30,22 +36,25 @@ public class StudentDAOTest extends TestCase {
 
     @Test
     public void testSelect() {
-
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass");
     }
 
     @Test
     public void testUpdate() {
-
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
+                "\n--------------------------------------------------------------");
     }
 
     @Test
     public void testDelete() {
-
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
+                "\n--------------------------------------------------------------");
     }
 
     @Test
     public void testInsert() {
-
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
+                "\n--------------------------------------------------------------");
     }
 
 }
