@@ -27,10 +27,10 @@ public class LoginDAO {
 			throw new Exception("dto passed cannot be null nor can the email be");
 		} else {
 			Statement stmt = conn.createStatement(); 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM LOGIN WHERE Email=" + dto.getEmail() + " and Password=" + dto.getPassword());
+			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Login WHERE ID=" + dto.getID() + "and Email=" + dto.getEmail() + " and Password=" + dto.getPassword());
 			
 			if(rs.getInt("ID") != Integer.MIN_VALUE) {
-				rs = stmt.executeQuery("SELECT * FROM Student WHERE Student_ID=" + rs.getInt("ID") + " UNION SELECT * FROM Alumni "
+				rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + rs.getInt("ID") + " UNION SELECT * FROM ALUMNET.dbo.Alumni"
 						+ "WHERE Alumni_ID=" + rs.getInt("ID"));
 			}
 			
@@ -94,7 +94,7 @@ public class LoginDAO {
 			
 			//We know every field is initialized so we can insert
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO LOGIN VALUES (" + dto.getID() + ","+ dto.getEmail() + "," 
+			ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Login VALUES (ID, Email, Password) (" + dto.getID() + ","+ dto.getEmail() + ","
 				+ dto.getPassword() + ")");
 		}
 	}
@@ -109,7 +109,7 @@ public class LoginDAO {
 				throw new Exception("ID and Email cannot be null...");
 			} else {
 				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery("DELETE FROM LOGIN WHERE ID=" + dto.getID() + " and Email=" + dto.getEmail());
+				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Login WHERE ID=" + dto.getID() + " and Email=" + dto.getEmail());
 			}
 		}
 	}
@@ -123,11 +123,11 @@ public class LoginDAO {
 			if (dto.getEmail() != null) {
 				if (dto.getPassword() != null || dto.getPassword() == "") {
 					Statement stmt = conn.createStatement();
-					ResultSet rs = stmt.executeQuery("UPDATE LOGIN SET Email=" + dto.getEmail() + ",Password=" + dto.getPassword()
+					ResultSet rs = stmt.executeQuery("UPDATE ALUMNET.dbo.Login SET Email=" + dto.getEmail() + ",Password=" + dto.getPassword()
 						+ " WHERE Email=" + dto.getEmail());
 				} else {
 					Statement stmt = conn.createStatement();
-					ResultSet rs = stmt.executeQuery("UPDATE LOGIN SET Email=" + dto.getEmail() + " WHERE Email=" + dto.getEmail());
+					ResultSet rs = stmt.executeQuery("UPDATE ALUMNET.dbo.Login SET Email=" + dto.getEmail() + " WHERE Email=" + dto.getEmail());
 				}
 			} else {
 				throw new Exception("Email cannot be empty");

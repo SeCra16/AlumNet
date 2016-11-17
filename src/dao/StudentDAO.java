@@ -31,7 +31,7 @@ private Connection conn = null;
 			throw new Exception("dto passed cannot be null nor can the Id be");
 		} else {
 			Statement stmt = conn.createStatement(); 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM STUDENT WHERE Student_ID=" + dto.getStudentID());
+			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
 			
 			StudentDTO rDTO = new StudentDTO();
 			
@@ -80,7 +80,7 @@ private Connection conn = null;
 			
 			//We know every field is initialized so we can insert
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO STUDENT VALUES (" + dto.getStudentID() + ","+ dto.getFirstName() + "," 
+			ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Student (Student_ID, First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (" + dto.getStudentID() + ","+ dto.getFirstName() + ","
 				+ dto.getLastName() + ","+ dto.getExpectedGraduation() + "," + dto.getEmail() + "," + dto.getMajor() 
 				+ ","+ dto.getResume() + ","+ dto.getActive() + "," + dto.getPicture() + ")");
 		}
@@ -98,7 +98,7 @@ private Connection conn = null;
 				throw new Exception("Student Id cannot be null");
 			} else {
 				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery("DELETE FROM Student WHERE Student_ID=" + dto.getStudentID());
+				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
 			}
 		}
 	}
@@ -130,13 +130,13 @@ private Connection conn = null;
 			//We know the values are not null, so time to attempt update
 			
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("UPDATE Student SET First_Name=" + dto.getFirstName() + ",Last_Name=" + dto.getLastName()
+			ResultSet rs = stmt.executeQuery("UPDATE ALUMNET.dbo.Student SET First_Name=" + dto.getFirstName() + ",Last_Name=" + dto.getLastName()
 				+ ",Expected_Graduation=" + dto.getExpectedGraduation() + ",Contact_Email=" + dto.getEmail() + ",Major=" + dto.getMajor()
 				+ ",Resume=" + dto.getResume() + ",Active=" + dto.getActive() + ",Picture=" + dto.getPicture()
 				+ " WHERE Student_ID=" + dto.getStudentID());
 			
 			//See if update worked then return the updated dto
-			rs = stmt.executeQuery("SELECT * FROM Student WHERE Student_ID=" + dto.getStudentID());
+			rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
 			
 			StudentDTO rDTO = new StudentDTO();
 			

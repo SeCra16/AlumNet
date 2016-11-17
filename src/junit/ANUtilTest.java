@@ -25,7 +25,7 @@ public class ANUtilTest extends TestCase {
 
     @Test
     public void testGetURL() throws Exception {
-        assertEquals("jdbc:sqlserver://192.168.133.147:1433;databaseName=AlumNet", util.getURL());
+        assertEquals("jdbc:sqlserver://192.168.133.149:1433;databaseName=AlumNet", util.getURL());
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass");
     }
 

@@ -2,23 +2,23 @@ package dto;
 
 public class MessageDTO {
 
-	int sender, receiver;
+	int messageID, connectionID;
 	String message;
 	
-	public int getSender(){
-		return sender;
+	public int getMessageID(){
+		return messageID;
 	}
 	
-	public void setSender(int i){
-		sender = i;
+	public void setMessageID(int i){
+		messageID = i;
 	}
 	
-	public int getReceiver(){
-		return receiver;
+	public int getConnectionID(){
+		return connectionID;
 	}
-	
-	public void setReceiver(int i){
-		receiver = i;
+
+	public void setConnectionID(int i){
+		connectionID = i;
 	}
 	
 	public String getMessage(){
@@ -28,4 +28,6 @@ public class MessageDTO {
 	public void setMessage(String s){
 		message = s;
 	}
+
+
 }

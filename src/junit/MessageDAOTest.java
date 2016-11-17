@@ -10,10 +10,11 @@ import util.ANUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Random;
 
 /**
  * Created by Archer on 11/9/16.
- * Does not need update, since we do not allow message updating
+ * Does not need update or delete, since we do not allow message updating/deleting
  */
 public class MessageDAOTest extends TestCase {
     Connection conn;
@@ -42,8 +43,8 @@ public class MessageDAOTest extends TestCase {
         MessageDTO dto = new MessageDTO();
 
         //need test id
-        dto.setSender(1);
-        dto.setReceiver(2);
+        dto.setConnectionID(0);
+        dto.setMessageID(0);
 
         try {
             dto = dao.select(dto);
@@ -51,51 +52,34 @@ public class MessageDAOTest extends TestCase {
             e.printStackTrace();
         }
 
-        Assert.assertNotSame(dto.getMessage(), "test");
+        Assert.assertEquals("test", dto.getMessage());
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass");
     }
 
     @Test
-    public void testInsert() {
-
-    }
-
-    @Test(expected=Exception.class)
-    public void testDelete() throws Exception {
+    public void testInsert() throws Exception {
         MessageDTO dto = new MessageDTO();
 
-        //set test variables
-        dto.setSender(000);
-        dto.setReceiver(000);
-        dto.setMessage("unit test");
+        Random r = new Random();
+        dto.setMessageID(r.nextInt(10000));
+        dto.setConnectionID(0);
+        dto.setMessage("test");
 
-        dao.insert(dto);
-
-        //now check if it inserted, fail if not
-        MessageDTO testDto = dao.select(dto);
-
-        if (testDto.getMessage() != dto.getMessage()) {
-            fail("Did not insert the test object");
-        }
-
-        if (testDto.getSender() != dto.getSender()) {
-            fail("Did not insert the test object");
-        }
-
-        if (testDto.getReceiver() != dto.getReceiver()) {
-            fail("Did not insert the test object");
-        }
-
-        //attempt the delete
-
-        dao.delete(testDto);
 
         try {
-
-            testDto = dao.select(testDto);
-
+            dao.insert(dto);
         } catch (Exception e) {
-
+            Assert.fail("Reached an error: " + e.getMessage());
         }
+
+        MessageDTO test = dao.select(dto);
+
+        Assert.assertEquals(dto.getConnectionID(), test.getConnectionID());
+        Assert.assertEquals(dto.getMessageID(), test.getMessageID());
+        Assert.assertEquals(dto.getMessage(), test.getMessage());
+
+
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass");
 
     }
 }
