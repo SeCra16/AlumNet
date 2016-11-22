@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 /**
  * Created by Archer on 11/9/16.
  */
-public class LoginDAOTest extends TestCase{
+public class LoginDAOTest extends TestCase {
     Connection conn;
     int i = 0;
     LoginDAO dao = null;
@@ -48,11 +48,12 @@ public class LoginDAOTest extends TestCase{
     public void testSelect() {
         UserDTO tDto = null;
 
+
         try {
             //returns a UserDTO object if the signin worked
             tDto = dao.select(dto);
         } catch (Exception e) {
-            fail("Hit error with select");
+            fail("Hit error with select " + e.getMessage());
         }
 
         assertNotNull(tDto);
@@ -73,7 +74,7 @@ public class LoginDAOTest extends TestCase{
             //now see if the update worked
             tDto = dao.select(dto);
         } catch (Exception e) {
-            fail("Hit error with update");
+            fail("Hit error with update " + e.getMessage());
         }
 
 
@@ -93,7 +94,7 @@ public class LoginDAOTest extends TestCase{
 
 
     @Test
-    public void testDelete() {
+    public void testDelete() throws Exception {
         //delete data then re-input it for the insert test
         UserDTO tDto = null;
 
@@ -102,32 +103,28 @@ public class LoginDAOTest extends TestCase{
 
             //see if select returns anything
             tDto = dao.select(dto);
+            fail("Deleted the row... was supposed to be blocked");
         } catch (Exception e) {
-            fail("Hit error trying to delete");
+            System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
+                    "\n--------------------------------------------------------------");
         }
 
-        assertNull(tDto);
-
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
-                "\n--------------------------------------------------------------");
     }
 
     @Test
     public void testInsert() {
-        //insert and if it is there then it worked since we delete it with the previous test
+        //insert should fail since dup key
         UserDTO tDto = null;
 
         try {
             dao.insert(dto);
 
             tDto = dao.select(dto);
+            fail("duplicate key... should have failed");
         } catch (Exception e) {
-            fail("Hit error while attempting Insert");
+            System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
+                    "\n--------------------------------------------------------------");
         }
 
-        assertNotNull(tDto);
-
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
-                "\n--------------------------------------------------------------");
     }
 }

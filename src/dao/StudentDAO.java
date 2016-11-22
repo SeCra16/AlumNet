@@ -1,11 +1,14 @@
 package dao;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import dto.StudentDTO;
 import dto.UserDTO;
+import org.apache.commons.io.IOUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.sql.*;
+import java.util.Random;
 
 
 /*
@@ -30,23 +33,49 @@ private Connection conn = null;
 		if(dto == null || dto.getStudentID() == Integer.MIN_VALUE) {
 			throw new Exception("dto passed cannot be null nor can the Id be");
 		} else {
-			Statement stmt = conn.createStatement(); 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
-			
+			Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, dto.getStudentID());
+
+            ResultSet rs = ps.executeQuery();
+
 			StudentDTO rDTO = new StudentDTO();
 			
 			try {
-				rDTO.setStudentID(rs.getInt("Student_ID"));
-				rDTO.setFirstName(rs.getString("First_Name"));
-				rDTO.setLastName(rs.getString("Last_Name"));
-				rDTO.setExpectedGraduation(rs.getDate("Expected_Graduation"));
-				rDTO.setEmail(rs.getString("Contact_Email"));
-				rDTO.setMajor(rs.getString("Major"));
-				rDTO.setResume(rs.getBlob("Resume"));
-				rDTO.setActive(rs.getBoolean("Active"));
-				rDTO.setPicture(rs.getClob("Picture"));
+				while(rs.next()) {
+					rDTO.setStudentID(rs.getInt("Student_ID"));
+					rDTO.setFirstName(rs.getString("First_Name"));
+					rDTO.setLastName(rs.getString("Last_Name"));
+					rDTO.setExpectedGraduation(rs.getDate("Expected_Graduation"));
+					rDTO.setEmail(rs.getString("Email"));
+					rDTO.setMajor(rs.getString("Major"));
+
+                    File file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+
+                    try (FileOutputStream out = new FileOutputStream(file)) {
+                        IOUtils.copy(rs.getBinaryStream("Resume"), out);
+
+                    } catch (Exception e) {
+                        //means its null... just continue
+                    }
+					rDTO.setResume(file);
+
+                    rDTO.setActive(rs.getBoolean("Active"));
+
+                    file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+
+                    try (FileOutputStream out = new FileOutputStream(file)) {
+                        IOUtils.copy(rs.getBinaryStream("Picture"), out);
+
+                    } catch (Exception e) {
+                        //means its null or empty.. continue
+                    }
+                    rDTO.setPicture(file);
+				}
 			} catch (SQLException e) {
-				throw new SQLException("Problem with data pulled from Database....");
+				throw new SQLException("Problem with data pulled from Database....\n" + e.getMessage());
 			}
 			
 			return rDTO;
@@ -71,7 +100,7 @@ private Connection conn = null;
 			} else if (dto.getExpectedGraduation() == null) {
 				throw new Exception("Graduation Date cannot be empty... failing to attempt insert");
 			} else if (dto.getEmail() == null) {
-				throw new Exception("Contact Email cannot be empty... failing to attempt insert");
+				throw new Exception("Email cannot be empty... failing to attempt insert");
 			} else if (dto.getMajor() == null) {
 				throw new Exception("Major cannot be empty... failing to attempt insert");
 			} else if (dto.getActive() != false || dto.getActive() != true) {
@@ -80,9 +109,34 @@ private Connection conn = null;
 			
 			//We know every field is initialized so we can insert
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Student (Student_ID, First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (" + dto.getStudentID() + ","+ dto.getFirstName() + ","
+
+            String sql = "INSERT INTO ALUMNET.dbo.Student (Student_ID, First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (?,?,?,?,?,?,?,?,?)";
+            PreparedStatement myStmt = conn.prepareStatement(sql);
+
+            myStmt.setInt(1, dto.getStudentID());
+            myStmt.setString(2, dto.getFirstName());
+            myStmt.setString(3, dto.getLastName());
+            myStmt.setDate(4, (Date) dto.getExpectedGraduation());
+            myStmt.setString(5, dto.getEmail());
+            myStmt.setString(6, dto.getMajor());
+
+            FileInputStream is = new FileInputStream(dto.getResume());
+
+            myStmt.setBinaryStream(7, is);
+
+            myStmt.setBoolean(8, dto.getActive());
+
+            FileInputStream is2 = new FileInputStream(dto.getPicture());
+
+            myStmt.setBinaryStream(9, is2);
+
+            myStmt.execute();
+
+
+            /**ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Student (Student_ID, First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (" + dto.getStudentID() + ","+ dto.getFirstName() + ","
 				+ dto.getLastName() + ","+ dto.getExpectedGraduation() + "," + dto.getEmail() + "," + dto.getMajor() 
 				+ ","+ dto.getResume() + ","+ dto.getActive() + "," + dto.getPicture() + ")");
+             **/
 		}
 	}
 
@@ -120,7 +174,7 @@ private Connection conn = null;
 			} else if (dto.getExpectedGraduation() == null) {
 				throw new Exception("Graduation Date cannot be empty... failing to attempt update");
 			} else if (dto.getEmail() == null) {
-				throw new Exception("Contact Email cannot be empty... failing to attempt update");
+				throw new Exception("Email cannot be empty... failing to attempt update");
 			} else if (dto.getMajor() == null) {
 				throw new Exception("Major cannot be empty... failing to attempt update");
 			} else if (dto.getActive() != false || dto.getActive() != true) {
@@ -129,27 +183,39 @@ private Connection conn = null;
 			
 			//We know the values are not null, so time to attempt update
 			
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("UPDATE ALUMNET.dbo.Student SET First_Name=" + dto.getFirstName() + ",Last_Name=" + dto.getLastName()
-				+ ",Expected_Graduation=" + dto.getExpectedGraduation() + ",Contact_Email=" + dto.getEmail() + ",Major=" + dto.getMajor()
-				+ ",Resume=" + dto.getResume() + ",Active=" + dto.getActive() + ",Picture=" + dto.getPicture()
-				+ " WHERE Student_ID=" + dto.getStudentID());
+			//Statement stmt = conn.createStatement();
+
+            String sql = "UPDATE ALUMNET.dbo.Student SET First_Name=?, Last_Name=?, Expected_Graduation=?, Email=?, Major=?, Resume=?, Active=?, Picture=? WHERE Student_ID=?";
+
+            PreparedStatement myStmt = conn.prepareStatement(sql);
+
+            myStmt.setString(1, dto.getFirstName());
+            myStmt.setString(2, dto.getLastName());
+            myStmt.setDate(3, (Date) dto.getExpectedGraduation());
+            myStmt.setString(4, dto.getEmail());
+            myStmt.setString(5, dto.getMajor());
+
+            FileInputStream is = new FileInputStream(dto.getResume());
+
+            myStmt.setBinaryStream(6, is);
+
+            myStmt.setBoolean(7, dto.getActive());
+
+            FileInputStream is2 = new FileInputStream(dto.getPicture());
+
+            myStmt.setBinaryStream(8, is2);
+
+            myStmt.setInt(9, dto.getStudentID());
+
+            myStmt.execute();
 			
 			//See if update worked then return the updated dto
-			rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
+			ResultSet rs = myStmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
 			
-			StudentDTO rDTO = new StudentDTO();
+			StudentDTO rDTO;
 			
 			try {
-				rDTO.setStudentID(rs.getInt("Student_ID"));
-				rDTO.setFirstName(rs.getString("First_Name"));
-				rDTO.setLastName(rs.getString("Last_Name"));
-				rDTO.setExpectedGraduation(rs.getDate("Expected_Graduation"));
-				rDTO.setEmail(rs.getString("Contact_Email"));
-				rDTO.setMajor(rs.getString("Major"));
-				rDTO.setResume(rs.getBlob("Resume"));
-				rDTO.setActive(rs.getBoolean("Active"));
-				rDTO.setPicture(rs.getClob("Picture"));
+                rDTO = (StudentDTO) select(dto);
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database....update may of worked but selection of new dto did not");
 			}

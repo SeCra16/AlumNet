@@ -1,8 +1,14 @@
 package dao;
-import java.sql.*;
 
 import dto.AlumniDTO;
 import dto.UserDTO;
+import org.apache.commons.io.IOUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.sql.*;
+import java.util.Random;
 
 /*
  * Josh Archer 
@@ -41,7 +47,15 @@ public class AlumniDAO {
 				rDTO.setJobTitle(rs.getString("Job_Title"));
 				rDTO.setJobField(rs.getString("Job_Field"));
 				rDTO.setActive(rs.getBoolean("Active"));
-				rDTO.setPicture(rs.getClob("Picture"));
+
+				File file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+
+				try (FileOutputStream out = new FileOutputStream(file)) {
+					IOUtils.copy(rs.getBinaryStream("Picture"), out);
+
+				} catch (Exception e) {
+					throw new Exception ("Something went wrong... " + e.getMessage());
+				}
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database....");
 			}
@@ -57,7 +71,6 @@ public class AlumniDAO {
 		if(dto == null) {
 			throw new Exception("dto passed cannot be null");
 		} else {
-			
 			//Check if any field of the UserDTO is empty *NOTE: Only picture can be null/empty*
 			if (dto.getAlumniID() == Integer.MIN_VALUE) {
 				throw new Exception("AlumniID cannot be empty... failing to attempt insert");
@@ -69,19 +82,35 @@ public class AlumniDAO {
 				throw new Exception("Graduation Date cannot be empty... failing to attempt insert");
 			} else if (dto.getEmail() == null) {
 				throw new Exception("Email cannot be empty... failing to attempt insert");
-			} else if (dto.getCompany() == null) {
-				throw new Exception("Company cannot be empty... failing to attempt insert");
-			} else if (dto.getJobTitle() == null) {
-				throw new Exception("Job Title cannot be empty... failing to attempt insert");
-			} else if (dto.getJobField() == null) {
-				throw new Exception("Job Field cannot be empty... failing to attempt insert");
-			}  
+			} else if (dto.getActive() != false || dto.getActive() != true) {
+				throw new Exception("Active cannot be empty... failing to attempt insert");
+			}
+
+
+			String sql = "INSERT INTO ALUMNET.dbo.Alumni (Alumni_ID, First_Name, Last_Name, Graduation_Date, Email, Company, Job_Title, Job_Field, Active, Picture) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement myStmt = conn.prepareStatement(sql);
+
+			myStmt.setInt(1, dto.getAlumniID());
+			myStmt.setString(2, dto.getFirstName());
+			myStmt.setString(3, dto.getLastName());
+			myStmt.setDate(4, (Date) dto.getGraduationDate());
+			myStmt.setString(5, dto.getEmail());
+			myStmt.setString(6, dto.getCompany());
+			myStmt.setString(7, dto.getJobTitle());
+			myStmt.setString(8, dto.getJobField());
+			myStmt.setBoolean(9, dto.getActive());
+
+			FileInputStream is = new FileInputStream(dto.getPicture());
+
+			myStmt.setBinaryStream(10, is);
+
+			myStmt.execute();
 			
 			//We know every field is initialized so we can insert
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Alumni VALUES (Alumni_ID, First_Name, Last_Name, Graduation_Date, Email, Company, Active) (" + dto.getAlumniID() + ","+ dto.getFirstName() + ","+ dto.getLastName()
+			/**Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery( + dto.getAlumniID() + ","+ dto.getFirstName() + ","+ dto.getLastName()
 				+ "," + dto.getGraduationDate() + ","+ dto.getEmail() + ","+ dto.getCompany() + ","+ dto.getActive() 
-				+ dto.getPicture() + ")");
+				+ dto.getPicture() + ")");**/
 		}
 	}
 
@@ -109,51 +138,51 @@ public class AlumniDAO {
 		if(dto == null) {
 			throw new Exception("dto passed cannot be null");
 		} else {
-			//Need to check if non-null values in UserDTO are null
-			if (dto.getAlumniID() == Integer.MIN_VALUE) {
-				throw new Exception("AlumniID cannot be empty... failing to attempt update");
-			} else if (dto.getFirstName() == null) {
-				throw new Exception("First Name cannot be empty... failing to attempt update");
-			} else if (dto.getLastName() == null) {
-				throw new Exception("Last Name cannot be empty... failing to attempt update");
-			} else if (dto.getGraduationDate() == null) {
-				throw new Exception("Graduation Date cannot be empty... failing to attempt update");
-			} else if (dto.getEmail() == null) {
-				throw new Exception("Email cannot be empty... failing to attempt update");
-			} else if (dto.getCompany() == null) {
-				throw new Exception("Company cannot be empty... failing to attempt update");
-			} else if (dto.getJobTitle() == null) {
-				throw new Exception("Job Title cannot be empty... failing to attempt update");
-			} else if (dto.getJobField() == null) {
-				throw new Exception("Job Field cannot be empty... failing to attempt update");
-			} else if (dto.getActive() != true || dto.getActive() != false) {
-				throw new Exception("Active cannot be empty... failing to attempt update");
-			}
+            //Check if any field of the UserDTO is empty *NOTE: Only picture can be null/empty*
+            if (dto.getAlumniID() == Integer.MIN_VALUE) {
+                throw new Exception("AlumniID cannot be empty... failing to attempt insert");
+            } else if (dto.getFirstName() == null) {
+                throw new Exception("First Name cannot be empty... failing to attempt insert");
+            } else if (dto.getLastName() == null) {
+                throw new Exception("Last Name cannot be empty... failing to attempt insert");
+            } else if (dto.getGraduationDate() == null) {
+                throw new Exception("Graduation Date cannot be empty... failing to attempt insert");
+            } else if (dto.getEmail() == null) {
+                throw new Exception("Email cannot be empty... failing to attempt insert");
+            } else if (dto.getActive() != false || dto.getActive() != true) {
+                throw new Exception("Active cannot be empty... failing to attempt insert");
+            }
 			
 			//We know the values are not null, so time to attempt update
-			
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("UPDATE ALUMNI SET First_Name=" + dto.getFirstName() + ",Last_Name=" + dto.getLastName()
-				+ ",Graduation_Date=" + dto.getGraduationDate() + ",Contact_Email=" + dto.getEmail() + ",Company=" + dto.getCompany()
-				+ ",Job_Title=" + dto.getJobTitle() + ",Job_Field=" + dto.getJobField() + ",Active=" + dto.getActive() + ",Picture=" + dto.getPicture() 
-				+ " WHERE Alumni_ID=" + dto.getAlumniID());
+
+            String sql = "UPDATE ALUMNET.dbo.Alumni set First_Name=?, Last_Name=?, Graduation_Date=?, Email=?, Company=?, Job_Title=?, Job_Field=?, Active=?, Picture=? WHERE Alumni_ID=?";
+            PreparedStatement myStmt = conn.prepareStatement(sql);
+
+
+            myStmt.setString(1, dto.getFirstName());
+            myStmt.setString(2, dto.getLastName());
+            myStmt.setDate(3, (Date) dto.getGraduationDate());
+            myStmt.setString(4, dto.getEmail());
+            myStmt.setString(5, dto.getCompany());
+            myStmt.setString(6, dto.getJobTitle());
+            myStmt.setString(7, dto.getJobField());
+            myStmt.setBoolean(8, dto.getActive());
+
+            FileInputStream is = new FileInputStream(dto.getPicture());
+
+            myStmt.setBinaryStream(9, is);
+
+            myStmt.setInt(10, dto.getAlumniID());
+
+            myStmt.execute();
 			
 			//See if update worked then return the updated dto
-			rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
+			myStmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
 			
-			AlumniDTO rDTO = new AlumniDTO();
+			AlumniDTO rDTO;
 			
 			try {
-				rDTO.setAlumniID(rs.getInt("Alumni_ID"));
-				rDTO.setFirstName(rs.getString("First_Name"));
-				rDTO.setLastName(rs.getString("Last_Name"));
-				rDTO.setGraduationDate(rs.getDate("Graduation_Date"));
-				rDTO.setEmail(rs.getString("Contact_Email"));
-				rDTO.setCompany(rs.getString("Company"));
-				rDTO.setJobTitle(rs.getString("Job_Title"));
-				rDTO.setJobField(rs.getString("Job_Field"));
-				rDTO.setActive(rs.getBoolean("Active"));
-				rDTO.setPicture(rs.getClob("Picture"));
+				rDTO = (AlumniDTO) select(dto);
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database....update may of worked but selection of new UserDTO did not");
 			}

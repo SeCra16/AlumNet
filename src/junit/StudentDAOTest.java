@@ -1,5 +1,7 @@
 package junit;
 
+import dao.StudentDAO;
+import dto.StudentDTO;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Test;
@@ -13,7 +15,7 @@ import java.sql.DriverManager;
  */
 public class StudentDAOTest extends TestCase {
     Connection conn;
-    int i = 0;
+    StudentDAO dao;
 
     @Override
     protected void setUp() throws Exception
@@ -22,10 +24,9 @@ public class StudentDAOTest extends TestCase {
         ANUtil util = new ANUtil();
         conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
 
-        if(i == 0) {
-            System.out.print(new Object(){}.getClass().getName() + " results -- ");
-            i++;
-        }
+        dao = new StudentDAO(conn);
+
+        System.out.print(new Object(){}.getClass().getName() + " results -- ");
     }
 
     @After
@@ -36,11 +37,36 @@ public class StudentDAOTest extends TestCase {
 
     @Test
     public void testSelect() {
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass");
+        StudentDTO dto = new StudentDTO();
+
+        dto.setStudentID(0);
+        dto.setFirstName("Josh");
+        dto.setLastName("Archer");
+        dto.setEmail("jarcher1200@gmail.com");
+
+        try {
+            dto = (StudentDTO) dao.select(dto);
+
+        } catch (Exception e) {
+            fail("hit error when trying select, message: " + e.getMessage());
+        }
+
+        System.out.println(dto.getExpectedGraduation());
+
+        assertEquals(0, dto.getStudentID());
+
+
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass "+
+                "\n--------------------------------------------------------------");
     }
 
     @Test
     public void testUpdate() {
+        StudentDTO dto = new StudentDTO();
+
+
+
+
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
     }
