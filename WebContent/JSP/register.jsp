@@ -1,7 +1,5 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +14,12 @@
 <body>	
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
     <header>
-    	<h1>
-	    <a href = "index.jsp">AlumNet</a>
+	
+	
+	    
+	<h1>
+	    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
 	</h1>
-	           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
-
 	
     </header>
 	
@@ -64,30 +63,59 @@
 		<legend id = "register">
 		    Please Register!
 		</legend>
+		    <label for="type">Student or Alum?</label>
+			<input type="radio" id="alumTrue" onclick="javascript:alumCheck();" name="alumStud">Alumnus
+			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud">Student<br><br><hr>
+			
+		<div id="ifAlum" style="display:none">
+		    <label for="name">First Name: </label>
+			<input type="text" name = "name" id="name" placeholder="Sebastian" ><br>
+		    <label for="lname">Last Name: </label>
+			<input type="text" name="lname" id="lname" placeholder="Craige" ><br>
+		    <label for="grad_yr">Grad Year: </label>
+			<input type = "number" name="grad_yr" id="yr" placeholder="2016" min="1970" ><br>
+		    <label for="jobComp">Company:</label>
+			<input type="text" name="jobComp" id="jobComp"><br>
+		    <label for="jobTitle">Job Title: </label>
+			<input type="text" name="jobTitle" id="jobTitle"><br>
+		    <label for="jobField">Job Field: </label>
+			<input type="text" name="jobField" id="jobField"><br>
+		    <label for="uname">Email: </label>
+			<input type="email" name="uname" id="uname" placeholder="sc06358@georgiasouthern.edu" ><br>
+		    <label for="pword">Password: </label>
+			<input type="password" name="pword" id="pw" placeholder="*********" min="8" ><br>
+		</div>	
+			
+		<div id="ifStud" style="display:none">
+		    <label for="name">First Name: </label>
+			<input type="text" name = "name" id="name" placeholder="Sebastian" required><br>
+		    <label for="lname">Last Name: </label>
+			<input type="text" name="lname" id="lname" placeholder="Craige" required><br>
+		    <label for="grad_yr">Grad Year: </label>
+			<input type = "number" name="grad_yr" id="yr" placeholder="2016" min="1970" required><br>
+		    <label for="major">Major</label>
+			<input type="text" name="major" id="major" placeholder="Computer Science"><br>
 		    <label for="uname">Email: </label>
 			<input type="email" name="uname" id="uname" placeholder="sc06358@georgiasouthern.edu"><br>
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8"><br>
-		    <label for="name">First Name: </label>
-			<input type="text" name = "name" id="name" placeholder="Sebastian"><br>
-		    <label for="lname">Last Name: </label>
-			<input type="text" name="lname" id="lname" placeholder="Craige"><br>
-		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="grad_yr" id="yr" placeholder="2016" min="1970"><br>
+		</div>
+			
+
+
+
 		    <label for="college">College of: </label>
 			<div id="colleges">
-			<select name="colleges" id="college" placeholder="Engineering and IT">
-			    <option value="ceit"> Engineering and IT</option>
-			    <option value="chhs"> Health and Human Sciences</option>
-			    <option value="class"> Liberal Arts and Social Sciences</option>
-			    <option value="coba"> Business Administration</option>
-			    <option value="coe"> Education</option>
-			    <option value="coph"> Public Health</option>
-			    <option value="cosm"> Science and Mathematics</option>
-			</select>
+			    <select name="colleges" id="college" placeholder="Engineering and IT" required>
+				<option value="ceit"> Engineering and IT</option>
+				<option value="chhs"> Health and Human Sciences</option>
+				<option value="class"> Liberal Arts and Social Sciences</option>
+				<option value="coba"> Business Administration</option>
+				<option value="coe"> Education</option>
+				<option value="coph"> Public Health</option>
+				<option value="cosm"> Science and Mathematics</option>
+			    </select>
 			</div>
-		    <label for="major">Major: </label>
-			<input type="text" name="major" id="major" placeholder="Computer Science"><br>
 		    <label for="submit"></label>
 			<input type="submit" name="sbutton" value="Submit" id="submit">
 	    </fieldset>

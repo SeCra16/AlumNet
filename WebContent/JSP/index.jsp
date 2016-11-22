@@ -15,9 +15,8 @@
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	<header>
 		<h1>
-			<a href = "index.jsp">AlumNet</a>
+		    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
 		</h1>
-           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
         </header>
 	
 	<!--Navigation Bar-->
