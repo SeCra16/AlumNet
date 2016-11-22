@@ -23,10 +23,7 @@ public class AlumniDAOTest extends TestCase {
         ANUtil util = new ANUtil();
         conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
 
-        if(i == 0) {
             System.out.print(new Object(){}.getClass().getName() + " results -- ");
-            i++;
-        }
     }
 
     @After
