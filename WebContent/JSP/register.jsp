@@ -50,15 +50,10 @@
     <br>
     <main>
     <!--Main content of page!-->
-    	<script>
-	    
-    makeCookie('USER_N' , '<s:property value="name"/>' , path="/");
-
-	</script>
-	
 	<br>
-	<s:form onsubmit= "makeCookie('USER_N' , '<s:property value=\"name\"/>' , path=\"/\");
-" action="hello">
+	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
+"-->
+	<s:form action="hello">
 	    <fieldset id="register_page">
 		<legend id = "register">
 		    Please Register!
@@ -84,6 +79,8 @@
 			<input type="email" name="uname" id="uname" placeholder="sc06358@georgiasouthern.edu" ><br>
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8" ><br>
+		    <label for="submit"></label>
+			<input type="submit" name="addAlumnus" value="Submit" id="submit">
 		</div>	
 			
 		<div id="ifStud" style="display:none">
@@ -91,6 +88,8 @@
 			<input type="text" name = "name" id="name" placeholder="Sebastian" required><br>
 		    <label for="lname">Last Name: </label>
 			<input type="text" name="lname" id="lname" placeholder="Craige" required><br>
+		    <label for="stud_ID">Student ID: </label>
+			<input type = "number" name="stud_ID" id="id" placeholder="900XXXXXX" min="900000000" required><br>
 		    <label for="grad_yr">Grad Year: </label>
 			<input type = "number" name="grad_yr" id="yr" placeholder="2016" min="1970" required><br>
 		    <label for="major">Major</label>
@@ -99,29 +98,13 @@
 			<input type="email" name="uname" id="uname" placeholder="sc06358@georgiasouthern.edu"><br>
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8"><br>
-		</div>
-			
-
-
-
-		    <label for="college">College of: </label>
-			<div id="colleges">
-			    <select name="colleges" id="college" placeholder="Engineering and IT" required>
-				<option value="ceit"> Engineering and IT</option>
-				<option value="chhs"> Health and Human Sciences</option>
-				<option value="class"> Liberal Arts and Social Sciences</option>
-				<option value="coba"> Business Administration</option>
-				<option value="coe"> Education</option>
-				<option value="coph"> Public Health</option>
-				<option value="cosm"> Science and Mathematics</option>
-			    </select>
-			</div>
 		    <label for="submit"></label>
-			<input type="submit" name="sbutton" value="Submit" id="submit">
+			<input type="submit" name="addStudent" value="Submit" id="addStudent">
+		</div>   
 	    </fieldset>
 	</s:form>
 	
-	<p>HI <s:property value="name"/></p>
+	<p>HI #session.user.firstName</p>
 	
 	
 	<br>

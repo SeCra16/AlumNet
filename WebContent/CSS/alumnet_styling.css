@@ -267,7 +267,7 @@ fieldset#register_page{
 	margin: 0 25% 30px 25%;
 }
 
-#register_page input#jobComp,input#jobTitle,input#jobField, input#user,input#jobOcc,input#uname,input#pw, input#name, input#lname, input#yr, select#college, input#major{
+#register_page input#jobComp, input#id, input#jobTitle,input#jobField, input#user,input#jobOcc,input#uname,input#pw, input#name, input#lname, input#yr, select#college, input#major{
 	text-align: center;
 	width: 45%;
 }
