@@ -71,3 +71,14 @@ return readCookie(name) == value;
 function rmCookie(name) {
 return !makeCookie(name, '', { expires: -1 });
 }
+
+function alumCheck() {
+    if (document.getElementById('alumTrue').checked) {
+        document.getElementById('ifAlum').style.display = 'block';
+	document.getElementById('ifStud').style.display = 'none';
+    } else {
+        document.getElementById('ifAlum').style.display = 'none';
+        document.getElementById('ifStud').style.display = 'block';
+
+    }
+}
