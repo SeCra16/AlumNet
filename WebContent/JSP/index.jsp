@@ -1,12 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <%@taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html>
-<html lang="en">
 <head>
-	<meta charset="utf-8">
-		<title>
-			AlumNet
-		</title>
-				<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css">
+    <meta charset="utf-8"/>
+	<title>
+	    AlumNet
+	</title>
+				<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
 				<script type="text/javascript" src="../JS/login.js"></script>
 </head>
 <body>
@@ -49,14 +54,14 @@
 	<!--Main content of page!-->
 		
 		
-		<br>
+		<br/>
 		<h2 id="u_e">
 			Here are upcoming Alumni related events on campus!
 			
 		</h2>
 		
-		<br>
-		<br>
+		<br/>
+		<br/>
 		
 		<div id = "upcoming"><!--Got this from GSU website!-->
 		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&types=88966&days=60&num=25&match=all&show_types=0&target_blank=1&template=modern"></script>
@@ -70,7 +75,7 @@
 	
 	<!-- **This is to enable the "Top of Page" button to be centered on page!** -->
 	<div class="topper">
-		<a href = "#top">Top of Page<br></a>
+		<a href = "#top">Top of Page<br/></a>
 		<a href ="https://securelb.imodules.com/s/1544/index.aspx?sid=1544&gid=1&pgid=463&cid=1157" target="_blank">Make a gift to GSU!</a>
 	</div>
 	</div>

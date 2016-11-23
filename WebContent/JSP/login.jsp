@@ -1,13 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <%@taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html>
-<html lang="en">
 <head>
-	<meta charset="utf-8">
-		<title>
-			AlumNet
-		</title>
-				<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css">
-				<script type="text/javascript" src="../JS/login.js"></script>
+    <meta charset="utf-8"/>
+	<title>
+	    AlumNet
+	</title>
+<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+<script type="text/javascript" src="../JS/login.js"></script>
 
 </head>
 <body>	
@@ -45,11 +50,11 @@
 				</div>&nbsp;
 	</ul>
 	
-<br>
+<br/>
 	<main>
 	<!--Main content of page!-->
 
-		<br>
+		<br/>
 		<form onsubmit="submitLogin()">
 			<fieldset id="login_page">
 				<legend id = "login">
@@ -57,11 +62,11 @@
 				</legend>
 				
 				<label for="uname" id = "uname">Email: </label>
-					<input type="email" name="uname" id="name"><br><br>
+					<input type="email" name="uname" id="name"/><br/><br/>
 				<label for="pword" id="pword">Password: </label>
-					<input type="password" name="pword" id="pw"><br><br>
+					<input type="password" name="pword" id="pw"/><br/><br/>
 				<label for="submit" name="submit" id="submit"></label>
-					<input type="submit" name="sbutton" id="submit" value="Submit">			
+					<input type="submit" name="sbutton" id="submit" value="Submit"/>			
 			</fieldset>
 		</form>
 		<script> document.write(readCookie('USER_N'));</script>
@@ -70,7 +75,7 @@
 	<!-- **This is to enable the "Top of Page" button to be centered on page!** -->
 	<div class="topper">
 	</div>
-	</div>
+
 	<footer>
 		AlumNet<sub>&copy;</sub> 2016
 	</footer>

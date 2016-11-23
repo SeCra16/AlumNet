@@ -7,11 +7,11 @@
 
 <%@taglib prefix="s" uri="/struts-tags" %>
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
 	<title>
 	    AlumNet
 	</title>
-<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css">
+<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
 <script type="text/javascript" src="../JS/login.js"></script>
 
 </head>
@@ -51,10 +51,10 @@
 		    </div>
 	    </div>&nbsp;
     </ul>
-    <br>
+    <br/>
     <main>
     <!--Main content of page!-->
-	<br>
+	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
 	<s:form name="reg" onclick="actionChange();">
@@ -64,47 +64,51 @@
 		</legend>
 		    <label for="type">Student or Alum?</label>
 			<input type="radio" id="alumTrue" onclick="javascript:alumCheck();" name="alumStud">Alumnus
-			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud">Student<br><br><hr>
+			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud">Student<br/><br/><hr/>
 			
-		
+		<!-- ****************** ALUM **************-->
 			<div id="ifAlum" style="display:none">
 		    <label for="name">First Name: </label>
-			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" ><br>
+			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" /><br/>
 		    <label for="lname">Last Name: </label>
-			<input type="text" name="LastName" id="LastName" placeholder="Craige" ><br>
+			<input type="text" name="LastName" id="LastName" placeholder="Craige" /><br/>
 		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" ><br>
+			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" /><br/>
 		    <label for="major">Major</label>
-			<input type="text" name="major" id="major" placeholder="Computer Science"><br>
+			<input type="text" name="major" id="major" placeholder="Computer Science"/><br/>
 		    <label for="jobComp">Company:</label>
-			<input type="text" name="jobComp" id="jobComp"><br>
+			<input type="text" name="jobComp" id="jobComp"/><br/>
 		    <label for="jobTitle">Job Title: </label>
-			<input type="text" name="jobTitle" id="jobTitle"><br>
+			<input type="text" name="jobTitle" id="jobTitle"/><br/>
 		    <label for="jobField">Job Field: </label>
-			<input type="text" name="jobField" id="jobField"><br>
+			<input type="text" name="jobField" id="jobField"/><br/>
 		    <label for="uname">Email: </label>
-			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" ><br>
+			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" /><br/>
 		    <label for="pword">Password: </label>
-			<input type="password" name="pword" id="pw" placeholder="*********" min="8" ><br>
+			<input type="password" name="pword" id="pw" placeholder="*********" min="8" /><br/>
 		    <label for="submit"></label>
 			<input type="submit" name="addAlumnus" value="Submit" id="submit">
 		</div>	
 			
+		<!-- **************STUDENT ******** -->
+		
 		<div id="ifStud" style="display:none">
 		    <label for="name">First Name: </label>
-			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" ><br>
+			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" /><br/>
 		    <label for="lname">Last Name: </label>
-			<input type="text" name="LastName" id="LastName" placeholder="Craige" ><br>
+			<input type="text" name="LastName" id="LastName" placeholder="Craige" /><br/>
 		    <label for="stud_ID">Student ID: </label>
-			<input type = "number" name="stud_ID" id="id" placeholder="900XXXXXX" min="900000000" ><br>
+			<input type = "number" name="stud_ID" id="id" placeholder="900XXXXXX" min="900000000" /><br/>
 		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" ><br>
-		    <label for="major">Major</label>
-			<input type="text" name="major" id="major" placeholder="Computer Science"><br>
+			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" /><br/>
+		    <label for="major">Major: </label>
+			<input type="text" name="major" id="major" placeholder="Computer Science"/><br/>
+		    <label for="resume">Resume: </label>
+			<input type="file" name="resume" id="resume"/><br/>
 		    <label for="uname">Email: </label>
-			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu"><br>
+			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu"/><br/>
 		    <label for="pword">Password: </label>
-			<input type="password" name="pword" id="pw" placeholder="*********" min="8"><br>
+			<input type="password" name="pword" id="pw" placeholder="*********" min="8"/><br/>
 		    <label for="submit"></label>
 			<input type="submit" name="addStudent" value="Submit" id="addStudent">
 		</div>   
@@ -114,7 +118,7 @@
 	<p>HI #session.user.firstName</p>
 	
 	
-	<br>
+	<br/>
 	
     </main>
     
