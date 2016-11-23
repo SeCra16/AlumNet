@@ -7,18 +7,40 @@ function submitReg(){
 alert("Welcome " + name);
 }
 
-/*Cookie functions*/
+function alumCheck() {
+    if (document.getElementById('alumTrue').checked) {
+        document.getElementById('ifAlum').style.display = 'block';
+	document.getElementById('ifStud').style.display = 'none';
+    } else {
+        document.getElementById('ifAlum').style.display = 'none';
+        document.getElementById('ifStud').style.display = 'block';
+
+    }
+}
+
+function actionChange(){
+    if(document.reg.operation[0].checked == true)
+    {
+	alert("Alum");
+	document.reg.action = "addAlumnus";
+    } else 
+    if(document.reg.operation[1].checked == true)
+    {
+	alert("Student");
+	document.reg.action = "addStudent";
+    }
+    return true;
+}
+
+
+
+
+
+
+/*Cookie functions*//*
 function reldate(days) {
 var d;
 d = new Date();
-
-/* We need to add a relative amount of time to
-the current date. The basic unit of JavaScript
-time is milliseconds, so we need to convert the
-days value to ms. Thus we have
-ms/day
-= 1000 ms/sec *  60 sec/min * 60 min/hr * 24 hrs/day
-= 86,400,000. */
 
 d.setTime(d.getTime() + days*86400000);
 return d.toGMTString();
@@ -41,7 +63,7 @@ s = escape(name) + '=' + escape(value);
 if (p) for (k in p) {
 
 /* convert a numeric expires value to a relative date */
-
+/*
 if (k == 'expires')
 p[k] = isNaN(p[k]) ? p[k] : reldate(p[k]);
 
@@ -60,7 +82,7 @@ For this reason, we actually do have to check
 the value of the secure property so that someone
 won't end up with a secure cookie when
 they didn't want one. */
-
+/*
 if (p[k])
 s += '; ' + (k != 'secure' ? k + '=' + p[k] : k);
 }
@@ -71,14 +93,4 @@ return readCookie(name) == value;
 function rmCookie(name) {
 return !makeCookie(name, '', { expires: -1 });
 }
-
-function alumCheck() {
-    if (document.getElementById('alumTrue').checked) {
-        document.getElementById('ifAlum').style.display = 'block';
-	document.getElementById('ifStud').style.display = 'none';
-    } else {
-        document.getElementById('ifAlum').style.display = 'none';
-        document.getElementById('ifStud').style.display = 'block';
-
-    }
-}
+*/

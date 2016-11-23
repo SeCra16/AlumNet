@@ -1,7 +1,11 @@
-<%@taglib prefix="s" uri="/struts-tags" %>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<!DOCTYPE html>
-<html lang="en">
+<%@taglib prefix="s" uri="/struts-tags" %>
 <head>
     <meta charset="utf-8">
 	<title>
@@ -53,7 +57,7 @@
 	<br>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form action="hello">
+	<s:form name="reg" onclick="actionChange();">
 	    <fieldset id="register_page">
 		<legend id = "register">
 		    Please Register!
@@ -62,13 +66,16 @@
 			<input type="radio" id="alumTrue" onclick="javascript:alumCheck();" name="alumStud">Alumnus
 			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud">Student<br><br><hr>
 			
-		<div id="ifAlum" style="display:none">
+		
+			<div id="ifAlum" style="display:none">
 		    <label for="name">First Name: </label>
-			<input type="text" name = "name" id="name" placeholder="Sebastian" ><br>
+			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" ><br>
 		    <label for="lname">Last Name: </label>
-			<input type="text" name="lname" id="lname" placeholder="Craige" ><br>
+			<input type="text" name="LastName" id="LastName" placeholder="Craige" ><br>
 		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="grad_yr" id="yr" placeholder="2016" min="1970" ><br>
+			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" ><br>
+		    <label for="major">Major</label>
+			<input type="text" name="major" id="major" placeholder="Computer Science"><br>
 		    <label for="jobComp">Company:</label>
 			<input type="text" name="jobComp" id="jobComp"><br>
 		    <label for="jobTitle">Job Title: </label>
@@ -76,7 +83,7 @@
 		    <label for="jobField">Job Field: </label>
 			<input type="text" name="jobField" id="jobField"><br>
 		    <label for="uname">Email: </label>
-			<input type="email" name="uname" id="uname" placeholder="sc06358@georgiasouthern.edu" ><br>
+			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" ><br>
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8" ><br>
 		    <label for="submit"></label>
@@ -85,17 +92,17 @@
 			
 		<div id="ifStud" style="display:none">
 		    <label for="name">First Name: </label>
-			<input type="text" name = "name" id="name" placeholder="Sebastian" required><br>
+			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" ><br>
 		    <label for="lname">Last Name: </label>
-			<input type="text" name="lname" id="lname" placeholder="Craige" required><br>
+			<input type="text" name="LastName" id="LastName" placeholder="Craige" ><br>
 		    <label for="stud_ID">Student ID: </label>
-			<input type = "number" name="stud_ID" id="id" placeholder="900XXXXXX" min="900000000" required><br>
+			<input type = "number" name="stud_ID" id="id" placeholder="900XXXXXX" min="900000000" ><br>
 		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="grad_yr" id="yr" placeholder="2016" min="1970" required><br>
+			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" ><br>
 		    <label for="major">Major</label>
 			<input type="text" name="major" id="major" placeholder="Computer Science"><br>
 		    <label for="uname">Email: </label>
-			<input type="email" name="uname" id="uname" placeholder="sc06358@georgiasouthern.edu"><br>
+			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu"><br>
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8"><br>
 		    <label for="submit"></label>
