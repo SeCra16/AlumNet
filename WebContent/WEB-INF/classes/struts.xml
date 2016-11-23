@@ -14,13 +14,13 @@
 
         <action name="addStudent"
             class="services.UserService" method="addStudent">
-            <result name="SUCCESS">/JSP/register.jsp</result>
+            <result name="SUCCESS">/JSP/thanks.jsp</result>
 	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
         <action name="addAlumnus"
             class="services.UserService" method="addAlumnus">
-            <result name="SUCCESS">/JSP/register.jsp</result>
+            <result name="SUCCESS">/JSP/thanks.jsp</result>
 	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
