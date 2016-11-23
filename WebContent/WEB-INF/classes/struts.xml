@@ -5,7 +5,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.devMode" value="true" />
-    <package name="default" namespace="/JSP/" extends="struts-default">
+    <package name="default" namespace="/" extends="struts-default">
 
         <action name="hello"
                 class="com.alumnet.Name">
@@ -14,17 +14,20 @@
 
         <action name="addStudent"
             class="services.UserService" method="addStudent">
-            <result name="success">register.jsp</result>
+            <result name="SUCCESS">/JSP/register.jsp</result>
+	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
         <action name="addAlumnus"
             class="services.UserService" method="addAlumnus">
-            <result name="success">register.jsp</result>
+            <result name="SUCCESS">/JSP/register.jsp</result>
+	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
         <action name="login"
             class="services.LoginService" method="validateUser">
-            <result name="success"></result>
+            <result name="SUCCESS"></result>
+	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
     </package>
