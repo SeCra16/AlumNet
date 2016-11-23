@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="../CSS/copy.xsl"?>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -7,7 +8,7 @@
 
 <%@taglib prefix="s" uri="/struts-tags" %>
 <head>
-    <meta charset="utf-8"/>
+<meta content="application/xhtml+xml;charset=UTF-8" />
 	<title>
 	    AlumNet
 	</title>
@@ -17,54 +18,50 @@
 </head>
 <body>	
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
-    <header>
-	
-	
-	    
-	<h1>
+    
+	<h1 id="header">
 	    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
 	</h1>
-	
-    </header>
+    
 	
     <!--Navigation Bar-->
-    <ul class = "nav">
-	<li><a href = "index.jsp">Home</a></li>&nbsp;
+    <div class = "nav">
+	<a href = "index.jsp">Home</a>&nbsp;
 	    <div class="dropdown">
 		<button class="dropbtn">Colleges</button>
 		    <div class="dropdown-content">
-			<a href="colleges/ceit.jsp" id="1">CoEIT</a>
-			<a href="colleges/coba.jsp" id="2">CoBA</a>
-			<a href="colleges/class.jsp" id="3">CLASS</a>
-			<a href="colleges/chhs.jsp" id="4">CHHS</a>
-			<a href="colleges/cosm.jsp" id="5">CoSM</a>
-			<a href="colleges/coe.jsp" id="6">CoE</a>
-			<a href="colleges/coph.jsp" id="7">CoPH</a>
+			<a href="colleges/ceit.jsp">CoEIT</a>
+			<a href="colleges/coba.jsp">CoBA</a>
+			<a href="colleges/class.jsp">CLASS</a>
+			<a href="colleges/chhs.jsp">CHHS</a>
+			<a href="colleges/cosm.jsp">CoSM</a>
+			<a href="colleges/coe.jsp">CoE</a>
+			<a href="colleges/coph.jsp">CoPH</a>
 		    </div>
 	    </div>&nbsp;
-	<li><a href = "about.jsp">About AlumNet</a></li>&nbsp;
+	<a href = "about.jsp">About AlumNet</a>&nbsp;
 	    <div class="dropdown">
 		<button class="dropbtn" id="account">My Account</button>
 		    <div class="dropdown-content">	
-			<li><a href = "login.jsp">Login</a></li>
-			<li><a href = "register.jsp">Register</a></li>
+			<a href = "login.jsp">Login</a>
+			<a href = "register.jsp">Register</a>
 		    </div>
 	    </div>&nbsp;
-    </ul>
+    </div>
     <br/>
-    <main>
+    <div id="main">
     <!--Main content of page!-->
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form name="reg" onclick="actionChange();">
+	<s:form name="reg" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 	    <fieldset id="register_page">
 		<legend id = "register">
 		    Please Register!
 		</legend>
 		    <label for="type">Student or Alum?</label>
-			<input type="radio" id="alumTrue" onclick="javascript:alumCheck();" name="alumStud">Alumnus
-			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud">Student<br/><br/><hr/>
+			<input type="radio" id="alumTrue" onclick="javascript:alumCheck();" name="alumStud"/>Alumnus
+			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud"/>Student<br/><br/><hr/>
 			
 		<!-- ****************** ALUM **************-->
 			<div id="ifAlum" style="display:none">
@@ -87,7 +84,7 @@
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8" /><br/>
 		    <label for="submit"></label>
-			<input type="submit" name="addAlumnus" value="Submit" id="submit">
+			<input type="submit" name="submit" value="Submit" id="submit"/>
 		</div>	
 			
 		<!-- **************STUDENT ******** -->
@@ -110,7 +107,7 @@
 		    <label for="pword">Password: </label>
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8"/><br/>
 		    <label for="submit"></label>
-			<input type="submit" name="addStudent" value="Submit" id="addStudent">
+			<input type="submit" name="submit" value="Submit" id="addStudent"/>
 		</div>   
 	    </fieldset>
 	</s:form>
@@ -120,14 +117,14 @@
 	
 	<br/>
 	
-    </main>
+    </div>
     
 	
     <!-- **This is to enable the "Top of Page" button to be centered on page!** -->
     <div class="topper">
     </div>
-    <footer>
+    <div id = "footer">
 	AlumNet<sub>&copy;</sub> 2016
-    </footer>
+    </div>
 </body>
 </html>

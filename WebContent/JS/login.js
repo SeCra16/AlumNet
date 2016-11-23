@@ -11,26 +11,15 @@ function alumCheck() {
     if (document.getElementById('alumTrue').checked) {
         document.getElementById('ifAlum').style.display = 'block';
 	document.getElementById('ifStud').style.display = 'none';
+	document.getElementById('reg').action='addAlumnus';
     } else {
         document.getElementById('ifAlum').style.display = 'none';
         document.getElementById('ifStud').style.display = 'block';
-
+	document.getElementById('reg').action='addStudent';
     }
 }
 
-function actionChange(){
-    if(document.reg.operation[0].checked == true)
-    {
-	alert("Alum");
-	document.reg.action = "addAlumnus";
-    } else 
-    if(document.reg.operation[1].checked == true)
-    {
-	alert("Student");
-	document.reg.action = "addStudent";
-    }
-    return true;
-}
+
 
 
 

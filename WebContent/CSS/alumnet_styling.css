@@ -18,7 +18,7 @@ body{
 }
 /*End of body styles*/
 
-main{
+div#main{
     font-family: Cabin,Helvetica,Arial,sans-serif;
     font-size: 17px;
 }
@@ -29,7 +29,7 @@ a{
 }
 
 /*Start Header Styles*/
-header{
+h1#header{
 	font-family: Cabin,Helvetica,Arial,sans-serif;
 	color: #FFFFFF;
 	text-align: center;
@@ -105,7 +105,7 @@ hr{
 /*End ToP alignment*/
 
 /* Footer styles*/
-footer{
+div#footer{
     font-size: .6em;
     position:fixed;
     bottom:0;
