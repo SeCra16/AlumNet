@@ -1,11 +1,11 @@
 package dto;
-import java.io.File;
+import java.sql.Clob;
 
 public class UserDTO {
 	String FirstName, LastName, Email;
 	boolean active;
 	int[] connections;
-	File Picture;
+	Clob Picture;
 	
 	public String getFirstName() {
 		String temp = new String(FirstName);
@@ -45,10 +45,10 @@ public class UserDTO {
 		connections = ia;
 	}
 	
-	public File getPicture() {
+	public Clob getPicture() {
 		return Picture;
 	}
-	public void setPicture(File clob) {
+	public void setPicture(Clob clob) {
 		Picture = clob;
 	}
 }

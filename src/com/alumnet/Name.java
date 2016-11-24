@@ -1,17 +1,17 @@
 package com.alumnet;
 
 public class Name {
-	private String name;
+	private String FirstName;
     
     public String execute() throws Exception {
         return "success";
     }
     
     public String getName() {
-        return name;
+        return FirstName;
     }
     
     public void setName(String name) {
-        this.name = name;
+        this.FirstName = FirstName;
     }
 }
