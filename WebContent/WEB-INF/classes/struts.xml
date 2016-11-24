@@ -7,6 +7,18 @@
     <constant name="struts.devMode" value="true" />
     <package name="default" namespace="/" extends="struts-default">
 
+	<action name="resultAct"
+		class="com.alumnet.RadioButtonAction">
+	    <result name="SUCCESS">/JSP/thanks.jsp</result>
+	</action>
+	
+	<action name="RadioButtonAction"
+		class="com.alumnet.RadioButtonAction" 
+		method="display">
+	    <result name="none">/JSP/register.jsp</result>
+	</action>
+
+	
         <action name="hello"
                 class="com.alumnet.Name">
                 <result name="success"></result>

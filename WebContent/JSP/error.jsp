@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -57,6 +58,8 @@
 		<h1>
 		    <strong>There was an error! Please try again.</strong>
 		</h1>
+
+
 	</main>
 
 	</div>

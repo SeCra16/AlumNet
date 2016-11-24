@@ -7,46 +7,45 @@
 
 <%@taglib prefix="s" uri="/struts-tags" %>
 <head>
-    <meta charset="utf-8"/>
 	<title>
 	    AlumNet
 	</title>
-				<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css">
+				<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css"/>
 
 </head>
 <body>	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
-	<header>
-		<h1>
-	    <a href = "index.jsp"><img src="../../Images/logo.png" alt="logo" id="logo"/></a>
+	
+		<h1 id="header">
+		    <a href = "index.jsp"><img src="../../Images/logo.png" alt="logo" id="logo"/></a>
 		</h1>
-	</header>
+	
 	
 		<!--Navigation Bar-->
-	<ul class = "nav">
-		<li><a href = "../index.jsp">Home</a></li>&nbsp;
+	<div class = "nav">
+		<a href = "../index.jsp">Home</a>&nbsp;
 			<div class="dropdown">
 				<button class="dropbtn">Colleges</button>
 					<div class="dropdown-content">
-						<a href="ceit.jsp" id="1">CoEIT</a>
-						<a href="coba.jsp" id="2">CoBA</a>
-						<a href="class.jsp" id="3">CLASS</a>
-						<a href="chhs.jsp" id="4">CHHS</a>
-						<a href="cosm.jsp" id="5">CoSM</a>
-						<a href="coe.jsp" id="6">CoE</a>
-						<a href="coph.jsp" id="7">CoPH</a>
+						<a href="ceit.jsp">CoEIT</a>
+						<a href="coba.jsp">CoBA</a>
+						<a href="class.jsp">CLASS</a>
+						<a href="chhs.jsp">CHHS</a>
+						<a href="cosm.jsp">CoSM</a>
+						<a href="coe.jsp">CoE</a>
+						<a href="coph.jsp">CoPH</a>
 					</div>
 				</div>&nbsp;
-			<li><a href = "../about.jsp">About AlumNet</a></li>&nbsp;
+			<a href = "../about.jsp">About AlumNet</a>&nbsp;
 			
 			<div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
-						<li><a href = "../login.jsp">Login</a></li>
-						<li><a href = "../register.jsp">Register</a></li>
+						<a href = "../login.jsp">Login</a>
+						<a href = "../register.jsp">Register</a>
 					</div>
 				</div>&nbsp;
-	</ul>
+	</div>
 	
 	
 	<main>
@@ -54,14 +53,13 @@
 			College of Science and Mathematics
 		</h2>
 		
-		<br>
-		<br>
-		
-		
+		<br/>
+		<br/>
+
 		
 	</main>
-	<footer>
+	<div id="footer">
 		AlumNet<sub>&copy;</sub> 2016
-	</footer>
+	</div>
 </body>
 </html>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <?xml-stylesheet type="text/xsl" href="../CSS/copy.xsl"?>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -54,13 +53,19 @@
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form name="reg" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	<s:form action="resultAct" namespace="/"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 	    <fieldset id="register_page">
 		<legend id = "register">
 		    Please Register!
 		</legend>
+		
 		    <label for="type">Student or Alum?</label>
-			<input type="radio" id="alumTrue" onclick="javascript:alumCheck();" name="alumStud"/>Alumnus
+		    
+		    <s:radio name="yourStatus" label="Status" list="StudStatus" value="DefaultStudentStatus"/>	
+		    
+		     <?/*	
+		   
+		    <input type="radio" id="alumTrue" onclick="" name="alumStud"/>Alumnus
 			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud"/>Student<br/><br/><hr/>
 			
 		<!-- ****************** ALUM **************-->
@@ -86,7 +91,7 @@
 		    <label for="submit"></label>
 			<input type="submit" name="submit" value="Submit" id="submit"/>
 		</div>	
-			
+		
 		<!-- **************STUDENT ******** -->
 		
 		<div id="ifStud" style="display:none">
@@ -108,7 +113,11 @@
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8"/><br/>
 		    <label for="submit"></label>
 			<input type="submit" name="submit" value="Submit" id="addStudent"/>
-		</div>   
+		</div>
+		
+		*/?>
+		<s:submit value="submit" name="submit" />
+
 	    </fieldset>
 	</s:form>
 	

@@ -7,24 +7,23 @@
 
 <%@taglib prefix="s" uri="/struts-tags" %>
 <head>
-    <meta charset="utf-8"/>
 	<title>
 	    AlumNet
 	</title>
-				<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css">
+				<LINK rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css"/>
 
 </head>
 <body>	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
-	<header>
-		<h1>
+	
+		<h1 id=header">
 	    <a href = "index.jsp"><img src="../../Images/logo.png" alt="logo" id="logo"/></a>
 		</h1>
-	</header>
+	
 	
 		<!--Navigation Bar-->
-	<ul class = "nav">
-		<li><a href = "../index.jsp">Home</a></li>&nbsp;
+	<div class = "nav">
+		<a href = "../index.jsp">Home</a>&nbsp;
 			<div class="dropdown">
 				<button class="dropbtn">Colleges</button>
 					<div class="dropdown-content">
@@ -37,16 +36,16 @@
 						<a href="coph.jsp" id="7">CoPH</a>
 					</div>
 				</div>&nbsp;
-			<li><a href = "../about.jsp">About AlumNet</a></li>&nbsp;
+			<a href = "../about.jsp">About AlumNet</a>&nbsp;
 			
 			<div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
-						<li><a href = "../login.jsp">Login</a></li>
-						<li><a href = "../register.jsp">Register</a></li>
+						<a href = "../login.jsp">Login</a>
+						<a href = "../register.jsp">Register</a>
 					</div>
 				</div>&nbsp;
-	</ul>
+	</div>
 	
 	
 	<main>
@@ -54,14 +53,14 @@
 			Jiann-Ping Hsu <br> College of Public Health
 		</h2>
 		
-		<br>
-		<br>
+		<br/>
+		<br/>
 		
 		
 		
 	</main>
-	<footer>
+	<div id="footer">
 		AlumNet<sub>&copy;</sub> 2016
-	</footer>
+	</div>
 </body>
 </html>
