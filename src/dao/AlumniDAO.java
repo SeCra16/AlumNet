@@ -34,28 +34,38 @@ public class AlumniDAO {
 		} else {
 			Statement stmt = conn.createStatement(); 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
+			ResultSet rs2 = stmt.executeQuery("SELECT Student_ID FROM ALUMNET.dbo.Connected WHERE Alumni_ID=" + dto.getAlumniID());
 			
 			AlumniDTO rDTO = new AlumniDTO();
 			
 			try {
-				rDTO.setAlumniID(rs.getInt("Alumni_ID"));
-				rDTO.setFirstName(rs.getString("First_Name"));
-				rDTO.setLastName(rs.getString("Last_Name"));
-				rDTO.setGraduationDate(rs.getDate("Graduation_Date"));
-				rDTO.setEmail(rs.getString("Contact_Email"));
-				rDTO.setCompany(rs.getString("Company"));
-				rDTO.setJobTitle(rs.getString("Job_Title"));
-				rDTO.setJobField(rs.getString("Job_Field"));
-				rDTO.setActive(rs.getBoolean("Active"));
+			    while (rs.next()) {
+                    rDTO.setAlumniID(rs.getInt("Alumni_ID"));
+                    rDTO.setFirstName(rs.getString("First_Name"));
+                    rDTO.setLastName(rs.getString("Last_Name"));
+                    rDTO.setGraduationDate(rs.getDate("Graduation_Date"));
+                    rDTO.setEmail(rs.getString("Contact_Email"));
+                    rDTO.setCompany(rs.getString("Company"));
+                    rDTO.setJobTitle(rs.getString("Job_Title"));
+                    rDTO.setJobField(rs.getString("Job_Field"));
+                    rDTO.setActive(rs.getBoolean("Active"));
 
-				File file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+                    File file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
 
-				try (FileOutputStream out = new FileOutputStream(file)) {
-					IOUtils.copy(rs.getBinaryStream("Picture"), out);
+                    try (FileOutputStream out = new FileOutputStream(file)) {
+                        IOUtils.copy(rs.getBinaryStream("Picture"), out);
 
-				} catch (Exception e) {
-					throw new Exception ("Something went wrong... " + e.getMessage());
-				}
+                    } catch (Exception e) {
+                        throw new Exception("Something went wrong... " + e.getMessage());
+                    }
+                }
+                int i = 0;
+			    int[] temp = new int[10000];
+                while (rs2.next()) {
+			        temp[i++] = rs.getInt("Student_ID");
+                }
+
+                rDTO.setConnections(temp);
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database....");
 			}
@@ -105,7 +115,26 @@ public class AlumniDAO {
 			myStmt.setBinaryStream(10, is);
 
 			myStmt.execute();
-			
+
+			//do stuff if we have ocnnections
+            if (dto.getConnections() != null) {
+                //check the max column index of connection id
+                int max = 0;
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT MAX(Connection_ID) FROM ALUMNET.dbo.Connected");
+                while (rs.next()) {
+                    max = rs.getInt(0);
+                }
+                int[] connections = dto.getConnections();
+                for (int connection : connections) {
+                    max++;
+                    sql = "INSERT INTO ALUMNET.dbo.Connected (Alumni_ID, Student_ID, Connection_ID) VALUES (?,?,?)";
+                    PreparedStatement ps = conn.prepareCall(sql);
+                    ps.setInt(1, dto.getAlumniID());
+                    ps.setInt(2, connection);
+                    ps.setInt(3, max);
+                }
+            }
 			//We know every field is initialized so we can insert
 			/**Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery( + dto.getAlumniID() + ","+ dto.getFirstName() + ","+ dto.getLastName()
@@ -126,6 +155,7 @@ public class AlumniDAO {
 				throw new Exception("Alumni Id cannot be null");
 			} else {
 				Statement stmt = conn.createStatement();
+				stmt.executeQuery("DELETE FROM ALUMNET.dbo.Connected WHERE Alumni_ID=" + dto.getAlumniID());
 				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
 			}
 		}

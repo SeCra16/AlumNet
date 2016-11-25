@@ -41,6 +41,8 @@ private Connection conn = null;
 
             ResultSet rs = ps.executeQuery();
 
+            ResultSet rs2 = stmt.executeQuery("SELECT Student_ID FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
+
 			StudentDTO rDTO = new StudentDTO();
 			
 			try {
@@ -73,6 +75,14 @@ private Connection conn = null;
                         //means its null or empty.. continue
                     }
                     rDTO.setPicture(file);
+
+                    int i = 0;
+                    int[] temp = new int[10000];
+                    while (rs2.next()) {
+                        temp[i++] = rs.getInt("Student_ID");
+                    }
+
+                    rDTO.setConnections(temp);
 				}
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database....\n" + e.getMessage());
@@ -132,6 +142,25 @@ private Connection conn = null;
 
             myStmt.execute();
 
+            //do stuff if we have ocnnections
+            if (dto.getConnections() != null) {
+                //check the max column index of connection id
+                int max = 0;
+                ResultSet rs = stmt.executeQuery("SELECT MAX(Connection_ID) FROM ALUMNET.dbo.Connected");
+                while (rs.next()) {
+                    max = rs.getInt(0);
+                }
+                int[] connections = dto.getConnections();
+                for (int connection : connections) {
+                    max++;
+                    sql = "INSERT INTO ALUMNET.dbo.Connected (Alumni_ID, Student_ID, Connection_ID) VALUES (?,?,?)";
+                    PreparedStatement ps = conn.prepareCall(sql);
+                    ps.setInt(1, connection);
+                    ps.setInt(2, dto.getStudentID());
+                    ps.setInt(3, max);
+                }
+            }
+
 
             /**ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Student (Student_ID, First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (" + dto.getStudentID() + ","+ dto.getFirstName() + ","
 				+ dto.getLastName() + ","+ dto.getExpectedGraduation() + "," + dto.getEmail() + "," + dto.getMajor() 
@@ -152,6 +181,7 @@ private Connection conn = null;
 				throw new Exception("Student Id cannot be null");
 			} else {
 				Statement stmt = conn.createStatement();
+                stmt.executeQuery("DELETE FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
 				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
 			}
 		}
