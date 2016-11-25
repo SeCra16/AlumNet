@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<%@taglib prefix="s" uri="/struts-tags" %>
 <head>
 <meta content="application/xhtml+xml;charset=UTF-8" />
 	<title>
@@ -53,15 +52,15 @@
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form action="resultAct" namespace="/"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	<s:form action="addAlumnus" namespace="/"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 	    <fieldset id="register_page">
 		<legend id = "register">
 		    Please Register!
 		</legend>
 		
-		    <label for="type">Student or Alum?</label>
+		    <label id="Status">Student or Alum?</label>
 		    
-		    <s:radio name="yourStatus" label="Status" list="StudStatus" value="DefaultStudentStatus"/>	
+		    <radio name="yourStatus" label="Status" list="StudStatus" value="DefaultStudentStatus"/>
 		    
 		     <?/*	
 		   
@@ -70,8 +69,8 @@
 			
 		<!-- ****************** ALUM **************-->
 			<div id="ifAlum" style="display:none">
-		    <label for="name">First Name: </label>
-			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" /><br/>
+		    <label for="FirstName">First Name: </label>
+			<s:textarea type="input" name = "alumnus.firstName" id="FirstName" placeholder="Sebastian" /><br/>
 		    <label for="lname">Last Name: </label>
 			<input type="text" name="LastName" id="LastName" placeholder="Craige" /><br/>
 		    <label for="grad_yr">Grad Year: </label>
