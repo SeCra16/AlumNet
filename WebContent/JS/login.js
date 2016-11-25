@@ -7,17 +7,6 @@ function submitReg(){
 alert("Welcome " + name);
 }
 
-function alumCheck() {
-    if (document.getElementById('alumTrue').checked) {
-        document.getElementById('ifAlum').style.display = 'block';
-	document.getElementById('ifStud').style.display = 'none';
-	document.getElementById('reg').action='addAlumnus';
-    } else {
-        document.getElementById('ifAlum').style.display = 'none';
-        document.getElementById('ifStud').style.display = 'block';
-	document.getElementById('reg').action='addStudent';
-    }
-}
 
 
 

@@ -12,7 +12,20 @@
 	</title>
 <LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
 <script type="text/javascript" src="../JS/login.js"></script>
+<script type="text/javascript">
+    function alumCheck() {
+    if (document.getElementById('alumTrue').checked) {
+        document.getElementById('ifAlum').style.display = 'block';
+	document.getElementById('ifStud').style.display = 'none';
+	document.getElementById('reg').action='addAlumnus';
+    } else {
+        document.getElementById('ifAlum').style.display = 'none';
+        document.getElementById('ifStud').style.display = 'block';
+	document.getElementById('reg').action='addStudent';
+    }
+}
 
+</script>
 </head>
 <body>	
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
@@ -52,43 +65,23 @@
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form action="addAlumnus" namespace="/"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-	    <fieldset id="register_page">
-		<legend id = "register">
-		    Please Register!
-		</legend>
+	<s:form action="alumCheck" namespace="/" ><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+		<label id="Status">Student or Alum?</label>
+
 		
-		    <label id="Status">Student or Alum?</label>
-		    
-		    <radio name="yourStatus" label="Status" list="StudStatus" value="DefaultStudentStatus"/>
-		    
-		     <?/*	
-		   
-		    <input type="radio" id="alumTrue" onclick="" name="alumStud"/>Alumnus
-			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud"/>Student<br/><br/><hr/>
-			
+		<s:radio list="{'Alumnus','Student'}" name="alumStud" multiple="true"></s:radio>	
 		<!-- ****************** ALUM **************-->
-			<div id="ifAlum" style="display:none">
-		    <label for="FirstName">First Name: </label>
-			<s:textarea type="input" name = "alumnus.firstName" id="FirstName" placeholder="Sebastian" /><br/>
-		    <label for="lname">Last Name: </label>
-			<input type="text" name="LastName" id="LastName" placeholder="Craige" /><br/>
-		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" /><br/>
-		    <label for="major">Major</label>
-			<input type="text" name="major" id="major" placeholder="Computer Science"/><br/>
-		    <label for="jobComp">Company:</label>
-			<input type="text" name="jobComp" id="jobComp"/><br/>
-		    <label for="jobTitle">Job Title: </label>
-			<input type="text" name="jobTitle" id="jobTitle"/><br/>
-		    <label for="jobField">Job Field: </label>
-			<input type="text" name="jobField" id="jobField"/><br/>
-		    <label for="uname">Email: </label>
-			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" /><br/>
-		    <label for="pword">Password: </label>
-			<input type="password" name="pword" id="pw" placeholder="*********" min="8" /><br/>
-		    <label for="submit"></label>
-			<input type="submit" name="submit" value="Submit" id="submit"/>
+		<div id="ifAlum" style="display:none; border: 1px solid;">
+		    <s:textfield type="text" label="First Name" name = "alumnus.FirstName" id="FirstName" placeholder="Sebastian" />
+		    <s:textfield type="text" label="Last Name" name="alumnus.LastName" id="LastName" placeholder="Craige" />
+		    <s:textfield type = "number" label="Grad Year" name="alumnus.GraduationDate" id="GraduationDate" placeholder="2016" min="1970" />
+		    <s:textfield type="text" label="Major" name="major" id="major" placeholder="Computer Science"/>
+		    <s:textfield type="text" label="Company" name="jobComp" id="jobComp"/>
+		    <s:textfield type="text" label="Job Title" name="jobTitle" id="jobTitle"/>
+		    <s:textfield type="text" label="Job Field" name="jobField" id="jobField"/>
+		    <s:textfield type="email" label="Email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" />
+		    <s:textfield type="password" label="Password" name="password" id="pw" placeholder="*********" min="8" />
+		    <s:submit value="Submit" id="submit" align="center"/>
 		</div>	
 		
 		<!-- **************STUDENT ******** -->
@@ -114,10 +107,9 @@
 			<input type="submit" name="submit" value="Submit" id="addStudent"/>
 		</div>
 		
-		*/?>
+		
 		<s:submit value="submit" name="submit" />
 
-	    </fieldset>
 	</s:form>
 	
 	<p>HI #session.user.firstName</p>
