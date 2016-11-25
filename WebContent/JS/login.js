@@ -7,6 +7,20 @@ function submitReg(){
 alert("Welcome " + name);
 }
 
+function alumCheck() {
+    if (document.getElementById('regForm').checked) 
+    {
+        document.getElementById('regForm_alumStudAlumnus').style.display = 'block';
+	document.getElementById('regForm_alumCheckalumStudStudent').style.display = 'none';
+	document.getElementById('reg').action='addAlumnus';
+    } 
+	else 
+    {
+        document.getElementById('regForm_alumStudAlumnus').style.display = 'none';
+        document.getElementById('regForm_alumCheckalumStudStudent').style.display = 'block';
+	document.getElementById('reg').action='addStudent';
+    }
+}
 
 
 
