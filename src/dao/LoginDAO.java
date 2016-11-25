@@ -32,8 +32,8 @@ public class LoginDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			ps.setInt(1, dto.getID());
-			ps.setString(2, "jarcher1200@gmail.com");
-			ps.setString(3, "password");
+			ps.setString(2, dto.getEmail());
+			ps.setString(3, dto.getPassword());
 
 			ResultSet rs = ps.executeQuery();
 
