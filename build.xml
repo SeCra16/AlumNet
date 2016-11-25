@@ -22,9 +22,9 @@
       -post-compile:             called after javac compilation 
       -pre-compile-single:       called before javac compilation of single file
       -post-compile-single:      called after javac compilation of single file
-      -pre-compile-test:         called before javac compilation of JUnit tests
-      -post-compile-test:        called after javac compilation of JUnit tests
-      -pre-compile-test-single:  called before javac compilation of single JUnit test
+      -pre-compile-test:         called before javac compilation of junit tests
+      -post-compile-test:        called after javac compilation of junit tests
+      -pre-compile-test-single:  called before javac compilation of single junit test
       -post-compile-test-single: called after javac compilation of single JUunit test
       -pre-dist:                 called before archive building 
       -post-dist:                called after archive building 
