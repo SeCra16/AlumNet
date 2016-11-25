@@ -70,7 +70,7 @@
 		<!-- ****************** ALUM **************-->
 			<div id="ifAlum" style="display:none">
 		    <label for="FirstName">First Name: </label>
-			<s:textarea type="input" name = "alumnus.firstName" id="FirstName" placeholder="Sebastian" /><br/>
+			<s:textfield type="input" name = "alumnus.firstName" id="FirstName" placeholder="Sebastian" /><br/>
 		    <label for="lname">Last Name: </label>
 			<input type="text" name="LastName" id="LastName" placeholder="Craige" /><br/>
 		    <label for="grad_yr">Grad Year: </label>
