@@ -16,7 +16,7 @@ import java.sql.DriverManager;
 public class AlumniDAOTest extends TestCase {
 
     Connection conn;
-    int i = 0;
+    int i = 1;
 
     @Override
     protected void setUp() throws Exception
