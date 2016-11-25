@@ -1,5 +1,7 @@
 package junit;
 
+import dao.StudentDAO;
+import dto.StudentDTO;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Test;
@@ -11,10 +13,9 @@ import java.sql.DriverManager;
 /**
  * Created by Archer on 11/9/16.
  */
-public class AlumniDAOTest extends TestCase {
-
+public class StudentDAOTest extends TestCase {
     Connection conn;
-    int i = 0;
+    StudentDAO dao;
 
     @Override
     protected void setUp() throws Exception
@@ -23,7 +24,9 @@ public class AlumniDAOTest extends TestCase {
         ANUtil util = new ANUtil();
         conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
 
-            System.out.print(new Object(){}.getClass().getName() + " results -- ");
+        dao = new StudentDAO(conn);
+
+        System.out.print(new Object(){}.getClass().getName() + " results -- ");
     }
 
     @After
@@ -33,26 +36,51 @@ public class AlumniDAOTest extends TestCase {
     }
 
     @Test
-    public void testSelect() throws Exception {
+    public void testSelect() {
+        StudentDTO dto = new StudentDTO();
+
+        dto.setStudentID(0);
+        dto.setFirstName("Josh");
+        dto.setLastName("Archer");
+        dto.setEmail("jarcher1200@gmail.com");
+
+        try {
+            dto = (StudentDTO) dao.select(dto);
+
+        } catch (Exception e) {
+            fail("hit error when trying select, message: " + e.getMessage());
+        }
+
+        System.out.println(dto.getExpectedGraduation());
+
+        assertEquals(0, dto.getStudentID());
+
+
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass "+
+                "\n--------------------------------------------------------------");
+    }
+
+    @Test
+    public void testUpdate() {
+        StudentDTO dto = new StudentDTO();
+
+
+
+
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
     }
 
     @Test
-    public void testUpdate() throws Exception {
+    public void testDelete() {
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
     }
 
     @Test
-    public void testInsert() throws Exception {
+    public void testInsert() {
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
     }
 
-    @Test
-    public void testDelete() throws Exception {
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
-                "\n--------------------------------------------------------------");
-    }
 }

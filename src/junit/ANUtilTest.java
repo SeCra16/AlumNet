@@ -1,57 +1,47 @@
 package junit;
 
 import junit.framework.TestCase;
-import org.junit.After;
 import org.junit.Test;
 import util.ANUtil;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 /**
- * Created by Archer on 11/9/16.
+ * Created by Archer on 11/15/16.
  */
-public class AlumniDAOTest extends TestCase {
-
-    Connection conn;
+public class ANUtilTest extends TestCase {
+    ANUtil util = null;
     int i = 0;
+    //@Rule public TestName name = new TestName();
 
     @Override
     protected void setUp() throws Exception
     {
         super.setUp();
-        ANUtil util = new ANUtil();
-        conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
+        //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        util = new ANUtil();
 
+        if(i == 0) {
             System.out.print(new Object(){}.getClass().getName() + " results -- ");
-    }
-
-    @After
-    public void tearDown() throws Exception{
-        super.tearDown();
-        conn.close();
+            i++;
+        }
     }
 
     @Test
-    public void testSelect() throws Exception {
+    public void testGetURL() throws Exception {
+        assertEquals("jdbc:sqlserver://192.168.133.161:1433;databaseName=AlumNet", util.getURL());
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
     }
 
     @Test
-    public void testUpdate() throws Exception {
+    public void testGetUser() throws Exception {
+        assertEquals("jarcher", util.getUser());
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
     }
 
     @Test
-    public void testInsert() throws Exception {
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
-                "\n--------------------------------------------------------------");
-    }
-
-    @Test
-    public void testDelete() throws Exception {
+    public void testGetPassword() throws Exception {
+        assertEquals("alumnet2", util.getPassword());
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
     }
