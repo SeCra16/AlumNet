@@ -8,7 +8,35 @@ public class AlumniDTO extends UserDTO {
 	java.sql.Date graduationDate;
 	String company, jobTitle, jobField;
 	//End Class Specific Variables
-	
+
+    public AlumniDTO() {
+
+    }
+
+	public AlumniDTO(AlumniDTO dto) {
+	    setAlumniID(dto.getAlumniID());
+
+	    if (dto.getGraduationDate() != null)
+	        setGraduationDate(new java.sql.Date(dto.getGraduationDate().getTime()));
+	    if (dto.getConnections() != null)
+	        setConnections(dto.getConnections());
+	    if (dto.getCompany() != null)
+	        setCompany(new String(dto.getCompany()));
+	    if (dto.getJobField() != null)
+	        setJobField(new String(dto.getJobField()));
+	    if (dto.getJobTitle() != null)
+	        setJobTitle(new String(dto.getJobTitle()));
+        setActive(dto.getActive());
+        if (dto.getEmail() != null)
+            setEmail(new String(dto.getEmail()));
+	    if (dto.getFirstName() != null)
+            setFirstName(new String(dto.getFirstName()));
+	    if (dto.getLastName() != null)
+	        setLastName(new String(dto.getLastName()));
+	    if (dto.getPicture() != null)
+	        setPicture(dto.getPicture());
+
+    }
 	
 	//Class Specific Methods
 	

@@ -3,12 +3,12 @@ import java.io.File;
 
 public class UserDTO {
 	String FirstName, LastName, Email;
-	boolean active;
+	boolean active = true;
 	int[] connections;
 	File Picture;
 	
 	public String getFirstName() {
-		String temp = new String(FirstName);
+		String temp = FirstName;
 		return temp;
 	}
 	public void setFirstName(String s) {
@@ -16,7 +16,7 @@ public class UserDTO {
 	}
 	
 	public String getLastName() {
-		String temp = new String(LastName);
+		String temp = LastName;
 		return temp;
 	}
 	public void setLastName(String s) {
@@ -24,8 +24,7 @@ public class UserDTO {
 	}
 	
 	public String getEmail() {
-		String temp = new String(Email);
-		return temp;
+		return Email;
 	};
 	public void setEmail(String s) {
 		Email = s;

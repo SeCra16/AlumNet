@@ -34,7 +34,6 @@ public class AlumniDAO {
 		} else {
 			Statement stmt = conn.createStatement(); 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
-			ResultSet rs2 = stmt.executeQuery("SELECT Student_ID FROM ALUMNET.dbo.Connected WHERE Alumni_ID=" + dto.getAlumniID());
 			
 			AlumniDTO rDTO = new AlumniDTO();
 			
@@ -44,7 +43,7 @@ public class AlumniDAO {
                     rDTO.setFirstName(rs.getString("First_Name"));
                     rDTO.setLastName(rs.getString("Last_Name"));
                     rDTO.setGraduationDate(rs.getDate("Graduation_Date"));
-                    rDTO.setEmail(rs.getString("Contact_Email"));
+                    rDTO.setEmail(rs.getString("Email"));
                     rDTO.setCompany(rs.getString("Company"));
                     rDTO.setJobTitle(rs.getString("Job_Title"));
                     rDTO.setJobField(rs.getString("Job_Field"));
@@ -52,22 +51,32 @@ public class AlumniDAO {
 
                     File file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
 
+                    try {
+                        file.createNewFile();
+                    } catch (Exception ex) {
+                        System.out.println("Cant create file on pathway");
+                    }
                     try (FileOutputStream out = new FileOutputStream(file)) {
                         IOUtils.copy(rs.getBinaryStream("Picture"), out);
 
                     } catch (Exception e) {
-                        throw new Exception("Something went wrong... " + e.getMessage());
+                        System.out.println("Must have null picture");
                     }
                 }
+
+
+                Statement st = conn.createStatement();
+                ResultSet rs2 = st.executeQuery("SELECT Student_ID FROM ALUMNET.dbo.Connected WHERE Alumni_ID=" + dto.getAlumniID());
+
                 int i = 0;
 			    int[] temp = new int[10000];
                 while (rs2.next()) {
-			        temp[i++] = rs.getInt("Student_ID");
+			        temp[i++] = rs2.getInt("Student_ID");
                 }
 
                 rDTO.setConnections(temp);
 			} catch (SQLException e) {
-				throw new SQLException("Problem with data pulled from Database....");
+				throw new SQLException("Problem with data pulled from Database...." + e.getMessage());
 			}
 			
 			return rDTO;
@@ -92,8 +101,6 @@ public class AlumniDAO {
 				throw new Exception("Graduation Date cannot be empty... failing to attempt insert");
 			} else if (dto.getEmail() == null) {
 				throw new Exception("Email cannot be empty... failing to attempt insert");
-			} else if (dto.getActive() != false || dto.getActive() != true) {
-				throw new Exception("Active cannot be empty... failing to attempt insert");
 			}
 
 
@@ -110,9 +117,17 @@ public class AlumniDAO {
 			myStmt.setString(8, dto.getJobField());
 			myStmt.setBoolean(9, dto.getActive());
 
-			FileInputStream is = new FileInputStream(dto.getPicture());
+            //try picture, unless its empty
+            try {
 
-			myStmt.setBinaryStream(10, is);
+                FileInputStream is = new FileInputStream(dto.getPicture());
+
+                myStmt.setBinaryStream(10, is);
+
+            } catch (Exception e) {
+                System.out.println("no picture so skip ");
+                myStmt.setNull(10, Types.VARBINARY);
+            }
 
 			myStmt.execute();
 
@@ -133,6 +148,7 @@ public class AlumniDAO {
                     ps.setInt(1, dto.getAlumniID());
                     ps.setInt(2, connection);
                     ps.setInt(3, max);
+                    ps.execute();
                 }
             }
 			//We know every field is initialized so we can insert
@@ -155,8 +171,8 @@ public class AlumniDAO {
 				throw new Exception("Alumni Id cannot be null");
 			} else {
 				Statement stmt = conn.createStatement();
-				stmt.executeQuery("DELETE FROM ALUMNET.dbo.Connected WHERE Alumni_ID=" + dto.getAlumniID());
-				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
+				stmt.execute("DELETE FROM ALUMNET.dbo.Connected WHERE Alumni_ID=" + dto.getAlumniID());
+				stmt.execute("DELETE FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
 			}
 		}
 	}
@@ -179,8 +195,6 @@ public class AlumniDAO {
                 throw new Exception("Graduation Date cannot be empty... failing to attempt insert");
             } else if (dto.getEmail() == null) {
                 throw new Exception("Email cannot be empty... failing to attempt insert");
-            } else if (dto.getActive() != false || dto.getActive() != true) {
-                throw new Exception("Active cannot be empty... failing to attempt insert");
             }
 			
 			//We know the values are not null, so time to attempt update
@@ -198,23 +212,30 @@ public class AlumniDAO {
             myStmt.setString(7, dto.getJobField());
             myStmt.setBoolean(8, dto.getActive());
 
-            FileInputStream is = new FileInputStream(dto.getPicture());
+            //try picture, unless its empty
+            try {
 
-            myStmt.setBinaryStream(9, is);
+                FileInputStream is = new FileInputStream(dto.getPicture());
+
+                myStmt.setBinaryStream(9, is);
+
+            } catch (Exception e) {
+                System.out.println("no picture so skip ");
+                myStmt.setNull(9, Types.VARBINARY);
+            }
 
             myStmt.setInt(10, dto.getAlumniID());
-
             myStmt.execute();
-			
+
 			//See if update worked then return the updated dto
-			myStmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
+			conn.createStatement().executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Alumni_ID=" + dto.getAlumniID());
 			
 			AlumniDTO rDTO;
 			
 			try {
 				rDTO = (AlumniDTO) select(dto);
 			} catch (SQLException e) {
-				throw new SQLException("Problem with data pulled from Database....update may of worked but selection of new UserDTO did not");
+				throw new SQLException("Problem with data pulled from Database....update may of worked but selection of new UserDTO did not\n" + e.getMessage());
 			}
 			
 			return rDTO;

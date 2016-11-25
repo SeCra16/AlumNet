@@ -41,7 +41,6 @@ private Connection conn = null;
 
             ResultSet rs = ps.executeQuery();
 
-            ResultSet rs2 = stmt.executeQuery("SELECT Student_ID FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
 
 			StudentDTO rDTO = new StudentDTO();
 			
@@ -68,18 +67,41 @@ private Connection conn = null;
 
                     file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
 
+                    try {
+                        file.createNewFile();
+                    } catch (Exception ex) {
+                        System.out.println("Cant create file on pathway");
+                    }
                     try (FileOutputStream out = new FileOutputStream(file)) {
                         IOUtils.copy(rs.getBinaryStream("Picture"), out);
 
                     } catch (Exception e) {
-                        //means its null or empty.. continue
+                        System.out.println("Must have null picture");
                     }
                     rDTO.setPicture(file);
 
+                    File f2 = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+
+                    try {
+                        f2.createNewFile();
+                    } catch (Exception ex) {
+                        System.out.println("Cant create file on pathway");
+                    }
+                    try (FileOutputStream out = new FileOutputStream(f2)) {
+                        IOUtils.copy(rs.getBinaryStream("Resume"), out);
+
+                    } catch (Exception e) {
+                        System.out.println("Must have null resume");
+                    }
+                    rDTO.setResume(file);
+
+                    Statement st = conn.createStatement();
+
+                    ResultSet rs2 = st.executeQuery("SELECT Alumni_ID FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
                     int i = 0;
                     int[] temp = new int[10000];
                     while (rs2.next()) {
-                        temp[i++] = rs.getInt("Student_ID");
+                        temp[i++] = rs2.getInt("Alumni_ID");
                     }
 
                     rDTO.setConnections(temp);
@@ -113,9 +135,7 @@ private Connection conn = null;
 				throw new Exception("Email cannot be empty... failing to attempt insert");
 			} else if (dto.getMajor() == null) {
 				throw new Exception("Major cannot be empty... failing to attempt insert");
-			} else if (dto.getActive() != false || dto.getActive() != true) {
-				throw new Exception("Active cannot be empty... failing to attempt insert");
-			} 
+			}
 			
 			//We know every field is initialized so we can insert
 			Statement stmt = conn.createStatement();
@@ -130,15 +150,31 @@ private Connection conn = null;
             myStmt.setString(5, dto.getEmail());
             myStmt.setString(6, dto.getMajor());
 
-            FileInputStream is = new FileInputStream(dto.getResume());
+            //try resume, unless its empty
+            try {
 
-            myStmt.setBinaryStream(7, is);
+                FileInputStream is = new FileInputStream(dto.getResume());
+
+                myStmt.setBinaryStream(7, is);
+
+            } catch (Exception e) {
+                System.out.println("no resume so skip ");
+                myStmt.setNull(7, Types.VARBINARY);
+            }
 
             myStmt.setBoolean(8, dto.getActive());
 
-            FileInputStream is2 = new FileInputStream(dto.getPicture());
+            //try picture, unless its empty
+            try {
 
-            myStmt.setBinaryStream(9, is2);
+                FileInputStream is2 = new FileInputStream(dto.getPicture());
+
+                myStmt.setBinaryStream(9, is2);
+
+            } catch (Exception e) {
+                System.out.println("no picture so skip ");
+                myStmt.setNull(9, Types.VARBINARY);
+            }
 
             myStmt.execute();
 
@@ -154,10 +190,11 @@ private Connection conn = null;
                 for (int connection : connections) {
                     max++;
                     sql = "INSERT INTO ALUMNET.dbo.Connected (Alumni_ID, Student_ID, Connection_ID) VALUES (?,?,?)";
-                    PreparedStatement ps = conn.prepareCall(sql);
+                    PreparedStatement ps = conn.prepareStatement(sql);
                     ps.setInt(1, connection);
                     ps.setInt(2, dto.getStudentID());
                     ps.setInt(3, max);
+                    ps.execute();
                 }
             }
 
@@ -181,8 +218,8 @@ private Connection conn = null;
 				throw new Exception("Student Id cannot be null");
 			} else {
 				Statement stmt = conn.createStatement();
-                stmt.executeQuery("DELETE FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
-				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
+                stmt.execute("DELETE FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
+				stmt.execute("DELETE FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
 			}
 		}
 	}
@@ -207,8 +244,6 @@ private Connection conn = null;
 				throw new Exception("Email cannot be empty... failing to attempt update");
 			} else if (dto.getMajor() == null) {
 				throw new Exception("Major cannot be empty... failing to attempt update");
-			} else if (dto.getActive() != false || dto.getActive() != true) {
-				throw new Exception("Active cannot be empty... failing to attempt update");
 			}
 			
 			//We know the values are not null, so time to attempt update
@@ -225,15 +260,31 @@ private Connection conn = null;
             myStmt.setString(4, dto.getEmail());
             myStmt.setString(5, dto.getMajor());
 
-            FileInputStream is = new FileInputStream(dto.getResume());
+            //try resume, unless its empty
+            try {
 
-            myStmt.setBinaryStream(6, is);
+                FileInputStream is = new FileInputStream(dto.getResume());
+
+                myStmt.setBinaryStream(6, is);
+
+            } catch (Exception e) {
+                System.out.println("no resume so skip ");
+                myStmt.setNull(6, Types.VARBINARY);
+            }
 
             myStmt.setBoolean(7, dto.getActive());
 
-            FileInputStream is2 = new FileInputStream(dto.getPicture());
+            //try picture, unless its empty
+            try {
 
-            myStmt.setBinaryStream(8, is2);
+                FileInputStream is = new FileInputStream(dto.getPicture());
+
+                myStmt.setBinaryStream(8, is);
+
+            } catch (Exception e) {
+                System.out.println("no picture so skip ");
+                myStmt.setNull(8, Types.VARBINARY);
+            }
 
             myStmt.setInt(9, dto.getStudentID());
 
