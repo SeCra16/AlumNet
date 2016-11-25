@@ -1,12 +1,10 @@
 package dao;
+import java.sql.*;
+
 import dto.AlumniDTO;
 import dto.LoginDTO;
 import dto.StudentDTO;
 import dto.UserDTO;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 /*
  * Josh Archer 
@@ -28,41 +26,55 @@ public class LoginDAO {
 		if(dto.getEmail().equals("") || dto.getEmail() == null || dto == null) {
 			throw new Exception("dto passed cannot be null nor can the email be");
 		} else {
-            String sql = "SELECT * FROM ALUMNET.dbo.Login WHERE ID=? and Email=? and Password=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-
-            ps.setInt(1, dto.getID());
-            ps.setString(2, "jarcher1200@gmail.com");
-            ps.setString(3, "password");
-
-            ResultSet rs = ps.executeQuery();
-
-            StudentDTO sDTO = new StudentDTO();
-            AlumniDTO aDTO = new AlumniDTO();
-
-            while(rs.next()) {
-                int i = rs.getInt("ID");
-
-                sDTO.setStudentID(i);
-                aDTO.setAlumniID(i);
-            }
-
-            //try to do a select
-
-            sDTO = (StudentDTO) new StudentDAO(conn).select(sDTO);
-
-            if (sDTO.getFirstName().equals("") || sDTO.getFirstName() == null) {
-                aDTO = (AlumniDTO) new AlumniDAO(conn).select(aDTO);
-
-                if (aDTO.getFirstName().equals("") || sDTO.getFirstName() == null) {
-                    return null;
-                } else {
-                    return aDTO;
-                }
-            } else {
-                return sDTO;
-            }
+			Statement stmt = conn.createStatement(); 
+			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Login WHERE ID=" + dto.getID() + "and Email=" + dto.getEmail() + " and Password=" + dto.getPassword());
+			
+			if(rs.getInt("ID") != Integer.MIN_VALUE) {
+				rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + rs.getInt("ID") + " UNION SELECT * FROM ALUMNET.dbo.Alumni"
+						+ "WHERE Alumni_ID=" + rs.getInt("ID"));
+			}
+			
+			//Try to return the dto object for the login user
+			try {
+				
+				if (rs.getInt("Student_ID") != Integer.MIN_VALUE) {
+					StudentDTO rDTO = new StudentDTO();
+					
+					rDTO.setStudentID(rs.getInt("Student_ID"));
+					rDTO.setFirstName(rs.getString("First_Name"));
+					rDTO.setLastName(rs.getString("Last_Name"));
+					rDTO.setExpectedGraduation(rs.getDate("Expected_Graduation"));
+					rDTO.setEmail(rs.getString("Contact_Email"));
+					rDTO.setMajor(rs.getString("Major"));
+					rDTO.setResume(rs.getBlob("Resume"));
+					rDTO.setActive(rs.getBoolean("Active"));
+					rDTO.setPicture(rs.getClob("Picture"));
+					
+					return rDTO;
+				} 
+				
+				if (rs.getInt("Alumni_ID") != Integer.MIN_VALUE) {
+					AlumniDTO rDTO = new AlumniDTO();
+					
+					rDTO.setAlumniID(rs.getInt("Alumni_ID"));
+					rDTO.setFirstName(rs.getString("First_Name"));
+					rDTO.setLastName(rs.getString("Last_Name"));
+					rDTO.setGraduationDate(rs.getDate("Graduation_Date"));
+					rDTO.setEmail(rs.getString("Contact_Email"));
+					rDTO.setCompany(rs.getString("Company"));
+					rDTO.setJobTitle(rs.getString("Job_Title"));
+					rDTO.setJobField(rs.getString("Job_Field"));
+					rDTO.setActive(rs.getBoolean("Active"));
+					rDTO.setPicture(rs.getClob("Picture"));
+					
+					return rDTO;
+				}
+				
+			} catch (Exception e) {
+				throw new SQLException("Problem with data pulled from Database....update may of worked but selection of new dto did not");
+			}
 		}
+		return null;
 	}
 
 	public void insert(LoginDTO dto) throws Exception {
@@ -81,14 +93,9 @@ public class LoginDAO {
 			} 
 			
 			//We know every field is initialized so we can insert
-            String sql = "INSERT INTO ALUMNET.dbo.Login (ID, Email, Password) VALUES (?, ?, ?)";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-
-            stmt.setInt(1, dto.getID());
-            stmt.setString(2, dto.getEmail());
-            stmt.setString(3, dto.getPassword());
-
-            stmt.executeQuery();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("INSERT INTO ALUMNET.dbo.Login VALUES (ID, Email, Password) (" + dto.getID() + ","+ dto.getEmail() + ","
+				+ dto.getPassword() + ")");
 		}
 	}
 
@@ -98,15 +105,11 @@ public class LoginDAO {
 			throw new Exception("dto passed cannot be null");
 		} else {
 			//Has to have  id so we can delete 
-			if (dto.getID() == Integer.MIN_VALUE) {
-				throw new Exception("ID cannot be null...");
+			if (dto.getID() == Integer.MIN_VALUE || dto == null || dto.getEmail() == null) {
+				throw new Exception("ID and Email cannot be null...");
 			} else {
-                String sql = "DELETE FROM ALUMNET.dbo.Login WHERE ID=?";
-				PreparedStatement stmt = conn.prepareStatement(sql);
-
-                stmt.setInt(1, dto.getID());
-
-                stmt.executeQuery();
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery("DELETE FROM ALUMNET.dbo.Login WHERE ID=" + dto.getID() + " and Email=" + dto.getEmail());
 			}
 		}
 	}
@@ -116,13 +119,19 @@ public class LoginDAO {
 		if(dto == null) {
 			throw new Exception("dto passed cannot be null");
 		} else {
-            String sql = "UPDATE ALUMNET.dbo.Login SET Email=?, Password=? WHERE ID=?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-
-            stmt.setString(1, dto.getEmail());
-            stmt.setString(2, dto.getPassword());
-            stmt.setInt(3, dto.getID());
-            stmt.executeUpdate();
+			//Need to check if non-null values in dto are null
+			if (dto.getEmail() != null) {
+				if (dto.getPassword() != null || dto.getPassword() == "") {
+					Statement stmt = conn.createStatement();
+					ResultSet rs = stmt.executeQuery("UPDATE ALUMNET.dbo.Login SET Email=" + dto.getEmail() + ",Password=" + dto.getPassword()
+						+ " WHERE Email=" + dto.getEmail());
+				} else {
+					Statement stmt = conn.createStatement();
+					ResultSet rs = stmt.executeQuery("UPDATE ALUMNET.dbo.Login SET Email=" + dto.getEmail() + " WHERE Email=" + dto.getEmail());
+				}
+			} else {
+				throw new Exception("Email cannot be empty");
+			}
 		}
 	}
 }

@@ -5,26 +5,41 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.devMode" value="true" />
-    <package name="default" namespace="/JSP" extends="struts-default">
+    <package name="default" namespace="/" extends="struts-default">
 
+	<action name="resultAct"
+		class="com.alumnet.RadioButtonAction">
+	    <result name="SUCCESS">/JSP/thanks.jsp</result>
+	</action>
+	
+	<action name="RadioButtonAction"
+		class="com.alumnet.RadioButtonAction" 
+		method="display">
+	    <result name="none">/JSP/register.jsp</result>
+	</action>
+
+	
         <action name="hello"
                 class="com.alumnet.Name">
-                <result name="success">register.jsp</result>
+                <result name="success"></result>
         </action>
 
         <action name="addStudent"
             class="services.UserService" method="addStudent">
-            <result name="success"></result>
+            <result name="SUCCESS">/JSP/thanks.jsp</result>
+	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
         <action name="addAlumnus"
             class="services.UserService" method="addAlumnus">
-            <result name="success"></result>
+            <result name="SUCCESS">/JSP/thanks.jsp</result>
+	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
         <action name="login"
             class="services.LoginService" method="validateUser">
-            <result name="success"></result>
+            <result name="SUCCESS"></result>
+	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 
     </package>
