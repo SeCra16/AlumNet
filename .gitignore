@@ -1,1 +1,4 @@
 /dist/
+/nbproject/private/
+/build/
+/out/artifacts/AlumNet_war_exploded/WEB-INF/classes/junit/

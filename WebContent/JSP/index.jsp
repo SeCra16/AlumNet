@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<%@taglib prefix="s" uri="/struts-tags" %>
 <head>
 	<title>
 	    AlumNet
@@ -43,8 +42,8 @@
 			<div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
-						<a href = "login.jsp">Login</a>
-						<a href = "register.jsp">Register</a>
+						<a href = "JSP/login.jsp">Login</a>
+						<a href = "JSP/register.jsp">Register</a>
 					</div>
 				</div>&nbsp;
 	</div>

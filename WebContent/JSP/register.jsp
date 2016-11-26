@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<%@taglib prefix="s" uri="/struts-tags" %>
 <head>
 <meta content="application/xhtml+xml;charset=UTF-8" />
 	<title>
@@ -53,48 +52,28 @@
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form action="resultAct" namespace="/"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-	    <fieldset id="register_page">
-		<legend id = "register">
-		    Please Register!
-		</legend>
+	<s:form theme="css_xhtml" style="border:1px solid" id="regForm" action="alumCheck()" namespace="/"  validate="true"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+		<label id="Status">Student or Alum?</label>
+
 		
-		    <label for="type">Student or Alum?</label>
-		    
-		    <s:radio name="yourStatus" label="Status" list="StudStatus" value="DefaultStudentStatus"/>	
-		    
-		     <?/*	
-		   
-		    <input type="radio" id="alumTrue" onclick="" name="alumStud"/>Alumnus
-			<input type="radio" id="studentTrue" onclick="javascript:alumCheck();" name="alumStud"/>Student<br/><br/><hr/>
-			
+		<s:radio list="{'Alumnus','Student'}" name="alumStud" multiple="true"></s:radio>	
 		<!-- ****************** ALUM **************-->
-			<div id="ifAlum" style="display:none">
-		    <label for="name">First Name: </label>
-			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" /><br/>
-		    <label for="lname">Last Name: </label>
-			<input type="text" name="LastName" id="LastName" placeholder="Craige" /><br/>
-		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" /><br/>
-		    <label for="major">Major</label>
-			<input type="text" name="major" id="major" placeholder="Computer Science"/><br/>
-		    <label for="jobComp">Company:</label>
-			<input type="text" name="jobComp" id="jobComp"/><br/>
-		    <label for="jobTitle">Job Title: </label>
-			<input type="text" name="jobTitle" id="jobTitle"/><br/>
-		    <label for="jobField">Job Field: </label>
-			<input type="text" name="jobField" id="jobField"/><br/>
-		    <label for="uname">Email: </label>
-			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" /><br/>
-		    <label for="pword">Password: </label>
-			<input type="password" name="pword" id="pw" placeholder="*********" min="8" /><br/>
-		    <label for="submit"></label>
-			<input type="submit" name="submit" value="Submit" id="submit"/>
-		</div>	
+		<s:div id="ifAlum" style=">
+		    <s:textfield type="text" label="First Name" name = "alumnus.FirstName" id="FirstName" placeholder="Sebastian" />
+		    <s:textfield type="text" label="Last Name" name="alumnus.LastName" id="LastName" placeholder="Craige" />
+		    <s:textfield type = "number" label="Grad Year" name="alumnus.GraduationDate" id="GraduationDate" placeholder="2016" min="1970" />
+		    <s:textfield type="text" label="Major" name="major" id="major" placeholder="Computer Science"/>
+		    <s:textfield type="text" label="Company" name="jobComp" id="jobComp"/>
+		    <s:textfield type="text" label="Job Title" name="jobTitle" id="jobTitle"/>
+		    <s:textfield type="text" label="Job Field" name="jobField" id="jobField"/>
+		    <s:textfield type="email" label="Email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" />
+		    <s:textfield type="password" label="Password" name="password" id="pw" placeholder="*********" min="8" />
+		    <s:submit value="Submit" id="submit" align="center"/>
+		</s:div>	
 		
 		<!-- **************STUDENT ******** -->
 		
-		<div id="ifStud" style="display:none">
+		<s:div id="ifStud" style="display:none">
 		    <label for="name">First Name: </label>
 			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" /><br/>
 		    <label for="lname">Last Name: </label>
@@ -113,12 +92,11 @@
 			<input type="password" name="pword" id="pw" placeholder="*********" min="8"/><br/>
 		    <label for="submit"></label>
 			<input type="submit" name="submit" value="Submit" id="addStudent"/>
-		</div>
+		</s:div>
 		
-		*/?>
+		
 		<s:submit value="submit" name="submit" />
 
-	    </fieldset>
 	</s:form>
 	
 	<p>HI #session.user.firstName</p>

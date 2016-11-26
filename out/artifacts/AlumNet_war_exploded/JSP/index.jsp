@@ -1,28 +1,30 @@
-<%@taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-	<meta charset="utf-8">
-		<title>
-			AlumNet
-		</title>
-				<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css">
+	<title>
+	    AlumNet
+	</title>
+				<LINK rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
 				<script type="text/javascript" src="../JS/login.js"></script>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
 	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
-	<header>
-		<h1>
-			<a href = "index.jsp">AlumNet</a>
+	
+		<h1 id="header">
+		    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
 		</h1>
-           <p><script>document.write("Hello " + readCookie('USER_N') + "!");</script></p>
-        </header>
+        
 	
 	<!--Navigation Bar-->
-	<ul class = "nav">
-		<li><a href = "index.jsp">Home</a></li>&nbsp;
+	<div class = "nav">
+		<a href = "index.jsp">Home</a>&nbsp;
 			<div class="dropdown">
 				<button class="dropbtn" id="college">Colleges</button>
 					<div class="dropdown-content">
@@ -35,29 +37,29 @@
 						<a href="colleges/coph.jsp" id="7">CoPH</a>
 					</div>
 				</div>&nbsp;
-			<li><a href = "about.jsp">About AlumNet</a></li>&nbsp;
+			<a href = "about.jsp">About AlumNet</a>&nbsp;
 			
 			<div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
-						<li><a href = "login.jsp">Login</a></li>
-						<li><a href = "register.jsp">Register</a></li>
+						<a href = "JSP/login.jsp">Login</a>
+						<a href = "JSP/register.jsp">Register</a>
 					</div>
 				</div>&nbsp;
-	</ul>
+	</div>
 
 	<main>
 	<!--Main content of page!-->
 		
 		
-		<br>
+		<br/>
 		<h2 id="u_e">
 			Here are upcoming Alumni related events on campus!
 			
 		</h2>
 		
-		<br>
-		<br>
+		<br/>
+		<br/>
 		
 		<div id = "upcoming"><!--Got this from GSU website!-->
 		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&types=88966&days=60&num=25&match=all&show_types=0&target_blank=1&template=modern"></script>
@@ -71,12 +73,12 @@
 	
 	<!-- **This is to enable the "Top of Page" button to be centered on page!** -->
 	<div class="topper">
-		<a href = "#top">Top of Page<br></a>
-		<a href ="https://securelb.imodules.com/s/1544/index.aspx?sid=1544&gid=1&pgid=463&cid=1157" target="_blank">Make a gift to GSU!</a>
+		<a href = "#top">Top of Page<br/></a>
+		
 	</div>
 	</div>
-	<footer>
+	<div id="footer">
 		AlumNet<sub>&copy;</sub> 2016
-	</footer>
+	</div>
 </body>
 </html>
