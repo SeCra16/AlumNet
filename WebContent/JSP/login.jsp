@@ -11,6 +11,7 @@
 	<title>
 	    AlumNet
 	</title>
+
 <link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
 <script type="text/javascript" src="../JS/login.js"></script>
 
