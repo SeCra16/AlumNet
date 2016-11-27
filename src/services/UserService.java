@@ -1,20 +1,18 @@
 package services;
 
-import java.sql.SQLException;
-import java.util.Map;
-
-import dto.LoginDTO;
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.SessionAware;
-
 import com.opensymphony.xwork2.ActionSupport;
-
 import dto.AlumniDTO;
 import dto.StudentDTO;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 import persistence.AlumNetFactory;
 import persistence.AlumniPersistence;
 import persistence.StudentPersistence;
 import util.ANConstants;
+
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.Random;
 
 public class UserService extends ActionSupport implements SessionAware{
 	private static final long serialVersionUID = 1L;
@@ -91,6 +89,7 @@ public class UserService extends ActionSupport implements SessionAware{
 		try {
 			//Get a unique persistence for Alumni
 			AlumniPersistence persistence = AlumNetFactory.getAlumniPersistence();
+			alumnus.setAlumniID(new Random().nextInt(100000));
 			
 			persistence.addAlumnus(alumnus);
 		} catch (SQLException e) {

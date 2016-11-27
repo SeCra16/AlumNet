@@ -1,24 +1,20 @@
 package persistence;
 
+import util.ANUtil;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import util.ANUtil;
 
 public class AlumNetPersistence {
 	private Connection conn = null;
 	
 	//connect to database
-	public void connect() throws SQLException, Exception {
+	public void connect() throws Exception {
 		ANUtil util = new ANUtil();
-		if (conn != null) {
-			conn.close();
-			
-			conn = DriverManager.getConnection(util.getURL(), util.getUser(), util.getPassword());
-		} else {
-			throw new Exception("Bad login credentials... check config.properties");
-		}
+		close();
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		conn = DriverManager.getConnection(util.getURL(), util.getUser(), util.getPassword());
 	}
 	
 	//close connection

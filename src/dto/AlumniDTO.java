@@ -1,7 +1,7 @@
 package dto;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
 
 public class AlumniDTO extends UserDTO {
 	
@@ -56,9 +56,9 @@ public class AlumniDTO extends UserDTO {
 	public void setGraduationDate(java.sql.Date d){
 		graduationDate = d;
 	}
-	
+
 	public void setGraduationDate(String s) throws Exception{
-	    graduationDate = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(s).getTime());
+		graduationDate = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(s).getTime());
 	}
 	
 	public String getCompany(){

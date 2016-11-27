@@ -29,11 +29,11 @@ public class StudentDTO extends UserDTO {
 		public void setExpectedGraduation(Date d){
 			expectedGraduation = d;
 		}
-		
+
 		public void setExpectedGraduation(String s) throws Exception{
-	    expectedGraduation = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(s).getTime());
-	}
-		
+			expectedGraduation = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(s).getTime());
+		}
+
 		public String getMajor(){
 			return major;
 		}

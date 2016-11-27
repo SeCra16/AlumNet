@@ -110,7 +110,8 @@ public class AlumniDAO {
 			myStmt.setInt(1, dto.getAlumniID());
 			myStmt.setString(2, dto.getFirstName());
 			myStmt.setString(3, dto.getLastName());
-			myStmt.setDate(4, (Date) dto.getGraduationDate());
+			java.sql.Date date = new java.sql.Date(dto.getGraduationDate().getTime());
+			myStmt.setDate(4, date);
 			myStmt.setString(5, dto.getEmail());
 			myStmt.setString(6, dto.getCompany());
 			myStmt.setString(7, dto.getJobTitle());
@@ -205,7 +206,8 @@ public class AlumniDAO {
 
             myStmt.setString(1, dto.getFirstName());
             myStmt.setString(2, dto.getLastName());
-            myStmt.setDate(3, (Date) dto.getGraduationDate());
+			java.sql.Date date = new java.sql.Date(dto.getGraduationDate().getTime());
+            myStmt.setDate(3, date);
             myStmt.setString(4, dto.getEmail());
             myStmt.setString(5, dto.getCompany());
             myStmt.setString(6, dto.getJobTitle());

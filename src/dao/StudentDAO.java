@@ -146,7 +146,8 @@ private Connection conn = null;
             myStmt.setInt(1, dto.getStudentID());
             myStmt.setString(2, dto.getFirstName());
             myStmt.setString(3, dto.getLastName());
-            myStmt.setDate(4, (Date) dto.getExpectedGraduation());
+            java.sql.Date date = new java.sql.Date(dto.getExpectedGraduation().getTime());
+            myStmt.setDate(4, date);
             myStmt.setString(5, dto.getEmail());
             myStmt.setString(6, dto.getMajor());
 
@@ -256,7 +257,8 @@ private Connection conn = null;
 
             myStmt.setString(1, dto.getFirstName());
             myStmt.setString(2, dto.getLastName());
-            myStmt.setDate(3, (Date) dto.getExpectedGraduation());
+            java.sql.Date date = new java.sql.Date(dto.getExpectedGraduation().getTime());
+            myStmt.setDate(3, date);
             myStmt.setString(4, dto.getEmail());
             myStmt.setString(5, dto.getMajor());
 
