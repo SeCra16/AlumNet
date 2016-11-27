@@ -63,19 +63,19 @@
 		*********************** Mapped action: addAlumnus -->
 		<s:div id="ifAlum" cssStyle="display:none;">
 		    <label id="l1">First Name</label>
-			<s:textfield type="text" name = "alumni.FirstName" id="firstName" placeholder="John" /><br/><br/>
+			<s:textfield type="string" name = "alumnus.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l2">Last Name</label>
-			<s:textfield label="Last Name" type="text" name="alumni.LastName" id="lastName" placeholder="Doe" /><br/><br/>
+			<s:textfield label="Last Name" type="string" name="alumnus.lastName" id="lastName" placeholder="Doe" /><br/><br/>
 		    <label id="l3">Grad Year</label>
-			<s:textfield label="Grad Year" type = "number" name="alumni.GraduationDate" id="Grad" placeholder="2016" min="1940" /><br/><br/>
+			<s:textfield label="Grad Year" type = "string" name="alumnus.graduationDate" id="Grad" placeholder="2016"/><br/><br/>
 		    <label id="l5">Company</label>
-			<s:textfield label="Company" type="text" name="alumni.Company" id="jobComp" placeholder="Dell" /><br/><br/>
+			<s:textfield label="Company" type="string" name="alumnus.company" id="jobComp" placeholder="Dell" /><br/><br/>
 		    <label id="l6">Job Title</label>
-			<s:textfield label="Job Title" type="text" name="alumni.JobTitle" id="jobTitle" placeholder="Network Analyst" /><br/><br/>
+			<s:textfield label="Job Title" type="string" name="alumnus.jobTitle" id="jobTitle" placeholder="Network Analyst" /><br/><br/>
 		    <label id="l7">Job Field</label>
-			<s:textfield label="Job Field" type="text" name="alumni.JobField" id="jobField" placeholder="IT" /><br/><br/>
+			<s:textfield label="Job Field" type="string" name="alumnus.jobField" id="jobField" placeholder="IT" /><br/><br/>
 		    <label id="l8">Email</label>
-			<s:textfield label="Email" type="email" name="alumni.Email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
+			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
 			<s:password label="Password" type="password" name="pword" id="pw" placeholder="*********" /><br/><br/>
 		    <s:submit type="submit" name="submit" value="Submit!" id="submit" />
@@ -84,19 +84,19 @@
 		<!-- **************STUDENT ******** -->
 		<s:div id="ifStud" cssStyle="display:none;">
 		    <label id="l10">First Name</label>
-			<s:textfield label="First Name" type="text" name = "student.FirstName" id="firstName" placeholder="John" /><br/><br/>
+			<s:textfield label="First Name" type="string" name = "student.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l11">Last Name</label>
-			<s:textfield label="Last Name" type="text" name="student.LastName" id="lastName" placeholder="Doe" /><br/><br/>
+			<s:textfield label="Last Name" type="string" name="student.lastName" id="lastName" placeholder="Doe" /><br/><br/>
 		    <label id="l12">Student ID</label>
-			<s:textfield label="Student ID" type = "number" name="student.StudentID" id="id" placeholder="900XXXXXX" min="900000000" /><br/><br/>
+			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" min="900000000" /><br/><br/>
 		    <label id="l13">Grad Year</label>
-			<s:textfield label="Grad Year" type = "number" name="student.ExpectedGraduation" id="expectedGraduation" placeholder="2017" min="1970" max="2070" /><br/><br/>
+			<s:textfield label="Grad Year" type = "string" name="student.expectedGraduation" id="expectedGraduation" placeholder="2017" min="1970" max="2070" /><br/><br/>
 		    <label id="l14">Major</label>
-			<s:textfield label="Major" type="text" name="student.Major" id="major" placeholder="Computer Science" /><br/><br/>
+			<s:textfield label="Major" type="string" name="student.major" id="major" placeholder="Computer Science" /><br/><br/>
 		    <label id="l15">Resume</label>
-			<s:textarea label="Resume" type="file" name="resume" id="resume" /><br/><br/>
+			<s:file id="resume" name="student.resume"/><br/><br/>
 		    <label id="l16">Email</label>
-			<s:textfield label="Email" type="email" name="student.Email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
+			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
 			<s:password label="Password" type="password" name="pword" id="pw" placeholder="*********" min="8" /><br/><br/>
 		    <s:submit type="submit" name="submit" value="Submit!" id="submit" />
