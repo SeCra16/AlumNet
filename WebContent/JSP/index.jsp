@@ -18,40 +18,41 @@
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	
 		<h1 id="header">
-		    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
+		    <s:a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></s:a>
 		</h1>
         
 	
 	<!--Navigation Bar-->
-	<div class = "nav">
-		<a href = "index.jsp">Home</a>&nbsp;
-			<div class="dropdown">
+	<s:div class = "nav" action="setupRegistration">
+		<s:a href = "index.jsp" action="setupRegistration">Home</s:a>&nbsp;
+			<s:div class="dropdown">
 				<button class="dropbtn" id="college">Colleges</button>
-					<div class="dropdown-content">
-						<a href="colleges/ceit.jsp" id="1">CoEIT</a>
-						<a href="colleges/coba.jsp" id="2">CoBA</a>
-						<a href="colleges/class.jsp" id="3">CLASS</a>
-						<a href="colleges/chhs.jsp" id="4">CHHS</a>
-						<a href="colleges/cosm.jsp" id="5">CoSM</a>
-						<a href="colleges/coe.jsp" id="6">CoE</a>
-						<a href="colleges/coph.jsp" id="7">CoPH</a>
-					</div>
-				</div>&nbsp;
-			<a href = "about.jsp">About AlumNet</a>&nbsp;
+					<s:div class="dropdown-content">
+						<s:a href="colleges/ceit.jsp" action="setupRegistration">CoEIT</s:a>
+						<s:a href="colleges/coba.jsp">CoBA</s:a>
+						<s:a href="colleges/class.jsp">CLASS</s:a>
+						<s:a href="colleges/chhs.jsp">CHHS</s:a>
+						<s:a href="colleges/cosm.jsp">CoSM</s:a>
+						<s:a href="colleges/coe.jsp">CoE</s:a>
+						<s:a href="colleges/coph.jsp">CoPH</s:a>
+					</s:div>
+				</s:div>&nbsp;
+			<s:a href = "about.jsp" action="setupRegistration">About AlumNet</s:a>&nbsp;
 			
-			<div class="dropdown">
+			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
-					<div class="dropdown-content">	
-						<a href = "login.jsp">Login</a>
-						<a href = "register.jsp">Register</a>
-					</div>
-				</div>&nbsp;
-	</div>
+					<s:div class="dropdown-content">	
+						<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
+						<s:a href = "register.jsp" action="setupRegistration">Register</s:a>
+					</s:div>
+			</s:div>&nbsp;
+	</s:div>
 
 	<main>
 	<!--Main content of page!-->
 		
-		
+	<s:select list="major" name="student.major"/>
+			
 		<br/>
 		<h2 id="u_e">
 			Here are upcoming Alumni related events on campus!

@@ -26,7 +26,7 @@
 
         <action name="login"
             class="services.LoginService" method="validateUser">
-            <result name="SUCCESS"></result>
+            <result name="SUCCESS">/JSP/index.jsp</result>
 	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 

@@ -77,7 +77,7 @@
 		    <label id="l8">Email</label>
 			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
-			<s:password label="Password" type="password" name="pword" id="pw" placeholder="*********" /><br/><br/>
+			<s:password label="Password" type="password" name="alumnus.password" id="pw" placeholder="*********" /><br/><br/>
 		    <s:submit type="submit" name="submit" value="Submit!" id="submit" />
 		</s:div>	
 		
@@ -98,8 +98,8 @@
 		    <label id="l16">Email</label>
 			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
-			<s:password label="Password" type="password" name="pword" id="pw" placeholder="*********" min="8" /><br/><br/>
-		    <s:submit type="submit" name="submit" value="Submit!" id="submit" />
+			<s:password label="Password" type="password" name="student.password" id="pw" placeholder="*********" min="8" /><br/><br/>
+		    <s:submit type="submit" name="submit" value="submit" id="submit" />
 		</s:div>
 		
 	</s:form>

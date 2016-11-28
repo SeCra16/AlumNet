@@ -133,4 +133,20 @@ public class UserService extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> map) {
 		sessionMap=(SessionMap<String, Object>) map;
 	}
+	
+	public String setupRegistration() {
+	    return ANConstants.SUCCESS;
+	}
+	
+	public String[] majors = ANConstants.MAJORS;
+
+//then getters and setters 
+
+	public void setMajors(String[] m){
+	    majors = m;
+	}
+
+	public String[] getMajors() {
+	    return majors;
+	}
 }

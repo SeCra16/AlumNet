@@ -53,7 +53,7 @@
 	<!--Main content of page!-->
 
 		<br/>
-		<s:form onsubmit="submitLogin()" theme="simple" >
+		<s:form onsubmit="submitLogin()" action="login" theme="simple" >
 		    <h2><s:text name="Please Login!"/></h2>
 		    
 		    <s:div>
