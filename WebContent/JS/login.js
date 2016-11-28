@@ -9,13 +9,16 @@ alert("Welcome " + name);
 
 /***************** Added directly to the JSP *******************
 function alumCheck() {
-    if (document.getElementById('alumTrue').checked) {
-        document.getElementById('ifAlum').style.display = 'block';
-	document.getElementById('ifStud').style.display = 'none';
+    if (document.getElementById('regForm').checked) 
+    {
+        document.getElementById('regForm_alumStudAlumnus').style.display = 'block';
+	document.getElementById('regForm_alumCheckalumStudStudent').style.display = 'none';
 	document.getElementById('reg').action='addAlumnus';
-    } else {
-        document.getElementById('ifAlum').style.display = 'none';
-        document.getElementById('ifStud').style.display = 'block';
+    } 
+	else 
+    {
+        document.getElementById('regForm_alumStudAlumnus').style.display = 'none';
+        document.getElementById('regForm_alumCheckalumStudStudent').style.display = 'block';
 	document.getElementById('reg').action='addStudent';
     }
 }
