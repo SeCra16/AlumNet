@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="/Users/Archer/Documents/API/struts-2.3.31/lib/xwork-core-2.3.31.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Users/Archer/Documents/API/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="/Users/Archer/Desktop/AlumNet/WebContent/WEB-INF/lib/junit-4.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

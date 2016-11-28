@@ -47,14 +47,14 @@
 	    </div>&nbsp;
     </div>
     <br/>
-    <s:div id="main">
+    <s:div id="main"/>
     <!--Main content of page!-->
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
 <<<<<<< HEAD
 	<s:form namespace="/" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-	    
+	 </s:form>   
 	    <h2><s:text name="Please Register!"/></h2>
 				    
 		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="alumStud" list="{'Alumnus'}" />
@@ -83,7 +83,6 @@
 =======
 	<s:form theme="css_xhtml" style="border:1px solid" id="regForm" action="alumCheck()" namespace="/"  validate="true"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 		<label id="Status">Student or Alum?</label>
-
 		
 		<s:radio list="{'Alumnus','Student'}" name="alumStud" multiple="true"></s:radio>	
 		<!-- ****************** ALUM **************-->

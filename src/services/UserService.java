@@ -21,6 +21,7 @@ public class UserService extends ActionSupport implements SessionAware{
 	private AlumniDTO alumnus;
 	private StudentDTO student;
 	private SessionMap<String,Object> sessionMap;
+	private List<String> majors;
 	
 	//method to add student
 		public String addStudent() {
@@ -137,59 +138,16 @@ public class UserService extends ActionSupport implements SessionAware{
 	}
 	
 	public String setupRegistration() {
+		setMajors(ANConstants.MAJORS);
 	    return ANConstants.SUCCESS;
 	}
-	
-	
-	
-	//majors
-	public static List<String> majors = ANConstants.MAJORS;
 
 	//getters and setters 
-	public static void setMajors(List<String> m){
+	public void setMajors(List<String> m){
 	    majors = m;
 	}
 
-	public static List<String> getMajors() {
+	public List<String> getMajors() {
 	    return majors;
 	}
-/* I was just testing something I saw on StackOverflow!
-	//majors
-	private List<String> majors;
-	private String chosenMajor;
-
-	  public UserService()
-	  {
-	    majors = new ArrayList<String>();
-	    majors.add("Computer Science");
-	    majors.add("CS");
-	    majors.add("IT");
-	  }
-
-	  @Override
-	  public String execute() throws Exception
-	  {
-	    return SUCCESS;
-	  }
-
-	  public List<String> getMajors()
-	  {
-	    return majors;
-	  }
-
-	  public void setMajors(List<String> majors)
-	  {
-	    this.majors = majors;
-	  }
-
-	  public String getChosenMajor()
-	  {
-	    return chosenMajor;
-	  }
-
-	  public void setChosenMajor(String chosenMajor)
-	  {
-	    this.chosenMajor = chosenMajor;
-	  }
-	*/
 }
