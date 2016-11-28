@@ -9,7 +9,7 @@
 	
         <action name="hello"
                 class="com.alumnet.Name">
-                <result name="success"></result>
+                <result name="SUCCESS"></result>
         </action>
 
         <action name="addStudent"
@@ -29,6 +29,9 @@
             <result name="SUCCESS">/JSP/index.jsp</result>
 	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
-
+	
+	
+	
+	
     </package>
 </struts>

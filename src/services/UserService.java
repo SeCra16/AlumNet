@@ -11,6 +11,7 @@ import persistence.StudentPersistence;
 import util.ANConstants;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -139,15 +140,56 @@ public class UserService extends ActionSupport implements SessionAware{
 	    return ANConstants.SUCCESS;
 	}
 	
-	public List<String> majors = ANConstants.MAJORS;
+	
+	
+	//majors
+	public static List<String> majors = ANConstants.MAJORS;
 
-//then getters and setters 
-
-	public void setMajors(List<String> m){
+	//getters and setters 
+	public static void setMajors(List<String> m){
 	    majors = m;
 	}
 
-	public List<String> getMajors() {
+	public static List<String> getMajors() {
 	    return majors;
 	}
+/* I was just testing something I saw on StackOverflow!
+	//majors
+	private List<String> majors;
+	private String chosenMajor;
+
+	  public UserService()
+	  {
+	    majors = new ArrayList<String>();
+	    majors.add("Computer Science");
+	    majors.add("CS");
+	    majors.add("IT");
+	  }
+
+	  @Override
+	  public String execute() throws Exception
+	  {
+	    return SUCCESS;
+	  }
+
+	  public List<String> getMajors()
+	  {
+	    return majors;
+	  }
+
+	  public void setMajors(List<String> majors)
+	  {
+	    this.majors = majors;
+	  }
+
+	  public String getChosenMajor()
+	  {
+	    return chosenMajor;
+	  }
+
+	  public void setChosenMajor(String chosenMajor)
+	  {
+	    this.chosenMajor = chosenMajor;
+	  }
+	*/
 }

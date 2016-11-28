@@ -67,7 +67,7 @@
 		    <label id="l2">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="alumnus.lastName" id="lastName" placeholder="Doe" /><br/><br/>
 		    <label id="l3">Grad Year</label>
-			<s:textfield label="Grad Year" type = "string" name="alumnus.graduationDate" id="Grad" placeholder="2016"/><br/><br/>
+			<s:textfield label="Grad Year" type = "date" name="alumnus.graduationDate" id="Grad" min="1906-01-02"/><br/><br/>
 		    <label id="l5">Company</label>
 			<s:textfield label="Company" type="string" name="alumnus.company" id="jobComp" placeholder="Dell" /><br/><br/>
 		    <label id="l6">Job Title</label>
@@ -78,7 +78,7 @@
 			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
 			<s:password label="Password" type="password" name="alumnus.password" id="pw" placeholder="*********" /><br/><br/>
-		    <s:submit type="submit" name="submit" value="Submit!" id="submit" />
+		    <s:submit type="submit" name="submit" value="submit" id="submit" />
 		</s:div>	
 		
 		<!-- **************STUDENT ******** -->
@@ -90,7 +90,7 @@
 		    <label id="l12">Student ID</label>
 			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" min="900000000" /><br/><br/>
 		    <label id="l13">Grad Year</label>
-			<s:textfield label="Grad Year" type = "string" name="student.expectedGraduation" id="expectedGraduation" placeholder="2017" min="1970" max="2070" /><br/><br/>
+			<s:textfield label="Grad Year" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
 			<s:textfield label="Major" type="string" name="student.major" id="major" placeholder="Computer Science" /><br/><br/>
 		    <label id="l15">Resume</label>

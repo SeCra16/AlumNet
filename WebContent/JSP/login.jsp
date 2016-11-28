@@ -61,7 +61,7 @@
 			    <s:textfield type="email" name="email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 			<label id="l9">Password</label>
 			    <s:password type="password" name="pword" id="pw" placeholder="*********" /><br/><br/>
-			<s:submit type="submit" name="submit" value="Submit!" id="submit" />	
+		    <s:submit type="submit" name="submit" value="submit" id="submit" />
 		    </s:div>
 		</s:form>
     </s:div>

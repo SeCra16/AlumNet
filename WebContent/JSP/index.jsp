@@ -23,12 +23,12 @@
         
 	
 	<!--Navigation Bar-->
-	<s:div class = "nav" action="setupRegistration">
+	<s:div class = "nav">
 		<s:a href = "index.jsp" action="setupRegistration">Home</s:a>&nbsp;
 			<s:div class="dropdown">
 				<button class="dropbtn" id="college">Colleges</button>
 					<s:div class="dropdown-content">
-						<s:a href="colleges/ceit.jsp" action="setupRegistration">CoEIT</s:a>
+						<s:a href="colleges/ceit.jsp">CoEIT</s:a>
 						<s:a href="colleges/coba.jsp">CoBA</s:a>
 						<s:a href="colleges/class.jsp">CLASS</s:a>
 						<s:a href="colleges/chhs.jsp">CHHS</s:a>
@@ -36,7 +36,7 @@
 						<s:a href="colleges/coe.jsp">CoE</s:a>
 						<s:a href="colleges/coph.jsp">CoPH</s:a>
 					</s:div>
-				</s:div>&nbsp;
+			</s:div>&nbsp;
 			<s:a href = "about.jsp" action="setupRegistration">About AlumNet</s:a>&nbsp;
 			
 			<s:div class="dropdown">
@@ -51,7 +51,7 @@
 	<main>
 	<!--Main content of page!-->
 		
-	<s:select list="major" name="student.major"/>
+	
 			
 		<br/>
 		<h2 id="u_e">
