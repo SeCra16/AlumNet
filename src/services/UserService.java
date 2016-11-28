@@ -11,6 +11,7 @@ import persistence.StudentPersistence;
 import util.ANConstants;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -138,15 +139,15 @@ public class UserService extends ActionSupport implements SessionAware{
 	    return ANConstants.SUCCESS;
 	}
 	
-	public String[] majors = ANConstants.MAJORS;
+	public List<String> majors = ANConstants.MAJORS;
 
 //then getters and setters 
 
-	public void setMajors(String[] m){
+	public void setMajors(List<String> m){
 	    majors = m;
 	}
 
-	public String[] getMajors() {
+	public List<String> getMajors() {
 	    return majors;
 	}
 }
