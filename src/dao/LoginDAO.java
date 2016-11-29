@@ -52,6 +52,8 @@ public class LoginDAO {
 				return (StudentDTO) new StudentDAO(conn).select(sDTO);
 			if (type.equals("alumnus"))
 				return (AlumniDTO) new AlumniDAO(conn).select(aDTO);
+			
+			return null;
 
 		}
 	}
