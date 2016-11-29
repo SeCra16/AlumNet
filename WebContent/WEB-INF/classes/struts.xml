@@ -30,11 +30,11 @@
 	    <result name="ERROR">/JSP/error.jsp</result>
         </action>
 	
-		<action name="setupRegistration"
-			class="services.UserService" method="setupRegistration">
-			<result name="SUCCESS">/JSP/register.jsp</result>	
-			<result name="ERROR">/JSP/error.jsp</result>
-		</action>
+	<action name="setupRegistration"
+		class="services.UserService" method="setupRegistration">
+		<result name="SUCCESS">/JSP/register.jsp</result>	
+		<result name="ERROR">/JSP/error.jsp</result>
+	</action>
 	
     </package>
 </struts>

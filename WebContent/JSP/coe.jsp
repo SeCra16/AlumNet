@@ -10,20 +10,20 @@
 	<title>
 	    AlumNet
 	</title>
-<link rel="stylesheet" href="../../CSS/alumnet_college.css" type="text/css"/>
+<link rel="stylesheet" href="../CSS/alumnet_college.css" type="text/css"/>
 
 </head>
 <body>	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	
 		<h1 id="header">
-		    <a href = "../index.jsp"><img src="../../Images/logo.png" alt="logo" id="logo"/></a>
+		    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
 		</h1>
 	
 	
 		<!--Navigation Bar-->
 	<div class = "nav">
-		<a href = "../index.jsp">Home</a>&nbsp;
+		<a href = "index.jsp">Home</a>&nbsp;
 			<div class="dropdown">
 				<button class="dropbtn">Colleges</button>
 					<div class="dropdown-content">
@@ -36,13 +36,13 @@
 						<a href="coph.jsp">CoPH</a>
 					</div>
 				</div>&nbsp;
-			<a href = "../about.jsp">About AlumNet</a>&nbsp;
+			<a href = "about.jsp">About AlumNet</a>&nbsp;
 			
 			<div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
-						<a href = "../login.jsp">Login</a>
-						<a href = "../register.jsp">Register</a>
+						<a href = "login.jsp">Login</a>
+						<a href="<s:url action="setupRegistration"/>">Register</a>
 					</div>
 				</div>&nbsp;
 	</div>

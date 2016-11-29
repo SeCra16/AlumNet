@@ -25,7 +25,8 @@ public class LoginService extends ActionSupport implements SessionAware{
 	public String validateUser() {
 		//validate the users credentials
 		try {
-			LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
+		System.out.println(loginDTO.getID());
+		    LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
 			user = lPer.login(loginDTO, type);
 			sessionMap.put("user", user);
 		} catch (SQLException e) {

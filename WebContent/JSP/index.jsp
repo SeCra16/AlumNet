@@ -28,13 +28,13 @@
 			<s:div class="dropdown">
 				<button class="dropbtn" id="college">Colleges</button>
 					<s:div class="dropdown-content">
-						<s:a href="colleges/ceit.jsp">CoEIT</s:a>
-						<s:a href="colleges/coba.jsp">CoBA</s:a>
-						<s:a href="colleges/class.jsp">CLASS</s:a>
-						<s:a href="colleges/chhs.jsp">CHHS</s:a>
-						<s:a href="colleges/cosm.jsp">CoSM</s:a>
-						<s:a href="colleges/coe.jsp">CoE</s:a>
-						<s:a href="colleges/coph.jsp">CoPH</s:a>
+						<s:a href="ceit.jsp">CoEIT</s:a>
+						<s:a href="coba.jsp">CoBA</s:a>
+						<s:a href="class.jsp">CLASS</s:a>
+						<s:a href="chhs.jsp">CHHS</s:a>
+						<s:a href="cosm.jsp">CoSM</s:a>
+						<s:a href="coe.jsp">CoE</s:a>
+						<s:a href="coph.jsp">CoPH</s:a>
 					</s:div>
 			</s:div>&nbsp;
 			<s:a href = "about.jsp">About AlumNet</s:a>&nbsp;
@@ -43,10 +43,7 @@
 				<button class="dropbtn" id="account">My Account</button>
 					<s:div class="dropdown-content">	
 						<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
-						<s:a href = "register.jsp" action="setupRegistration">Register</s:a>
-						<s:form action="setupRegistration">
-						    <s:submit type="submit" value="Register"/> 
-						</s:form>
+						<a href="<s:url action="setupRegistration"/>">Register</a>						    
 					</s:div>
 			</s:div>&nbsp;
 	</s:div>

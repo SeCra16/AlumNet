@@ -28,13 +28,13 @@
 	    <div class="dropdown">
 		<button class="dropbtn">Colleges</button>
 		    <div class="dropdown-content">
-			<a href="colleges/ceit.jsp">CoEIT</a>
-			<a href="colleges/coba.jsp">CoBA</a>
-			<a href="colleges/class.jsp">CLASS</a>
-			<a href="colleges/chhs.jsp">CHHS</a>
-			<a href="colleges/cosm.jsp">CoSM</a>
-			<a href="colleges/coe.jsp">CoE</a>
-			<a href="colleges/coph.jsp">CoPH</a>
+			<a href="ceit.jsp">CoEIT</a>
+			<a href="coba.jsp">CoBA</a>
+			<a href="class.jsp">CLASS</a>
+			<a href="chhs.jsp">CHHS</a>
+			<a href="cosm.jsp">CoSM</a>
+			<a href="coe.jsp">CoE</a>
+			<a href="coph.jsp">CoPH</a>
 		    </div>
 	    </div>&nbsp;
 	<a href = "about.jsp">About AlumNet</a>&nbsp;
@@ -42,7 +42,7 @@
 		<button class="dropbtn" id="account">My Account</button>
 		    <div class="dropdown-content">	
 			<a href = "login.jsp">Login</a>
-			<a href = "register.jsp">Register</a>
+			<a href="<s:url action="setupRegistration"/>">Register</a>
 		    </div>
 	    </div>&nbsp;
     </div>
