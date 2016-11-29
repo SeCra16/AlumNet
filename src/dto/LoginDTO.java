@@ -2,7 +2,7 @@ package dto;
 
 public class LoginDTO {
 
-	String email, password;
+	String email = null, password;
 	
 	public String getEmail(){
 		return email;
