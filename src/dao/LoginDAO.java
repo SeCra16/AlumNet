@@ -23,7 +23,7 @@ public class LoginDAO {
 		this.conn = conn;
 	}
 
-	public UserDTO select(LoginDTO dto) throws Exception {
+	public UserDTO select(LoginDTO dto, String type) throws Exception {
 		//Check if the dto is null
 		if(dto.getEmail().equals("") || dto.getEmail() == null || dto == null) {
 			throw new Exception("dto passed cannot be null nor can the email be");
@@ -48,20 +48,11 @@ public class LoginDAO {
 			}
 
 			//try to do a select
+			if (type.equals("student"))
+				return (StudentDTO) new StudentDAO(conn).select(sDTO);
+			if (type.equals("alumnus"))
+				return (AlumniDTO) new AlumniDAO(conn).select(aDTO);
 
-			sDTO = (StudentDTO) new StudentDAO(conn).select(sDTO);
-
-			if (sDTO.getFirstName().equals("") || sDTO.getFirstName() == null) {
-				aDTO = (AlumniDTO) new AlumniDAO(conn).select(aDTO);
-
-				if (aDTO.getFirstName().equals("") || sDTO.getFirstName() == null) {
-					return null;
-				} else {
-					return aDTO;
-				}
-			} else {
-				return sDTO;
-			}
 		}
 	}
 

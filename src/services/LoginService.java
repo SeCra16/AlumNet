@@ -1,24 +1,32 @@
 package services;
 
 import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import dto.LoginDTO;
+import dto.UserDTO;
 import persistence.AlumNetFactory;
 import persistence.LoginPersistence;
 import util.ANConstants;
 
-public class LoginService extends ActionSupport{
+public class LoginService extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	private LoginDTO loginDTO;
+	private UserDTO user;
+	private SessionMap<String, Object> sessionMap;
 	
 	public String validateUser() {
 		//validate the users credentials
 		try {
 			LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
-			lPer.login(loginDTO);
+			user = lPer.login(loginDTO);
+			sessionMap.put("user", user);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;
@@ -48,5 +56,10 @@ public class LoginService extends ActionSupport{
 	}
 	public void setLoginDTO(LoginDTO loginDTO) {
 		this.loginDTO = loginDTO;
+	}
+	
+	@Override
+	public void setSession(Map<String, Object> map) {
+		sessionMap=(SessionMap<String, Object>) map;
 	}
 }
