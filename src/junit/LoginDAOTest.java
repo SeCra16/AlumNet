@@ -51,7 +51,7 @@ public class LoginDAOTest extends TestCase {
 
         try {
             //returns a UserDTO object if the signin worked
-            tDto = dao.select(dto);
+            tDto = dao.select(dto, "student");
         } catch (Exception e) {
             fail("Hit error with select " + e.getMessage());
         }
@@ -72,7 +72,7 @@ public class LoginDAOTest extends TestCase {
             dao.update(dto);
 
             //now see if the update worked
-            tDto = dao.select(dto);
+            tDto = dao.select(dto, "student");
         } catch (Exception e) {
             fail("Hit error with update " + e.getMessage());
         }
@@ -102,7 +102,7 @@ public class LoginDAOTest extends TestCase {
             dao.delete(dto);
 
             //see if select returns anything
-            tDto = dao.select(dto);
+            tDto = dao.select(dto, "student");
             fail("Deleted the row... was supposed to be blocked");
         } catch (Exception e) {
             System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
@@ -119,7 +119,7 @@ public class LoginDAOTest extends TestCase {
         try {
             dao.insert(dto);
 
-            tDto = dao.select(dto);
+            tDto = dao.select(dto, "student");
             fail("duplicate key... should have failed");
         } catch (Exception e) {
             System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
