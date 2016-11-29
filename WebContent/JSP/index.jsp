@@ -24,7 +24,7 @@
 	
 	<!--Navigation Bar-->
 	<s:div class = "nav">
-		<s:a href = "index.jsp" action="setupRegistration">Home</s:a>&nbsp;
+		<s:a href = "index.jsp">Home</s:a>&nbsp;
 			<s:div class="dropdown">
 				<button class="dropbtn" id="college">Colleges</button>
 					<s:div class="dropdown-content">
@@ -37,21 +37,24 @@
 						<s:a href="colleges/coph.jsp">CoPH</s:a>
 					</s:div>
 			</s:div>&nbsp;
-			<s:a href = "about.jsp" action="setupRegistration">About AlumNet</s:a>&nbsp;
+			<s:a href = "about.jsp">About AlumNet</s:a>&nbsp;
 			
 			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<s:div class="dropdown-content">	
 						<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
 						<s:a href = "register.jsp" action="setupRegistration">Register</s:a>
+						<s:form action="setupRegistration">
+						    <s:submit type="submit" value="Register"/> 
+						</s:form>
 					</s:div>
 			</s:div>&nbsp;
 	</s:div>
 
 	<main>
 	<!--Main content of page!-->
-		
 	
+
 			
 		<br/>
 		<h2 id="u_e">

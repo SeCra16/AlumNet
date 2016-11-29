@@ -31,11 +31,10 @@
         </action>
 	
 		<action name="setupRegistration"
-			class="services.UserService" method="setupUser">
-			<result name="SUCCESS">/JSP/thanks.jsp</result>	
+			class="services.UserService" method="setupRegistration">
+			<result name="SUCCESS">/JSP/register.jsp</result>	
 			<result name="ERROR">/JSP/error.jsp</result>
 		</action>
-	
 	
     </package>
 </struts>

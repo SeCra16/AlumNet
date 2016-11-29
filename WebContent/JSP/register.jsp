@@ -47,14 +47,14 @@
 	    </div>&nbsp;
     </div>
     <br/>
-    <s:div id="main"/>
+    <s:div id="main">
+	
+	<s:select name="student.major" label="hi" list="majors"/>
     <!--Main content of page!-->
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-<<<<<<< HEAD
 	<s:form namespace="/" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-	 </s:form>   
 	    <h2><s:text name="Please Register!"/></h2>
 				    
 		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="alumStud" list="{'Alumnus'}" />
@@ -80,24 +80,6 @@
 		    <label id="l9">Password</label>
 			<s:password label="Password" type="password" name="alumnus.password" id="pw" placeholder="*********" /><br/><br/>
 		    <s:submit type="submit" name="submit" value="submit" id="submit" />
-=======
-	<s:form theme="css_xhtml" style="border:1px solid" id="regForm" action="alumCheck()" namespace="/"  validate="true"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-		<label id="Status">Student or Alum?</label>
-		
-		<s:radio list="{'Alumnus','Student'}" name="alumStud" multiple="true"></s:radio>	
-		<!-- ****************** ALUM **************-->
-		<s:div id="ifAlum" style=">
-		    <s:textfield type="text" label="First Name" name = "alumnus.FirstName" id="FirstName" placeholder="Sebastian" />
-		    <s:textfield type="text" label="Last Name" name="alumnus.LastName" id="LastName" placeholder="Craige" />
-		    <s:textfield type = "number" label="Grad Year" name="alumnus.GraduationDate" id="GraduationDate" placeholder="2016" min="1970" />
-		    <s:textfield type="text" label="Major" name="major" id="major" placeholder="Computer Science"/>
-		    <s:textfield type="text" label="Company" name="jobComp" id="jobComp"/>
-		    <s:textfield type="text" label="Job Title" name="jobTitle" id="jobTitle"/>
-		    <s:textfield type="text" label="Job Field" name="jobField" id="jobField"/>
-		    <s:textfield type="email" label="Email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu" />
-		    <s:textfield type="password" label="Password" name="password" id="pw" placeholder="*********" min="8" />
-		    <s:submit value="Submit" id="submit" align="center"/>
->>>>>>> master
 		</s:div>	
 		
 		<!-- **************STUDENT ******** -->
@@ -121,33 +103,7 @@
 		    <s:submit type="submit" name="submit" value="submit" id="submit" />
 		</s:div>
 		
-<<<<<<< HEAD
-=======
-		<s:div id="ifStud" style="display:none">
-		    <label for="name">First Name: </label>
-			<input type="text" name = "FirstName" id="FirstName" placeholder="Sebastian" /><br/>
-		    <label for="lname">Last Name: </label>
-			<input type="text" name="LastName" id="LastName" placeholder="Craige" /><br/>
-		    <label for="stud_ID">Student ID: </label>
-			<input type = "number" name="stud_ID" id="id" placeholder="900XXXXXX" min="900000000" /><br/>
-		    <label for="grad_yr">Grad Year: </label>
-			<input type = "number" name="expectedGraduation" id="expectedGraduation" placeholder="2016" min="1970" /><br/>
-		    <label for="major">Major: </label>
-			<input type="text" name="major" id="major" placeholder="Computer Science"/><br/>
-		    <label for="resume">Resume: </label>
-			<input type="file" name="resume" id="resume"/><br/>
-		    <label for="uname">Email: </label>
-			<input type="email" name="Email" id="Email" placeholder="sc06358@georgiasouthern.edu"/><br/>
-		    <label for="pword">Password: </label>
-			<input type="password" name="pword" id="pw" placeholder="*********" min="8"/><br/>
-		    <label for="submit"></label>
-			<input type="submit" name="submit" value="Submit" id="addStudent"/>
-		</s:div>
-		
-		
-		<s:submit value="submit" name="submit" />
 
->>>>>>> master
 	</s:form>
 		
 	
