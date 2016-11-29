@@ -18,7 +18,7 @@
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
     
 	<h1 id="header">
-	    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
+	    <a href = "index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
 	</h1>
     
 	
@@ -49,7 +49,6 @@
     <br/>
     <s:div id="main">
 	
-	<s:select name="student.major" label="hi" list="majors"/>
     <!--Main content of page!-->
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
@@ -74,7 +73,7 @@
 		    <label id="l6">Job Title</label>
 			<s:textfield label="Job Title" type="string" name="alumnus.jobTitle" id="jobTitle" placeholder="Network Analyst" /><br/><br/>
 		    <label id="l7">Job Field</label>
-			<s:textfield label="Job Field" type="string" name="alumnus.jobField" id="jobField" placeholder="IT" /><br/><br/>
+			<s:select name="alumnus.jobField" list="majors" id="major"/><br/><br/>
 		    <label id="l8">Email</label>
 			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
@@ -93,7 +92,7 @@
 		    <label id="l13">Grad Year</label>
 			<s:textfield label="Grad Year" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
-			<s:textfield label="Major" type="string" name="student.major" id="major" placeholder="Computer Science" /><br/><br/>
+			<s:select name="student.major" id="major" list="majors"/><br/><br/>
 		    <label id="l15">Resume</label>
 			<s:file id="resume" name="student.resume"/><br/><br/>
 		    <label id="l16">Email</label>

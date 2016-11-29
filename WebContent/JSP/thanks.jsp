@@ -44,7 +44,7 @@
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
 						<a href = "login.jsp">Login</a>
-						<a href="<s:url action="../setupRegistration"/>">Register</a>						   
+						<a href="<s:url action="setupRegistration2"/>">Register</a>						   
 					</div>
 				</div>&nbsp;
 	</div>
@@ -55,7 +55,7 @@
 		<br/>
 		<br/>
 		<h1>
-		    <strong>Thanks <s:property value="name"/> for registering!</strong>
+		    <strong>Thanks <s:property value="alumnus.firstName"/> <s:property value="student.firstName"/> for registering!</strong>
 		</h1>
 	</main>
 
