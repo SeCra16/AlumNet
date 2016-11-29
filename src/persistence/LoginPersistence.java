@@ -32,7 +32,7 @@ public class LoginPersistence extends AlumNetPersistence{
 		close();
 	}
 	
-	public UserDTO login(LoginDTO dto) throws SQLException, Exception {
+	public UserDTO login(LoginDTO dto, String type) throws SQLException, Exception {
 		//connect to database
 		connect();
 		
@@ -51,13 +51,5 @@ public class LoginPersistence extends AlumNetPersistence{
 		
 		close();
 		return sdto;
-	}
-	
-	public void setType(String t) {
-		type = t;
-	}
-	
-	public String getType() {
-		return type;
 	}
 }

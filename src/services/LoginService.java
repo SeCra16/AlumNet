@@ -19,13 +19,14 @@ public class LoginService extends ActionSupport implements SessionAware{
 	private static final long serialVersionUID = 1L;
 	private LoginDTO loginDTO;
 	private UserDTO user;
+	private String type;
 	private SessionMap<String, Object> sessionMap;
 	
 	public String validateUser() {
 		//validate the users credentials
 		try {
 			LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
-			user = lPer.login(loginDTO);
+			user = lPer.login(loginDTO, type);
 			sessionMap.put("user", user);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,5 +62,13 @@ public class LoginService extends ActionSupport implements SessionAware{
 	@Override
 	public void setSession(Map<String, Object> map) {
 		sessionMap=(SessionMap<String, Object>) map;
+	}
+	
+	public void setType(String t) {
+		type = t;
+	}
+	
+	public String getType() {
+		return type;
 	}
 }
