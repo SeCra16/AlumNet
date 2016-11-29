@@ -8,7 +8,9 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dto.AlumniDTO;
 import dto.LoginDTO;
+import dto.StudentDTO;
 import dto.UserDTO;
 import persistence.AlumNetFactory;
 import persistence.LoginPersistence;
@@ -18,16 +20,25 @@ public class LoginService extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	private LoginDTO loginDTO;
-	private UserDTO user;
 	private String type;
 	private SessionMap<String, Object> sessionMap;
 	
 	public String validateUser() {
 		//validate the users credentials
 		try {
-		System.out.println(loginDTO.getID());
 		    LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
-			user = lPer.login(loginDTO, type);
+		    
+		    UserDTO user = null;
+		    //check login type
+		    String type = lPer.checkType(loginDTO);
+		    if (type.equals("alumnus")) {
+		    	user = (AlumniDTO) lPer.login(loginDTO);
+		    } else if (type.equals("student")){
+		    	user = (StudentDTO) lPer.login(loginDTO);
+		    } else if (type.equals("admin")) {
+		    	//what to do if they are a student
+		    }
+		    
 			sessionMap.put("user", user);
 		} catch (SQLException e) {
 			e.printStackTrace();
