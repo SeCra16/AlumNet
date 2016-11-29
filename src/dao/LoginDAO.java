@@ -23,38 +23,26 @@ public class LoginDAO {
 		this.conn = conn;
 	}
 
-	public UserDTO select(LoginDTO dto, String type) throws Exception {
+	public String select(LoginDTO dto) throws Exception {
 		//Check if the dto is null
 		if(dto.getEmail().equals("") || dto.getEmail() == null || dto == null) {
 			throw new Exception("dto passed cannot be null nor can the email be");
 		} else {
-			String sql = "SELECT * FROM ALUMNET.dbo.Login WHERE ID=? and Email=? and Password=?";
+			String sql = "SELECT * FROM ALUMNET.dbo.Login WHERE Email=? and Password=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, dto.getID());
-			ps.setString(2, dto.getEmail());
-			ps.setString(3, dto.getPassword());
+			ps.setString(1, dto.getEmail());
+			ps.setString(2, dto.getPassword());
 
 			ResultSet rs = ps.executeQuery();
-
-			StudentDTO sDTO = new StudentDTO();
-			AlumniDTO aDTO = new AlumniDTO();
-
-			while(rs.next()) {
-				int i = rs.getInt("ID");
-
-				sDTO.setStudentID(i);
-				aDTO.setAlumniID(i);
-			}
-
-			//try to do a select
-			if (type.equals("student"))
-				return (StudentDTO) new StudentDAO(conn).select(sDTO);
-			if (type.equals("alumnus"))
-				return (AlumniDTO) new AlumniDAO(conn).select(aDTO);
+			String type = null;
 			
-			return null;
-
+			//get the type so we can get the user dto
+			while(rs.next()) {
+				type = rs.getString("type");
+			}
+			
+			return type;
 		}
 	}
 
@@ -65,21 +53,18 @@ public class LoginDAO {
 		} else {
 
 			//Check if any field of the dto is empty *NOTE: Only picture can be null/empty*
-			if (dto.getID() == Integer.MIN_VALUE) {
-				throw new Exception("ID cannot be empty... failing to attempt insert");
-			} else if (dto.getEmail() == null) {
+			if (dto.getEmail() == null) {
 				throw new Exception("Email cannot be empty... failing to attempt insert");
 			} else if (dto.getPassword() == null) {
 				throw new Exception("Password cannot be empty... failing to attempt insert");
 			}
 
 			//We know every field is initialized so we can insert
-			String sql = "INSERT INTO ALUMNET.dbo.Login (ID, Email, Password) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO ALUMNET.dbo.Login (Email, Password) VALUES (?, ?)";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
-			stmt.setInt(1, dto.getID());
-			stmt.setString(2, dto.getEmail());
-			stmt.setString(3, dto.getPassword());
+			stmt.setString(1, dto.getEmail());
+			stmt.setString(2, dto.getPassword());
 
 			stmt.executeQuery();
 		}
@@ -91,13 +76,13 @@ public class LoginDAO {
 			throw new Exception("dto passed cannot be null");
 		} else {
 			//Has to have  id so we can delete
-			if (dto.getID() == Integer.MIN_VALUE) {
-				throw new Exception("ID cannot be null...");
+			if (dto.getEmail() == null) {
+				throw new Exception("Email cannot be null...");
 			} else {
-				String sql = "DELETE FROM ALUMNET.dbo.Login WHERE ID=?";
+				String sql = "DELETE FROM ALUMNET.dbo.Login WHERE Email=?";
 				PreparedStatement stmt = conn.prepareStatement(sql);
 
-				stmt.setInt(1, dto.getID());
+				stmt.setString(1, dto.getEmail());
 
 				stmt.executeQuery();
 			}
@@ -109,12 +94,12 @@ public class LoginDAO {
 		if(dto == null) {
 			throw new Exception("dto passed cannot be null");
 		} else {
-			String sql = "UPDATE ALUMNET.dbo.Login SET Email=?, Password=? WHERE ID=?";
+			String sql = "UPDATE ALUMNET.dbo.Login SET Email=?, Password=? WHERE Email=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, dto.getEmail());
 			stmt.setString(2, dto.getPassword());
-			stmt.setInt(3, dto.getID());
+			stmt.setString(3, dto.getEmail());
 			stmt.executeUpdate();
 		}
 	}

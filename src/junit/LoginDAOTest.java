@@ -33,7 +33,6 @@ public class LoginDAOTest extends TestCase {
 
         dto = new LoginDTO();
 
-        dto.setID(0);
         dto.setEmail("jarcher1200@gmail.com");
         dto.setPassword("password");
     }
@@ -47,16 +46,17 @@ public class LoginDAOTest extends TestCase {
     @Test
     public void testSelect() {
         UserDTO tDto = null;
+        String type = null;
 
 
         try {
             //returns a UserDTO object if the signin worked
-            tDto = dao.select(dto, "student");
+            type = dao.select(dto);
         } catch (Exception e) {
             fail("Hit error with select " + e.getMessage());
         }
 
-        assertNotNull(tDto);
+        assertNotNull(type);
 
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
@@ -65,6 +65,7 @@ public class LoginDAOTest extends TestCase {
     @Test
     public void testUpdate() {
         UserDTO tDto = null;
+        String type = null;
 
         try {
             //capitalize password as the update
@@ -72,13 +73,13 @@ public class LoginDAOTest extends TestCase {
             dao.update(dto);
 
             //now see if the update worked
-            tDto = dao.select(dto, "student");
+            type = dao.select(dto);
         } catch (Exception e) {
             fail("Hit error with update " + e.getMessage());
         }
 
 
-        assertNotNull(tDto);
+        assertNotNull(type);
 
         try {
             //revert the test
@@ -95,35 +96,35 @@ public class LoginDAOTest extends TestCase {
 
     @Test
     public void testDelete() throws Exception {
-        //delete data then re-input it for the insert test
+        //delete data
         UserDTO tDto = null;
+        String type = null;
 
         try {
             dao.delete(dto);
 
             //see if select returns anything
-            tDto = dao.select(dto, "student");
-            fail("Deleted the row... was supposed to be blocked");
+            type = dao.select(dto);
+            assertNull(type);
         } catch (Exception e) {
-            System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
-                    "\n--------------------------------------------------------------");
+            System.out.println("Error running testDelete(): " + e.getMessage());
         }
 
     }
 
     @Test
     public void testInsert() {
-        //insert should fail since dup key
+        //insert should set back up environment
         UserDTO tDto = null;
+        String type = null;
 
         try {
             dao.insert(dto);
 
-            tDto = dao.select(dto, "student");
-            fail("duplicate key... should have failed");
+            type = dao.select(dto);
+            assertNotNull(type);
         } catch (Exception e) {
-            System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
-                    "\n--------------------------------------------------------------");
+            System.out.println("Error running testInsert(): " + e.getMessage());
         }
 
     }
