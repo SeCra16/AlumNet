@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<?xml-stylesheet type="text/xsl" href="../CSS/copy.xsl"?>
+<%@ page language="java" contentType="text/html" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -51,32 +51,45 @@
 	<main>
 	<!--Main content of page!-->
 	
+	<div class="background" style="margin-left: 35%">
+	    <br/>
+	    <img class="bg" src="../Images/it.jpg" alt="it" style="width:50%"/>
+	    <img class="bg" src="../Images/hedges.jpg" alt="hedges" style="width:50%"/>
+	    <img class="bg" src="../Images/circle.jpg" alt="circle" style="width:50%"/>
+	</div>
+	
+	<script>
+var slideIndex = 0;
+carousel();
 
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("bg");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 5000); // Change image every 5 seconds
+}
+</script>
 			
 		<br/>
 		<h2 id="u_e">
-			Here are upcoming Alumni related events on campus!
-			
+		    Upcoming campus related events!	
 		</h2>
 		
 		<br/>
 		<br/>
 		
 		<div id = "upcoming"><!--Got this from GSU website!-->
-		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&types=88966&days=60&num=25&match=all&show_types=0&target_blank=1&template=modern"></script>
-		<div id="lclst_widget_footer">
-		    <a rel="nofollow" style="margin-left:auto;margin-right:auto;display:block;width:81px;margin-top:10px;"></a>
-		</div>
-		
+		<script type="text/javascript" src="http://calendar.georgiasouthern.edu/widget/combo?schools=georgia&days=14&num=10&hide_past=1&template=card"></script>
 		</div>
 		
 	</main>
 	
-	<!-- **This is to enable the "Top of Page" button to be centered on page!** -->
-	<div class="topper">
-		<a href = "#top">Top of Page<br/></a>
-		
-	</div>
+	
 	</div>
 	<div id="footer">
 		AlumNet<sub>&copy;</sub> 2016
