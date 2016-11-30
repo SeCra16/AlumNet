@@ -44,32 +44,11 @@ public class MessageDAOTest extends TestCase {
     }
 
     @Test
-    public void testSelect() {
-
-        MessageDTO dto = new MessageDTO();
-
-        //need test id
-        dto.setConnectionID(0);
-        dto.setMessageID(0);
-
-        try {
-            dto = dao.select(dto);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Assert.assertEquals("test", dto.getMessage());
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass "+
-                "\n--------------------------------------------------------------");
-    }
-
-    @Test
     public void testInsert() throws Exception {
         MessageDTO dto = new MessageDTO();
 
-        Random r = new Random();
-        dto.setMessageID(r.nextInt(10000));
-        dto.setConnectionID(0);
+        dto.setAlumnusEmail("sebas@gmail.com");
+        dto.setStudentEmail("jarcher1200@gmail.com");
         dto.setMessage("test");
 
 
@@ -81,13 +60,38 @@ public class MessageDAOTest extends TestCase {
 
         MessageDTO test = dao.select(dto);
 
-        Assert.assertEquals(dto.getConnectionID(), test.getConnectionID());
-        Assert.assertEquals(dto.getMessageID(), test.getMessageID());
-        Assert.assertEquals(dto.getMessage(), test.getMessage());
+        //test all the values
+        assertEquals(dto.getMessageID(), test.getMessageID());
+        assertEquals(dto.getAlumnusEmail(), test.getAlumnusEmail());
+        assertEquals(dto.getStudentEmail(), test.getStudentEmail());
+        assertEquals(dto.getMessage(), test.getMessage());
 
 
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass" +
                 "\n--------------------------------------------------------------");
 
+    }
+    
+    @Test
+    public void testSelect() {
+    	
+    	//insert should of put data there so we should be good
+
+        MessageDTO dto = new MessageDTO();
+
+        //need test id
+        dto.setAlumnusEmail("sebas@gmail.com");
+        dto.setStudentEmail("jarcher1200@gmail.com");
+        dto.setMessage("test");
+
+        try {
+            dto = dao.select(dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        assertEquals("test", dto.getMessage());
+        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass "+
+                "\n--------------------------------------------------------------");
     }
 }
