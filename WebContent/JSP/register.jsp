@@ -78,6 +78,8 @@
 			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
 			<s:password label="Password" type="password" name="alumnus.password" id="pw" placeholder="*********" /><br/><br/>
+		    <label id="l18">Profile Picture</label>
+			<s:file id="pic" name="alumnus.picture"/><br/><br/>
 		    <s:submit type="submit" name="submit" value="submit" id="submit" />
 		</s:div>	
 		
@@ -88,7 +90,7 @@
 		    <label id="l11">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="student.lastName" id="lastName" placeholder="Doe" /><br/><br/>
 		    <label id="l12">Student ID</label>
-			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" min="900000000" /><br/><br/>
+			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" max="8"/><br/><br/>
 		    <label id="l13">Grad Year</label>
 			<s:textfield label="Grad Year" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
@@ -99,6 +101,8 @@
 			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
 			<s:password label="Password" type="password" name="student.password" id="pw" placeholder="*********" min="8" /><br/><br/>
+		    <label id="l19">Profile Picture</label>
+			<s:file id="pic" name="student.picture"/><br/><br/>
 		    <s:submit type="submit" name="submit" value="submit" id="submit" />
 		</s:div>
 		
