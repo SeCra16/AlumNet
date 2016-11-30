@@ -77,7 +77,7 @@
 		    <label id="l8">Email</label>
 			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
-			<s:password label="Password" type="password" name="alumnus.password" id="pw" placeholder="*********" /><br/><br/>
+			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" /><br/><br/>
 		    <label id="l18">Profile Picture</label>
 			<s:file id="pic" name="alumnus.picture"/><br/><br/>
 		    <s:submit type="submit" name="submit" value="submit" id="submit" />
@@ -100,7 +100,7 @@
 		    <label id="l16">Email</label>
 			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
-			<s:password label="Password" type="password" name="student.password" id="pw" placeholder="*********" min="8" /><br/><br/>
+			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" min="8" /><br/><br/>
 		    <label id="l19">Profile Picture</label>
 			<s:file id="pic" name="student.picture"/><br/><br/>
 		    <s:submit type="submit" name="submit" value="submit" id="submit" />
