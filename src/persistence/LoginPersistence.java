@@ -33,6 +33,8 @@ public class LoginPersistence extends AlumNetPersistence{
 		close();
 	}
 	
+	
+	//what happens if i return this
 	public UserDTO login(LoginDTO dto) throws SQLException, Exception {
 		//connect to database
 		connect();
