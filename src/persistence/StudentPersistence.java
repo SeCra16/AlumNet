@@ -26,6 +26,7 @@ public class StudentPersistence extends AlumNetPersistence{
             //set the values
             temp.setEmail(dto.getEmail());
             temp.setPassword(password);
+            temp.setType("student");
 
             LoginService loginService = new LoginService();
 

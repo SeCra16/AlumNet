@@ -1,8 +1,5 @@
 package dao;
-import dto.AlumniDTO;
 import dto.LoginDTO;
-import dto.StudentDTO;
-import dto.UserDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -60,11 +57,12 @@ public class LoginDAO {
 			}
 
 			//We know every field is initialized so we can insert
-			String sql = "INSERT INTO ALUMNET.dbo.Login (Email, Password) VALUES (?, ?)";
+			String sql = "INSERT INTO ALUMNET.dbo.Login (Email, Password, Type) VALUES (?, ?, ?)";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, dto.getEmail());
 			stmt.setString(2, dto.getPassword());
+			stmt.setString(3, dto.getType());
 
 			stmt.executeQuery();
 		}
