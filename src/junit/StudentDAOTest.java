@@ -39,7 +39,6 @@ public class StudentDAOTest extends TestCase {
     public void testSelect() {
         StudentDTO dto = new StudentDTO();
 
-        dto.setStudentID(0);
         dto.setFirstName("Josh");
         dto.setLastName("Archer");
         dto.setEmail("jarcher1200@gmail.com");
@@ -53,7 +52,7 @@ public class StudentDAOTest extends TestCase {
 
         System.out.println(dto.getExpectedGraduation());
 
-        assertEquals(0, dto.getStudentID());
+        assertNotNull(dto);
 
 
         System.out.println(new Object(){}.getClass().getEnclosingMethod().getName() + ": pass "+

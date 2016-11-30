@@ -27,7 +27,6 @@ public class UserServiceTest extends TestCase {
         dto.setFirstName("test");
         dto.setLastName("alumnet");
         dto.setEmail("testing@alumnet.net");
-        dto.setStudentID(0);
         dto.setMajor("test");
         dto.setActive(true);
 

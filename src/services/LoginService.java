@@ -1,20 +1,18 @@
 package services;
 
-import java.sql.SQLException;
-import java.util.Map;
-
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.SessionAware;
-
 import com.opensymphony.xwork2.ActionSupport;
-
 import dto.AlumniDTO;
 import dto.LoginDTO;
 import dto.StudentDTO;
 import dto.UserDTO;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 import persistence.AlumNetFactory;
 import persistence.LoginPersistence;
 import util.ANConstants;
+
+import java.sql.SQLException;
+import java.util.Map;
 
 public class LoginService extends ActionSupport implements SessionAware{
 
@@ -61,6 +59,19 @@ public class LoginService extends ActionSupport implements SessionAware{
 			e.printStackTrace();
 		}
 		
+		return ANConstants.SUCCESS;
+	}
+
+	public String createLogin(LoginDTO dto) {
+		try {
+			LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
+			lPer.addLogin(dto);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return ANConstants.SUCCESS;
 	}
 	

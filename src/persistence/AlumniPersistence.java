@@ -1,10 +1,12 @@
 package persistence;
 
 
-import java.sql.SQLException;
-
 import dao.AlumniDAO;
 import dto.AlumniDTO;
+import dto.LoginDTO;
+import services.LoginService;
+
+import java.sql.SQLException;
 
 public class AlumniPersistence extends AlumNetPersistence{
 	private AlumniDAO dao;
@@ -13,13 +15,36 @@ public class AlumniPersistence extends AlumNetPersistence{
 		
 	}
 	
-	public void addAlumnus(AlumniDTO dto) throws SQLException, Exception {
-		connect();
-		dao = new AlumniDAO(getConnection());
-		
-		dao.insert(dto);
+	public void addAlumnus(AlumniDTO dto, String password) throws SQLException, Exception {
+		try {
+            connect();
 
-		close();
+            //need to create the login first
+            LoginDTO temp = new LoginDTO();
+
+            //set the values
+            temp.setEmail(dto.getEmail());
+            temp.setPassword(password);
+
+            LoginService loginService = new LoginService();
+
+            loginService.createLogin(temp);
+
+            if (loginService.equals("SUCCESS")) {
+                //close the connection then reopen
+                close();
+
+                connect();
+
+                //create dao with connection
+                dao = new AlumniDAO(getConnection());
+
+                //insert the dto into database
+                dao.insert(dto);
+            }
+        } finally {
+		    close();
+        }
 	}
 
 	public AlumniDTO viewAlumnus(AlumniDTO alumnus) throws SQLException, Exception {

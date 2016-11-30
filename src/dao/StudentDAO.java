@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -30,14 +31,19 @@ private Connection conn = null;
 	public UserDTO select(UserDTO DTO) throws SQLException, Exception {
 		StudentDTO dto = (StudentDTO) DTO;
 		//Check if the dto is null
-		if(dto == null || dto.getStudentID() == Integer.MIN_VALUE) {
-			throw new Exception("dto passed cannot be null nor can the Id be");
-		} else {
+		if(dto == null ) {
+            throw new Exception("dto passed cannot be null");
+        } else {
+
+		    if (dto.getEmail() == null) {
+		        throw new Exception("email cannot be null");
+            }
+
 			Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=?";
+            String sql = "SELECT * FROM ALUMNET.dbo.Student WHERE Email=?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, dto.getStudentID());
+            ps.setString(1, dto.getEmail());
 
             ResultSet rs = ps.executeQuery();
 
@@ -46,7 +52,6 @@ private Connection conn = null;
 			
 			try {
 				while(rs.next()) {
-					rDTO.setStudentID(rs.getInt("Student_ID"));
 					rDTO.setFirstName(rs.getString("First_Name"));
 					rDTO.setLastName(rs.getString("Last_Name"));
 					rDTO.setExpectedGraduation(rs.getDate("Expected_Graduation"));
@@ -97,14 +102,14 @@ private Connection conn = null;
 
                     Statement st = conn.createStatement();
 
-                    ResultSet rs2 = st.executeQuery("SELECT Alumni_ID FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
-                    int i = 0;
-                    int[] temp = new int[10000];
+                    ResultSet rs2 = st.executeQuery("SELECT Alumni_Email FROM ALUMNET.dbo.Connected WHERE Student_Email=" + dto.getEmail());
+
+                    ArrayList<String> temp = new ArrayList<String>();
                     while (rs2.next()) {
-                        temp[i++] = rs2.getInt("Alumni_ID");
+                        temp.add(rs2.getString("Alumni_Email"));
                     }
 
-                    rDTO.setConnections(temp);
+                    rDTO.setConnections((String[])temp.toArray());
 				}
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database....\n" + e.getMessage());
@@ -123,9 +128,7 @@ private Connection conn = null;
 		} else {
 			
 			//Check if any field of the dto is empty *NOTE: Only picture can be null/empty*
-			if (dto.getStudentID() == Integer.MIN_VALUE) {
-				throw new Exception("StudentID cannot be empty... failing to attempt insert");
-			} else if (dto.getFirstName() == null) {
+            if (dto.getFirstName() == null) {
 				throw new Exception("First Name cannot be empty... failing to attempt insert");
 			} else if (dto.getLastName() == null) {
 				throw new Exception("Last Name cannot be empty... failing to attempt insert");
@@ -140,61 +143,53 @@ private Connection conn = null;
 			//We know every field is initialized so we can insert
 			Statement stmt = conn.createStatement();
 
-            String sql = "INSERT INTO ALUMNET.dbo.Student (Student_ID, First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO ALUMNET.dbo.Student (First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement myStmt = conn.prepareStatement(sql);
 
-            myStmt.setInt(1, dto.getStudentID());
-            myStmt.setString(2, dto.getFirstName());
-            myStmt.setString(3, dto.getLastName());
+            myStmt.setString(1, dto.getFirstName());
+            myStmt.setString(2, dto.getLastName());
             java.sql.Date date = new java.sql.Date(dto.getExpectedGraduation().getTime());
-            myStmt.setDate(4, date);
-            myStmt.setString(5, dto.getEmail());
-            myStmt.setString(6, dto.getMajor());
+            myStmt.setDate(3, date);
+            myStmt.setString(4, dto.getEmail());
+            myStmt.setString(5, dto.getMajor());
 
             //try resume, unless its empty
             try {
 
                 FileInputStream is = new FileInputStream(dto.getResume());
 
-                myStmt.setBinaryStream(7, is);
+                myStmt.setBinaryStream(6, is);
 
             } catch (Exception e) {
                 System.out.println("no resume so skip ");
-                myStmt.setNull(7, Types.VARBINARY);
+                myStmt.setNull(6, Types.VARBINARY);
             }
 
-            myStmt.setBoolean(8, dto.getActive());
+            myStmt.setBoolean(7, dto.getActive());
 
             //try picture, unless its empty
             try {
 
                 FileInputStream is2 = new FileInputStream(dto.getPicture());
 
-                myStmt.setBinaryStream(9, is2);
+                myStmt.setBinaryStream(8, is2);
 
             } catch (Exception e) {
                 System.out.println("no picture so skip ");
-                myStmt.setNull(9, Types.VARBINARY);
+                myStmt.setNull(8, Types.VARBINARY);
             }
 
             myStmt.execute();
 
             //do stuff if we have ocnnections
             if (dto.getConnections() != null) {
-                //check the max column index of connection id
-                int max = 0;
-                ResultSet rs = stmt.executeQuery("SELECT MAX(Connection_ID) FROM ALUMNET.dbo.Connected");
-                while (rs.next()) {
-                    max = rs.getInt(0);
-                }
-                int[] connections = dto.getConnections();
-                for (int connection : connections) {
-                    max++;
-                    sql = "INSERT INTO ALUMNET.dbo.Connected (Alumni_ID, Student_ID, Connection_ID) VALUES (?,?,?)";
+
+                String[] connections = dto.getConnections();
+                for (String connection : connections) {
+                    sql = "INSERT INTO ALUMNET.dbo.Connected (Alumni_Email, Student_Email) VALUES (?,?)";
                     PreparedStatement ps = conn.prepareStatement(sql);
-                    ps.setInt(1, connection);
-                    ps.setInt(2, dto.getStudentID());
-                    ps.setInt(3, max);
+                    ps.setString(1, connection);
+                    ps.setString(2, dto.getEmail());
                     ps.execute();
                 }
             }
@@ -215,12 +210,12 @@ private Connection conn = null;
 			throw new Exception("dto passed cannot be null");
 		} else {
 			//Has to have Student id so we can delete 
-			if (dto.getStudentID() == Integer.MIN_VALUE) {
-				throw new Exception("Student Id cannot be null");
+			if (dto.getEmail() == null) {
+				throw new Exception("email cannot be null");
 			} else {
 				Statement stmt = conn.createStatement();
-                stmt.execute("DELETE FROM ALUMNET.dbo.Connected WHERE Student_ID=" + dto.getStudentID());
-				stmt.execute("DELETE FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
+                stmt.execute("DELETE FROM ALUMNET.dbo.Connected WHERE Student_Email=" + dto.getEmail());
+				stmt.execute("DELETE FROM ALUMNET.dbo.Student WHERE Email=" + dto.getEmail());
 			}
 		}
 	}
@@ -233,9 +228,7 @@ private Connection conn = null;
 			throw new Exception("dto passed cannot be null");
 		} else {
 			//Need to check if non-null values in dto are null
-			if (dto.getStudentID() == Integer.MIN_VALUE) {
-				throw new Exception("StudentID cannot be empty... failing to attempt update");
-			} else if (dto.getFirstName() == null) {
+            if (dto.getFirstName() == null) {
 				throw new Exception("First Name cannot be empty... failing to attempt update");
 			} else if (dto.getLastName() == null) {
 				throw new Exception("Last Name cannot be empty... failing to attempt update");
@@ -251,7 +244,7 @@ private Connection conn = null;
 			
 			//Statement stmt = conn.createStatement();
 
-            String sql = "UPDATE ALUMNET.dbo.Student SET First_Name=?, Last_Name=?, Expected_Graduation=?, Email=?, Major=?, Resume=?, Active=?, Picture=? WHERE Student_ID=?";
+            String sql = "UPDATE ALUMNET.dbo.Student SET First_Name=?, Last_Name=?, Expected_Graduation=?, Email=?, Major=?, Resume=?, Active=?, Picture=? WHERE Email=?";
 
             PreparedStatement myStmt = conn.prepareStatement(sql);
 
@@ -288,12 +281,12 @@ private Connection conn = null;
                 myStmt.setNull(8, Types.VARBINARY);
             }
 
-            myStmt.setInt(9, dto.getStudentID());
+            myStmt.setString(9, dto.getEmail());
 
             myStmt.execute();
 			
 			//See if update worked then return the updated dto
-			ResultSet rs = myStmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Student_ID=" + dto.getStudentID());
+			ResultSet rs = myStmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Email=" + dto.getEmail());
 			
 			StudentDTO rDTO;
 			

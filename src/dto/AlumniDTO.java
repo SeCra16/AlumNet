@@ -4,8 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AlumniDTO extends UserDTO {
-	
-	int alumniID = Integer.MIN_VALUE; //Class Specific Variables
+	//Class Specific Variables
 	java.sql.Date graduationDate;
 	String company, jobTitle, jobField;
 	//End Class Specific Variables
@@ -15,7 +14,6 @@ public class AlumniDTO extends UserDTO {
     }
 
 	public AlumniDTO(AlumniDTO dto) {
-	    setAlumniID(dto.getAlumniID());
 
 	    if (dto.getGraduationDate() != null)
 	        setGraduationDate(new java.sql.Date(dto.getGraduationDate().getTime()));
@@ -40,14 +38,6 @@ public class AlumniDTO extends UserDTO {
     }
 	
 	//Class Specific Methods
-	
-	public int getAlumniID(){
-		return alumniID;
-	}
-	
-	public void setAlumniID(int i){
-		alumniID = i;
-	}
 	
 	public Date getGraduationDate(){
 		return graduationDate;

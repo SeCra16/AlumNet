@@ -38,7 +38,6 @@ public class AlumniDAOTest extends TestCase {
     public void testSelect() throws Exception {
         AlumniDAO dao = new AlumniDAO(conn);
         AlumniDTO dto = new AlumniDTO();
-        dto.setAlumniID(999);
 
         dto = (AlumniDTO) dao.select(dto);
 
@@ -53,7 +52,6 @@ public class AlumniDAOTest extends TestCase {
         AlumniDAO dao = new AlumniDAO(conn);
         AlumniDTO dto = new AlumniDTO();
 
-        dto.setAlumniID(0);
         dto = (AlumniDTO) dao.select(dto);
 
         AlumniDTO tDto = new AlumniDTO(dto);
@@ -82,7 +80,6 @@ public class AlumniDAOTest extends TestCase {
     public void testDelete() throws Exception {
         AlumniDAO dao = new AlumniDAO(conn);
         AlumniDTO dto = new AlumniDTO();
-        dto.setAlumniID(999);
 
         dao.delete(dto);
 
@@ -98,7 +95,6 @@ public class AlumniDAOTest extends TestCase {
     public void testInsert() throws Exception {
         AlumniDAO dao = new AlumniDAO(conn);
         AlumniDTO dto = new AlumniDTO();
-        dto.setAlumniID(999);
         dto.setFirstName("Josh");
         dto.setLastName("Archer");
         dto.setEmail("jarcher1200@gmail.com");

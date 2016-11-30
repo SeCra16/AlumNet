@@ -13,12 +13,12 @@ import util.ANConstants;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class UserService extends ActionSupport implements SessionAware{
 	private static final long serialVersionUID = 1L;
 	private AlumniDTO alumnus;
 	private StudentDTO student;
+	private String password;
 	private SessionMap<String,Object> sessionMap;
 	private List<String> majors;
 	
@@ -28,10 +28,9 @@ public class UserService extends ActionSupport implements SessionAware{
 				//Get a unique persistence for student
 				StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
 				
-				persistence.addStudent(student);
+				persistence.addStudent(student, password);
 
-                //** TO-DO: CREATE LOGIN CODE THAT WILL GIVE USER DTO AS WELL AS CREATE THE LOGIN **//
-
+                sessionMap.put("user", student);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return ANConstants.ERROR;
@@ -91,9 +90,8 @@ public class UserService extends ActionSupport implements SessionAware{
 		try {
 			//Get a unique persistence for Alumni
 			AlumniPersistence persistence = AlumNetFactory.getAlumniPersistence();
-			alumnus.setAlumniID(new Random().nextInt(100000));
 			
-			persistence.addAlumnus(alumnus);
+			persistence.addAlumnus(alumnus, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;
@@ -149,4 +147,6 @@ public class UserService extends ActionSupport implements SessionAware{
 	public List<String> getMajors() {
 	    return majors;
 	}
+
+	public void setPassword(String p) {password = p; }
 }

@@ -4,7 +4,7 @@ import java.io.File;
 public class UserDTO {
 	String FirstName, LastName, Email;
 	boolean active = true;
-	int[] connections;
+	String[] connections;
 	File Picture;
 	
 	public String getFirstName() {
@@ -37,10 +37,10 @@ public class UserDTO {
 		active = b;
 	}
 	
-	public int[] getConnections() {
+	public String[] getConnections() {
 		return connections;
 	}
-	public void setConnections(int[] ia) {
+	public void setConnections(String[] ia) {
 		connections = ia;
 	}
 	
