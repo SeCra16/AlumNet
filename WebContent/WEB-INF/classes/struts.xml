@@ -6,11 +6,6 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     <package name="default" namespace="/" extends="struts-default">
-	
-        <action name="hello"
-                class="com.alumnet.Name">
-                <result name="SUCCESS"></result>
-        </action>
 
         <action name="addStudent"
             class="services.UserService" method="addStudent">
@@ -31,12 +26,6 @@
         </action>
 	
 	<action name="setupRegistration"
-		class="services.UserService" method="setupRegistration">
-		<result name="SUCCESS">/JSP/register.jsp</result>	
-		<result name="ERROR">/JSP/error.jsp</result>
-	</action>
-	
-	<action name="setupRegistration2"
 		class="services.UserService" method="setupRegistration">
 		<result name="SUCCESS">/JSP/register.jsp</result>	
 		<result name="ERROR">/JSP/error.jsp</result>
