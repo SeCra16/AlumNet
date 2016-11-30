@@ -266,7 +266,7 @@ p#p{
 	text-align: center;
 }
 
-form#register_page input, input#firstName, input#lastName, input#Grad, input#expectedGraduation, select#major, input#jobComp, input#jobTitle, input#jobField, input#Email, input#pw, input#id{
+form#register_page input, input#firstName, input#lastName, input#Grad, input#expectedGraduation, select#major, input#jobComp, input#jobTitle, input#jobField, input#Email, input#pw, input#id, input#pic{
 	text-align: center;
 	width: 25%;
 	margin-right: 25%;
