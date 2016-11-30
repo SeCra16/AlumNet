@@ -7,6 +7,11 @@ function submitReg(){
 alert("Welcome " + name);
 }
 
+if ( $('#Grad')[0].type !== 'date' ) $('#Grad').datepicker();
+
+if ( $('#expectedGraduation')[0].type !== 'date' ) $('#expectedGraduation').datepicker();
+
+
 /***************** Added directly to the JSP *******************
 function alumCheck() {
     if (document.getElementById('regForm').checked) 

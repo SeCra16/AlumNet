@@ -66,8 +66,8 @@
 			<s:textfield type="string" name = "alumnus.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l2">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="alumnus.lastName" id="lastName" placeholder="Doe" /><br/><br/>
-		    <label id="l3">Grad Year</label>
-			<s:textfield label="Grad Year" type = "date" name="alumnus.graduationDate" id="Grad" min="1906-01-02"/><br/><br/>
+		    <label id="l3">Grad Date</label>
+			<s:textfield label="Grad Date" type = "date" name="alumnus.graduationDate" id="Grad" min="1906-01-02"/><br/><br/>
 		    <label id="l5">Company</label>
 			<s:textfield label="Company" type="string" name="alumnus.company" id="jobComp" placeholder="Dell" /><br/><br/>
 		    <label id="l6">Job Title</label>
@@ -91,8 +91,8 @@
 			<s:textfield label="Last Name" type="string" name="student.lastName" id="lastName" placeholder="Doe" /><br/><br/>
 		    <label id="l12">Student ID</label>
 			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" max="8"/><br/><br/>
-		    <label id="l13">Grad Year</label>
-			<s:textfield label="Grad Year" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
+		    <label id="l13">Grad Date</label>
+			<s:textfield label="Grad Date" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
 			<s:select name="student.major" id="major" list="majors"/><br/><br/>
 		    <label id="l15">Resume</label>
