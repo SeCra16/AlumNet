@@ -215,8 +215,16 @@ div#upcoming{
 /*End of U_E styles*/
 
 /* Start login page styling*/
+form#login{
+    margin-top: -75%;
+    opacity: .9;
+    border: 1px solid black;
+    background-color: #ffffff;
+}
+
+
 #login{
-	text-align: center;
+    text-align: center;
 }
 
 #login_page{
@@ -258,7 +266,7 @@ p#p{
 	text-align: center;
 }
 
-form#register_page input, input#firstName, input#lastName, input#Grad, input#expectedGraduation, input#major, input#jobComp, input#jobTitle, input#jobField, input#Email, input#pw, input#id{
+form#register_page input, input#firstName, input#lastName, input#Grad, input#expectedGraduation, select#major, input#jobComp, input#jobTitle, input#jobField, input#Email, input#pw, input#id{
 	text-align: center;
 	width: 25%;
 	margin-right: 25%;

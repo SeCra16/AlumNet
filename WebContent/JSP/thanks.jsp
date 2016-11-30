@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<?xml-stylesheet type="text/xsl" href="../CSS/copy.xsl"?>
+<%@ page language="java" contentType="text/html" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -29,13 +29,13 @@
 			<div class="dropdown">
 				<button class="dropbtn" id="college">Colleges</button>
 					<div class="dropdown-content">
-						<a href="colleges/ceit.jsp" id="1">CoEIT</a>
-						<a href="colleges/coba.jsp" id="2">CoBA</a>
-						<a href="colleges/class.jsp" id="3">CLASS</a>
-						<a href="colleges/chhs.jsp" id="4">CHHS</a>
-						<a href="colleges/cosm.jsp" id="5">CoSM</a>
-						<a href="colleges/coe.jsp" id="6">CoE</a>
-						<a href="colleges/coph.jsp" id="7">CoPH</a>
+						<a href="ceit.jsp" id="1">CoEIT</a>
+						<a href="coba.jsp" id="2">CoBA</a>
+						<a href="class.jsp" id="3">CLASS</a>
+						<a href="chhs.jsp" id="4">CHHS</a>
+						<a href="cosm.jsp" id="5">CoSM</a>
+						<a href="coe.jsp" id="6">CoE</a>
+						<a href="coph.jsp" id="7">CoPH</a>
 					</div>
 				</div>&nbsp;
 			<a href = "about.jsp">About AlumNet</a>&nbsp;
@@ -44,7 +44,7 @@
 				<button class="dropbtn" id="account">My Account</button>
 					<div class="dropdown-content">	
 						<a href = "login.jsp">Login</a>
-						<a href = "register.jsp">Register</a>
+						<a href="<s:url action="setupRegistration2"/>">Register</a>						   
 					</div>
 				</div>&nbsp;
 	</div>
@@ -55,7 +55,7 @@
 		<br/>
 		<br/>
 		<h1>
-		    <strong>Thanks <s:property value="name"/> for registering!</strong>
+		    <strong>Thanks <s:property value="alumnus.firstName"/> <s:property value="student.firstName"/> for registering!</strong>
 		</h1>
 	</main>
 

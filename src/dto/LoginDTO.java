@@ -2,8 +2,7 @@ package dto;
 
 public class LoginDTO {
 
-	String email, password;
-	int ID = Integer.MIN_VALUE;
+	String email = null, password;
 	
 	public String getEmail(){
 		return email;
@@ -19,13 +18,5 @@ public class LoginDTO {
 	
 	public void setPassword(String s){
 		password = s;
-	}
-	
-	public int getID(){
-		return ID;
-	}
-	
-	public void setID(int i){
-		ID = i;
 	}
 }
