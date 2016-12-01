@@ -18,7 +18,7 @@
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
     
 	<h1 id="header">
-	    <a href = "index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
+	    <a href = "JSP/index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
 	</h1>
     
 	
@@ -42,7 +42,7 @@
 		<button class="dropbtn" id="account">My Account</button>
 		    <div class="dropdown-content">	
 			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration"/>">Register</a>
+			<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
 		    </div>
 	    </div>&nbsp;
     </div>
