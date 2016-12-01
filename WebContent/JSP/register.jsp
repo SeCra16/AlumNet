@@ -53,8 +53,8 @@
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form namespace="/" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-	    <h2><s:text name="Please Register!"/></h2>
+	<s:form namespace="/" method="POST" enctype="multipart/form-data" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	    <h2><text value="Please Register!"/></h2>
 				    
 		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="type" list="{'Alumnus'}" />
 		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';document.getElementById('reg').action='addStudent';" name="type" list="{'Student'}"/><hr/>
