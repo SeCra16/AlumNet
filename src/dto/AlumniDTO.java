@@ -3,9 +3,11 @@ package dto;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+
 public class AlumniDTO extends UserDTO {
 	//Class Specific Variables
-	java.sql.Date graduationDate;
+	Date graduationDate;
 	String company, jobTitle, jobField;
 	//End Class Specific Variables
 
