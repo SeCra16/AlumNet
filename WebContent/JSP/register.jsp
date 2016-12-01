@@ -18,7 +18,7 @@
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
     
 	<h1 id="header">
-	    <a href = "JSP/index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
+	    <a href = "index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
 	</h1>
     
 	
@@ -54,7 +54,7 @@
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
 	<s:form namespace="/" method="POST" enctype="multipart/form-data" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-	    <h2><text value="Please Register!"/></h2>
+	    <h2>Please Register!</h2>
 				    
 		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="type" list="{'Alumnus'}" />
 		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';document.getElementById('reg').action='addStudent';" name="type" list="{'Student'}"/><hr/>
@@ -94,13 +94,13 @@
 		    <label id="l14">Major</label>
 			<s:select name="student.major" id="major" list="majors"/><br/><br/>
 		    <label id="l15">Resume</label>
-			<s:file id="resume" name="student.resume"/><br/><br/>
+			<s:file id="resume" name="student.resume"  method="POST" enctype="multipart/form-data"/><br/><br/>
 		    <label id="l16">Email</label>
 			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
 			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" min="8" /><br/><br/>
 		    <label id="l19">Profile Picture</label>
-			<s:file id="pic" name="student.picture"/><br/><br/>
+			<s:file id="pic" name="student.picture" method="POST" enctype="multipart/form-data"/><br/><br/>
 		    <s:submit type="submit" value="submit" id="submit" />
 		</s:div>
 		
