@@ -45,7 +45,7 @@ public class AlumniDTO extends UserDTO {
 		return graduationDate;
 	}
 	
-	public void setGraduationDate(java.sql.Date d){
+	public void setGraduationDate(Date d){
 		graduationDate = d;
 	}
 
