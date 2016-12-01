@@ -10,7 +10,7 @@
 	<title>
 	    AlumNet
 	</title>
-<link rel="stylesheet" href="../CSS/alumnet_college.css" type="text/css"/>
+<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css" />
 
 </head>
 <body>	
