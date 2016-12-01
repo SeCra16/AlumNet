@@ -84,6 +84,17 @@ public class LoginService extends ActionSupport implements SessionAware{
 
 		return ANConstants.SUCCESS;
 	}
+
+    public String deleteLogin(LoginDTO temp) throws Exception {
+	    try {
+            LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
+            lPer.deleteLogin(temp);
+        } catch (Exception e) {
+	        System.out.println("Failed to delete the login");
+	        return ANConstants.ERROR;
+        }
+        return ANConstants.SUCCESS;
+    }
 	
 	public LoginDTO getLoginDTO() {
 		return loginDTO;
@@ -104,4 +115,5 @@ public class LoginService extends ActionSupport implements SessionAware{
 	public String getType() {
 		return type;
 	}
+
 }

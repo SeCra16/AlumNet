@@ -1,9 +1,5 @@
 package persistence;
 
-import java.sql.SQLException;
-
-import org.apache.struts2.dispatcher.SessionMap;
-
 import dao.AlumniDAO;
 import dao.LoginDAO;
 import dao.StudentDAO;
@@ -11,6 +7,8 @@ import dto.AlumniDTO;
 import dto.LoginDTO;
 import dto.StudentDTO;
 import dto.UserDTO;
+
+import java.sql.SQLException;
 
 public class LoginPersistence extends AlumNetPersistence{
 	private LoginDAO dao;
@@ -78,4 +76,15 @@ public class LoginPersistence extends AlumNetPersistence{
 		
 		return type;
 	}
+
+    public void deleteLogin(LoginDTO temp) throws Exception {
+
+		connect();
+
+		dao = new LoginDAO(getConnection());
+
+		dao.delete(temp);
+
+		close();
+    }
 }
