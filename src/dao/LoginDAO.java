@@ -36,14 +36,14 @@ public class LoginDAO {
 			
 			//get the type so we can get the user dto
 			while(rs.next()) {
-				type = rs.getString("type");
+				type = rs.getString("type").toLowerCase();
 			}
 			
 			return type;
 		}
 	}
 
-	public void insert(LoginDTO dto) throws Exception {
+	public void insert(LoginDTO dto) throws com.microsoft.sqlserver.jdbc.SQLServerException, Exception {
 		//Check if the dto is null
 		if(dto == null) {
 			throw new Exception("dto passed cannot be null");
@@ -64,7 +64,7 @@ public class LoginDAO {
 			stmt.setString(2, dto.getPassword());
 			stmt.setString(3, dto.getType());
 
-			stmt.executeQuery();
+			stmt.execute();
 		}
 	}
 
@@ -82,7 +82,7 @@ public class LoginDAO {
 
 				stmt.setString(1, dto.getEmail());
 
-				stmt.executeQuery();
+				stmt.execute();
 			}
 		}
 	}

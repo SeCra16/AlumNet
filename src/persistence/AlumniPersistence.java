@@ -15,7 +15,7 @@ public class AlumniPersistence extends AlumNetPersistence{
 		
 	}
 	
-	public void addAlumnus(AlumniDTO dto, String password) throws SQLException, Exception {
+	public void addAlumnus(AlumniDTO dto, String password) throws Exception {
 		try {
             connect();
 
@@ -29,9 +29,9 @@ public class AlumniPersistence extends AlumNetPersistence{
 
             LoginService loginService = new LoginService();
 
-            loginService.createLogin(temp);
+            String result = loginService.createLogin(temp);
 
-            if (loginService.equals("SUCCESS")) {
+            if (result.equals("SUCCESS")) {
                 //close the connection then reopen
                 close();
 
@@ -43,6 +43,8 @@ public class AlumniPersistence extends AlumNetPersistence{
                 //insert the dto into database
                 dao.insert(dto);
             }
+        } catch (Exception e) {
+            throw e;
         } finally {
 		    close();
         }

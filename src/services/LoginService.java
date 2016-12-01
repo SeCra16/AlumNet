@@ -29,14 +29,17 @@ public class LoginService extends ActionSupport implements SessionAware{
 		    UserDTO user = null;
 		    //check login type
 		    String type = lPer.checkType(loginDTO);
-		    if (type.equals("alumnus")) {
-		    	user = (AlumniDTO) lPer.login(loginDTO);
-		    } else if (type.equals("student")){
-		    	user = (StudentDTO) lPer.login(loginDTO);
-		    } else if (type.equals("admin")) {
-		    	//what to do if they are a student
-		    }
-		    
+		    if (type != null) {
+                if (type.equals("alumnus")) {
+                    user = (AlumniDTO) lPer.login(loginDTO);
+                } else if (type.equals("student")) {
+                    user = (StudentDTO) lPer.login(loginDTO);
+                } else if (type.equals("admin")) {
+                    //what to do if they are a student
+                }
+            } else {
+		        return ANConstants.ERROR;
+            }
 			sessionMap.put("user", user);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,14 +65,21 @@ public class LoginService extends ActionSupport implements SessionAware{
 		return ANConstants.SUCCESS;
 	}
 
-	public String createLogin(LoginDTO dto) {
+	public String createLogin(LoginDTO dto) throws Exception {
 		try {
-			LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
-			lPer.addLogin(dto);
+			loginDTO = dto;
+			if (validateUser().equals(ANConstants.ERROR)) {
+
+                if (sessionMap != null) {
+                    if (!sessionMap.containsKey("user"))
+                        throw new Exception("User exists already");
+                }
+                LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
+                lPer.addLogin(dto);
+            }
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+			return ANConstants.ERROR;
 		}
 
 		return ANConstants.SUCCESS;

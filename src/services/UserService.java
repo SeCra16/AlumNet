@@ -21,6 +21,7 @@ public class UserService extends ActionSupport implements SessionAware{
 	private String password;
 	private SessionMap<String,Object> sessionMap;
 	private List<String> majors;
+	private List<String> jobFields;
 	
 	//method to add student
 		public String addStudent() {
@@ -30,6 +31,7 @@ public class UserService extends ActionSupport implements SessionAware{
 				
 				persistence.addStudent(student, password);
 
+				//store the user we inserted in the session
                 sessionMap.put("user", student);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -64,6 +66,8 @@ public class UserService extends ActionSupport implements SessionAware{
 				StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
 				
 				setStudent(persistence.updateStudent(student));
+
+				//store new user in session
 				sessionMap.put("user",getStudent());
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -92,7 +96,7 @@ public class UserService extends ActionSupport implements SessionAware{
 			AlumniPersistence persistence = AlumNetFactory.getAlumniPersistence();
 			
 			persistence.addAlumnus(alumnus, password);
-		} catch (SQLException e) {
+		} catch (com.microsoft.sqlserver.jdbc.SQLServerException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;
 		} catch (Exception e) {
@@ -120,7 +124,7 @@ public class UserService extends ActionSupport implements SessionAware{
 		return ANConstants.SUCCESS;
 	}
 	
-	//accessors and mutators for Alumnidto
+	//accessors and mutators
 	public AlumniDTO getAlumnus() {
 		return alumnus;
 	}
@@ -139,7 +143,6 @@ public class UserService extends ActionSupport implements SessionAware{
 	    return ANConstants.SUCCESS;
 	}
 
-	//getters and setters 
 	public void setMajors(List<String> m){
 	    majors = m;
 	}
@@ -149,4 +152,13 @@ public class UserService extends ActionSupport implements SessionAware{
 	}
 
 	public void setPassword(String p) {password = p; }
+
+
+	public List<String> getJobFields() {
+		return jobFields;
+	}
+
+	public void setJobFields(List<String> jobFields) {
+		this.jobFields = jobFields;
+	}
 }
