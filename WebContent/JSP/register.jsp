@@ -18,31 +18,31 @@
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
     
 	<h1 id="header">
-	    <a href = "index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
+	    <a href = "JSP/index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
 	</h1>
     
 	
     <!--Navigation Bar-->
     <div class = "nav">
-	<a href = "index.jsp">Home</a>&nbsp;
+	<a href = "JSP/index.jsp">Home</a>&nbsp;
 	    <div class="dropdown">
 		<button class="dropbtn">Colleges</button>
 		    <div class="dropdown-content">
-			<a href="ceit.jsp">CoEIT</a>
-			<a href="coba.jsp">CoBA</a>
-			<a href="class.jsp">CLASS</a>
-			<a href="chhs.jsp">CHHS</a>
-			<a href="cosm.jsp">CoSM</a>
-			<a href="coe.jsp">CoE</a>
-			<a href="coph.jsp">CoPH</a>
+			<a href="JSP/ceit.jsp">CoEIT</a>
+			<a href="JSP/coba.jsp">CoBA</a>
+			<a href="JSP/class.jsp">CLASS</a>
+			<a href="JSP/chhs.jsp">CHHS</a>
+			<a href="JSP/cosm.jsp">CoSM</a>
+			<a href="JSP/coe.jsp">CoE</a>
+			<a href="JSP/coph.jsp">CoPH</a>
 		    </div>
 	    </div>&nbsp;
-	<a href = "about.jsp">About AlumNet</a>&nbsp;
+	<a href = "JSP/about.jsp">About AlumNet</a>&nbsp;
 	    <div class="dropdown">
 		<button class="dropbtn" id="account">My Account</button>
 		    <div class="dropdown-content">	
-			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration"/>">Register</a>
+			<a href = "JSP/login.jsp">Login</a>
+			<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
 		    </div>
 	    </div>&nbsp;
     </div>
@@ -89,8 +89,6 @@
 			<s:textfield label="First Name" type="string" name = "student.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l11">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="student.lastName" id="lastName" placeholder="Doe" /><br/><br/>
-		    <label id="l12">Student ID</label>
-			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" max="8"/><br/><br/>
 		    <label id="l13">Grad Date</label>
 			<s:textfield label="Grad Date" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
