@@ -15,7 +15,7 @@ public class StudentPersistence extends AlumNetPersistence{
 		
 	}
 	
-	public void addStudent(StudentDTO dto, String password) throws SQLException, Exception {
+	public void addStudent(StudentDTO dto, String password) throws Exception {
 	    try {
             //connect to the database
             connect();
@@ -30,9 +30,9 @@ public class StudentPersistence extends AlumNetPersistence{
 
             LoginService loginService = new LoginService();
 
-            loginService.createLogin(temp);
+            String result = loginService.createLogin(temp);
 
-            if (loginService.equals("SUCCESS")) {
+            if (result.equals("SUCCESS")) {
                 //close the connection then reopen
                 close();
 

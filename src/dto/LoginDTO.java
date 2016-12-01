@@ -11,7 +11,7 @@ public class LoginDTO {
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		this.type = type.toLowerCase();
 	}
 	
 	public String getEmail(){
@@ -19,7 +19,7 @@ public class LoginDTO {
 	}
 	
 	public void setEmail(String s){
-		email = s;
+		email = s.toLowerCase();
 	}
 	
 	public String getPassword(){

@@ -143,7 +143,7 @@ private Connection conn = null;
 			//We know every field is initialized so we can insert
 			Statement stmt = conn.createStatement();
 
-            String sql = "INSERT INTO ALUMNET.dbo.Student (First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO ALUMNET.dbo.Student (First_Name, Last_Name, Expected_Graduation, Email, Major, Resume, Active, Picture) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement myStmt = conn.prepareStatement(sql);
 
             myStmt.setString(1, dto.getFirstName());

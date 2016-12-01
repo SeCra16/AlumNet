@@ -56,8 +56,8 @@
 	<s:form namespace="/" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 	    <h2><s:text name="Please Register!"/></h2>
 				    
-		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="alumStud" list="{'Alumnus'}" />
-		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';document.getElementById('reg').action='addStudent';" name="alumStud" list="{'Student'}"/><hr/>
+		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="type" list="{'Alumnus'}" />
+		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';document.getElementById('reg').action='addStudent';" name="type" list="{'Student'}"/><hr/>
 			
 		<!-- ****************** ALUM **************
 		*********************** Mapped action: addAlumnus -->
@@ -80,7 +80,7 @@
 			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" /><br/><br/>
 		    <label id="l18">Profile Picture</label>
 			<s:file id="pic" name="alumnus.picture"/><br/><br/>
-		    <s:submit type="submit" name="submit" value="submit" id="submit" />
+		    <s:submit type="submit"  value="submit" id="submit" />
 		</s:div>	
 		
 		<!-- **************STUDENT ******** -->
@@ -89,8 +89,6 @@
 			<s:textfield label="First Name" type="string" name = "student.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l11">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="student.lastName" id="lastName" placeholder="Doe" /><br/><br/>
-		    <label id="l12">Student ID</label>
-			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" max="8"/><br/><br/>
 		    <label id="l13">Grad Date</label>
 			<s:textfield label="Grad Date" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
@@ -103,7 +101,7 @@
 			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" min="8" /><br/><br/>
 		    <label id="l19">Profile Picture</label>
 			<s:file id="pic" name="student.picture"/><br/><br/>
-		    <s:submit type="submit" name="submit" value="submit" id="submit" />
+		    <s:submit type="submit" value="submit" id="submit" />
 		</s:div>
 		
 
