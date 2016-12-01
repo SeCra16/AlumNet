@@ -12,7 +12,6 @@
 	    AlumNet
 	</title>
 				<LINK rel="stylesheet" href="CSS/alumnet_styling.css" type="text/css"/>
-				<script type="text/javascript" src="/JS/login.js"></script>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
