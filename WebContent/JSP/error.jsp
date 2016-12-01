@@ -11,7 +11,7 @@
 	<title>
 	    AlumNet
 	</title>
-				<LINK rel="stylesheet" href="CSS/alumnet_styling.css" type="text/css"/>
+				<link rel="stylesheet" href="CSS/alumnet_styling.css" type="text/css"/>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->

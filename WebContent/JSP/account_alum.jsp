@@ -1,16 +1,17 @@
+<%@page import="java.io.PrintWriter"%>
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<?xml-stylesheet type="text/xsl" href="../CSS/copy.xsl"?>
-<%@ page language="java" contentType="text/html" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
+<%@taglib prefix="s" uri="/struts-tags" %>
 <head>
 	<title>
-	    AlumNet::Alum Account
+	    AlumNet
 	</title>
-				<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
-				<script type="text/javascript" src="../JS/login.js"></script>
+				<link rel="stylesheet" href="CSS/alumnet_styling.css" type="text/css"/>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -18,43 +19,42 @@
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	
 		<h1 id="header">
-		    <s:a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></s:a>
-		</h1>
-        
+	    <a href = "JSP/index.jsp"><img src="Images/logo.png" alt="" id="logo"/></a>
+	</h1>
+    
 	
-	<!--Navigation Bar-->
-	<s:div class = "nav">
-		<s:a href = "index.jsp">Home</s:a>&nbsp;
-			<s:div class="dropdown">
-				<button class="dropbtn" id="college">Colleges</button>
-					<s:div class="dropdown-content">
-						<s:a href="ceit.jsp">CoEIT</s:a>
-						<s:a href="coba.jsp">CoBA</s:a>
-						<s:a href="class.jsp">CLASS</s:a>
-						<s:a href="chhs.jsp">CHHS</s:a>
-						<s:a href="cosm.jsp">CoSM</s:a>
-						<s:a href="coe.jsp">CoE</s:a>
-						<s:a href="coph.jsp">CoPH</s:a>
-					</s:div>
-			</s:div>&nbsp;
-			<s:a href = "about.jsp">About AlumNet</s:a>&nbsp;
-			
-			<s:div class="dropdown">
-				<button class="dropbtn" id="account">My Account</button>
-					<s:div class="dropdown-content">	
-						<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
-						<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
-					</s:div>
-			</s:div>&nbsp;
-	</s:div>
-
+    <!--Navigation Bar-->
+    <div class = "nav">
+	<a href = "JSP/index.jsp">Home</a>&nbsp;
+	    <div class="dropdown">
+		<button class="dropbtn">Colleges</button>
+		    <div class="dropdown-content">
+			<a href="JSP/ceit.jsp">CoEIT</a>
+			<a href="JSP/coba.jsp">CoBA</a>
+			<a href="JSP/class.jsp">CLASS</a>
+			<a href="JSP/chhs.jsp">CHHS</a>
+			<a href="JSP/cosm.jsp">CoSM</a>
+			<a href="JSP/coe.jsp">CoE</a>
+			<a href="JSP/coph.jsp">CoPH</a>
+		    </div>
+	    </div>&nbsp;
+	<a href = "JSP/about.jsp">About AlumNet</a>&nbsp;
+	    <div class="dropdown">
+		<button class="dropbtn" id="account">My Account</button>
+		    <div class="dropdown-content">	
+			<a href = "JSP/login.jsp">Login</a>
+			<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+		    </div>
+	    </div>&nbsp;
+    </div>
+		    
 	<main>
 	<!--Main content of page!-->
 	<br/>
 	<br/>
 	<br/>
 	
-	<s:form namespace="/" theme="simple" id="reg" >
+	<s:form namespace="/" theme="simple" id="reg" ><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 			
 		<!-- ****************** ALUM **************
 		*********************** Mapped action:  -->
