@@ -61,7 +61,7 @@
 	
 		<br/>
 		<s:form onsubmit="" action="login" theme="simple" namespace="/">
-		    <h2><s:text name="Please Login!"/></h2>
+		    <h2>Please Login!</h2>
 		    
 		    <s:div>
 			<label id="l8">Email</label>
