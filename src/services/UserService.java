@@ -37,6 +37,9 @@ public class UserService extends ActionSupport implements SessionAware{
 				e.printStackTrace();
 				return ANConstants.ERROR;
 			} catch (Exception e) {
+			    if (e.getMessage().equals("Successfully cleaned up after failing to add") || e.getMessage().equals("Failed to clean up Login table... please contact administrator")) {
+			        return "user";
+                }
 				e.printStackTrace();
 				return ANConstants.ERROR;
 			}
@@ -100,6 +103,9 @@ public class UserService extends ActionSupport implements SessionAware{
 			e.printStackTrace();
 			return ANConstants.ERROR;
 		} catch (Exception e) {
+            if (e.getMessage().equals("Successfully cleaned up after failing to add") || e.getMessage().equals("Failed to clean up Login table... please contact administrator")) {
+                return "user";
+            }
 			e.printStackTrace();
 			return ANConstants.ERROR;
 		}
