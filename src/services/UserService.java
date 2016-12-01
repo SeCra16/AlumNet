@@ -151,7 +151,7 @@ public class UserService extends ActionSupport implements SessionAware{
 	    return majors;
 	}
 
-	public void setPassword(String p) {password = p; }
+	public void setPassword(String p) {password = p;}
 
 
 	public List<String> getJobFields() {

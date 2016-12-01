@@ -53,15 +53,16 @@
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form namespace="/" method="POST" enctype="multipart/form-data" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	<!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 	    <h2>Please Register!</h2>
 				    
-		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="type" list="{'Alumnus'}" />
-		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';document.getElementById('reg').action='addStudent';" name="type" list="{'Student'}"/><hr/>
+		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';" name="type" list="{'Alumnus'}" />
+		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';" name="type" list="{'Student'}"/><hr/>
 			
 		<!-- ****************** ALUM **************
 		*********************** Mapped action: addAlumnus -->
-		<s:div id="ifAlum" cssStyle="display:none;">
+	<s:div id="ifAlum" cssStyle="display:none;">
+	    <s:form namespace="/" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg">	
 		    <label id="l1">First Name</label>
 			<s:textfield type="string" name = "alumnus.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l2">Last Name</label>
@@ -77,14 +78,17 @@
 		    <label id="l8">Email</label>
 			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
-			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" /><br/><br/>
+			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" script= "$(\"input[type='text']\").each(function(){$(this).val( $(this).val().replace(/[,]/g,\"));});"/><br/><br/>
 		    <label id="l18">Profile Picture</label>
 			<s:file id="pic" name="alumnus.picture"/><br/><br/>
 		    <s:submit type="submit"  value="submit" id="submit" />
-		</s:div>	
+		</s:form>
+	</s:div>
+	
 		
 		<!-- **************STUDENT ******** -->
-		<s:div id="ifStud" cssStyle="display:none;">
+	<s:div id="ifStud" cssStyle="display:none;">
+	    <s:form namespace="/" action="addStudent" method="POST" enctype="multipart/form-data" theme="simple" id="reg">
 		    <label id="l10">First Name</label>
 			<s:textfield label="First Name" type="string" name = "student.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l11">Last Name</label>
@@ -98,14 +102,12 @@
 		    <label id="l16">Email</label>
 			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
-			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" min="8" /><br/><br/>
+			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" script= "$(\"input[type='text']\").each(function(){$(this).val( $(this).val().replace(/[,]/g,\"));});"/><br/><br/>
 		    <label id="l19">Profile Picture</label>
 			<s:file id="pic" name="student.picture" method="POST" enctype="multipart/form-data"/><br/><br/>
-		    <s:submit type="submit" value="submit" id="submit" />
-		</s:div>
-		
-
-	</s:form>
+		    <s:submit type="submit" value="submit" id="submit" />	
+	    </s:form>
+	</s:div>
 		
 	
 	<br/>
