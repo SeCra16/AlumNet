@@ -42,8 +42,9 @@
 			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<s:div class="dropdown-content">	
-						<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
-						<a href="<s:url action="setupRegistration"/>">Register</a>					</s:div>
+					    <s:a href = "login.jsp" action="setupRegistration">Login</s:a>
+					    <a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				</s:div>
 			</s:div>&nbsp;
 	</s:div>
 
@@ -53,7 +54,7 @@
 	<br/>
 	<br/>
 	
-	<s:form namespace="/" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	<s:form namespace="/" theme="simple" id="reg">
 			
 		<!-- ****************** STUDENT **************
 		*********************** Mapped action:  -->
@@ -63,8 +64,6 @@
 			<s:property value="student.firstName"/><br/><br/>
 		    <label id="l11">Last Name</label>
 			<s:property value="student.lastName"/><br/><br/>
-		    <label id="l12">Student ID</label>
-			<s:property value="student.studentID"/><br/><br/>
 		    <label id="l13">Grad Year</label>
 			<s:property value="student.expectedGraduation"/><br/><br/>
 		    <label id="l14">Major</label>
@@ -74,7 +73,7 @@
 		    <label id="l16">Email</label>
 			<s:property value="student.email"/><br/><br/>
 		    <label id="l17">Password</label>
-			<s:property value="student.password"/><br/><br/>
+			<s:property value="password"/><br/><br/>
 		</s:div>
 		
 	</s:form>
