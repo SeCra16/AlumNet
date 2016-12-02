@@ -5,14 +5,14 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.devMode" value="true" />
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/JSP" extends="struts-default">
 
         <action name="addStudent"
             class="services.UserService" method="addStudent">
-            <result name="SUCCESS">/JSP/account_student.jsp</result>
-	        <result name="ERROR">/JSP/error.jsp</result>
-            <result name="input">/JSP/error.jsp</result>
-            <result name="user">/JSP/emailerr.jsp</result>
+            <result name="SUCCESS">account_student.jsp</result>
+	        <result name="ERROR">error.jsp</result>
+            <result name="input">error.jsp</result>
+            <result name="user">emailerr.jsp</result>
         </action>
 
         <action name="addAlumnus"
@@ -27,8 +27,8 @@
             class="services.LoginService" method="validateUser">
             <result name="SUCCESS">/JSP/index.jsp</result>
             <result name="input">/JSP/error.jsp</result>
-	       <result name="ERROR">JSP/error.jsp</result>
-            <result name="FAIL">JSP/login.jsp</result>
+	       <result name="ERROR">/JSP/error.jsp</result>
+            <result name="FAIL">/JSP/login.jsp</result>
         </action>
 	
 	<action name="setupRegistration"

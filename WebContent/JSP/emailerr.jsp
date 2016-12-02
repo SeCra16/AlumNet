@@ -43,7 +43,7 @@
 		<button class="dropbtn" id="account">My Account</button>
 		    <div class="dropdown-content">	
 			<a href = "JSP/login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+			<a href="<s:url action="setupRegistration"/>">Register</a>
 		    </div>
 	    </div>&nbsp;
     </div>
