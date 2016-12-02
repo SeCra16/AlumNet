@@ -6,11 +6,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<title>
-	    AlumNet
-	</title>
-				<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
-				<script type="text/javascript" src="../JS/login.js"></script>
+    <title>
+	AlumNet
+    </title>
+    
+    <link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+    <script type="text/javascript" src="../JS/login.js"></script>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -42,8 +43,9 @@
 			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 					<s:div class="dropdown-content">	
-						<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
-						<a href="<s:url action="setupRegistration"/>">Register</a>						    
+					
+					    <s:a href = "login.jsp" action="setupRegistration">Login</s:a>
+					    <a href="<s:url action="setupRegistration"/>">Register</a>						    
 					</s:div>
 			</s:div>&nbsp;
 	</s:div>
@@ -79,7 +81,7 @@ function carousel() {
 		<h2 id="u_e">
 		    Upcoming campus related events!	
 		</h2>
-		
+		<s:property value="#session.user.firstName"/>
 		<br/>
 		<br/>
 		

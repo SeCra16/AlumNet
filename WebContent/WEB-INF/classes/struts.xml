@@ -18,7 +18,7 @@
         <action name="addAlumnus"
             class="services.UserService" method="addAlumnus">
             <result name="SUCCESS">/JSP/account_alum.jsp</result>
-	        <result name="ERROR">/JSP/error.jsp</result>
+	    <result name="ERROR">/JSP/error.jsp</result>
             <result name="input">/JSP/error.jsp</result>
             <result name="user">/JSP/emailerr.jsp</result>
         </action>

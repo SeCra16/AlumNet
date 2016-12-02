@@ -58,7 +58,7 @@
                 <p>
                     The Allen E.Paulson School of Engineering and Information Technology consists of three building on the main campus. The IT building opened for the 2003 fall semester. 
                     It houses the Departments of Computer Sciences, Electrical Engineering, Information Technology and Manufacturing Engineering, the administrative suite for the Dean and Associate Deans, and the College's Student Services Center.
-                    The The Engineering Building was opened in 1995, and is home to the Departments of Civil Engineering & Construction Management and Mechanical Engineering. The Carruth Building was built in 1959 and has been re-purposed to serve as Georgia Southern's Engineering Research Center.
+                    The The Engineering Building was opened in 1995, and is home to the Departments of Civil Engineering &amp; Construction Management and Mechanical Engineering. The Carruth Building was built in 1959 and has been re-purposed to serve as Georgia Southern's Engineering Research Center.
                 </p>
                 <p>
                     The bachelor's degree programs in Computer Sciences and Information Technology are accredited by the Computing Accreditation Commission of ABET, http://www.abet.org.   
