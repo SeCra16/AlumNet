@@ -99,6 +99,8 @@ public class UserService extends ActionSupport implements SessionAware{
 			AlumniPersistence persistence = AlumNetFactory.getAlumniPersistence();
 			
 			persistence.addAlumnus(alumnus, password);
+
+			sessionMap.put("user", alumnus);
 		} catch (com.microsoft.sqlserver.jdbc.SQLServerException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;

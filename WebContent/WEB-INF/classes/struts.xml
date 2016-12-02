@@ -36,6 +36,13 @@
 		<result name="ERROR">/JSP/error.jsp</result>
         <result name="input">/JSP/error.jsp</result>
 	</action>
+
+        <action name="sendMessage"
+                class="services.MessageService" method="sendMessage">
+            <result name="SUCCESS">/JSP/</result>
+            <result name="ERROR">/JSP/</result>
+            <result name="input">/JSP/error.jsp</result>
+        </action>
 	
     </package>
 </struts>

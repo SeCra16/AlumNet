@@ -100,9 +100,11 @@ private Connection conn = null;
                     }
                     rDTO.setResume(file);
 
+                    ps.close();
+
                     Statement st = conn.createStatement();
 
-                    ResultSet rs2 = st.executeQuery("SELECT Alumni_Email FROM ALUMNET.dbo.Connected WHERE Student_Email=" + dto.getEmail());
+                    ResultSet rs2 = st.executeQuery("SELECT * FROM ALUMNET.dbo.Connected WHERE Student_Email=" + dto.getEmail());
 
                     ArrayList<String> temp = new ArrayList<String>();
                     while (rs2.next()) {

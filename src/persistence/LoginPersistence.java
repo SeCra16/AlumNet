@@ -34,10 +34,10 @@ public class LoginPersistence extends AlumNetPersistence{
 	
 	//what happens if i return this
 	public UserDTO login(LoginDTO dto) throws SQLException, Exception {
-		//connect to database
+        String type = checkType(dto);
+
+	    //connect to database
 		connect();
-		
-		String type = checkType(dto);
 		
 		UserDTO sdto = null;
 		
