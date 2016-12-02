@@ -11,7 +11,7 @@
 	<title>
 	    AlumNet
 	</title>
-	<link rel="stylesheet" href="CSS/alumnet_styling.css" type="text/css"/>
+				<link rel="stylesheet" href="CSS/alumnet_styling.css" type="text/css"/>
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -61,21 +61,21 @@
 		<s:div id="ifAlum" cssStyle="border: 1px solid;">
 		    <br/>
 		    <label id="l1">First Name: </label>
-			<s:property value="#session.user.firstName"/><br/><br/>
+			<s:property value="alumnus.firstName"/><br/><br/>
 		    <label id="l2">Last Name: </label>
-			<s:property value="#session.user.lastName"/><br/><br/>
+			<s:property value="alumnus.lastName"/><br/><br/>
 		    <label id="l3">Grad Year: </label>
-			<s:property value="#session.user.graduationDate"/><br/><br/>
+			<s:property value="alumnus.graduationDate"/><br/><br/>
 		    <label id="l5">Company: </label>
-			<s:property value="#session.user.company"/><br/><br/>
+			<s:property value="alumnus.company"/><br/><br/>
 		    <label id="l6">Job Title: </label>
-			<s:property value="#session.user.jobTitle"/><br/><br/>
+			<s:property value="alumnus.jobTitle"/><br/><br/>
 		    <label id="l7">Job Field: </label>
-			<s:property value="#session.user.jobField"/><br/><br/>
+			<s:property value="alumnus.jobField"/><br/><br/>
 		    <label id="l8">Email: </label>
-			<s:property value="#session.user.email"/><br/><br/>
+			<s:property value="alumnus.email"/><br/><br/>
 		    <label id="l9">Password: </label>
-			<s:property value="#session.user.password"/><br/><br/>
+			<s:property value="password"/><br/><br/>
 		</s:div>	
 		
 		

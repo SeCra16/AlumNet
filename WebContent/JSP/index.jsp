@@ -40,25 +40,14 @@
 			</s:div>&nbsp;
 			<s:a href = "about.jsp">About AlumNet</s:a>&nbsp;
 			
-			<script type="text/javascript">
-			  function account(){
-			    document.getElementById('ifAlum').style.display='';
-			    document.getElementById('ifStud').style.display='none';
-			  }
-			</script>
-			<s:div id="dropdown" class="dropdown" cssStyle="display:none;">
-				<button class="dropbtn">My Account</button>
-				    <s:div class="dropdown-content">	
-					<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
-					<a href="<s:url action="setupRegistration"/>">Register</a>
-				    </s:div>
-					    
-				    <s:div id="account" cssStyle="display:none;">
-					<a href="account_student.jsp">My Account</a>
-				    </s:div>
+			<s:div class="dropdown">
+				<button class="dropbtn" id="account">My Account</button>
+					<s:div class="dropdown-content">	
+					
+					    <s:a href = "login.jsp" action="setupRegistration">Login</s:a>
+					    <a href="<s:url action="setupRegistration"/>">Register</a>						    
+					</s:div>
 			</s:div>&nbsp;
-			
-			
 	</s:div>
 
 	<main>

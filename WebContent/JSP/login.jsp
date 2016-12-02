@@ -13,9 +13,7 @@
 	</title>
 
 <link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
-<script type="text/javascript">
-    
-</script>
+<script type="text/javascript" src="../JS/login.js"></script>
 
 </head>
 <body id="login">	
@@ -55,7 +53,7 @@
 	<!--Main content of page!-->
 
 	<div class="background">
-	    <img class="bg" src="../Images/hedges.jpg" alt="hedges" style="width:100%; height: 500px"/>
+	    <img class="bg" src="../Images/hedges.jpg" alt="hedges" style="width:100%"/>
 	</div>
 	
 	
