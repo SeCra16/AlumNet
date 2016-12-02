@@ -1,23 +1,23 @@
 package services;
 
-import java.util.Map;
-
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.SessionAware;
-
 import com.opensymphony.xwork2.ActionSupport;
-
 import dto.MessageDTO;
 import dto.UserDTO;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 import persistence.AlumNetFactory;
 import persistence.MessagePersistence;
 import util.ANConstants;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 public class MessageService extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	private SessionMap<String,Object> sessionMap;
 	private MessageDTO message;
+	private ArrayList<MessageDTO> messages;
 	
 	//this should work unless
 	
@@ -36,8 +36,10 @@ public class MessageService extends ActionSupport implements SessionAware{
 		return ANConstants.SUCCESS;
 	}
 	
-	public MessageDTO[] viewMessages() {
-		
+	public MessageDTO[] viewMessages(UserDTO dto) throws Exception {
+        MessagePersistence mPer = AlumNetFactory.getMessagePersistence();
+
+        mPer.getAllMessages(dto);
 		
 		return null;
 	}
@@ -55,5 +57,9 @@ public class MessageService extends ActionSupport implements SessionAware{
 	public void setMessage(MessageDTO message) {
 		this.message = message;
 	}
+
+	public ArrayList<MessageDTO> getMessages() {return messages;}
+
+	public void setMessages(ArrayList<MessageDTO> m) {this.messages = m;}
 	
 }

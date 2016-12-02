@@ -39,7 +39,7 @@ private Connection conn = null;
 		        throw new Exception("email cannot be null");
             }
 
-			Statement stmt = conn.createStatement();
+			//Statement stmt = conn.createStatement();
             String sql = "SELECT * FROM ALUMNET.dbo.Student WHERE Email=?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -100,16 +100,27 @@ private Connection conn = null;
                     }
                     rDTO.setResume(file);
 
-                    Statement st = conn.createStatement();
+                    //ps.close();
 
-                    ResultSet rs2 = st.executeQuery("SELECT Alumni_Email FROM ALUMNET.dbo.Connected WHERE Student_Email=" + dto.getEmail());
+
+                    //build the new statement to get all the connections
+                    PreparedStatement st = conn.prepareStatement("SELECT * FROM ALUMNET.dbo.Connected WHERE Student_Email=?");
+
+                    st.setString(1, rDTO.getEmail());
+
+
+                    //run the query to get all connections then store in arraylist to be passed back
+                    ResultSet rs2 = st.executeQuery();
 
                     ArrayList<String> temp = new ArrayList<String>();
                     while (rs2.next()) {
                         temp.add(rs2.getString("Alumni_Email"));
                     }
 
-                    rDTO.setConnections((String[])temp.toArray());
+                    //convert to string[] so we can pass back
+                    String[] connections = new String[temp.size()];
+                    rDTO.setConnections(temp.toArray(connections));
+                    rs2.close();
 				}
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database....\n" + e.getMessage());

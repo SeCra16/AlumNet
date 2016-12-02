@@ -35,10 +35,11 @@ public class LoginService extends ActionSupport implements SessionAware{
                 } else if (type.equals("student")) {
                     user = (StudentDTO) lPer.login(loginDTO);
                 } else if (type.equals("admin")) {
-                    //what to do if they are a student
+                    //what to do if they are an admin
                 }
             } else {
-		        return ANConstants.ERROR;
+		        addActionError("Email or password is invalid! Please try again.");
+		        return ANConstants.FAIL;
             }
 			sessionMap.put("user", user);
 		} catch (SQLException e) {
