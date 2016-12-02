@@ -33,6 +33,7 @@ public class UserService extends ActionSupport implements SessionAware{
 
 				//store the user we inserted in the session
                 sessionMap.put("user", student);
+                sessionMap.put("type", "student");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return ANConstants.ERROR;
@@ -72,6 +73,9 @@ public class UserService extends ActionSupport implements SessionAware{
 
 				//store new user in session
 				sessionMap.put("user",getStudent());
+
+				//store the type of user in session
+                sessionMap.put("type", "student");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return ANConstants.ERROR;
@@ -100,7 +104,11 @@ public class UserService extends ActionSupport implements SessionAware{
 			
 			persistence.addAlumnus(alumnus, password);
 
+			//store the user
 			sessionMap.put("user", alumnus);
+
+			//store the type of user in session
+            sessionMap.put("type", "alumnus");
 		} catch (com.microsoft.sqlserver.jdbc.SQLServerException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;
@@ -121,7 +129,10 @@ public class UserService extends ActionSupport implements SessionAware{
 			AlumniPersistence persistence = AlumNetFactory.getAlumniPersistence();
 			
 			setAlumnus(persistence.viewAlumnus(alumnus));
+
+			//store session data
 			sessionMap.put("user", getAlumnus());
+			sessionMap.put("type", "alumnus");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;

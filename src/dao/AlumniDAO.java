@@ -36,8 +36,9 @@ public class AlumniDAO {
 			if (dto.getEmail() == null) {
                 throw new Exception("dto email passed cannot be null");
             }
-			Statement stmt = conn.createStatement(); 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Email=" + dto.getEmail());
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ALUMNET.dbo.Alumni WHERE Email=?");
+			stmt.setString(1, dto.getEmail());
+			ResultSet rs = stmt.executeQuery();
 			
 			AlumniDTO rDTO = new AlumniDTO();
 			
@@ -67,16 +68,25 @@ public class AlumniDAO {
                     }
                 }
 
+				//stmt.close();
 
-                Statement st = conn.createStatement();
-                ResultSet rs2 = st.executeQuery("SELECT Student_Email FROM ALUMNET.dbo.Connected WHERE Alumni_Email=" + dto.getEmail());
+				//build the new statement to get all the connections
+				PreparedStatement st = conn.prepareStatement("SELECT * FROM ALUMNET.dbo.Connected WHERE Alumni_Email=?");
 
-			    ArrayList<String> temp = new ArrayList<String>();
-                while (rs2.next()) {
-			        temp.add(rs2.getString("Student_Email"));
-                }
+				st.setString(1, rDTO.getEmail());
 
-                rDTO.setConnections((String[])temp.toArray());
+
+				//run the query to get all connections then store in arraylist to be passed back
+				ResultSet rs2 = st.executeQuery();
+
+				ArrayList<String> temp = new ArrayList<String>();
+				while (rs2.next()) {
+					temp.add(rs2.getString("Student_Email"));
+				}
+				//convert to string[] so we can pass back
+				String[] connections = new String[temp.size()];
+				rDTO.setConnections(temp.toArray(connections));
+
 			} catch (SQLException e) {
 				throw new SQLException("Problem with data pulled from Database...." + e.getMessage());
 			}
