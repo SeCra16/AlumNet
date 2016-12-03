@@ -20,13 +20,18 @@ import java.util.Random;
  */
 public class AlumniDAO {
 	private Connection conn = null;
-	
+
 	//constructor
 	public AlumniDAO(Connection conn) {
 		this.conn = conn;
 	}
-	
-	
+
+
+	/**
+	 * @param DTO
+	 * @return UserDTO
+	 * @throws Exception
+	 */
 	public UserDTO select(UserDTO DTO) throws Exception {
 		//Check if the UserDTO is null
 		AlumniDTO dto = (AlumniDTO) DTO;
@@ -170,11 +175,29 @@ public class AlumniDAO {
 		} else {
 			//Has to have alumni id so we can delete 
 			if (dto.getEmail() == null) {
-				throw new Exception("Alumni Id cannot be null");
+				throw new Exception("Alumni Email cannot be null");
 			} else {
-				Statement stmt = conn.createStatement();
-				stmt.execute("DELETE FROM ALUMNET.dbo.Connected WHERE Alumni_Email=" + dto.getEmail());
-				stmt.execute("DELETE FROM ALUMNET.dbo.Alumni WHERE Email=" + dto.getEmail());
+				//need to clear the other tables first
+				PreparedStatement stmt = conn.prepareStatement("DELETE FROM AlumNet.dbo.Messages WHERE Alumni_Email=?");
+				stmt.setString(1, dto.getEmail());
+				stmt.execute();
+				stmt.close();
+
+
+				stmt = conn.prepareStatement("DELETE FROM ALUMNET.dbo.Connected WHERE Alumni_Email=?");
+				stmt.setString(1, dto.getEmail());
+				stmt.execute();
+				stmt.close();
+
+				stmt = conn.prepareStatement("DELETE FROM ALUMNET.dbo.Alumni WHERE Email=?");
+				stmt.setString(1, dto.getEmail());
+				stmt.execute();
+				stmt.close();
+
+				stmt = conn.prepareStatement("DELETE FROM ALUMNET.dbo.Login WHERE Email=?");
+				stmt.setString(1, dto.getEmail());
+				stmt.execute();
+				stmt.close();
 			}
 		}
 	}
@@ -196,6 +219,8 @@ public class AlumniDAO {
             } else if (dto.getEmail() == null) {
                 throw new Exception("Email cannot be empty... failing to attempt insert");
             }
+
+//			TODO: UPDATE CONNECTIONS AND MESSAGES WITH NEW VALUE IF EMAIL CHANGES
 			
 			//We know the values are not null, so time to attempt update
 
@@ -227,10 +252,13 @@ public class AlumniDAO {
 
             myStmt.setString(10, dto.getEmail());
             myStmt.execute();
+			myStmt.close();
 
 			//See if update worked then return the updated dto
-			conn.createStatement().executeQuery("SELECT * FROM ALUMNET.dbo.Alumni WHERE Email=" + dto.getEmail());
-			
+			myStmt = conn.prepareStatement("SELECT * FROM ALUMNET.dbo.Alumni WHERE Email=?");
+			myStmt.setString(1, dto.getEmail());
+			myStmt.execute();
+
 			AlumniDTO rDTO;
 			
 			try {

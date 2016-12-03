@@ -2,6 +2,7 @@ package dao;
 import dto.MessageDTO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -76,10 +77,14 @@ public class MessageDAO {
 			}
 			
 			//We know every field is initialized so we can insert
-			Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO ALUMNET.dbo.Messages (Message_ID, Alumni_Email, Student_Email, Message) VALUES (" + dto.getMessageID() + ","+ dto.getAlumnusEmail() + ",'"
-                    + "," + dto.getStudentEmail() + "," + dto.getMessage() + "')";
-			stmt.execute(sql);
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO ALUMNET.dbo.Messages (Message_ID, Alumni_Email, Student_Email, Message) VALUES (?,?,?,?)");
+
+			stmt.setInt(1, dto.getMessageID());
+			stmt.setString(2, dto.getAlumnusEmail());
+			stmt.setString(3, dto.getStudentEmail());
+			stmt.setString(4, dto.getMessage());
+
+			stmt.execute();
 		}
 	}
 

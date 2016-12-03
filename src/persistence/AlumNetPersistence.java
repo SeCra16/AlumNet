@@ -24,6 +24,14 @@ public class AlumNetPersistence {
 			conn = null;
 		}
 	}
+
+	public boolean isClosed() throws SQLException {
+		if (conn == null) {
+			return true;
+		} else {
+			return isClosed();
+		}
+	}
 	
 	public void setConnection(Connection conn) {
 		this.conn = conn;

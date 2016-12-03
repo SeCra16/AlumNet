@@ -27,8 +27,12 @@ public class LoginService extends ActionSupport implements SessionAware{
 		    LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
 		    
 		    UserDTO user = null;
-		    //check login type
-		    String type = lPer.checkType(loginDTO);
+		    //check login type if it doesn't already exists
+			if (loginDTO.getType() == null) {
+                String type = lPer.checkType(loginDTO);
+            } else {
+			    String type = loginDTO.getType();
+            }
 		    if (type != null) {
                 if (type.equals("alumnus")) {
                     user = (AlumniDTO) lPer.login(loginDTO);
@@ -42,6 +46,7 @@ public class LoginService extends ActionSupport implements SessionAware{
 		        return ANConstants.FAIL;
             }
 			sessionMap.put("user", user);
+			sessionMap.put("user", type);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;
@@ -57,6 +62,7 @@ public class LoginService extends ActionSupport implements SessionAware{
 		try {
 			LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
 			lPer.addLogin(loginDTO);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

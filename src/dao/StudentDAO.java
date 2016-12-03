@@ -224,9 +224,27 @@ private Connection conn = null;
 			if (dto.getEmail() == null) {
 				throw new Exception("email cannot be null");
 			} else {
-				Statement stmt = conn.createStatement();
-                stmt.execute("DELETE FROM ALUMNET.dbo.Connected WHERE Student_Email=" + dto.getEmail());
-				stmt.execute("DELETE FROM ALUMNET.dbo.Student WHERE Email=" + dto.getEmail());
+                //need to clear the other tables first
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM AlumNet.dbo.Messages WHERE Student_Email=?");
+                stmt.setString(1, dto.getEmail());
+                stmt.execute();
+                stmt.close();
+
+
+                stmt = conn.prepareStatement("DELETE FROM ALUMNET.dbo.Connected WHERE Student_Email=?");
+                stmt.setString(1, dto.getEmail());
+                stmt.execute();
+                stmt.close();
+
+                stmt = conn.prepareStatement("DELETE FROM ALUMNET.dbo.Student WHERE Email=?");
+                stmt.setString(1, dto.getEmail());
+                stmt.execute();
+                stmt.close();
+
+                stmt = conn.prepareStatement("DELETE FROM ALUMNET.dbo.Login WHERE Email=?");
+                stmt.setString(1, dto.getEmail());
+                stmt.execute();
+                stmt.close();
 			}
 		}
 	}
@@ -250,6 +268,9 @@ private Connection conn = null;
 			} else if (dto.getMajor() == null) {
 				throw new Exception("Major cannot be empty... failing to attempt update");
 			}
+
+
+//			TODO: UPDATE CONNECTIONS AND MESSAGES WITH NEW VALUE IF EMAIL CHANGES
 			
 			//We know the values are not null, so time to attempt update
 			
@@ -294,10 +315,20 @@ private Connection conn = null;
 
             myStmt.setString(9, dto.getEmail());
 
+            //execute and close
             myStmt.execute();
-			
-			//See if update worked then return the updated dto
-			ResultSet rs = myStmt.executeQuery("SELECT * FROM ALUMNET.dbo.Student WHERE Email=" + dto.getEmail());
+            myStmt.close();
+
+
+
+            //build new statement
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM ALUMNET.dbo.Student WHERE Email=?");
+            ps.setString(1, dto.getEmail());
+
+            //See if update worked then return the updated dto
+			ResultSet rs = ps.executeQuery();
+
+			ps.close();
 			
 			StudentDTO rDTO;
 			
