@@ -42,11 +42,25 @@
 			
 			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
-					<s:div class="dropdown-content">	
-					
+				<s:if test="#session.type == 'student')">
+				    <s:div class="dropdown-content">	
 					    <s:a href = "login.jsp" action="setupRegistration">Login</s:a>
 					    <a href="<s:url action="setupRegistration"/>">Register</a>						    
-					</s:div>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test="#session.type == 'alumnus'\")">
+				    <s:div class="dropdown-content">
+					<a href="account_student.jsp">My Account</a>
+				    </s:div>
+				</s:elseif>
+				    
+				<s:elseif test="#session.type">
+				    <s:div class="dropdown-content">
+					<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
+					    <a href="<s:url action="setupRegistration"/>">Register</a>
+				    </s:div>					
+				</s:elseif>
 			</s:div>&nbsp;
 	</s:div>
 

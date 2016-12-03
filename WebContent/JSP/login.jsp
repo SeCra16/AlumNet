@@ -60,7 +60,7 @@
 	
 	
 		<br/>
-		<s:form onsubmit="" action="login" theme="simple" namespace="/">
+		<s:form action="login" theme="simple" namespace="/">
 		    <h2>Please Login!</h2>
 		    
 		    <s:div>
