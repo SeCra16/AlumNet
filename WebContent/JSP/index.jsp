@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
     <script type="text/javascript" src="../JS/login.js"></script>
-    
+<s:set scope="session" name="#session.type" value="%{'student'}" />
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -41,27 +41,33 @@
 			</s:div>&nbsp;
 			<s:a href = "about.jsp">About AlumNet</s:a>&nbsp;
 			
+			
+			<s:set scope="session" name="#session.type" value="%{'student'}" />
+			<s:set scope="session" name="#session" value="%{'alumni'}" />
+			
+			
 			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
-				<s:if test= "%{#session.type == student}" >
+				
+				<s:if test= "{#session.type == 'student'}" >
 				    <s:div class="dropdown-content">	
-					    <s:a href = "login.jsp" action="setupRegistration">Login</s:a>
-					    <a href="<s:url action="setupRegistration"/>">Register</a>						    
+					    <a href="account_student.jsp">My Student Account</a>				    
 				    </s:div>
 				</s:if>
 				
-				<s:elseif test= "%{#session.type == student}" >
+				<s:elseif test= "{#session.type == 'alumnus'}" >
 				    <s:div class="dropdown-content">
-					<a href="account_student.jsp">My Account</a>
+					<a href="account_alum.jsp">My Alum Account</a>
 				    </s:div>
 				</s:elseif>
-				    
-				<s:elseif test="%{#session.type == }">
-				    <s:div class="dropdown-content">
-					<s:a href = "login.jsp" action="setupRegistration">Login</s:a>
-					    <a href="<s:url action="setupRegistration"/>">Register</a>
-				    </s:div>					
-				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
 			</s:div>&nbsp;
 	</s:div>
 
@@ -88,10 +94,12 @@ function carousel() {
     slideIndex++;
     if (slideIndex > x.length) {slideIndex = 1} 
     x[slideIndex-1].style.display = "block"; 
-    setTimeout(carousel, 5000); // Change image every 5 seconds
+    setTimeout(carousel, 4000); // Change image every 4 seconds
 }
 </script>
-			
+	
+	H <s:property value="#session" /> ello
+	
 		<br/>
 		<h2 id="u_e">
 		    Upcoming campus related events!	
