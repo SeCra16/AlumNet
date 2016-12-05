@@ -62,7 +62,7 @@
 		<!-- ****************** ALUM **************
 		*********************** Mapped action: addAlumnus -->
 	<s:div id="ifAlum" cssStyle="display:none;">
-	    <s:form namespace="/" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg">	
+	    <s:form namespace="/JSP" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg">
 		    <label id="l1">First Name</label>
 			<s:textfield type="string" name = "alumnus.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l2">Last Name</label>
@@ -88,7 +88,7 @@
 		
 		<!-- **************STUDENT ******** -->
 	<s:div id="ifStud" cssStyle="display:none;">
-	    <s:form namespace="/" action="addStudent" method="POST" enctype="multipart/form-data" theme="simple" id="reg" >
+	    <s:form namespace="/JSP" action="addStudent" method="POST" enctype="multipart/form-data" theme="simple" id="reg" >
 		    <label id="l10">First Name</label>
 			<s:textfield label="First Name" type="string" name = "student.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l11">Last Name</label>

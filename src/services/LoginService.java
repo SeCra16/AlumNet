@@ -29,9 +29,9 @@ public class LoginService extends ActionSupport implements SessionAware{
 		    UserDTO user = null;
 		    //check login type if it doesn't already exists
 			if (loginDTO.getType() == null) {
-                String type = lPer.checkType(loginDTO);
+                type = lPer.checkType(loginDTO);
             } else {
-			    String type = loginDTO.getType();
+			    type = loginDTO.getType();
             }
 		    if (type != null) {
                 if (type.equals("alumnus")) {
