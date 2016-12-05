@@ -11,7 +11,9 @@
 	<title>
 	    AlumNet
 	</title>
-				<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+	<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+	<s:set scope="session" name="#session.type" value="%{'alumnus'}" />
+
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -19,7 +21,7 @@
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 	
 		<h1 id="header">
-	    <a href = "index.jsp"><img src="Images/logo.png" alt="" id="logo"/></a>
+	    <a href = "index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
 	</h1>
     
 	
@@ -77,12 +79,32 @@
 		    <label id="l9">Password: </label>
 			<s:property value="password"/><br/><br/>
 		</s:div>	
-		
-		
-		
-
 	</s:form>
+
+	<div class="background">
+	    <br/>
+	    <img class="bg" src="../Images/alum_ga.jpg" alt="it" style="width:100%;margin-left: 5px"/>
+	    <img class="bg" src="../Images/alum_usa.jpg" alt="hedges" style="width:100%;margin-left: 5px"/>
+	    <img class="bg" src="../Images/alum_world.jpg" alt="circle" style="width:100%;margin-left: 5px"/>
+	</div>
 	
+	<script>
+	    var slideIndex = 0;
+	    carousel();
+
+	    function carousel() {
+		var i;
+		var x = document.getElementsByClassName("bg");
+		for (i = 0; i < x.length; i++) {
+		  x[i].style.display = "none"; 
+		}
+		slideIndex++;
+		if (slideIndex > x.length) {slideIndex = 1} 
+		x[slideIndex-1].style.display = "block"; 
+		setTimeout(carousel, 10000); // Change image every 10 seconds
+	    }
+	</script>
+			
 	
 	</main>
 	</div>

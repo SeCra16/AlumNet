@@ -12,7 +12,8 @@
     
     <link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
     <script type="text/javascript" src="../JS/login.js"></script>
-<s:set scope="session" name="#session.type" value="%{'student'}" />
+	<s:set scope="global" name="#session.type" value="%{'alumnus'}" />
+	<s:set scope="global" name="#session" value="%{'alumnus'}" />
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -42,22 +43,21 @@
 			<s:a href = "about.jsp">About AlumNet</s:a>&nbsp;
 			
 			
-			<s:set scope="session" name="#session.type" value="%{'student'}" />
-			<s:set scope="session" name="#session" value="%{'alumni'}" />
+			
 			
 			
 			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 				
-				<s:if test= "{#session.type == 'student'}" >
+				<s:if test = "%{#session.type == student}" >
 				    <s:div class="dropdown-content">	
-					    <a href="account_student.jsp">My Student Account</a>				    
+					    <a href="account_student.jsp">1 Account</a>				    
 				    </s:div>
 				</s:if>
 				
-				<s:elseif test= "{#session.type == 'alumnus'}" >
+				<s:elseif test= "%{#session.type == alumnus}" >
 				    <s:div class="dropdown-content">
-					<a href="account_alum.jsp">My Alum Account</a>
+					<a href="account_alum.jsp">2 Account</a>
 				    </s:div>
 				</s:elseif>
 					
@@ -73,6 +73,11 @@
 
 	<main>
 	<!--Main content of page!-->
+	<s:set scope="global" name="#session.type" value="%{'alumnus'}" />
+	<s:set scope="global" name="#session" value="%{'alumnus'}" />
+
+	<s:property value="#session"/><br/>
+	<s:property value="#session.type"/>
 	
 	<div class="background" style="margin-left: 35%">
 	    <br/>
@@ -82,23 +87,22 @@
 	</div>
 	
 	<script>
-var slideIndex = 0;
-carousel();
+	    var slideIndex = 0;
+	    carousel();
 
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("bg");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none"; 
-    }
-    slideIndex++;
-    if (slideIndex > x.length) {slideIndex = 1} 
-    x[slideIndex-1].style.display = "block"; 
-    setTimeout(carousel, 4000); // Change image every 4 seconds
-}
-</script>
+	    function carousel() {
+		var i;
+		var x = document.getElementsByClassName("bg");
+		for (i = 0; i < x.length; i++) {
+		  x[i].style.display = "none"; 
+		}
+		slideIndex++;
+		if (slideIndex > x.length) {slideIndex = 1} 
+		x[slideIndex-1].style.display = "block"; 
+		setTimeout(carousel, 4000); // Change image every 4 seconds
+	    }
+	</script>
 	
-	H <s:property value="#session" /> ello
 	
 		<br/>
 		<h2 id="u_e">

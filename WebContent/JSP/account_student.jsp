@@ -11,7 +11,8 @@
 	<title>
 	    AlumNet
 	</title>
-				<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+	<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+	<s:set scope="session" name="#session.type" value="%{'student'}" />
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
