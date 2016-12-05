@@ -49,15 +49,15 @@
 			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
 				
-				<s:if test= "{#session.type == 'student'}" >
+				<s:if test= "%{#session.type == 'student'}" >
 				    <s:div class="dropdown-content">	
-					    <a href="account_student.jsp">My Student Account</a>				    
+					    <a href="/JSP/account_student.jsp">My Student Account</a>
 				    </s:div>
 				</s:if>
 				
-				<s:elseif test= "{#session.type == 'alumnus'}" >
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
 				    <s:div class="dropdown-content">
-					<a href="account_alum.jsp">My Alum Account</a>
+					<a href="/JSP/account_alum.jsp">My Alum Account</a>
 				    </s:div>
 				</s:elseif>
 					
@@ -98,7 +98,7 @@ function carousel() {
 }
 </script>
 	
-	H <s:property value="#session" /> ello
+	Hello <s:property value="#session.user.firstName" />
 	
 		<br/>
 		<h2 id="u_e">

@@ -14,7 +14,7 @@ import util.ANConstants;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class LoginService extends ActionSupport implements SessionAware{
+public class LoginService extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	private LoginDTO loginDTO;
@@ -46,7 +46,7 @@ public class LoginService extends ActionSupport implements SessionAware{
 		        return ANConstants.FAIL;
             }
 			sessionMap.put("user", user);
-			sessionMap.put("user", type);
+			sessionMap.put("type", type);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;
@@ -109,7 +109,7 @@ public class LoginService extends ActionSupport implements SessionAware{
 	public void setLoginDTO(LoginDTO loginDTO) {
 		this.loginDTO = loginDTO;
 	}
-	
+
 	@Override
 	public void setSession(Map<String, Object> map) {
 		sessionMap=(SessionMap<String, Object>) map;

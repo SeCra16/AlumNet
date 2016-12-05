@@ -6,7 +6,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<%@taglib prefix="s" uri="/struts-tags" %>
 <head>
 	<title>
 	    AlumNet
@@ -61,17 +60,17 @@
 		<s:div id="ifStud" cssStyle="border: 1px solid;">
 		    <br/>
 		    <label id="l10">First Name</label>
-			<s:property value="student.firstName"/><br/><br/>
+			<s:property value="#session.user.firstName"/><br/><br/>
 		    <label id="l11">Last Name</label>
-			<s:property value="student.lastName"/><br/><br/>
+			<s:property value="#session.user.lastName"/><br/><br/>
 		    <label id="l13">Grad Year</label>
-			<s:property value="student.expectedGraduation"/><br/><br/>
+			<s:property value="#session.user.expectedGraduation"/><br/><br/>
 		    <label id="l14">Major</label>
-			<s:property value="student.major"/><br/><br/>
+			<s:property value="#session.user.major"/><br/><br/>
 		    <label id="l15">Resume</label>
-			<s:property value="student.resume"/><br/><br/>
+			<s:property value="#session.user.resume"/><br/><br/>
 		    <label id="l16">Email</label>
-			<s:property value="student.email"/><br/><br/>
+			<s:property value="#session.user.email"/><br/><br/>
 		    <label id="l17">Password</label>
 			<s:property value="password"/><br/><br/>
 		</s:div>

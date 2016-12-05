@@ -63,6 +63,11 @@
 		    <h2>Please Login!</h2>
 		    
 		    <s:div>
+                <s:if test="hasActionErrors()">
+                    <div>
+                        <s:actionerror/>
+                    </div>
+                </s:if>
 			<label id="l8">Email</label>
 			    <s:textfield type="email" name="loginDTO.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 			<label id="l9">Password</label>
