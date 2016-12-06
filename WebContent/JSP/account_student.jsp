@@ -10,7 +10,8 @@
 	<title>
 	    AlumNet
 	</title>
-				<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+	<link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
+	<s:set scope="session" name="#session.type" value="%{'student'}" />
 </head>
 <body>
 	<div id = "top"><!--This is to enable the "Top of Page" button to work-->
@@ -19,10 +20,18 @@
 	
 		<h1 id="header">
 	    <a href = "index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
-	</h1>
-    
+		</h1>
+		
+		
+		    <s:if test= "%{#session.type == 'student'}" >
+			<h4>User: <s:property value="#session.user.firstName"/> <s:property value="#session.user.lastName"/></h4>
+		    </s:if>
+		    <s:elseif test= "%{#session.type == 'alumnus'}" >
+			<h4>User: <s:property value="#session.user.firstName"/> <s:property value="#session.user.lastName"/></h4>
+		    </s:elseif>
+
 	
-    <!--Navigation Bar-->
+	<!--Navigation Bar-->
     <div class = "nav">
 	<a href = "index.jsp">Home</a>&nbsp;
 	    <div class="dropdown">
@@ -38,13 +47,29 @@
 		    </div>
 	    </div>&nbsp;
 	<a href = "about.jsp">About AlumNet</a>&nbsp;
-	    <div class="dropdown">
-		<button class="dropbtn" id="account">My Account</button>
-		    <div class="dropdown-content">	
-			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
-		    </div>
-	    </div>&nbsp;
+	    <s:div class="dropdown">
+				<button class="dropbtn" id="account">My Account</button>
+				
+				<s:if test= "%{#session.type == 'student'}" >
+				    <s:div class="dropdown-content">	
+					    <a href="account_student.jsp">My Student Account</a>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
+				    <s:div class="dropdown-content">
+					<a href="account_alum.jsp">My Alum Account</a>
+				    </s:div>
+				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
+			</s:div>&nbsp;
     </div>
 		    
 	<main>
@@ -53,7 +78,7 @@
 	<br/>
 	<br/>
 	
-	<s:form namespace="/" theme="simple" id="reg">
+	<s:form namespace="/" theme="simple" id="reg" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
 			
 		<!-- ****************** STUDENT **************
 		*********************** Mapped action:  -->
@@ -71,8 +96,7 @@
 			<s:property value="#session.user.resume"/><br/><br/>
 		    <label id="l16">Email</label>
 			<s:property value="#session.user.email"/><br/><br/>
-		    <label id="l17">Password</label>
-			<s:property value="password"/><br/><br/>
+		    
 		</s:div>
 		
 	</s:form>

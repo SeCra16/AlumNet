@@ -39,13 +39,29 @@
 		    </div>
 	    </div>&nbsp;
 	<a href = "about.jsp">About AlumNet</a>&nbsp;
-	    <div class="dropdown">
-		<button class="dropbtn" id="account">My Account</button>
-		    <div class="dropdown-content">	
-			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration"/>">Register</a>						    
-		    </div>
-	    </div>&nbsp;
+	    <s:div class="dropdown">
+				<button class="dropbtn" id="account">My Account</button>
+				
+				<s:if test= "%{#session.type == 'student'}" >
+				    <s:div class="dropdown-content">	
+					    <a href="account_student.jsp">My Student Account</a>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
+				    <s:div class="dropdown-content">
+					<a href="account_alum.jsp">My Alum Account</a>
+				    </s:div>
+				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
+			</s:div>&nbsp;
     </div>
     <br/>
     <s:div id="main">
@@ -59,7 +75,7 @@
 	
 	
 		<br/>
-		<s:form action="login" theme="simple" namespace="/JSP">
+		<s:form action="login" theme="simple" namespace="/JSP" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
 		    <h2>Please Login!</h2>
 		    
 		    <s:div>

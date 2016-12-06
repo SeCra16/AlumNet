@@ -19,8 +19,17 @@
 		<h1 id="header">
 	    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
 		</h1>
+		
+		
+		    <s:if test= "%{#session.type == 'student'}" >
+			<h4>User: <s:property value="#session.user.firstName"/> <s:property value="#session.user.lastName"/></h4>
+		    </s:if>
+		    <s:elseif test= "%{#session.type == 'alumnus'}" >
+			<h4>User: <s:property value="#session.user.firstName"/> <s:property value="#session.user.lastName"/></h4>
+		    </s:elseif>
+
 	
-		<!--Navigation Bar-->
+	<!--Navigation Bar-->
 	<div class = "nav">
 		<a href = "index.jsp">Home</a>&nbsp;
 			<div class="dropdown">
@@ -37,13 +46,29 @@
 				</div>&nbsp;
 			<a href = "about.jsp">About AlumNet</a>&nbsp;
 			
-			<div class="dropdown">
+			<s:div class="dropdown">
 				<button class="dropbtn" id="account">My Account</button>
-					<div class="dropdown-content">	
-						<a href = "login.jsp">Login</a>
-						<a href="<s:url action="setupRegistration"/>">Register</a>						    
-					</div>
-				</div>&nbsp;
+				
+				<s:if test= "%{#session.type == 'student'}" >
+				    <s:div class="dropdown-content">	
+					    <a href="account_student.jsp">My Student Account</a>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
+				    <s:div class="dropdown-content">
+					<a href="account_alum.jsp">My Alum Account</a>
+				    </s:div>
+				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
+			</s:div>&nbsp;
 	</div>
 
 	<div id="main">
@@ -58,10 +83,10 @@
 				<em>AlumNet is currently a work-in-progress</em>
 			</div>
 			<hr/>
-			AlumNet is a site for Georgia Southern Alumni and current Georgia Southern Students to connect with each other and network. Features will be implemented as the development process continues.
+		    AlumNet is a site for Georgia Southern Alumni and current Georgia Southern Students to connect with each other and network. Features will be implemented as the development process continues.
 		</div>
 		<br/>
-		<p id = "origin">
+		<p id = "origin" >
 			The idea behind AlumNet was given to Sebastian at a CASE conference in Atlanta, GA in the Summer of 2016. Ohio State University was giving a presentation about a Pen Pal program between Alum and current students. The OSU had given a great interest in the budding program, with over 200 signing up. However, due to it being the first time, the OSU Alumni Relations group were using a spreadsheet to fill in and save the data for everybody. They expressed interest in streamlining the process using a program written specifically for their needs, and as a Computer Science major, Sebastian had a general idea on how to use it for his own university, Georgia Southern. Sebastian, alongside his Software Engineering course team members, Evan, Nick, and Josh, began their work on AlumNet with the help of Alex, the person that allowed for all of this to happen.
 		</p>
 				
