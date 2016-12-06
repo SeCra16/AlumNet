@@ -130,7 +130,8 @@
 	    }
 	</script>
 			
-	
+			<h1><a href ="https://securelb.imodules.com/s/1544/index.aspx?sid=1544&gid=1&pgid=463&cid=1157" target="_blank" style="margin-left: 40%;">Make a gift to GSU!</a></h1>
+			
 	</main>
 	</div>
 	<div id="footer">
