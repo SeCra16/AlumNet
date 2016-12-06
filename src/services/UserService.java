@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-public class UserService extends ActionSupport implements SessionAware{
+public class UserService extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 1L;
 	private AlumniDTO alumnus;
 	private StudentDTO student;

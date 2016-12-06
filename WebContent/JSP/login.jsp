@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<%@taglib prefix="s" uri="/struts-tags" %>
 <head>
 
 	<title>
@@ -40,13 +39,29 @@
 		    </div>
 	    </div>&nbsp;
 	<a href = "about.jsp">About AlumNet</a>&nbsp;
-	    <div class="dropdown">
-		<button class="dropbtn" id="account">My Account</button>
-		    <div class="dropdown-content">	
-			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration"/>">Register</a>						    
-		    </div>
-	    </div>&nbsp;
+	    <s:div class="dropdown">
+				<button class="dropbtn" id="account">My Account</button>
+				
+				<s:if test= "%{#session.type == 'student'}" >
+				    <s:div class="dropdown-content">	
+					    <a href="account_student.jsp">My Student Account</a>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
+				    <s:div class="dropdown-content">
+					<a href="account_alum.jsp">My Alum Account</a>
+				    </s:div>
+				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
+			</s:div>&nbsp;
     </div>
     <br/>
     <s:div id="main">
@@ -60,10 +75,15 @@
 	
 	
 		<br/>
-		<s:form action="login" theme="simple" namespace="/">
+		<s:form action="login" theme="simple" namespace="/JSP">
 		    <h2>Please Login!</h2>
 		    
 		    <s:div>
+                <s:if test="hasActionErrors()">
+                    <div>
+                        <s:actionerror/>
+                    </div>
+                </s:if>
 			<label id="l8">Email</label>
 			    <s:textfield type="email" name="loginDTO.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 			<label id="l9">Password</label>

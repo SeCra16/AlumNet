@@ -22,10 +22,18 @@
 	
 		<h1 id="header">
 	    <a href = "index.jsp"><img src="../Images/logo.png" alt="" id="logo"/></a>
-	</h1>
-    
+		</h1>
+		
+		
+		    <s:if test= "%{#session.type == 'student'}" >
+			<h4>User: <s:property value="#session.user.firstName"/> <s:property value="#session.user.lastName"/></h4>
+		    </s:if>
+		    <s:elseif test= "%{#session.type == 'alumnus'}" >
+			<h4>User: <s:property value="#session.user.firstName"/> <s:property value="#session.user.lastName"/></h4>
+		    </s:elseif>
+
 	
-    <!--Navigation Bar-->
+	<!--Navigation Bar-->
     <div class = "nav">
 	<a href = "index.jsp">Home</a>&nbsp;
 	    <div class="dropdown">
@@ -41,13 +49,29 @@
 		    </div>
 	    </div>&nbsp;
 	<a href = "about.jsp">About AlumNet</a>&nbsp;
-	    <div class="dropdown">
-		<button class="dropbtn" id="account">My Account</button>
-		    <div class="dropdown-content">	
-			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
-		    </div>
-	    </div>&nbsp;
+	    <s:div class="dropdown">
+				<button class="dropbtn" id="account">My Account</button>
+				
+				<s:if test= "%{#session.type == 'student'}" >
+				    <s:div class="dropdown-content">	
+					    <a href="account_student.jsp">My Student Account</a>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
+				    <s:div class="dropdown-content">
+					<a href="account_alum.jsp">My Alum Account</a>
+				    </s:div>
+				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
+			</s:div>&nbsp;
     </div>
 		    
 	<main>
@@ -56,36 +80,37 @@
 	<br/>
 	<br/>
 	
-	<s:form namespace="/" theme="simple" id="reg" ><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	<s:form namespace="/" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg" ><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 			
 		<!-- ****************** ALUM **************
 		*********************** Mapped action:  -->
 		<s:div id="ifAlum" cssStyle="border: 1px solid;">
 		    <br/>
-		    <label id="l1">First Name: </label>
-			<s:property value="alumnus.firstName"/><br/><br/>
-		    <label id="l2">Last Name: </label>
-			<s:property value="alumnus.lastName"/><br/><br/>
-		    <label id="l3">Grad Year: </label>
-			<s:property value="alumnus.graduationDate"/><br/><br/>
-		    <label id="l5">Company: </label>
-			<s:property value="alumnus.company"/><br/><br/>
-		    <label id="l6">Job Title: </label>
-			<s:property value="alumnus.jobTitle"/><br/><br/>
-		    <label id="l7">Job Field: </label>
-			<s:property value="alumnus.jobField"/><br/><br/>
-		    <label id="l8">Email: </label>
-			<s:property value="alumnus.email"/><br/><br/>
-		    <label id="l9">Password: </label>
-			<s:property value="password"/><br/><br/>
+		    
+		    <label id="l10">First Name</label>
+			<s:property value="#session.user.firstName"/><br/><br/>
+		    <label id="l11">Last Name</label>
+			<s:property value="#session.user.lastName"/><br/><br/>
+		    <label id="l13">Grad Year</label>
+			<s:property value="#session.user.graduationDate"/><br/><br/>
+		    <label id="l14">Company</label>
+			<s:property value="#session.user.company"/><br/><br/>
+		    <label id="l15">Job Title</label>
+			<s:property value="#session.user.jobTitle"/><br/><br/>
+		    <label id="l16">Job Field</label>
+			<s:property value="#session.user.jobField"/><br/><br/>
+		    <label id="l17">Email</label>
+			<s:property value="#session.user.email"/><br/><br/>
+		    
 		</s:div>	
 	</s:form>
 
-	<div class="background">
+			<h1 style="text-align: center;"><strong>Georgia Southern Alum</strong></h1>
+	<div>
 	    <br/>
-	    <img class="bg" src="../Images/alum_ga.jpg" alt="it" style="width:100%;margin-left: 5px"/>
-	    <img class="bg" src="../Images/alum_usa.jpg" alt="hedges" style="width:100%;margin-left: 5px"/>
-	    <img class="bg" src="../Images/alum_world.jpg" alt="circle" style="width:100%;margin-left: 5px"/>
+	    <img class="bg" src="../Images/alum_ga.jpg" alt="ga" style="max-width:100%;margin-left: 5px"/>
+	    <img class="bg" src="../Images/alum_usa.jpg" alt="usa" style="max-width:100%;margin-left: 5px"/>
+	    <img class="bg" src="../Images/alum_world.jpg" alt="world" style="max-width:100%;margin-left: 5px"/>
 	</div>
 	
 	<script>
@@ -101,7 +126,7 @@
 		slideIndex++;
 		if (slideIndex > x.length) {slideIndex = 1} 
 		x[slideIndex-1].style.display = "block"; 
-		setTimeout(carousel, 10000); // Change image every 10 seconds
+		setTimeout(carousel, 5000); // Change image every 10 seconds
 	    }
 	</script>
 			

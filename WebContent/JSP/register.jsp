@@ -38,13 +38,30 @@
 		    </div>
 	    </div>&nbsp;
 	<a href = "about.jsp">About AlumNet</a>&nbsp;
-	    <div class="dropdown">
-		<button class="dropbtn" id="account">My Account</button>
-		    <div class="dropdown-content">	
-			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
-		    </div>
-	    </div>&nbsp;
+	    
+	<s:div class="dropdown">
+				<button class="dropbtn" id="account">My Account</button>
+				
+				<s:if test= "%{#session.type == 'student'}" >
+				    <s:div class="dropdown-content">	
+					    <a href="account_student.jsp">My Student Account</a>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
+				    <s:div class="dropdown-content">
+					<a href="account_alum.jsp">My Alum Account</a>
+				    </s:div>
+				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
+			</s:div>&nbsp;
     </div>
     <br/>
     <s:div id="main">
@@ -62,7 +79,7 @@
 		<!-- ****************** ALUM **************
 		*********************** Mapped action: addAlumnus -->
 	<s:div id="ifAlum" cssStyle="display:none;">
-	    <s:form namespace="/" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg">	
+	    <s:form namespace="/JSP" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg">
 		    <label id="l1">First Name</label>
 			<s:textfield type="string" name = "alumnus.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l2">Last Name</label>
@@ -88,7 +105,7 @@
 		
 		<!-- **************STUDENT ******** -->
 	<s:div id="ifStud" cssStyle="display:none;">
-	    <s:form namespace="/" action="addStudent" method="POST" enctype="multipart/form-data" theme="simple" id="reg" >
+	    <s:form namespace="/JSP" action="addStudent" method="POST" enctype="multipart/form-data" theme="simple" id="reg" >
 		    <label id="l10">First Name</label>
 			<s:textfield label="First Name" type="string" name = "student.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l11">Last Name</label>
