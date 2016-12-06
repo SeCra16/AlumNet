@@ -74,7 +74,7 @@
 			</s:div>&nbsp;
 	</s:div>
 
-	<main>
+	<div id="main">
 	<!--Main content of page!-->
 	<div class="background" style="margin-left: 35%">
 	    <br/>

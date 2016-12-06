@@ -75,7 +75,7 @@
 	
 	
 		<br/>
-		<s:form action="login" theme="simple" namespace="/JSP">
+		<s:form action="login" theme="simple" namespace="/JSP" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
 		    <h2>Please Login!</h2>
 		    
 		    <s:div>

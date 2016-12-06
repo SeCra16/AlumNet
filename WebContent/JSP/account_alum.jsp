@@ -80,7 +80,7 @@
 	<br/>
 	<br/>
 	
-	<s:form namespace="/" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg" ><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	<s:form namespace="/" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg"  style="font-family: Cabin,Helvetica,Arial,sans-serif;"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
 			
 		<!-- ****************** ALUM **************
 		*********************** Mapped action:  -->

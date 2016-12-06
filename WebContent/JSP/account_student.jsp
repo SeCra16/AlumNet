@@ -78,7 +78,7 @@
 	<br/>
 	<br/>
 	
-	<s:form namespace="/" theme="simple" id="reg">
+	<s:form namespace="/" theme="simple" id="reg" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
 			
 		<!-- ****************** STUDENT **************
 		*********************** Mapped action:  -->
