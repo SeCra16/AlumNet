@@ -169,6 +169,11 @@ public class UserService extends ActionSupport implements SessionAware {
 		}
 		return ANConstants.SUCCESS;
 	}
+
+	public String logoutUser() {
+			sessionMap.invalidate();
+			return ANConstants.SUCCESS;
+	}
 	
 	//accessors and mutators
 	public AlumniDTO getAlumnus() {

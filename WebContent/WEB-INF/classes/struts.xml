@@ -44,6 +44,11 @@
             <result name="ERROR">/JSP/</result>
             <result name="input">/JSP/error.jsp</result>
         </action>
+
+        <action name="logout"
+                class="services.UserService" method="logoutUser">
+            <result name="SUCCESS">/JSP/index.jsp</result>
+        </action>
 	
     </package>
 </struts>
