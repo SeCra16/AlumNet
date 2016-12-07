@@ -38,14 +38,11 @@ public class UserService extends ActionSupport implements SessionAware {
                     student = temp;
                 }
 
-                File s = student.getPicture();
-                s.renameTo(new File("123.jpg"));
+
                 //store the user we inserted in the session
                 sessionMap.put("user", student);
                 sessionMap.put("type", "student");
-                sessionMap.put("picture", s.getName());
-
-                student.setPicture(s);
+                sessionMap.put("picture", student.getPicture().getName());
 
 
                 String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
@@ -53,6 +50,7 @@ public class UserService extends ActionSupport implements SessionAware {
                 System.out.println("Image Location:" + filePath);//see the server console for actual location
                 File fileToCreate = new File(filePath, student.getPicture().getName());
                 FileUtils.copyFile(student.getPicture(), fileToCreate);//copying source file to new file
+
             } catch (SQLException e) {
                 e.printStackTrace();
                 return ANConstants.ERROR;

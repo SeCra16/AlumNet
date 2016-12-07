@@ -84,9 +84,8 @@
                 <s:div id="ifStud" cssStyle="border: 1px solid;">
                     <br/>
                     <label id="l1100">Picture</label>
-					<img src="userimages/<s:property value="#session.picture"/>"
+					<img src="../userimages/<s:property value="#session.picture"/>"
 						 width="100" height="100" />
-					<img alt="" src="<s:property value="#session.user.picture"/>"/><br/><br/>
                     <label id="l10">First Name</label>
                     <s:property value="#session.user.firstName"/><br/><br/>
                     <label id="l11">Last Name</label>

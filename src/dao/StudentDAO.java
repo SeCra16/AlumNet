@@ -100,17 +100,7 @@ private Connection conn = null;
                     file = null;
 
                     try {
-                        File dir = new File("../../AlumNet/out/artifacts/AlumNet_war_exploded/123");
-
-                        //check if directory exists, if not create it
-                        if (!dir.exists()) {
-                            //Files.createDirectory(dir.toPath());
-                                //file = File.createTempFile("" + new Random().nextInt(), ".jpg");
-                            file = File.createTempFile("../../AlumNet/out/artifacts/AlumNet_war_exploded/Images/123", ".jpg");
-                        } else {
-                            //file = File.createTempFile("" + new Random().nextInt(), ".jpg", dir);
-                            file = File.createTempFile("../../AlumNet/out/artifacts/AlumNet_war_exploded/Images/123", ".jpg");
-                        }
+                        file = File.createTempFile("" + new Random().nextInt(), ".jpg");
                     } catch (Exception ex) {
                         String t = ex.getMessage();
                         System.out.println("Cant create file on pathway.." + t);
