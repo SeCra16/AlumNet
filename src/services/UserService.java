@@ -43,6 +43,7 @@ public class UserService extends ActionSupport implements SessionAware {
                 sessionMap.put("user", student);
                 sessionMap.put("type", "student");
                 sessionMap.put("picture", student.getPicture().getName());
+                sessionMap.put("resume", student.getResume().getName());
 
 
                 String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
