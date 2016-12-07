@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -58,20 +59,29 @@ public class AlumniDAO {
                     rDTO.setJobField(rs.getString("Job_Field"));
                     rDTO.setActive(rs.getBoolean("Active"));
 
-                    File file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+					//                    start setting picture
+					File file = null;
 
-                    try {
-                        file.createNewFile();
-                    } catch (Exception ex) {
-                        System.out.println("Cant create file on pathway");
-                    }
-                    try (FileOutputStream out = new FileOutputStream(file)) {
-                        IOUtils.copy(rs.getBinaryStream("Picture"), out);
+					try {
+						file = File.createTempFile("" + new Random().nextInt(), ".jpg");
+					} catch (Exception ex) {
+						String t = ex.getMessage();
+						System.out.println("Cant create file on pathway.." + t);
+					}
+					try (FileOutputStream out = new FileOutputStream(file)) {
+						IOUtils.copy(rs.getBinaryStream("Picture"), out);
 
-                    } catch (Exception e) {
-                        System.out.println("Must have null picture");
-                    }
-                }
+					} catch (IOException e) {
+						System.out.println("Must have null picture");
+						file = null;
+					} catch (Exception ex) {
+						String s = ex.getMessage();
+						System.out.println(s);
+					}
+					if (file != null)
+						rDTO.setPicture(file);
+
+				}
 
 				//stmt.close();
 

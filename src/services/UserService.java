@@ -138,6 +138,17 @@ public class UserService extends ActionSupport implements SessionAware {
 
 			//store the type of user in session
             sessionMap.put("type", "alumnus");
+
+            sessionMap.put("picture", alumnus.getPicture().getName());
+
+
+            //set up picture for front end
+            String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
+
+            System.out.println("Image Location:" + filePath);//see the server console for actual location
+            File fileToCreate = new File(filePath, alumnus.getPicture().getName());
+            FileUtils.copyFile(alumnus.getPicture(), fileToCreate);//copying source file to new file
+
 		} catch (com.microsoft.sqlserver.jdbc.SQLServerException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;

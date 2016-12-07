@@ -36,12 +36,12 @@ public class MessageService extends ActionSupport implements SessionAware{
 		return ANConstants.SUCCESS;
 	}
 	
-	public MessageDTO[] viewMessages(UserDTO dto) throws Exception {
+	public ArrayList<MessageDTO> viewMessages(UserDTO dto) throws Exception {
         MessagePersistence mPer = AlumNetFactory.getMessagePersistence();
 
-        mPer.getAllMessages(dto);
+        ArrayList<MessageDTO> messages = mPer.getAllMessages(dto);
 		
-		return null;
+		return messages;
 	}
 	
 	@Override
