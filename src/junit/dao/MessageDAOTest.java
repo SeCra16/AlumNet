@@ -60,7 +60,7 @@ public class MessageDAOTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
         ANUtil util = new ANUtil();
-        Connection connection = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
+        Connection conn = DriverManager.getConnection(util.getURL(),util.getUser(),util.getPassword());
 
 //        TODO: CLEAR OUT THE TABLES WE USED
     }

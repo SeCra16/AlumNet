@@ -3,6 +3,8 @@ package services;
 import com.opensymphony.xwork2.ActionSupport;
 import dto.AlumniDTO;
 import dto.StudentDTO;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import persistence.AlumNetFactory;
@@ -10,6 +12,7 @@ import persistence.AlumniPersistence;
 import persistence.StudentPersistence;
 import util.ANConstants;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -25,23 +28,40 @@ public class UserService extends ActionSupport implements SessionAware {
 	
 	//method to add student
 		public String addStudent() {
-			try {
-				//Get a unique persistence for student
-				StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
-				
-				persistence.addStudent(student, password);
+            try {
+                //Get a unique persistence for student
+                StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
 
-				//store the user we inserted in the session
+                StudentDTO temp = persistence.addStudent(student, password);
+
+                if (temp != null) {
+                    student = temp;
+                }
+
+
+                //store the user we inserted in the session
                 sessionMap.put("user", student);
                 sessionMap.put("type", "student");
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return ANConstants.ERROR;
-			} catch (Exception e) {
+                sessionMap.put("picture", student.getPicture().getName());
+
+
+                String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
+
+                System.out.println("Image Location:" + filePath);//see the server console for actual location
+                File fileToCreate = new File(filePath, student.getPicture().getName());
+                FileUtils.copyFile(student.getPicture(), fileToCreate);//copying source file to new file
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return ANConstants.ERROR;
+            } catch (NullPointerException n) {
+                n.printStackTrace();
+                return ANConstants.ERROR;
+            } catch (Exception e) {
+                e.printStackTrace();
 			    if (e.getMessage().equals("Successfully cleaned up after failing to add") || e.getMessage().equals("Failed to clean up Login table... please contact administrator")) {
 			        return "user";
                 }
-				e.printStackTrace();
 				return ANConstants.ERROR;
 			}
 			return ANConstants.SUCCESS;
