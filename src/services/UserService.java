@@ -46,17 +46,19 @@ public class UserService extends ActionSupport implements SessionAware {
                 sessionMap.put("resume", student.getResume().getName());
 
 
+                //set up picture for front end
                 String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
 
                 System.out.println("Image Location:" + filePath);//see the server console for actual location
                 File fileToCreate = new File(filePath, student.getPicture().getName());
                 FileUtils.copyFile(student.getPicture(), fileToCreate);//copying source file to new file
 
+				//set up resume for front end
                 filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userresume");
 
                 System.out.println("Image Location:" + filePath);//see the server console for actual location
-                fileToCreate = new File(filePath, student.getPicture().getName());
-                FileUtils.copyFile(student.getPicture(), fileToCreate);//copying source file to new file
+                fileToCreate = new File(filePath, student.getResume().getName());
+                FileUtils.copyFile(student.getResume(), fileToCreate);//copying source file to new file
 
             } catch (SQLException e) {
                 e.printStackTrace();
