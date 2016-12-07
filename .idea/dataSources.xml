@@ -5,7 +5,7 @@
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://192.168.133.163:1433;databaseName=AlumNet</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://192.168.133.170:1433;databaseName=AlumNet</jdbc-url>
     </data-source>
   </component>
 </project>

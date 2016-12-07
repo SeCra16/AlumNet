@@ -7,6 +7,8 @@ function submitReg(){
 alert("Welcome " + name);
 }
 
+
+
 /***************** Added directly to the JSP *******************
 function alumCheck() {
     if (document.getElementById('regForm').checked) 

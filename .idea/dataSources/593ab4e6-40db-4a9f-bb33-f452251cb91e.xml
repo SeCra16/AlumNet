@@ -27,7 +27,7 @@
     </database>
     <schema id="9" parent="2" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2016-11-30.23:20:09.150</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2016-12-06.14:09:08</IntrospectionTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -68,611 +68,343 @@
       <ObjectId>16393</ObjectId>
     </schema>
     <table id="22" parent="9" name="Alumni">
-      <ObjectId>110623437</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:52.880</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.277</ModifiedTimestamp>
+      <ObjectId>1902629821</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.487</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.13:09:58.403</ModifiedTimestamp>
     </table>
     <table id="23" parent="9" name="Connected">
-      <ObjectId>142623551</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:52.960</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.313</ModifiedTimestamp>
+      <ObjectId>1934629935</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.543</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.09:01:18.750</ModifiedTimestamp>
     </table>
     <table id="24" parent="9" name="Login">
-      <ObjectId>174623665</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:52.983</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.347</ModifiedTimestamp>
+      <ObjectId>1966630049</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.563</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.13:10:15.493</ModifiedTimestamp>
     </table>
     <table id="25" parent="9" name="Major">
-      <ObjectId>206623779</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.010</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.377</ModifiedTimestamp>
+      <ObjectId>1998630163</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.580</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.09:01:31.653</ModifiedTimestamp>
     </table>
     <table id="26" parent="9" name="Messages">
-      <ObjectId>238623893</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.033</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.410</ModifiedTimestamp>
+      <ObjectId>2030630277</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.600</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.09:01:37.390</ModifiedTimestamp>
     </table>
     <table id="27" parent="9" name="Student">
-      <ObjectId>270624007</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.060</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.453</ModifiedTimestamp>
+      <ObjectId>2062630391</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.617</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.13:19:40.210</ModifiedTimestamp>
     </table>
     <table id="28" parent="9" name="System_Admin">
-      <ObjectId>302624121</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.090</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.500</ModifiedTimestamp>
+      <ObjectId>2094630505</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.637</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.09:01:50.003</ModifiedTimestamp>
     </table>
-    <table id="29" parent="9" name="sysdiagrams">
-      <ObjectId>277576027</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.117</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.117</ModifiedTimestamp>
-    </table>
-    <routine id="30" parent="9" name="fn_diagramobjects">
-      <ObjectId>421576540</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.130</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.130</ModifiedTimestamp>
-      <RoutineKind>function</RoutineKind>
-      <RoutineType>scalar-fun</RoutineType>
-    </routine>
-    <routine id="31" parent="9" name="sp_alterdiagram">
-      <ObjectId>389576426</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.130</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.130</ModifiedTimestamp>
-      <RoutineKind>procedure</RoutineKind>
-      <RoutineType>proc</RoutineType>
-    </routine>
-    <routine id="32" parent="9" name="sp_creatediagram">
-      <ObjectId>357576312</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.123</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.123</ModifiedTimestamp>
-      <RoutineKind>procedure</RoutineKind>
-      <RoutineType>proc</RoutineType>
-    </routine>
-    <routine id="33" parent="9" name="sp_dropdiagram">
-      <ObjectId>405576483</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.130</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.130</ModifiedTimestamp>
-      <RoutineKind>procedure</RoutineKind>
-      <RoutineType>proc</RoutineType>
-    </routine>
-    <routine id="34" parent="9" name="sp_helpdiagramdefinition">
-      <ObjectId>341576255</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.123</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.123</ModifiedTimestamp>
-      <RoutineKind>procedure</RoutineKind>
-      <RoutineType>proc</RoutineType>
-    </routine>
-    <routine id="35" parent="9" name="sp_helpdiagrams">
-      <ObjectId>325576198</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.120</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.120</ModifiedTimestamp>
-      <RoutineKind>procedure</RoutineKind>
-      <RoutineType>proc</RoutineType>
-    </routine>
-    <routine id="36" parent="9" name="sp_renamediagram">
-      <ObjectId>373576369</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.127</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.127</ModifiedTimestamp>
-      <RoutineKind>procedure</RoutineKind>
-      <RoutineType>proc</RoutineType>
-    </routine>
-    <routine id="37" parent="9" name="sp_upgraddiagrams">
-      <ObjectId>261575970</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.117</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.117</ModifiedTimestamp>
-      <RoutineKind>procedure</RoutineKind>
-      <RoutineType>proc</RoutineType>
-    </routine>
-    <column id="38" parent="22" name="First_Name">
+    <column id="29" parent="22" name="First_Name">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="22" name="Last_Name">
+    <column id="30" parent="22" name="Last_Name">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="40" parent="22" name="Graduation_Date">
+    <column id="31" parent="22" name="Graduation_Date">
       <Position>3</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="41" parent="22" name="Email">
+    <column id="32" parent="22" name="Email">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="42" parent="22" name="Company">
+    <column id="33" parent="22" name="Company">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="43" parent="22" name="Job_Title">
+    <column id="34" parent="22" name="Job_Title">
       <Position>6</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="44" parent="22" name="Active">
+    <column id="35" parent="22" name="Active">
       <Position>7</Position>
       <DataType>bit|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="45" parent="22" name="Picture">
+    <column id="36" parent="22" name="Picture">
       <Position>8</Position>
       <DataType>image|0</DataType>
     </column>
-    <column id="46" parent="22" name="Job_Field">
+    <column id="37" parent="22" name="Job_Field">
       <Position>9</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="47" parent="22" name="XPKAlumni">
+    <index id="38" parent="22" name="XPKAlumni">
       <Position>1</Position>
       <ColNames>Email</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="48" parent="22" name="XPKAlumni">
-      <ObjectId>126623494</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:52.943</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:52.943</ModifiedTimestamp>
+    <key id="39" parent="22" name="XPKAlumni">
+      <ObjectId>1918629878</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.533</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.533</ModifiedTimestamp>
       <ColNames>Email</ColNames>
       <UnderlyingIndexName>XPKAlumni</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="49" parent="22" name="R_53">
-      <ObjectId>334624235</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.123</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.123</ModifiedTimestamp>
+    <foreign-key id="40" parent="22" name="R_53">
+      <ObjectId>395148453</ObjectId>
+      <CreatedTimestamp>2016-12-06.13:09:58.403</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.13:09:58.403</ModifiedTimestamp>
       <ColNames>Email</ColNames>
       <RefTableName>Login</RefTableName>
       <RefColNames>Email</RefColNames>
     </foreign-key>
-    <foreign-key id="50" parent="22" name="R_24">
-      <ObjectId>350624292</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.133</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.133</ModifiedTimestamp>
+    <foreign-key id="41" parent="22" name="R_24">
+      <ObjectId>2142630676</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.670</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.670</ModifiedTimestamp>
       <ColNames>Job_Field</ColNames>
       <RefTableName>Major</RefTableName>
       <RefColNames>Field_of_Study</RefColNames>
     </foreign-key>
-    <trigger id="51" parent="22" name="tU_Alumni">
-      <ObjectId>478624748</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.277</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.277</ModifiedTimestamp>
-      <Events>U</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <trigger id="52" parent="22" name="tD_Alumni">
-      <ObjectId>462624691</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.260</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.260</ModifiedTimestamp>
-      <Events>D</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <column id="53" parent="23" name="Alumni_Email">
+    <column id="42" parent="23" name="Alumni_Email">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="54" parent="23" name="Student_Email">
+    <column id="43" parent="23" name="Student_Email">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="55" parent="23" name="XPKConnected">
+    <index id="44" parent="23" name="XPKConnected">
       <Position>1</Position>
       <ColNames>Alumni_Email
 Student_Email</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="56" parent="23" name="XPKConnected">
-      <ObjectId>158623608</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:52.970</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:52.970</ModifiedTimestamp>
+    <key id="45" parent="23" name="XPKConnected">
+      <ObjectId>1950629992</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.553</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.553</ModifiedTimestamp>
       <ColNames>Alumni_Email
 Student_Email</ColNames>
       <UnderlyingIndexName>XPKConnected</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="57" parent="23" name="R_61">
-      <ObjectId>366624349</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.150</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.150</ModifiedTimestamp>
+    <foreign-key id="46" parent="23" name="R_61">
+      <ObjectId>11147085</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.683</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.683</ModifiedTimestamp>
       <ColNames>Alumni_Email</ColNames>
       <RefTableName>Alumni</RefTableName>
       <RefColNames>Email</RefColNames>
     </foreign-key>
-    <foreign-key id="58" parent="23" name="R_68">
-      <ObjectId>382624406</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.163</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.163</ModifiedTimestamp>
+    <foreign-key id="47" parent="23" name="R_68">
+      <ObjectId>27147142</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.700</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.700</ModifiedTimestamp>
       <ColNames>Student_Email</ColNames>
       <RefTableName>Student</RefTableName>
       <RefColNames>Email</RefColNames>
     </foreign-key>
-    <trigger id="59" parent="23" name="tU_Connected">
-      <ObjectId>510624862</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.313</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.313</ModifiedTimestamp>
-      <Events>U</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <trigger id="60" parent="23" name="tD_Connected">
-      <ObjectId>494624805</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.297</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.297</ModifiedTimestamp>
-      <Events>D</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <column id="61" parent="24" name="Email">
+    <column id="48" parent="24" name="Email">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="62" parent="24" name="Password">
+    <column id="49" parent="24" name="Password">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="63" parent="24" name="Type">
+    <column id="50" parent="24" name="Type">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
     </column>
-    <index id="64" parent="24" name="XPKLogin">
+    <index id="51" parent="24" name="XPKLogin">
       <Position>1</Position>
       <ColNames>Email</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="65" parent="24" name="XPKLogin">
-      <ObjectId>190623722</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53</ModifiedTimestamp>
+    <key id="52" parent="24" name="XPKLogin">
+      <ObjectId>1982630106</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.570</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.570</ModifiedTimestamp>
       <ColNames>Email</ColNames>
       <UnderlyingIndexName>XPKLogin</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <trigger id="66" parent="24" name="tU_Login">
-      <ObjectId>542624976</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.347</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.347</ModifiedTimestamp>
-      <Events>U</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <trigger id="67" parent="24" name="tD_Login">
-      <ObjectId>526624919</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.327</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.327</ModifiedTimestamp>
-      <Events>D</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <column id="68" parent="25" name="Field_of_Study">
+    <column id="53" parent="25" name="Field_of_Study">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="69" parent="25" name="XPKMajor">
+    <index id="54" parent="25" name="XPKMajor">
       <Position>1</Position>
       <ColNames>Field_of_Study</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="70" parent="25" name="XPKMajor">
-      <ObjectId>222623836</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.020</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.020</ModifiedTimestamp>
+    <key id="55" parent="25" name="XPKMajor">
+      <ObjectId>2014630220</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.590</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.590</ModifiedTimestamp>
       <ColNames>Field_of_Study</ColNames>
       <UnderlyingIndexName>XPKMajor</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <trigger id="71" parent="25" name="tU_Major">
-      <ObjectId>574625090</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.377</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.377</ModifiedTimestamp>
-      <Events>U</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <trigger id="72" parent="25" name="tD_Major">
-      <ObjectId>558625033</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.360</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.360</ModifiedTimestamp>
-      <Events>D</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <column id="73" parent="26" name="Message">
+    <column id="56" parent="26" name="Message">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="74" parent="26" name="Message_ID">
+    <column id="57" parent="26" name="Message_ID">
       <Position>2</Position>
       <DataType>int|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="75" parent="26" name="Alumni_Email">
+    <column id="58" parent="26" name="Alumni_Email">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="76" parent="26" name="Student_Email">
+    <column id="59" parent="26" name="Student_Email">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="77" parent="26" name="XPKMessages">
+    <index id="60" parent="26" name="XPKMessages">
       <Position>1</Position>
       <ColNames>Message_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="78" parent="26" name="XPKMessages">
-      <ObjectId>254623950</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.047</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.047</ModifiedTimestamp>
+    <key id="61" parent="26" name="XPKMessages">
+      <ObjectId>2046630334</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.610</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.610</ModifiedTimestamp>
       <ColNames>Message_ID</ColNames>
       <UnderlyingIndexName>XPKMessages</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="79" parent="26" name="R_36">
-      <ObjectId>398624463</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.200</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.200</ModifiedTimestamp>
+    <foreign-key id="62" parent="26" name="R_36">
+      <ObjectId>43147199</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.710</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.710</ModifiedTimestamp>
       <ColNames>Alumni_Email
 Student_Email</ColNames>
       <RefTableName>Connected</RefTableName>
       <RefColNames>Alumni_Email
 Student_Email</RefColNames>
     </foreign-key>
-    <trigger id="80" parent="26" name="tU_Messages">
-      <ObjectId>606625204</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.410</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.410</ModifiedTimestamp>
-      <Events>U</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <trigger id="81" parent="26" name="tD_Messages">
-      <ObjectId>590625147</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.397</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.397</ModifiedTimestamp>
-      <Events>D</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <column id="82" parent="27" name="Email">
+    <column id="63" parent="27" name="Email">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="83" parent="27" name="First_Name">
+    <column id="64" parent="27" name="First_Name">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="84" parent="27" name="Last_Name">
+    <column id="65" parent="27" name="Last_Name">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="85" parent="27" name="Expected_Graduation">
+    <column id="66" parent="27" name="Expected_Graduation">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="86" parent="27" name="Resume">
+    <column id="67" parent="27" name="Resume">
       <Position>5</Position>
-      <DataType>varbinary(1)|0</DataType>
+      <DataType>varbinary|0</DataType>
     </column>
-    <column id="87" parent="27" name="Active">
+    <column id="68" parent="27" name="Active">
       <Position>6</Position>
       <DataType>bit|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="88" parent="27" name="Picture">
+    <column id="69" parent="27" name="Picture">
       <Position>7</Position>
       <DataType>image|0</DataType>
     </column>
-    <column id="89" parent="27" name="Major">
+    <column id="70" parent="27" name="Major">
       <Position>8</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="90" parent="27" name="XPKStudent">
+    <index id="71" parent="27" name="XPKStudent">
       <Position>1</Position>
       <ColNames>Email</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="91" parent="27" name="XPKStudent">
-      <ObjectId>286624064</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.073</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.073</ModifiedTimestamp>
+    <key id="72" parent="27" name="XPKStudent">
+      <ObjectId>2078630448</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.627</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.627</ModifiedTimestamp>
       <ColNames>Email</ColNames>
       <UnderlyingIndexName>XPKStudent</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="92" parent="27" name="R_64">
-      <ObjectId>414624520</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.210</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.210</ModifiedTimestamp>
+    <foreign-key id="73" parent="27" name="R_64">
+      <ObjectId>411148510</ObjectId>
+      <CreatedTimestamp>2016-12-06.13:10:15.493</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.13:10:15.493</ModifiedTimestamp>
       <ColNames>Email</ColNames>
       <RefTableName>Login</RefTableName>
       <RefColNames>Email</RefColNames>
     </foreign-key>
-    <foreign-key id="93" parent="27" name="R_66">
-      <ObjectId>430624577</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.220</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.220</ModifiedTimestamp>
+    <foreign-key id="74" parent="27" name="R_66">
+      <ObjectId>75147313</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.730</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.730</ModifiedTimestamp>
       <ColNames>Major</ColNames>
       <RefTableName>Major</RefTableName>
       <RefColNames>Field_of_Study</RefColNames>
     </foreign-key>
-    <trigger id="94" parent="27" name="tU_Student">
-      <ObjectId>638625318</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.453</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.453</ModifiedTimestamp>
-      <Events>U</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <trigger id="95" parent="27" name="tD_Student">
-      <ObjectId>622625261</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.437</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.437</ModifiedTimestamp>
-      <Events>D</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <column id="96" parent="28" name="Email">
+    <column id="75" parent="28" name="Email">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="97" parent="28" name="Active">
+    <column id="76" parent="28" name="Active">
       <Position>2</Position>
       <DataType>bit|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="98" parent="28" name="XPKSystem_Admin">
+    <index id="77" parent="28" name="XPKSystem_Admin">
       <Position>1</Position>
       <ColNames>Email</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="99" parent="28" name="XPKSystem_Admin">
-      <ObjectId>318624178</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.103</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.103</ModifiedTimestamp>
+    <key id="78" parent="28" name="XPKSystem_Admin">
+      <ObjectId>2110630562</ObjectId>
+      <CreatedTimestamp>2016-12-05.22:28:26.650</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-05.22:28:26.650</ModifiedTimestamp>
       <ColNames>Email</ColNames>
       <UnderlyingIndexName>XPKSystem_Admin</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="100" parent="28" name="R_67">
-      <ObjectId>446624634</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.237</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.237</ModifiedTimestamp>
+    <foreign-key id="79" parent="28" name="R_67">
+      <ObjectId>363148339</ObjectId>
+      <CreatedTimestamp>2016-12-06.09:00:43.200</CreatedTimestamp>
+      <ModifiedTimestamp>2016-12-06.09:00:43.200</ModifiedTimestamp>
       <ColNames>Email</ColNames>
       <RefTableName>Login</RefTableName>
       <RefColNames>Email</RefColNames>
     </foreign-key>
-    <trigger id="101" parent="28" name="tU_System_Admin">
-      <ObjectId>670625432</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.500</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.500</ModifiedTimestamp>
-      <Events>U</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <trigger id="102" parent="28" name="tD_System_Admin">
-      <ObjectId>654625375</ObjectId>
-      <CreatedTimestamp>2016-11-30.17:20:53.480</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-30.17:20:53.480</ModifiedTimestamp>
-      <Events>D</Events>
-      <Turn>instead-of</Turn>
-    </trigger>
-    <column id="103" parent="29" name="name">
-      <Position>1</Position>
-      <DataType>sysname|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="104" parent="29" name="principal_id">
-      <Position>2</Position>
-      <DataType>int|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="105" parent="29" name="diagram_id">
-      <Position>3</Position>
-      <DataType>int|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="106" parent="29" name="version">
-      <Position>4</Position>
-      <DataType>int|0</DataType>
-    </column>
-    <column id="107" parent="29" name="definition">
-      <Position>5</Position>
-      <DataType>varbinary|0</DataType>
-    </column>
-    <index id="108" parent="29" name="PK__sysdiagr__C2B05B612B2DBC3E">
-      <Position>1</Position>
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>diagram_id</ColNames>
-      <Clustering>1</Clustering>
-      <Unique>1</Unique>
-    </index>
-    <index id="109" parent="29" name="UK_principal_name">
-      <Position>2</Position>
-      <ColNames>principal_id
-name</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="110" parent="29" name="PK__sysdiagr__C2B05B612B2DBC3E">
-      <ObjectId>293576084</ObjectId>
-      <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2016-11-13.19:57:01.117</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.117</ModifiedTimestamp>
-      <ColNames>diagram_id</ColNames>
-      <UnderlyingIndexName>PK__sysdiagr__C2B05B612B2DBC3E</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <key id="111" parent="29" name="UK_principal_name">
-      <ObjectId>309576141</ObjectId>
-      <CreatedTimestamp>2016-11-13.19:57:01.120</CreatedTimestamp>
-      <ModifiedTimestamp>2016-11-13.19:57:01.120</ModifiedTimestamp>
-      <ColNames>principal_id
-name</ColNames>
-      <UnderlyingIndexName>UK_principal_name</UnderlyingIndexName>
-    </key>
-    <argument id="112" parent="30">
-      <ArgumentDirection>R</ArgumentDirection>
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="113" parent="31" name="@diagramname">
-      <DataType>sysname|0</DataType>
-    </argument>
-    <argument id="114" parent="31" name="@owner_id">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="115" parent="31" name="@version">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="116" parent="31" name="@definition">
-      <DataType>varbinary|0</DataType>
-    </argument>
-    <argument id="117" parent="32" name="@diagramname">
-      <DataType>sysname|0</DataType>
-    </argument>
-    <argument id="118" parent="32" name="@owner_id">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="119" parent="32" name="@version">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="120" parent="32" name="@definition">
-      <DataType>varbinary|0</DataType>
-    </argument>
-    <argument id="121" parent="33" name="@diagramname">
-      <DataType>sysname|0</DataType>
-    </argument>
-    <argument id="122" parent="33" name="@owner_id">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="123" parent="34" name="@diagramname">
-      <DataType>sysname|0</DataType>
-    </argument>
-    <argument id="124" parent="34" name="@owner_id">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="125" parent="35" name="@diagramname">
-      <DataType>sysname|0</DataType>
-    </argument>
-    <argument id="126" parent="35" name="@owner_id">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="127" parent="36" name="@diagramname">
-      <DataType>sysname|0</DataType>
-    </argument>
-    <argument id="128" parent="36" name="@owner_id">
-      <DataType>int|0</DataType>
-    </argument>
-    <argument id="129" parent="36" name="@new_diagramname">
-      <DataType>sysname|0</DataType>
-    </argument>
   </database-model>
 </dataSource>

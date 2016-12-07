@@ -38,13 +38,30 @@
 		    </div>
 	    </div>&nbsp;
 	<a href = "about.jsp">About AlumNet</a>&nbsp;
-	    <div class="dropdown">
-		<button class="dropbtn" id="account">My Account</button>
-		    <div class="dropdown-content">	
-			<a href = "login.jsp">Login</a>
-			<a href="<s:url action="setupRegistration"/>">Register</a>
-		    </div>
-	    </div>&nbsp;
+	    
+	<s:div class="dropdown">
+				<button class="dropbtn" id="account">My Account</button>
+				
+				<s:if test= "%{#session.type == 'student'}" >
+				    <s:div class="dropdown-content">	
+					    <a href="account_student.jsp">My Student Account</a>
+				    </s:div>
+				</s:if>
+				
+				<s:elseif test= "%{#session.type == 'alumnus'}" >
+				    <s:div class="dropdown-content">
+					<a href="account_alum.jsp">My Alum Account</a>
+				    </s:div>
+				</s:elseif>
+					
+				<s:else>
+				    <div class="dropdown-content">	
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+				    </div>    
+				</s:else>
+				
+			</s:div>&nbsp;
     </div>
     <br/>
     <s:div id="main">
@@ -53,21 +70,22 @@
 	<br/>
 	<!-- This is the string to make a cookie "makeCookie('USER_N' , 'cookievalue' , path=\"/\");
 "-->
-	<s:form namespace="/" theme="simple" id="reg"><!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
-	    <h2><s:text name="Please Register!"/></h2>
+	<!--The actionChange() function switches the onclick action depending on whether the user clicks Alum or Student. Function found in the login.js file -->
+	    <h2>Please Register!</h2>
 				    
-		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';document.getElementById('reg').action='addAlumnus';" name="alumStud" list="{'Alumnus'}" />
-		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';document.getElementById('reg').action='addStudent';" name="alumStud" list="{'Student'}"/><hr/>
+		<s:radio id="alumTrue" onclick="document.getElementById('ifAlum').style.display=''; document.getElementById('ifStud').style.display='none';" name="type" list="{'Alumnus'}" />
+		<s:radio id="studentTrue" onclick="document.getElementById('ifStud').style.display=''; document.getElementById('ifAlum').style.display='none';" name="type" list="{'Student'}"/><hr/>
 			
 		<!-- ****************** ALUM **************
 		*********************** Mapped action: addAlumnus -->
-		<s:div id="ifAlum" cssStyle="display:none;">
+	<s:div id="ifAlum" cssStyle="display:none;">
+	    <s:form namespace="/JSP" action="addAlumnus" method="POST" enctype="multipart/form-data" theme="simple" id="reg" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
 		    <label id="l1">First Name</label>
 			<s:textfield type="string" name = "alumnus.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l2">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="alumnus.lastName" id="lastName" placeholder="Doe" /><br/><br/>
-		    <label id="l3">Grad Year</label>
-			<s:textfield label="Grad Year" type = "date" name="alumnus.graduationDate" id="Grad" min="1906-01-02"/><br/><br/>
+		    <label id="l3">Grad Date</label>
+			<s:textfield label="Grad Date" type = "date" name="alumnus.graduationDate" id="Grad" min="1906-01-02"/><br/><br/>
 		    <label id="l5">Company</label>
 			<s:textfield label="Company" type="string" name="alumnus.company" id="jobComp" placeholder="Dell" /><br/><br/>
 		    <label id="l6">Job Title</label>
@@ -77,33 +95,36 @@
 		    <label id="l8">Email</label>
 			<s:textfield label="Email" type="email" name="alumnus.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l9">Password</label>
-			<s:password label="Password" type="password" name="alumnus.password" id="pw" placeholder="*********" /><br/><br/>
-		    <s:submit type="submit" name="submit" value="submit" id="submit" />
-		</s:div>	
+			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" script= "$(\"input[type='text']\").each(function(){$(this).val( $(this).val().replace(/[,]/g,\"));});"/><br/><br/>
+		    <label id="l18">Profile Picture</label>
+			<s:file id="pic" name="alumnus.picture"/><br/><br/>
+		    <s:submit type="submit"  value="submit" id="submit" />
+		</s:form>
+	</s:div>
+	
 		
 		<!-- **************STUDENT ******** -->
-		<s:div id="ifStud" cssStyle="display:none;">
+	<s:div id="ifStud" cssStyle="display:none;">
+	    <s:form namespace="/JSP" action="addStudent" method="POST" enctype="multipart/form-data" theme="simple" id="reg" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
 		    <label id="l10">First Name</label>
 			<s:textfield label="First Name" type="string" name = "student.firstName" id="firstName" placeholder="John" /><br/><br/>
 		    <label id="l11">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="student.lastName" id="lastName" placeholder="Doe" /><br/><br/>
-		    <label id="l12">Student ID</label>
-			<s:textfield label="Student ID" type = "string" name="student.studentID" id="id" placeholder="900XXXXXX" min="900000000" /><br/><br/>
-		    <label id="l13">Grad Year</label>
-			<s:textfield label="Grad Year" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
+		    <label id="l13">Grad Date</label>
+			<s:textfield label="Grad Date" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
 			<s:select name="student.major" id="major" list="majors"/><br/><br/>
 		    <label id="l15">Resume</label>
-			<s:file id="resume" name="student.resume"/><br/><br/>
+			<s:file id="resume" name="student.resume"  method="POST" enctype="multipart/form-data"/><br/><br/>
 		    <label id="l16">Email</label>
 			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
-			<s:password label="Password" type="password" name="student.password" id="pw" placeholder="*********" min="8" /><br/><br/>
-		    <s:submit type="submit" name="submit" value="submit" id="submit" />
-		</s:div>
-		
-
-	</s:form>
+			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" script= "$(\"input[type='text']\").each(function(){$(this).val( $(this).val().replace(/[,]/g,\"));});"/><br/><br/>
+		    <label id="l19">Profile Picture</label>
+			<s:file id="pic" name="student.picture" method="POST" enctype="multipart/form-data"/><br/><br/>
+		    <s:submit type="submit" value="submit" id="submit" />	
+	    </s:form>
+	</s:div>
 		
 	
 	<br/>

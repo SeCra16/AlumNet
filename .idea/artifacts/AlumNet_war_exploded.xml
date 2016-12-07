@@ -17,10 +17,12 @@
           <element id="library" level="module" name="struts2-core-2.3.31.jar" module-name="AlumNet" />
           <element id="library" level="module" name="xwork-core-2.3.31.jar" module-name="AlumNet" />
           <element id="library" level="project" name="commons-fileupload-1.3.2" />
-          <element id="library" level="module" name="junit-4.10.jar" module-name="AlumNet" />
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/sqljdbc42.jar" />
         </element>
       </element>
+      <element id="library" level="module" name="junit-4.10.jar" module-name="AlumNet" />
       <element id="javaee-facet-resources" facet="AlumNet/web/Web" />
+      <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/javax.servlet-3.0.jar" />
     </root>
   </artifact>
 </component>
