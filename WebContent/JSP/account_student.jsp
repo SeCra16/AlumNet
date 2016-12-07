@@ -30,7 +30,6 @@
 			<h4>User: <s:property value="#session.user.firstName"/> <s:property value="#session.user.lastName"/></h4>
 		    </s:elseif>
 
-	
 	<!--Navigation Bar-->
     <div class = "nav">
 	<a href = "index.jsp">Home</a>&nbsp;
@@ -71,39 +70,43 @@
 				
 			</s:div>&nbsp;
     </div>
-		    
-	<main>
-	<!--Main content of page!-->
-	<br/>
-	<br/>
-	<br/>
-	
-	<s:form namespace="/" theme="simple" id="reg" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
-			
-		<!-- ****************** STUDENT **************
-		*********************** Mapped action:  -->
-		<s:div id="ifStud" cssStyle="border: 1px solid;">
-		    <br/>
-		    <label id="l10">First Name</label>
-			<s:property value="#session.user.firstName"/><br/><br/>
-		    <label id="l11">Last Name</label>
-			<s:property value="#session.user.lastName"/><br/><br/>
-		    <label id="l13">Grad Year</label>
-			<s:property value="#session.user.expectedGraduation"/><br/><br/>
-		    <label id="l14">Major</label>
-			<s:property value="#session.user.major"/><br/><br/>
-		    <label id="l15">Resume</label>
-			<s:property value="#session.user.resume"/><br/><br/>
-		    <label id="l16">Email</label>
-			<s:property value="#session.user.email"/><br/><br/>
-		    
-		</s:div>
-		
-	</s:form>
-	
-	
-	</main>
-	</div>
+
+        <main>
+            <!--Main content of page!-->
+            <br/>
+            <br/>
+            <br/>
+
+            <s:form namespace="/" theme="simple" id="reg" style="font-family: Cabin,Helvetica,Arial,sans-serif;">
+
+                <!-- ****************** STUDENT **************
+                *********************** Mapped action:  -->
+                <s:div id="ifStud" cssStyle="border: 1px solid;">
+                    <br/>
+                    <label id="l1100">Picture</label>
+					<img src="userimages/<s:property value="#session.picture"/>"
+						 width="100" height="100" />
+					<img alt="" src="<s:property value="#session.user.picture"/>"/><br/><br/>
+                    <label id="l10">First Name</label>
+                    <s:property value="#session.user.firstName"/><br/><br/>
+                    <label id="l11">Last Name</label>
+                    <s:property value="#session.user.lastName"/><br/><br/>
+                    <label id="l13">Grad Year</label>
+                    <s:property value="#session.user.expectedGraduation"/><br/><br/>
+                    <label id="l14">Major</label>
+                    <s:property value="#session.user.major"/><br/><br/>
+                    <label id="l15">Resume</label>
+                    <s:property value="#session.user.resume"/><br/><br/>
+                    <label id="l16">Email</label>
+                    <s:property value="#session.user.email"/><br/><br/>
+
+                </s:div>
+
+            </s:form>
+
+
+        </main>
+    </div>
 	<div id="footer">
 		AlumNet<sub>&copy;</sub> 2016
 	</div>

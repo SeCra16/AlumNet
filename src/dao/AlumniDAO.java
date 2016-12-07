@@ -221,6 +221,7 @@ public class AlumniDAO {
             }
 
 //			TODO: UPDATE CONNECTIONS AND MESSAGES WITH NEW VALUE IF EMAIL CHANGES
+            //How to update? Need to delete and store then reinsert
 			
 			//We know the values are not null, so time to attempt update
 

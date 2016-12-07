@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -58,47 +59,75 @@ private Connection conn = null;
 					rDTO.setEmail(rs.getString("Email"));
 					rDTO.setMajor(rs.getString("Major"));
 
-                    File file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+//					start setting resume
+                    File file = null;
+                    try {
+                        String s = System.getProperty("user.dir") + "/tempRes/";
+                        File dir = new File("/tempRes/");
 
+                        //check if directory exists, if not create it
+                        if (!dir.exists()) {
+                            if (dir.mkdir()) {
+                                file = File.createTempFile("" + new Random().nextInt(), ".pdf", dir);
+                            } else {
+                                //couldn't make directory
+                                System.out.println("Could not make directory.. could cause problems");
+                            }
+                        } else {
+                            file = File.createTempFile("" + new Random().nextInt(), ".pdf", dir);
+                        }
+                    } catch (Exception es) {
+                        System.out.println(es.getMessage());
+                    }
                     try (FileOutputStream out = new FileOutputStream(file)) {
                         IOUtils.copy(rs.getBinaryStream("Resume"), out);
 
-                    } catch (Exception e) {
-                        //means its null... just continue
+                    } catch (IOException e) {
+                        System.out.println("Must have empty Resume");
+                        file = null;
+                    } catch (Exception ex) {
+                        String error = ex.getMessage();
+                        System.out.println(error);
                     }
+                    if (file != null)
 					rDTO.setResume(file);
+//                   end set resume
 
+                    //set active
                     rDTO.setActive(rs.getBoolean("Active"));
 
-                    file = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
+//                    start setting picture
+                    file = null;
 
                     try {
-                        file.createNewFile();
+                        File dir = new File("../../AlumNet/out/artifacts/AlumNet_war_exploded/123");
+
+                        //check if directory exists, if not create it
+                        if (!dir.exists()) {
+                            //Files.createDirectory(dir.toPath());
+                                //file = File.createTempFile("" + new Random().nextInt(), ".jpg");
+                            file = File.createTempFile("../../AlumNet/out/artifacts/AlumNet_war_exploded/Images/123", ".jpg");
+                        } else {
+                            //file = File.createTempFile("" + new Random().nextInt(), ".jpg", dir);
+                            file = File.createTempFile("../../AlumNet/out/artifacts/AlumNet_war_exploded/Images/123", ".jpg");
+                        }
                     } catch (Exception ex) {
-                        System.out.println("Cant create file on pathway");
+                        String t = ex.getMessage();
+                        System.out.println("Cant create file on pathway.." + t);
                     }
                     try (FileOutputStream out = new FileOutputStream(file)) {
                         IOUtils.copy(rs.getBinaryStream("Picture"), out);
 
-                    } catch (Exception e) {
+                    } catch (IOException e) {
                         System.out.println("Must have null picture");
-                    }
-                    rDTO.setPicture(file);
-
-                    File f2 = new File("C:\\Users\\AlumNet\\Downloads\\" + new Random().nextInt() + ".pdf");
-
-                    try {
-                        f2.createNewFile();
+                        file = null;
                     } catch (Exception ex) {
-                        System.out.println("Cant create file on pathway");
+                        String s = ex.getMessage();
+                        System.out.println(s);
                     }
-                    try (FileOutputStream out = new FileOutputStream(f2)) {
-                        IOUtils.copy(rs.getBinaryStream("Resume"), out);
+                    if (file != null)
+                        rDTO.setPicture(file);
 
-                    } catch (Exception e) {
-                        System.out.println("Must have null resume");
-                    }
-                    rDTO.setResume(file);
 
                     //ps.close();
 
@@ -271,6 +300,7 @@ private Connection conn = null;
 
 
 //			TODO: UPDATE CONNECTIONS AND MESSAGES WITH NEW VALUE IF EMAIL CHANGES
+            //How to update? Need to delete and store then reinsert
 			
 			//We know the values are not null, so time to attempt update
 			

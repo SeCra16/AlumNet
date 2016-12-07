@@ -96,11 +96,14 @@ public class LoginService extends ActionSupport implements SessionAware {
 	    try {
             LoginPersistence lPer = AlumNetFactory.getLoginPersistence();
             lPer.deleteLogin(temp);
+
+            sessionMap.remove("user");
         } catch (Exception e) {
 	        System.out.println("Failed to delete the login");
 	        return ANConstants.ERROR;
         }
         return ANConstants.SUCCESS;
+
     }
 	
 	public LoginDTO getLoginDTO() {

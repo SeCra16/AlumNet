@@ -77,6 +77,7 @@ public class LoginDAO {
 			if (dto.getEmail() == null) {
 				throw new Exception("Email cannot be null...");
 			} else {
+//				TODO: NEED TO PROPAGATE THE DELETE TO ALL TABLES
 				String sql = "DELETE FROM ALUMNET.dbo.Login WHERE Email=?";
 				PreparedStatement stmt = conn.prepareStatement(sql);
 

@@ -15,7 +15,7 @@ public class StudentPersistence extends AlumNetPersistence{
 		
 	}
 	
-	public void addStudent(StudentDTO dto, String password) throws Exception {
+	public StudentDTO addStudent(StudentDTO dto, String password) throws Exception {
 	    try {
             //connect to the database
             connect();
@@ -43,6 +43,12 @@ public class StudentPersistence extends AlumNetPersistence{
                     dao = new StudentDAO(getConnection());
                     //insert the dto into database
                     dao.insert(dto);
+
+                    //try to grab new values
+                    String t = dto.getEmail();
+                    dto = new StudentDTO();
+                    dto.setEmail(t);
+                    return (StudentDTO) dao.select(dto);
                 } else {
                     throw new Exception("Login is already being used");
                 }
