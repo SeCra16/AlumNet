@@ -62,20 +62,7 @@ private Connection conn = null;
 //					start setting resume
                     File file = null;
                     try {
-                        String s = System.getProperty("user.dir") + "/tempRes/";
-                        File dir = new File("/tempRes/");
-
-                        //check if directory exists, if not create it
-                        if (!dir.exists()) {
-                            if (dir.mkdir()) {
-                                file = File.createTempFile("" + new Random().nextInt(), ".pdf", dir);
-                            } else {
-                                //couldn't make directory
-                                System.out.println("Could not make directory.. could cause problems");
-                            }
-                        } else {
-                            file = File.createTempFile("" + new Random().nextInt(), ".pdf", dir);
-                        }
+                        file = File.createTempFile("" + new Random().nextInt(), ".pdf");
                     } catch (Exception es) {
                         System.out.println(es.getMessage());
                     }
