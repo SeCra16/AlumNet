@@ -72,48 +72,54 @@
 				
 			</s:div>&nbsp;
 	</div>
-
+	
 	<div id="main">
 	<!--Main content of page!-->
 		
-	<s:form>
+	<s:form id="poss_conn" name="Poss_conn" cssStyle="">
 	    <s:iterator value="possConn" var="connection">
-		<img src="../userimages/<s:property value="picture"/>" style= "max-width:100px; max-height:150px;" alt="usr_pic"/>
-		<s:property value="firstName"/>
-		<s:property value="lastName"/>
-		<s:property value="email"/><br/>
+		<table id=poss_conn" class = "connections" style="border: 1px solid; table-layout: fixed; width: 75%; border-collapse: collapse; margin: 2% 20% 0 10%; word-wrap: break-word;">
+		    <tr>
+			<td class="prof_pic" style="border: 1px solid">
+			    <label for="poss_conn_pic">Profile Pic</label>
+			</td>
+			<td class="fName" style="border: 1px solid">
+			    <label for="poss_conn_fName">First Name</label>
+			</td>
+			<td class="lName" style="border: 1px solid">
+			    <label for="poss_conn_lName">Last Name</label>
+			</td>
+			<td class="email" style="border: 1px solid; max-width: 75%; ">
+			    <label for="poss_conn_email">Email</label>
+			</td>
+			<td class="conn" style="border: 1px solid;width:90px">
+			    <label for="poss_conn_connect">Connect?</label>
+			</td>
+		    </tr>
+		    <tr>
+			<td>
+			<img src="../userimages/<s:property value="picture"/>" style= "max-width:100px; max-height:150px;" alt="usr_pic"/>
+			</td>
+			<td>
+			    <s:property value="firstName"/>
+			</td>
+			<td>
+			    <s:property value="lastName"/>
+			</td>
+			<td>
+			    <s:property value="email"/><br/>
+			</td>
+			<td>
+			    <button onclick="">
+				<label for="conn_button">Connect</label>
+			    </button>
+			</td>
+		    </tr>
+		</table>
 	    </s:iterator>
 	</s:form>
                 <br/>
-                <br/>
-                <style>
-                    table{
-                        border-collapse: collapse;
-                        border: 1px solid black;
-                    }
-                </style>
-                <table style="width: 30%">
-                    <tr>
-                        <td>Josh</td>
-                        <td>jarcher1200@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Archer</td>
-                        <td>
-                            <input type="button" id="connBtn" value="Connect" onclick="connectFunction()"></input>
-                            <!--<button onclick="disconnectFunction()">Disconnect</button>-->
-                            <input type="buttone" id="disConBtn" value="Disconnect" onclick="disconnectFunction()"></input>
-                        </td>
-                    </tr>
-                </table>
-                
-                <script>
-                    function connectFunction(){
-                        document.getElementById("connBtn").disabled = true;
-                        
-                        //stuff gets moved yo hidden page/method idk
-                    }
-                </script>
+
 	</div>
 	</div>
 	<div id="footer">
