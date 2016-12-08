@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="../CSS/alumnet_styling.css" type="text/css"/>
 <script type="text/javascript" src="../JS/login.js"></script>
 
+
+
 </head>
 <body id="login">	
 <!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
@@ -21,7 +23,13 @@
 	<h1 id="header">
 	    <a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></a>
 	</h1>
-    
+		    <!--This prevents someone from re-accessing the login page after a successful login-->
+		    <s:if test= "%{#session.type == 'student'}" >
+			<jsp:forward page="index.jsp"/>
+		    </s:if>
+		    <s:elseif test= "%{#session.type == 'alumnus'}" >
+			<jsp:forward page="index.jsp"/>
+		    </s:elseif>
 	
     <!--Navigation Bar-->
     <div class = "nav">
@@ -45,12 +53,14 @@
 				<s:if test= "%{#session.type == 'student'}" >
 				    <s:div class="dropdown-content">	
 					    <a href="account_student.jsp">My Student Account</a>
+					    <s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:if>
 				
 				<s:elseif test= "%{#session.type == 'alumnus'}" >
 				    <s:div class="dropdown-content">
 					<a href="account_alum.jsp">My Alum Account</a>
+					<s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:elseif>
 					
@@ -81,7 +91,7 @@
 		    <s:div>
                 <s:if test="hasActionErrors()">
                     <div>
-                        <s:actionerror/>
+                        <s:actionerror cssStyle="list-style: none; color: red;"/>
                     </div>
                 </s:if>
 			<label id="l8">Email</label>

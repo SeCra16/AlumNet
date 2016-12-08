@@ -52,12 +52,14 @@
 				<s:if test= "%{#session.type == 'student'}" >
 				    <s:div class="dropdown-content">	
 					    <a href="account_student.jsp">My Student Account</a>
+					    <s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:if>
 				
 				<s:elseif test= "%{#session.type == 'alumnus'}" >
 				    <s:div class="dropdown-content">
 					<a href="account_alum.jsp">My Alum Account</a>
+					<s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:elseif>
 					
@@ -83,9 +85,8 @@
                 *********************** Mapped action:  -->
                 <s:div id="ifStud" cssStyle="border: 1px solid;">
                     <br/>
-                    <label id="l1100">Picture</label>
-					<img src="../userimages/<s:property value="#session.picture"/>"
-						 width="100" height="100" />
+                    <label id="l10">Profile Picture</label>
+			<img src="../userimages/<s:property value="#session.picture"/>" style= "max-width:250px; max-height:350px;" alt="profile_pic"/><br/><br/>
                     <label id="l10">First Name</label>
                     <s:property value="#session.user.firstName"/><br/><br/>
                     <label id="l11">Last Name</label>
@@ -95,7 +96,7 @@
                     <label id="l14">Major</label>
                     <s:property value="#session.user.major"/><br/><br/>
                     <label id="l15">Resume</label>
-                    <s:property value="#session.user.resume"/><br/><br/>
+                    <a download href="<s:property value="#session.user.resume"/>">Resume</a><br/><br/>
                     <label id="l16">Email</label>
                     <s:property value="#session.user.email"/><br/><br/>
 
