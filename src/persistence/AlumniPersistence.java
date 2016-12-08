@@ -74,5 +74,14 @@ public class AlumniPersistence extends AlumNetPersistence{
         close();
 		return dto;
 	}
-	
+
+    public AlumniDTO insertAlumnusConnections(AlumniDTO alumniDTO) throws Exception {
+        connect();
+        dao = new AlumniDAO(getConnection());
+
+        AlumniDTO dto = dao.insertConnections(alumniDTO);
+
+        close();
+        return dto;
+    }
 }

@@ -97,4 +97,15 @@ public class StudentPersistence extends AlumNetPersistence{
 
 		return sDto;
 	}
+
+    public StudentDTO insertStudentConnections(StudentDTO studentDTO) throws Exception {
+	    connect();
+
+	    dao = new StudentDAO(getConnection());
+
+	    StudentDTO sDto = (StudentDTO) dao.insertConnections(studentDTO);
+	    close();
+
+	    return sDto;
+    }
 }

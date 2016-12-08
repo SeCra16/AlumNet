@@ -76,7 +76,11 @@
 	<div id="main">
 	<!--Main content of page!-->
 		
+<<<<<<< HEAD
 	<s:form id="poss_conn" name="Poss_conn" cssStyle="" action="updateConn">
+=======
+	<s:form id="poss_conn" name="Poss_conn" action="showConn" cssStyle="">
+>>>>>>> origin/new-master
 	    <s:iterator value="possConn" var="connection">
 		<table id=poss_conn" class = "connections" style="border: 1px solid; table-layout: fixed; width: 75%; border-collapse: collapse; margin: 2% 20% 0 10%; word-wrap: break-word;">
 		    <tr>

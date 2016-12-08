@@ -270,6 +270,7 @@ public class AlumniDAO {
 			myStmt.setString(1, dto.getEmail());
 			myStmt.execute();
 
+
 			AlumniDTO rDTO;
 			
 			try {
@@ -282,4 +283,34 @@ public class AlumniDAO {
 		}
 	}
 
+	public AlumniDTO insertConnections(AlumniDTO DTO) throws Exception {
+		AlumniDTO dto = DTO;
+		//Check if the UserDTO is null
+		if(dto == null) {
+			throw new Exception("dto passed cannot be null");
+		} else {
+			//Check if any field of the UserDTO is empty
+			if (dto.getConnections() == null) {
+				throw new Exception("Connections cannot be empty... failing to attempt insert");
+			}
+
+			for (String connection : dto.getConnections()) {
+				String sql = "INSERT INTO ALUMNET.dbo.Connected (Alumni_Email, Student_Email) VALUES (?,?);";
+				PreparedStatement myStmt = conn.prepareStatement(sql);
+
+
+				myStmt.setString(1, dto.getEmail());
+				myStmt.setString(2, connection);
+			}
+
+			AlumniDTO rDTO;
+			try {
+				rDTO = (AlumniDTO) select(dto);
+			} catch (SQLException e) {
+				throw new SQLException("Problem with data pulled from Database....update may of worked but selection of new UserDTO did not\n" + e.getMessage());
+			}
+
+			return rDTO;
+		}
+	}
 }
