@@ -126,8 +126,11 @@ public class MessageDAO {
         return messages;
     }
 
-	public ArrayList<UserDTO> selectPossibleConnections() throws SQLException{
-		PreparedStatement ps = conn.prepareStatement("SELECT Email, First_Name, Last_Name, Picture FROM Alumni UNION ALL SELECT Email, First_Name, Last_Name, Picture FROM Student;");
+	public ArrayList<UserDTO> selectPossibleConnections(UserDTO dtos) throws SQLException{
+		PreparedStatement ps = conn.prepareStatement("SELECT Email, First_Name, Last_Name, Picture FROM Alumni WHERE Email !=? AND ACTIVE > 0 UNION ALL SELECT Email, First_Name, Last_Name, Picture FROM Student WHERE Email!=? AND Active > 0;");
+
+		ps.setString(1, dtos.getEmail());
+		ps.setString(2, dtos.getEmail());
 
 		ResultSet rs = ps.executeQuery();
 

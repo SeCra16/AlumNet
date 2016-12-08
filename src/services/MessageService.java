@@ -48,7 +48,7 @@ public class MessageService extends ActionSupport implements SessionAware{
 	public String allPossibleConnections() throws Exception {
         MessagePersistence persistence = AlumNetFactory.getMessagePersistence();
 
-        possConn = persistence.getPossibleConnections();
+        possConn = persistence.getPossibleConnections((UserDTO) sessionMap.get("user"));
 
 	    return  ANConstants.SUCCESS;
     }
