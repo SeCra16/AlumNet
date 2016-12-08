@@ -19,7 +19,7 @@
 	
 	<!--Header. The AlumNet button at the top of the page returns you to the homepage of the website-->
 		<h1 id="header">
-		    <s:a href = "index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></s:a> 
+		    <s:a href = "/JSP/index.jsp"><img src="../Images/logo.png" alt="logo" id="logo"/></s:a> 
 		</h1>
 		
 		
@@ -33,20 +33,20 @@
 	
 	<!--Navigation Bar-->
 	<s:div class = "nav">
-		<s:a href = "index.jsp">Home</s:a>&nbsp;
+		<s:a href = "/JSP/index.jsp">Home</s:a>&nbsp;
 			<s:div class="dropdown">
 				<button class="dropbtn" id="college">Colleges</button>
 					<s:div class="dropdown-content">
-						<s:a href="ceit.jsp">CoEIT</s:a>
-						<s:a href="coba.jsp">CoBA</s:a>
-						<s:a href="class.jsp">CLASS</s:a>
-						<s:a href="chhs.jsp">CHHS</s:a>
-						<s:a href="cosm.jsp">CoSM</s:a>
-						<s:a href="coe.jsp">CoE</s:a>
-						<s:a href="coph.jsp">CoPH</s:a>
+						<s:a href="/JSP/ceit.jsp">CoEIT</s:a>
+						<s:a href="/JSP/coba.jsp">CoBA</s:a>
+						<s:a href="/JSP/class.jsp">CLASS</s:a>
+						<s:a href="/JSP/chhs.jsp">CHHS</s:a>
+						<s:a href="/JSP/cosm.jsp">CoSM</s:a>
+						<s:a href="/JSP/coe.jsp">CoE</s:a>
+						<s:a href="/JSP/coph.jsp">CoPH</s:a>
 					</s:div>
 			</s:div>&nbsp;
-			<s:a href = "about.jsp">About AlumNet</s:a>&nbsp;
+			<s:a href = "/JSP/about.jsp">About AlumNet</s:a>&nbsp;
 			
 			
 			<s:div class="dropdown">
@@ -54,21 +54,21 @@
 				
 				<s:if test= "%{#session.type == 'student'}" >
 				    <s:div class="dropdown-content">	
-					    <a href="account_student.jsp">My Student Account</a>
+					    <a href="/JSP/account_student.jsp">My Student Account</a>
 					    <s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:if>
 				
 				<s:elseif test= "%{#session.type == 'alumnus'}" >
 				    <s:div class="dropdown-content">
-					<a href="account_alum.jsp">My Alum Account</a>
+					<a href="/JSP/account_alum.jsp">My Alum Account</a>
 					<s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:elseif>
 					
 				<s:else>
 				    <div class="dropdown-content">	
-					<a href = "login.jsp">Login</a>
+					<a href = "/JSP/login.jsp">Login</a>
 					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
 				    </div>    
 				</s:else>
@@ -76,10 +76,6 @@
 			</s:div>&nbsp;
 	</s:div>
         
-	<s:form action="getPossibleConnections" namespace="/JSP">
-	    <button type="submit"/>
-        </s:form>
-
 	<div id="main">
 	<!--Main content of page!-->
 	<div class="background" style="margin-left: 35%">
