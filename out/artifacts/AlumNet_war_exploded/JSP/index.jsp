@@ -55,12 +55,14 @@
 				<s:if test= "%{#session.type == 'student'}" >
 				    <s:div class="dropdown-content">	
 					    <a href="account_student.jsp">My Student Account</a>
+					    <s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:if>
 				
 				<s:elseif test= "%{#session.type == 'alumnus'}" >
 				    <s:div class="dropdown-content">
 					<a href="account_alum.jsp">My Alum Account</a>
+					<s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:elseif>
 					

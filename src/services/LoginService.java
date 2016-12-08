@@ -8,7 +8,9 @@ import dto.UserDTO;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import persistence.AlumNetFactory;
+import persistence.AlumniPersistence;
 import persistence.LoginPersistence;
+import persistence.StudentPersistence;
 import util.ANConstants;
 
 import java.sql.SQLException;
@@ -36,8 +38,25 @@ public class LoginService extends ActionSupport implements SessionAware {
 		    if (type != null) {
                 if (type.equals("alumnus")) {
                     user = (AlumniDTO) lPer.login(loginDTO);
+
+                    AlumniDTO dto = new AlumniDTO();
+                    dto.setEmail(loginDTO.getEmail());
+
+                    AlumniPersistence persistence = AlumNetFactory.getAlumniPersistence();
+                    dto = persistence.viewAlumnus(dto);
+
+                    sessionMap.put("user", dto);
                 } else if (type.equals("student")) {
                     user = (StudentDTO) lPer.login(loginDTO);
+
+                    StudentDTO dto = new StudentDTO();
+                    dto.setEmail(loginDTO.getEmail());
+
+					StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
+					dto = persistence.viewStudent(dto);
+
+                    sessionMap.put("user", dto);
+                    sessionMap.put("resume", dto.getResume().getName());
                 } else if (type.equals("admin")) {
                     //what to do if they are an admin
                 }
@@ -47,6 +66,7 @@ public class LoginService extends ActionSupport implements SessionAware {
             }
 			sessionMap.put("user", user);
 			sessionMap.put("type", type);
+			sessionMap.put("picture", user.getPicture().getName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;

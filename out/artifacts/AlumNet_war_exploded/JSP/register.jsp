@@ -45,12 +45,14 @@
 				<s:if test= "%{#session.type == 'student'}" >
 				    <s:div class="dropdown-content">	
 					    <a href="account_student.jsp">My Student Account</a>
+					    <s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:if>
 				
 				<s:elseif test= "%{#session.type == 'alumnus'}" >
 				    <s:div class="dropdown-content">
 					<a href="account_alum.jsp">My Alum Account</a>
+					<s:a action="logout">Logout</s:a>
 				    </s:div>
 				</s:elseif>
 					
@@ -85,7 +87,7 @@
 		    <label id="l2">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="alumnus.lastName" id="lastName" placeholder="Doe" /><br/><br/>
 		    <label id="l3">Grad Date</label>
-			<s:textfield label="Grad Date" type = "date" name="alumnus.graduationDate" id="Grad" min="1906-01-02"/><br/><br/>
+			<s:textfield label="Grad Date" type = "date" name="alumnus.graduationDate" id="Grad" placeholder="MM/DD/YYYY" min="1906-01-02"/><br/><br/>
 		    <label id="l5">Company</label>
 			<s:textfield label="Company" type="string" name="alumnus.company" id="jobComp" placeholder="Dell" /><br/><br/>
 		    <label id="l6">Job Title</label>
@@ -111,7 +113,7 @@
 		    <label id="l11">Last Name</label>
 			<s:textfield label="Last Name" type="string" name="student.lastName" id="lastName" placeholder="Doe" /><br/><br/>
 		    <label id="l13">Grad Date</label>
-			<s:textfield label="Grad Date" type = "date" name="student.expectedGraduation" id="expectedGraduation" min="2016-01-01" /><br/><br/>
+			<s:textfield label="Grad Date" type = "date" name="student.expectedGraduation" placeholder="MM/DD/YYYY" id="expectedGraduation" min="2016-01-01" /><br/><br/>
 		    <label id="l14">Major</label>
 			<s:select name="student.major" id="major" list="majors"/><br/><br/>
 		    <label id="l15">Resume</label>
@@ -119,7 +121,7 @@
 		    <label id="l16">Email</label>
 			<s:textfield label="Email" type="email" name="student.email" id="Email" placeholder="jd00000@georgiasouthern.edu" /><br/><br/>
 		    <label id="l17">Password</label>
-			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" script= "$(\"input[type='text']\").each(function(){$(this).val( $(this).val().replace(/[,]/g,\"));});"/><br/><br/>
+			<s:password label="Password" type="password" name="password" id="pw" placeholder="*********" script= "$(\"input[type='text']\").each(function(){$(this).val( $(this).val().replace(/[,]/g,\"));});" size="2097152"/><br/><br/>
 		    <label id="l19">Profile Picture</label>
 			<s:file id="pic" name="student.picture" method="POST" enctype="multipart/form-data"/><br/><br/>
 		    <s:submit type="submit" value="submit" id="submit" />	
