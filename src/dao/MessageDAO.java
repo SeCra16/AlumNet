@@ -1,11 +1,15 @@
 package dao;
-import dto.MessageDTO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import dto.MessageDTO;
+import dto.UserDTO;
+import org.apache.commons.io.IOUtils;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  * Josh Archer 
@@ -95,11 +99,13 @@ public class MessageDAO {
         if(dto == null) {
             throw new Exception("dto passed cannot be null nor can the Id be");
         } else {
-            Statement stmt = conn.createStatement();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ALUMNET.dbo.Messages WHERE Alumni_Email=? AND Student_Email=?");
             ResultSet rs = null;
 
             if (dto.getAlumnusEmail() != null && dto.getStudentEmail() != null) {
-                rs = stmt.executeQuery("SELECT * FROM ALUMNET.dbo.Messages WHERE Alumni_Email=" + dto.getAlumnusEmail() + " and Student_Email=" + dto.getStudentEmail());
+                stmt.setString(1, dto.getAlumnusEmail());
+                stmt.setString(2, dto.getStudentEmail());
+                rs = stmt.executeQuery();
             } else {
                 throw new Exception ("Alumnus Email, or Student Email must have a value");
             }
@@ -119,4 +125,46 @@ public class MessageDAO {
         }
         return messages;
     }
+
+	public ArrayList<UserDTO> selectPossibleConnections() throws SQLException{
+		PreparedStatement ps = conn.prepareStatement("SELECT Email, First_Name, Last_Name, Picture FROM Alumni UNION ALL SELECT Email, First_Name, Last_Name, Picture FROM Student;");
+
+		ResultSet rs = ps.executeQuery();
+
+		//create return arraylist
+        ArrayList<UserDTO> tmp = new ArrayList<>();
+		while (rs.next()) {
+		    UserDTO dto = new UserDTO();
+
+		    dto.setEmail(rs.getString("Email"));
+		    dto.setFirstName(rs.getString("First_Name"));
+		    dto.setLastName(rs.getString("Last_Name"));
+
+//		    start setting picture
+            File file = null;
+
+            try {
+                file = File.createTempFile("" + new Random().nextInt(), ".jpg");
+            } catch (Exception ex) {
+                String t = ex.getMessage();
+                System.out.println("Cant create file on pathway.." + t);
+            }
+            try (FileOutputStream out = new FileOutputStream(file)) {
+                IOUtils.copy(rs.getBinaryStream("Picture"), out);
+
+            } catch (IOException e) {
+                System.out.println("Must have null picture");
+                file = null;
+            } catch (Exception ex) {
+                String s = ex.getMessage();
+                System.out.println(s);
+            }
+            if (file != null)
+                dto.setPicture(file);
+
+            tmp.add(dto);
+        }
+
+        return tmp;
+	}
 }
