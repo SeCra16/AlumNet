@@ -84,8 +84,36 @@
 		<s:property value="email"/><br/>
 	    </s:iterator>
 	</s:form>
-	
-	
+                <br/>
+                <br/>
+                <style>
+                    table{
+                        border-collapse: collapse;
+                        border: 1px solid black;
+                    }
+                </style>
+                <table style="width: 30%">
+                    <tr>
+                        <td>Josh</td>
+                        <td>jarcher1200@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Archer</td>
+                        <td>
+                            <input type="button" id="connBtn" value="Connect" onclick="connectFunction()"></input>
+                            <!--<button onclick="disconnectFunction()">Disconnect</button>-->
+                            <input type="buttone" id="disConBtn" value="Disconnect" onclick="disconnectFunction()"></input>
+                        </td>
+                    </tr>
+                </table>
+                
+                <script>
+                    function connectFunction(){
+                        document.getElementById("connBtn").disabled = true;
+                        
+                        //stuff gets moved yo hidden page/method idk
+                    }
+                </script>
 	</div>
 	</div>
 	<div id="footer">
