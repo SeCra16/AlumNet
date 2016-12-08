@@ -76,7 +76,7 @@
 	<div id="main">
 	<!--Main content of page!-->
 		
-	<s:form id="poss_conn" name="Poss_conn" cssStyle="">
+	<s:form id="poss_conn" name="Poss_conn" cssStyle="" action="updateConn">
 	    <s:iterator value="possConn" var="connection">
 		<table id=poss_conn" class = "connections" style="border: 1px solid; table-layout: fixed; width: 75%; border-collapse: collapse; margin: 2% 20% 0 10%; word-wrap: break-word;">
 		    <tr>
@@ -98,7 +98,7 @@
 		    </tr>
 		    <tr>
 			<td>
-			<img src="../userimages/<s:property value="picture"/>" style= "max-width:100px; max-height:150px;" alt="usr_pic"/>
+			    <img src="../userimages/<s:property value="picture"/>" style= "max-width:100px; max-height:150px;" alt="usr_pic"/>
 			</td>
 			<td>
 			    <s:property value="firstName"/>
@@ -110,16 +110,41 @@
 			    <s:property value="email"/><br/>
 			</td>
 			<td>
-			    <button onclick="">
-				<label for="conn_button">Connect</label>
+			    <button onclick="add_conn('<s:property value="email"/>')">
+				<label for="conn_button" >Connect</label>
 			    </button>
 			</td>
 		    </tr>
 		</table>
 	    </s:iterator>
+	    <br/>
+	    <button onclick="sub_conn()" style="margin-left:40%">
+				<label for="submit_con"> Add Connection(s)?</label>
+	    </button>
+	
 	</s:form>
-                <br/>
 
+	    <p id="mail"></p>
+	    </br>
+	    <p id="conns"></p>
+	
+	<script>
+	    var emails = [""];
+		document.getElementById("mail").innerHTML = emails;
+		
+	    function add_conn(email){
+		emails.push(email);
+		document.getElementById("mail").innerHTML = emails;
+	    }
+	    
+	    var cons = document.getElementById("mail");
+	    
+	    function sub_conn(){
+		sessionStorage.user.connections = emails;
+	    }
+	</script>
+	
+	<br/>
 	</div>
 	</div>
 	<div id="footer">

@@ -103,7 +103,10 @@
                 </s:div>
 
             </s:form>
-
+<br/>
+	<s:form action="getPossibleConnections" namespace="/JSP">
+	    <button type="submit">Connections</button>
+        </s:form>
 
         </main>
     </div>
