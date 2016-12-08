@@ -183,7 +183,51 @@ public class UserService extends ActionSupport implements SessionAware {
 		return ANConstants.SUCCESS;
 	}
 
-	public String logoutUser() {
+	public String updateAll() {
+		    try {
+                if (sessionMap.get("type") == null) {
+                    return ANConstants.ERROR;
+                } else {
+                    if (sessionMap.get("type").equals("alumnus")) {
+                        AlumniPersistence persistence = AlumNetFactory.getAlumniPersistence();
+
+                        //get the list of connections
+                        AlumniDTO alumniDTO = (AlumniDTO) sessionMap.get("user");
+                       // String[] emails = alumniDTO.getConnections();
+
+                       /// for (String email : emails) {
+
+                            //alumniDTO.set
+                            setAlumnus(persistence.insertAlumnusConnections(alumniDTO));
+                            sessionMap.put("user", alumnus);
+                        //}
+
+                        return ANConstants.SUCCESS + "a";
+                    } else if (sessionMap.get("type").equals("student")) {
+
+                        StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
+
+                        //get the list of connections
+                        StudentDTO studentDTO = (StudentDTO) sessionMap.get("user");
+                        //String[] emails = studentDTO.getConnections();
+
+                       // for (String email : emails) {
+
+                            //studentDTO.set
+                            setStudent(persistence.insertStudentConnections(studentDTO));
+                            sessionMap.put("user", student);
+                        //}
+                        return ANConstants.SUCCESS + "s";
+                    }
+                }
+            } catch (Exception e) {
+		        return ANConstants.ERROR;
+            }
+
+            return ANConstants.FAIL;
+    }
+
+    public String logoutUser() {
         sessionMap.clear();
         return ANConstants.SUCCESS;
 	}

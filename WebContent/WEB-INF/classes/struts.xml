@@ -48,6 +48,7 @@
         <action name="getPossibleConnections"
                 class="services.MessageService" method="allPossibleConnections">
             <result name="SUCCESS">/JSP/add_conn.jsp</result>
+            <result name="FAIL">/JSP/error.jsp</result>
             <result name="ERROR">/JSP/error.jsp</result>
             <result name="input">/JSP/error.jsp</result>
         </action>
@@ -55,6 +56,17 @@
         <action name="logout"
                 class="services.UserService" method="logoutUser">
             <result name="SUCCESS">/JSP/index.jsp</result>
+            <result name="ERROR">/JSP/error.jsp</result>
+            <result name="input">/JSP/error.jsp</result>
+        </action>
+
+        <action name="updateConn"
+                class="services.UserService" method="updateAll">
+            <result name="SUCCESSa">/JSP/account_alum.jsp</result>
+            <result name="SUCCESSs">/JSP/account_student.jsp</result>
+            <result name="FAIL">/JSP/error.jsp</result>
+            <result name="ERROR">/JSP/error.jsp</result>
+            <result name="input">/JSP/error.jsp</result>
         </action>
 	
     </package>
