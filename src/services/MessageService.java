@@ -3,12 +3,15 @@ package services;
 import com.opensymphony.xwork2.ActionSupport;
 import dto.MessageDTO;
 import dto.UserDTO;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import persistence.AlumNetFactory;
 import persistence.MessagePersistence;
 import util.ANConstants;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -48,7 +51,24 @@ public class MessageService extends ActionSupport implements SessionAware{
 	public String allPossibleConnections() throws Exception {
         MessagePersistence persistence = AlumNetFactory.getMessagePersistence();
 
-        possConn = persistence.getPossibleConnections((UserDTO) sessionMap.get("user"));
+        if ((UserDTO) sessionMap.get("user") != null) {
+            possConn = persistence.getPossibleConnections((UserDTO) sessionMap.get("user"));
+
+            for (UserDTO temp : possConn) {
+                File tFile = new File(temp.getPicture().getName());
+
+                //set up picture for front end
+                String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
+
+                System.out.println("Image Location:" + filePath);//see the server console for actual location
+                File fileToCreate = new File(filePath, tFile.getName());
+                FileUtils.copyFile(temp.getPicture(), fileToCreate);//copying source file to new file
+                temp.setPicture(tFile);
+            }
+        } else {
+            return  ANConstants.FAIL;
+        }
+
 
 	    return  ANConstants.SUCCESS;
     }

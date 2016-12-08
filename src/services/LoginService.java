@@ -66,7 +66,7 @@ public class LoginService extends ActionSupport implements SessionAware {
                     //set up resume for front end
                     String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userresume");
 
-                    System.out.println("Image Location:" + filePath);//see the server console for actual location
+                    System.out.println("Resume Location:" + filePath);//see the server console for actual location
                     File fileToCreate = new File(filePath, dto.getResume().getName());
                     FileUtils.copyFile(dto.getResume(), fileToCreate);//copying source file to new file
 
