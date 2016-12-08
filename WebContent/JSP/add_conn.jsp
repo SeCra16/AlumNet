@@ -76,11 +76,14 @@
 	<div id="main">
 	<!--Main content of page!-->
 		
-	
-	<s:iterator value="possConn" var="connection">
-	    <s:property value="#connection.firstName"/>
-	</s:iterator>
-	
+	<s:form>
+	    <s:iterator value="possConn" var="connection">
+		<img src="../userimages/<s:property value="picture"/>" style= "max-width:100px; max-height:150px;" alt="usr_pic"/>
+		<s:property value="firstName"/>
+		<s:property value="lastName"/>
+		<s:property value="email"/><br/>
+	    </s:iterator>
+	</s:form>
 	
 	
 	</div>
