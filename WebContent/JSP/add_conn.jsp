@@ -72,17 +72,54 @@
 				
 			</s:div>&nbsp;
 	</div>
-
+	
 	<div id="main">
 	<!--Main content of page!-->
 		
-	
-	<s:iterator value="possConn" var="connection">
-	    <s:property value="#connection.firstName"/>
-	</s:iterator>
-	
-	
-	
+	<s:form id="poss_conn" name="Poss_conn" cssStyle="">
+	    <s:iterator value="possConn" var="connection">
+		<table id=poss_conn" class = "connections" style="border: 1px solid; table-layout: fixed; width: 75%; border-collapse: collapse; margin: 2% 20% 0 10%; word-wrap: break-word;">
+		    <tr>
+			<td class="prof_pic" style="border: 1px solid">
+			    <label for="poss_conn_pic">Profile Pic</label>
+			</td>
+			<td class="fName" style="border: 1px solid">
+			    <label for="poss_conn_fName">First Name</label>
+			</td>
+			<td class="lName" style="border: 1px solid">
+			    <label for="poss_conn_lName">Last Name</label>
+			</td>
+			<td class="email" style="border: 1px solid; max-width: 75%; ">
+			    <label for="poss_conn_email">Email</label>
+			</td>
+			<td class="conn" style="border: 1px solid;width:90px">
+			    <label for="poss_conn_connect">Connect?</label>
+			</td>
+		    </tr>
+		    <tr>
+			<td>
+			<img src="../userimages/<s:property value="picture"/>" style= "max-width:100px; max-height:150px;" alt="usr_pic"/>
+			</td>
+			<td>
+			    <s:property value="firstName"/>
+			</td>
+			<td>
+			    <s:property value="lastName"/>
+			</td>
+			<td>
+			    <s:property value="email"/><br/>
+			</td>
+			<td>
+			    <button onclick="">
+				<label for="conn_button">Connect</label>
+			    </button>
+			</td>
+		    </tr>
+		</table>
+	    </s:iterator>
+	</s:form>
+                <br/>
+
 	</div>
 	</div>
 	<div id="footer">

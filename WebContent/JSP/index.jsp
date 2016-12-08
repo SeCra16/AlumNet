@@ -75,9 +75,9 @@
 				
 			</s:div>&nbsp;
 	</s:div>
-        <s:form action="getPossibleConnections" namespace="/JSP">
-
-        <button type="submit"/>
+        
+	<s:form action="getPossibleConnections" namespace="/JSP">
+	    <button type="submit"/>
         </s:form>
 
 	<div id="main">

@@ -89,6 +89,8 @@
 		<s:div id="ifAlum" cssStyle="border: 1px solid;">
 		    <br/>
 		    
+		    <label id="l10">Profile Picture</label>
+			<img src="../userimages/<s:property value="#session.picture"/>" style= "max-width:250px; max-height:350px;" alt="profile_pic"/><br/><br/>
 		    <label id="l10">First Name</label>
 			<s:property value="#session.user.firstName"/><br/><br/>
 		    <label id="l11">Last Name</label>
