@@ -17,6 +17,7 @@ public class MessageService extends ActionSupport implements SessionAware{
 	private static final long serialVersionUID = 1L;
 	private SessionMap<String,Object> sessionMap;
 	private MessageDTO message;
+    private ArrayList<UserDTO> possConn;
 	private ArrayList<MessageDTO> messages;
 	
 	//this should work unless
@@ -36,14 +37,22 @@ public class MessageService extends ActionSupport implements SessionAware{
 		return ANConstants.SUCCESS;
 	}
 	
-	public ArrayList<MessageDTO> viewMessages(UserDTO dto) throws Exception {
+	public String viewMessages(UserDTO dto) throws Exception {
         MessagePersistence mPer = AlumNetFactory.getMessagePersistence();
 
-        ArrayList<MessageDTO> messages = mPer.getAllMessages(dto);
+        messages = mPer.getAllMessages(dto);
 		
-		return messages;
+		return ANConstants.SUCCESS;
 	}
-	
+
+	public String allPossibleConnections() throws Exception {
+        MessagePersistence persistence = AlumNetFactory.getMessagePersistence();
+
+        possConn = persistence.getPossibleConnections();
+
+	    return  ANConstants.SUCCESS;
+    }
+
 	@Override
 	public void setSession(Map<String, Object> map) {
 		sessionMap=(SessionMap<String, Object>) map;
@@ -61,5 +70,12 @@ public class MessageService extends ActionSupport implements SessionAware{
 	public ArrayList<MessageDTO> getMessages() {return messages;}
 
 	public void setMessages(ArrayList<MessageDTO> m) {this.messages = m;}
-	
+
+    public ArrayList<UserDTO> getPossConn() {
+        return possConn;
+    }
+
+    public void setPossConn(ArrayList<UserDTO> possConn) {
+        this.possConn = possConn;
+    }
 }

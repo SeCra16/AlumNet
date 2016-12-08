@@ -184,8 +184,8 @@ public class UserService extends ActionSupport implements SessionAware {
 	}
 
 	public String logoutUser() {
-			sessionMap.invalidate();
-			return ANConstants.SUCCESS;
+        sessionMap.clear();
+        return ANConstants.SUCCESS;
 	}
 	
 	//accessors and mutators

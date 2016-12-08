@@ -49,4 +49,12 @@ public class MessagePersistence extends AlumNetPersistence{
 
         return messages;
 	}
+
+	public ArrayList<UserDTO> getPossibleConnections() throws Exception {
+        connect();
+
+        dao = new MessageDAO(getConnection());
+
+        return dao.selectPossibleConnections();
+	}
 }
