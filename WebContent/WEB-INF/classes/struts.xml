@@ -45,6 +45,13 @@
             <result name="input">/JSP/error.jsp</result>
         </action>
 
+        <action name="getPossibleConnections"
+                class="services.MessageService" method="allPossibleConnections">
+            <result name="SUCCESS">/JSP/about_1.jsp</result>
+            <result name="ERROR">/JSP/error.jsp</result>
+            <result name="input">/JSP/error.jsp</result>
+        </action>
+
         <action name="logout"
                 class="services.UserService" method="logoutUser">
             <result name="SUCCESS">/JSP/index.jsp</result>
