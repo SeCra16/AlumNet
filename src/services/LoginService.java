@@ -58,6 +58,8 @@ public class LoginService extends ActionSupport implements SessionAware {
 					StudentPersistence persistence = AlumNetFactory.getStudentPersistence();
 					dto = persistence.viewStudent(dto);
 
+					String path = dto.getResume().getName();
+
                     sessionMap.put("user", dto);
                     sessionMap.put("resume", dto.getResume().getName());
 
