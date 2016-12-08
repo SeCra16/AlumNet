@@ -68,8 +68,8 @@
 					
 				<s:else>
 				    <div class="dropdown-content">	
-					<a href = "/JSP/login.jsp">Login</a>
-					<a href="/JSP/<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
+					<a href = "login.jsp">Login</a>
+					<a href="<s:url action="setupRegistration" namespace="/JSP" />">Register</a>
 				    </div>    
 				</s:else>
 				
