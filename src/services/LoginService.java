@@ -5,6 +5,8 @@ import dto.AlumniDTO;
 import dto.LoginDTO;
 import dto.StudentDTO;
 import dto.UserDTO;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import persistence.AlumNetFactory;
@@ -13,6 +15,7 @@ import persistence.LoginPersistence;
 import persistence.StudentPersistence;
 import util.ANConstants;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -57,6 +60,14 @@ public class LoginService extends ActionSupport implements SessionAware {
 
                     sessionMap.put("user", dto);
                     sessionMap.put("resume", dto.getResume().getName());
+
+                    //set up resume for front end
+                    String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userresume");
+
+                    System.out.println("Image Location:" + filePath);//see the server console for actual location
+                    File fileToCreate = new File(filePath, dto.getResume().getName());
+                    FileUtils.copyFile(dto.getResume(), fileToCreate);//copying source file to new file
+
                 } else if (type.equals("admin")) {
                     //what to do if they are an admin
                 }
@@ -67,6 +78,14 @@ public class LoginService extends ActionSupport implements SessionAware {
 			sessionMap.put("user", user);
 			sessionMap.put("type", type);
 			sessionMap.put("picture", user.getPicture().getName());
+
+            //set up picture for front end
+            String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");
+
+            System.out.println("Image Location:" + filePath);//see the server console for actual location
+            File fileToCreate = new File(filePath, user.getPicture().getName());
+            FileUtils.copyFile(user.getPicture(), fileToCreate);//copying source file to new file
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ANConstants.ERROR;

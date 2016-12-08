@@ -96,7 +96,7 @@
                     <label id="l14">Major</label>
                     <s:property value="#session.user.major"/><br/><br/>
                     <label id="l15">Resume</label>
-                    <a download href="<s:property value="#session.user.resume"/>">Resume</a><br/><br/>
+                    <a download href="../userresume/<s:property value="#session.user.resume"/>">Resume</a><br/><br/>
                     <label id="l16">Email</label>
                     <s:property value="#session.user.email"/><br/><br/>
 
